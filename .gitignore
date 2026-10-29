@@ -1,0 +1,26 @@
+# Datos: nunca van al repo. Cada uno los tiene en su laptop o en su bucket
+datasets/
+exp/
+*.csv
+*.csv.gz
+*.parquet
+# Excepción: las tablas chicas de resultados sí se versionan
+!resultados/**/*.csv
+
+# Secretos y configuración personal
+estudiante_secretos.sh
+zuliprc
+.env
+config_local.*
+
+# Optuna (los .db viven en el bucket, no en el repo)
+*.db
+
+# Python / Jupyter
+__pycache__/
+.ipynb_checkpoints/
+venv/
+.venv/
+
+# Sistema
+.DS_Store
