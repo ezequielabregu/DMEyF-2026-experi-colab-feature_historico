@@ -1,6 +1,6 @@
 # Propuesta de estrategia (v1) — Ezequiel
 
-> **Estado: propuesta para discutir en el grupo.** Los puntos marcados *provisorio* dependen de la respuesta de Bolaños (la tutoría se suspendió). Todo queda como parámetro del código, así que cambiarlos no obliga a rehacer nada.
+> **Estado: propuesta para discutir en el grupo.** Los puntos marcados *provisorio* dependen de la respuesta de Bolaños. Todo queda como parámetro del código, así que cambiarlos no obliga a rehacer nada.
 
 ## 1. Pregunta e hipótesis
 
@@ -124,13 +124,13 @@ Si ninguna cumple, la conclusión es que **más de 2 meses de historia no suma**
 
 1. **Pipeline y calidad de datos:** del crudo a la clase, meses rotos que contaminan la historia, y la tabla de cobertura. Parte del código de la competencia 1 (Python).
 2. **Experimento mínimo:** A contra una variante, con pocas semillas, en Google Cloud. Valida el código y mide tiempos.
-3. **Ajuste del diseño**, con lo aprendido y con la respuesta de Bolaños.
+3. **Ajuste del diseño**, con lo aprendido y con la respuesta del profe.
 4. **Diseño final** (`docs/diseno_experimental.md`), publicado en Zulip antes de correr.
 5. **Baseline completo y variantes.**
 6. **Corridas repartidas** entre las tres VM, con las mismas semillas. Uno reproduce el baseline de otro, para verificar.
 7. **Evaluación final y video.**
 
-## 9. Pendiente de Bolaños
+## 9. Pendiente de Respuesta del Profe
 
 1. Ventana de meses (punto 5).
 2. 201909 como segundo mes de prueba.
