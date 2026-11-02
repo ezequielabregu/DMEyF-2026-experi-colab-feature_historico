@@ -100,7 +100,20 @@ Meses de entrenamiento con historia completa, manteniendo validación 201908 y t
 - Es un diseño **dosis-respuesta**: mide la ganancia según cuánta historia ve el modelo (h = 2, 3, 4) y de qué tipo. Se puede graficar como una curva, y responde "cuánta historia conviene".
 - **Referencia extra:** el baseline exacto de la consigna (entrena con 201903–06), para comparar con los demás grupos.
 
-**Variables que reciben historia** *(a decidir)*: propongo **todas las numéricas**, sin seleccionar. Elegir "las más importantes" agrega una decisión que puede mezclarse con el efecto de la historia, y si se elige con datos que no corresponden, filtra información. Una selección puede ser una variante posterior.
+**Variables que reciben historia, según su tipo** (aporte de Clara) *(a decidir)*: no todas las variables sirven para lag, delta, tendencia o permanencia. Cada una recibe solo la historia que tiene sentido para su tipo. La clasificación es preliminar: se hizo por el nombre y por los valores que toma cada variable, sin mirar la clase.
+
+| Tipo | Cuántas | Ejemplos | En las variantes L (lags) | En las variantes T (tendencias) |
+|---|---:|---|---|---|
+| Montos y conteos | 129 | `mcuentas_saldo`, `ctrx_quarter`, `mpayroll` | Lag y delta | Pendiente, promedio, mínimo y máximo |
+| Banderas (0/1) | 8 | `cliente_vip`, `internet`, `thomebanking`, `tmobile_app` | Lag y **cambio** (se prendió o se apagó) | **Permanencia**: meses activa en los últimos h |
+| Estados y códigos | 5 | `Visa_status`, `Master_delinquency`, `tcuentas` | Lag y cambio de estado | — |
+| Fechas | 8 | `*_fultimo_cierre`, `*_Finiciomora`, `*_Fvencimiento`, `*_fechaalta` | — | — |
+| Edad y antigüedad | 2 | `cliente_edad`, `cliente_antiguedad` | — (crecen solas, un mes por mes) | — |
+
+- **La permanencia** es para las banderas lo que la tendencia es para los montos. Tiene sentido de negocio: en la competencia 1, "meses con sueldo" y "perdió el sueldo" eran señales que funcionaban.
+- **Es lo mismo que hizo el ganador de la competencia 1:** en su código, 128 de las 152 variables son montos o conteos, y solo esas reciben ventanas y razones.
+- **Condición para no ensuciar la comparación:** la clasificación se decide por el significado de cada variable (con el diccionario de datos), **nunca mirando la clase ni la ganancia**. Elegir "las más importantes" según un modelo sería otra cosa: agrega una decisión que se mezcla con el efecto de la historia. Si se hace, va como variante aparte.
+- **Meses rotos:** las variables con meses rotos (23 casos, ver etapa 1) reciben un tratamiento antes de armar su historia. Se define junto con esta clasificación, antes de correr nada.
 
 **Inflación:** la historia de los montos se calcula sobre rankings dentro del mes, no sobre pesos nominales. En la competencia 1, los rankings sumados a la historia aportaron +10.
 
@@ -147,7 +160,7 @@ Si ninguna cumple, la conclusión es que **más de 2 meses de historia no suma**
 ## 10. Para decidir entre los tres
 
 1. ¿Están de acuerdo con el diseño dosis-respuesta (punto 5)?
-2. Variables que reciben historia: ¿todas, o un subconjunto?
+2. ¿Están de acuerdo con la clasificación por tipo (punto 5)? ¿Hay alguna variable mal clasificada?
 3. Clase de entrenamiento: ¿las dos bajas juntas (punto 6) o `BAJA+2` sola?
 4. ¿Python (con el código de la competencia 1 como base) o R?
 5. ¿Quién toma cada etapa del punto 8?
