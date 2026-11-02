@@ -106,6 +106,13 @@ Meses de entrenamiento con historia completa, manteniendo validación 201908 y t
 
 ## 6. Modelo y evaluación
 
+- **Hay que generar la clase ternaria (Propuesta de Tomás):** el dataset no dice quién se fue; hay que generar la **clase ternaria** para cada cliente y mes m:
+  - `CONTINUA`: aparece en m+1 y en m+2;
+  - `BAJA+1`: no aparece en m+1 (se va el mes que viene);
+  - `BAJA+2`: aparece en m+1 pero no en m+2 (se va dentro de dos meses). **Es la que paga:** da tiempo a llamar al cliente.
+
+  Se genera sobre el dataset cortado en 201912, como en la consigna: 201911 queda solo con `BAJA+1` y 201912 sin clase. Los clientes que se van y vuelven siguen la regla de la cátedra (cuentan como `BAJA+1` antes del hueco), como en la competencia 1.
+- **Clase de entrenamiento** (Propuesta de Tomás)*(provisorio)*: `BAJA+1` y `BAJA+2` juntas contra `CONTINUA`, y la ganancia se calcula solo sobre `BAJA+2`. En la competencia 1, entrenar con las dos bajas juntas dio unos $269 M contra $248 M de `BAJA+2` sola (`z601`). Es la misma para el control y todas las variantes, así que no afecta la comparación.
 - **Modelo:** LightGBM, como en la consigna.
 - **Hiperparámetros** *(provisorio)*: una sola búsqueda con Optuna sobre el control A (AUC en 201908), reusada en todas las variantes. Aísla el efecto de la historia y cuesta 7 veces menos. En el experimento mínimo se revisa si una variante cambia mucho con su propia búsqueda.
 - **Semillas:** 10, las mismas para todas las variantes (comparación pareada).
@@ -122,7 +129,7 @@ Si ninguna cumple, la conclusión es que **más de 2 meses de historia no suma**
 
 ## 8. Plan de trabajo (en orden)
 
-1. **Pipeline y calidad de datos:** del crudo a la clase, meses rotos que contaminan la historia, y la tabla de cobertura. Parte del código de la competencia 1 (Python).
+1. **Pipeline y calidad de datos:** generar la clase ternaria y verificar la tabla de clases por mes de 2019; detectar meses rotos que contaminan la historia; armar la tabla de cobertura. Parte del código de la competencia 1 (Python), que ya genera la clase en SQL.
 2. **Experimento mínimo:** A contra una variante, con pocas semillas, en Google Cloud. Valida el código y mide tiempos.
 3. **Ajuste del diseño**, con lo aprendido y con la respuesta del profe.
 4. **Diseño final** (`docs/diseno_experimental.md`), publicado en Zulip antes de correr.
@@ -141,5 +148,6 @@ Si ninguna cumple, la conclusión es que **más de 2 meses de historia no suma**
 
 1. ¿Están de acuerdo con el diseño dosis-respuesta (punto 5)?
 2. Variables que reciben historia: ¿todas, o un subconjunto?
-3. ¿Python (con el código de la competencia 1 como base) o R?
-4. ¿Quién toma cada etapa del punto 8?
+3. Clase de entrenamiento: ¿las dos bajas juntas (punto 6) o `BAJA+2` sola?
+4. ¿Python (con el código de la competencia 1 como base) o R?
+5. ¿Quién toma cada etapa del punto 8?
