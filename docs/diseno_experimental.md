@@ -12,7 +12,7 @@
 - **Hipótesis secundaria (dosis-respuesta):** la ganancia crece con la cantidad de historia, h = 2 → 3 → 4.
 - **Análisis secundario:** si el resultado se sostiene cuando la historia de los montos se calcula sobre rankings dentro del mes en lugar de pesos nominales.
 
-**Si ninguna variante cumple la regla**, la conclusión es que *más de 2 meses de historia no suma en esta ventana*, y se reporta igual.
+**Si ninguna variante cumple la regla**, la conclusión es que ~~*más de 2 meses de historia no suma en esta ventana*~~ *no se pudo demostrar que agregar más de 2 meses de historia sume en esta ventana*, y se reporta igual. Eso no prueba que no sume: un efecto real de 2 o 3 M puede no pasar Holm (sección 11).
 
 ## 2. Datos
 
@@ -120,6 +120,8 @@ Para cada variante V (L3, L4, T3, T4, LT3 y LT4):
 - **201910 tiene 12 variables rotas**, que pasan a NA. Un modelo con más historia puede compensarlas mejor con sus lags: es un efecto real de la historia, pero no es el mismo efecto que en un mes sano.
 - **Inflación:** la regla principal usa pesos nominales. Los rankings se miran como análisis secundario.
 - **Experimento mínimo previo:** en la etapa 2 se comparó A contra LT4 en 201908, la validación, con 5 semillas. LT4 dio +3,5 M de media. Ese resultado no se usó para elegir variantes: las 6 entran en la regla.
+- **La ventana pesa más que la historia, al menos en validación:** en 201908, A-consigna (A con 201903–06) le saca +6,4 M a A, más que cualquier variante. Entrenar solo con 201905–06 permite comparar la historia de forma justa, pero puede costar más plata que la que la historia agrega.
+- **A-ranking es un control débil:** en 201908 pierde 7,9 M contra A. Una ventaja de LT4-ranking sobre A-ranking puede venir de esa debilidad, y no solo de la historia.
 
 ## 8. Qué es provisorio
 
@@ -150,3 +152,7 @@ Hay preguntas hechas a la cátedra sin respuesta. Si la respuesta cambia algo, s
 |---|---|---|---|
 | 2026-11-02 | Versión 1 | — | Sí |
 | 2026-11-03 | **Precisiones de la evaluación (`04`)**, sin cambiar la regla:<br>(a) **intervalo de la dosis-respuesta:** IC 95 % de la media entre las 10 semillas, con t de Student (9 grados de libertad);<br>(b) **Wilcoxon exacto:** se enumeran las 2ⁿ asignaciones de signo (1.024 con 10 pares). Si hay empates en \|d\|, se usan rangos promedio; las diferencias iguales a 0 se descartan;<br>(c) **banda de robustez:** por semilla, el promedio de la curva de ganancia sin suavizar entre N = 3.000 y N = 6.000, ambos incluidos. "Frágil" si la diferencia media en la banda tiene el signo contrario al de la diferencia media principal, en 201910;<br>(d) **AUC de 201909 y 201910:** contra `BAJA+2`, como en la validación. Solo se reporta;<br>(e) **"la mejor variante" de la figura 3:** la de mayor diferencia media en 201910. Es solo para la figura y no entra en la regla | Lo que la sección 6 dejó sin detallar. En (b), con N fijo la ganancia se mueve de a saltos de 1,1 M, así que las diferencias pueden empatar, y el exacto clásico supone que no hay empates | Sí (precisión, antes de ver resultados) |
+| 2026-11-03 | **Corrección de código en el `04`:** las diferencias se redondean a 6 decimales antes del Wilcoxon, sin cambiar la regla | El ruido de `float` ocultaba empates y no se aplicaban los rangos promedio de la precisión (b). Detectado por el verificador, solo con 201908 (T4 pasa de 0,1250 a 0,1191, y LT4 de 0,8320 a 0,8164) | Sí |
+| 2026-11-03 | **Conclusión si ninguna variante gana (sección 1).** Antes: "más de 2 meses de historia no suma en esta ventana". Después: "no se pudo demostrar que agregar más de 2 meses de historia sume en esta ventana" | La regla es exigente: en 201908, LT3 tiene 9 de 10 semillas a favor y p = 0,0176, que con Holm queda en 0,106. No pasar la regla no prueba que el efecto sea nulo | Sí |
+| 2026-11-03 | **Dos limitaciones nuevas (sección 7):** A-consigna le saca +6,4 M a A en 201908, y A-ranking es un control débil (−7,9 M contra A en 201908) | Señaladas por el verificador, con los datos de validación del `03` | Sí |
+| 2026-11-03 | **El `04` se corre sin publicar este documento en Zulip** y sin que el resto del grupo lo haya revisado. El respaldo de que todo se fijó antes es la fecha de los commits en GitHub | Decisión de Ezequiel: comunicar al grupo cuando se complete la estrategia. **Consecuencia:** si después la cátedra o el grupo cambian un punto provisorio (sección 8), la nueva corrida ya no es a ciegas, y se reporta así | Sí |
