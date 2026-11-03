@@ -1,0 +1,8 @@
+config,variante,paso,segundos,memoria_max_gb,fecha_hora,maquina,hilos
+train201905-201906_rotosNA_nominal,LT4,carga,0.7,2.91,2026-11-02 22:21,MBA-M4,8
+train201905-201906_rotosNA_nominal,LT4,variables,10.2,5.19,2026-11-02 22:21,MBA-M4,8
+train201905-201906_rotosNA_nominal,LT4,optuna A,687.4,5.22,2026-11-02 22:21,MBA-M4,8
+train201905-201906_rotosNA_nominal,A,una prueba de Optuna (media),34.3,5.22,2026-11-02 22:21,MBA-M4,8
+train201905-201906_rotosNA_nominal,LT4,modelos finales,758.0,5.22,2026-11-02 22:21,MBA-M4,8
+train201905-201906_rotosNA_nominal,A,un modelo final (media),45.3,5.22,2026-11-02 22:21,MBA-M4,8
+train201905-201906_rotosNA_nominal,LT4,un modelo final (media),106.3,5.22,2026-11-02 22:21,MBA-M4,8
