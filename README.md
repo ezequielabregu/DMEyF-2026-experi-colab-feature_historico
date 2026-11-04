@@ -45,7 +45,7 @@ Se corren en orden, con "Run All", desde la carpeta `notebooks/`. Cada uno frena
 | `05_exploratorio` | Ensamble y segundas diferencias. Es exploratorio, posterior a la regla | `exp/05/`, `resultados/05_*`, `resultados/figuras/05_*` | ~10 min |
 | `06_exploratorio` | `ratio3` y `zero_streak3` sobre la ventana de la consigna. Es exploratorio, posterior a la regla | `exp/06/`, `resultados/06_*`, `resultados/figuras/06_*` | ~30 min |
 | `07_exploratorio` | Hiperparámetros propios para la ventana de la consigna. Es exploratorio, posterior a la regla, y usa las salidas del `06` | `exp/07/`, `resultados/07_*`, `resultados/figuras/07_*` | ~1,5 h |
-| `08_exploratorio` | Historia sin resignar meses: mezclas, LT3 y LT4 sobre 201903–06, e historia curada. Es exploratorio, posterior a la regla, y usa las salidas del `03` y del `06` | `exp/08/`, `resultados/08_*`, `resultados/figuras/08_*` | ~50 min |
+| `08_exploratorio` | Historia sin resignar meses: mezclas, LT3 y LT4 sobre 201903–06, e historia curada. Es exploratorio, posterior a la regla, y usa las salidas del `03` y del `06` | `exp/08/`, `resultados/08_*`, `resultados/figuras/08_*` | ~35 min |
 
 Si una corrida del `03`, del `05`, del `06`, del `07` o del `08` se corta, se vuelve a correr entera: las semillas ya hechas no se repiten.
 
