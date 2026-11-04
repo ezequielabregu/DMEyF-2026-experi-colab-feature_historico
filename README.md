@@ -47,8 +47,9 @@ Se corren en orden, con "Run All", desde la carpeta `notebooks/`. Cada uno frena
 | `07_exploratorio` | Hiperparámetros propios para la ventana de la consigna. Es exploratorio, posterior a la regla, y usa las salidas del `06` | `exp/07/`, `resultados/07_*`, `resultados/figuras/07_*` | ~1,5 h |
 | `08_exploratorio` | Historia sin resignar meses: mezclas, LT3 y LT4 sobre 201903–06, e historia curada. Es exploratorio, posterior a la regla, y usa las salidas del `03` y del `06` | `exp/08/`, `resultados/08_*`, `resultados/figuras/08_*` | ~35 min |
 | `09_exploratorio` | Eventos entre productos, ratios intra-mes, historial del puntaje y hojas de Random Forest sobre la historia curada. Es exploratorio, posterior a la regla, y usa las salidas del `06` y del `08` | `exp/09/`, `resultados/09_*`, `resultados/figuras/09_*` | ~50 min |
+| `10_exploratorio` | Separa el puntaje del mes de su pasado y repite `ACP` con otras dos particiones. Es exploratorio, posterior a la regla, y usa las salidas del `06`, del `08` y del `09` | `exp/10/`, `resultados/10_*`, `resultados/figuras/10_*` | ~35 min |
 
-Si una corrida del `03`, del `05`, del `06`, del `07`, del `08` o del `09` se corta, se vuelve a correr entera: las semillas ya hechas no se repiten.
+Si una corrida del `03`, del `05`, del `06`, del `07`, del `08`, del `09` o del `10` se corta, se vuelve a correr entera: las semillas ya hechas no se repiten.
 
 ### Qué tener en cuenta
 
