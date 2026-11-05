@@ -1,0 +1,25 @@
+analisis,config,contra,medida,valor
+rankings (sin corrección),LT4-ranking,A-ranking,N_variante,4129
+rankings (sin corrección),LT4-ranking,A-ranking,N_control,3934
+rankings (sin corrección),LT4-ranking,A-ranking,d_media_201910_M,8.6075
+rankings (sin corrección),LT4-ranking,A-ranking,ic95_inf_M,5.3726
+rankings (sin corrección),LT4-ranking,A-ranking,ic95_sup_M,11.8424
+rankings (sin corrección),LT4-ranking,A-ranking,semillas_a_favor,10
+rankings (sin corrección),LT4-ranking,A-ranking,p,0.002
+rankings (sin corrección),LT4-ranking,A-ranking,d_media_201909_M,7.0675
+rankings (sin corrección),LT4-ranking,A-ranking,d_banda_201910_M,8.7878
+rankings (sin corrección),LT4-ranking,A-ranking,robustez,robusto
+A-consigna (descriptiva),A-consigna,,ganancia_media_201909_M,252.3125
+A-consigna (descriptiva),A-consigna,,ic95_inf_201909_M,250.7041
+A-consigna (descriptiva),A-consigna,,ic95_sup_201909_M,253.9209
+A-consigna (descriptiva),A,,ganancia_media_201909_M,243.1275
+A-consigna (descriptiva),A,,ic95_inf_201909_M,241.5021
+A-consigna (descriptiva),A,,ic95_sup_201909_M,244.7529
+A-consigna (descriptiva),A-consigna,A,d_media_201909_M,9.185
+A-consigna (descriptiva),A-consigna,,ganancia_media_201910_M,282.0125
+A-consigna (descriptiva),A-consigna,,ic95_inf_201910_M,279.2917
+A-consigna (descriptiva),A-consigna,,ic95_sup_201910_M,284.7333
+A-consigna (descriptiva),A,,ganancia_media_201910_M,278.1075
+A-consigna (descriptiva),A,,ic95_inf_201910_M,275.6247
+A-consigna (descriptiva),A,,ic95_sup_201910_M,280.5903
+A-consigna (descriptiva),A-consigna,A,d_media_201910_M,3.905

@@ -1,0 +1,5 @@
+medida,config,contra,foto_mes,N,N_contra,d_M,ic95_inf_M,ic95_sup_M,a_favor,p_descriptivo,d_banda_M
+semillas,ACO,AC,201909,4515,3793,-0.715,-4.1188,2.6888,3/10,0.5352,-2.7756
+ensamble,ACO,AC,201909,4761,4141,-2.75,-12.4025,6.985,27.4 %,,-3.3447
+semillas,ACO,AC,201910,4515,3793,-5.885,-9.8116,-1.9584,1/10,0.0039,-4.7824
+ensamble,ACO,AC,201910,4761,4141,-1.65,-12.6239,10.2582,37.5 %,,-4.2937

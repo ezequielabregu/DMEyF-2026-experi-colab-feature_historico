@@ -14,6 +14,8 @@ El notebook no incluye resultados inventados ni conclusiones anticipadas. Su eje
 
 Actualización: el notebook ya fue ejecutado con un snapshot real parcial y conserva sus tablas visibles. Muestra progreso y medias calculadas solo sobre pares disponibles; los gráficos finales siguen reservados para familias completas. El informe narrativo está en `docs/informe_experimentos_historia.md` y su versión para navegador en `docs/informe_experimentos_historia.html`.
 
+Alcance grupal: el informe cubre las propuestas y etapas 01–09 de los compañeros, las réplicas, la comparación sin/con historia y las cuatro familias nuevas. El notebook incorpora un recorrido de antecedentes con las tablas principales y exploratorias; el informe contiene el detalle completo de métricas y controles. Los antecedentes y sus hashes están congelados en `resultados/antecedentes_3b44f21`; la comparación complementaria terminada está en `resultados/sin_con_historia_10semillas`. El generador requiere esas carpetas además del snapshot de la serie nueva.
+
 Para regenerar el informe desde un paquete actualizado, descomprimirlo en `resultados/familias_c9930bd` y ejecutar:
 
 ```bash

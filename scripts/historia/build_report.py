@@ -7,6 +7,10 @@ import json
 import re
 from pathlib import Path
 from statistics import mean
+try:
+    from .group_history_report import sections as group_sections
+except ImportError:
+    from group_history_report import sections as group_sections
 
 FAMILIES = {
     'historia_reciente': ('Historia reciente', 387, 'Dar mayor peso a las fotos recientes: media 4:2:1 y comparación con pasado ponderado 2:1.'),
@@ -59,7 +63,7 @@ def render_html(markdown):
         out.append('</ul>')
     return '''<!doctype html><html lang="es"><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Experimentos de historia corta para mejorar la AUC</title>
+<title>Informe grupal de experimentos de historia</title>
 <style>body{font:16px/1.6 system-ui,sans-serif;color:#202833;margin:0;background:#f5f6f8}
 main{max-width:1080px;margin:auto;background:white;padding:36px 42px}h1{font-size:30px;line-height:1.2}
 h2{font-size:23px;margin-top:36px}h3{font-size:19px;margin-top:28px}p{max-width:95ch}
@@ -75,13 +79,15 @@ def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--results', type=Path, required=True)
     p.add_argument('--out', type=Path, required=True)
+    p.add_argument('--prior', type=Path, default=Path('resultados/antecedentes_3b44f21'))
+    p.add_argument('--own-comparison', type=Path, default=Path('resultados/sin_con_historia_10semillas'))
     args = p.parse_args()
     snapshot = read_json(args.results / 'snapshot.json')
     captured = snapshot.get('captured_utc', datetime.now(timezone.utc).isoformat())
     lines = [
-        '# Experimentos de historia corta para mejorar la AUC', '',
+        '# Informe grupal de experimentos de historia', '',
         f'**Corte de resultados:** {captured} (UTC). Informe regenerable desde las tablas del snapshot.', '',
-        'Buscamos mejorar el baseline histórico de la cátedra. Este documento registra qué probamos, los resultados disponibles y las decisiones. Una corrida parcial no se clasifica como éxito ni como fracaso.', '',
+        'Registro conjunto del trabajo de Clara, Ezequiel y Tomás sobre feature engineering histórico. Reúne propuestas, corridas realizadas, resultados positivos y negativos, réplicas y tareas pendientes. Distingue la regla principal de ganancia, las exploraciones posteriores y nuestra serie actual orientada a AUC. Una corrida parcial no se clasifica como éxito ni como fracaso.', '',
         '## Qué sabemos antes de estas pruebas', '',
         'El baseline ya contiene las 152 variables actuales más lag1, lag2, delta1 y delta2: 760 predictores. Reprodujimos los controles A (mayo–junio) y A-consigna (marzo–junio) con dos semillas, con coincidencia a la precisión mostrada. Esa verificación no fue un experimento de mejora.', '',
         'En el trabajo previo de Ezequiel se probaron lags/deltas de orden 3 y 4, tendencias, rankings simples, segundas diferencias, ratio3, rachas de ceros, historia curada y mezclas. Ninguna de las seis variantes principales superó su regla con corrección Holm frente a A; LT3 fue la más cercana (p ajustado 0,0703). Las señales posteriores de ganancia fueron exploratorias y no equivalen a mejoras confirmadas de AUC. El notebook 09 contiene otras propuestas implementadas, sin resultados publicados en el snapshot revisado.', '',
@@ -100,6 +106,9 @@ def main():
         '| Meses cargados | Enero–agosto; no se consultó octubre en estas pruebas |', '',
         '## Qué probamos', '', '| Familia | Nuevas columnas | Pregunta |', '|---|---:|---|',
     ]
+    antecedent = lines.index('## Qué sabemos antes de estas pruebas')
+    current_design = lines.index('## Diseño que mantuvimos fijo')
+    lines = lines[:antecedent] + group_sections(args.prior, args.own_comparison) + lines[current_design:]
     for _, (label, count, hypothesis) in FAMILIES.items():
         lines.append(f'| {label} | {count} | {hypothesis} |')
     lines += ['', 'Las tres primeras familias transforman información ya contenida en las tres fotos; buscamos una representación que LightGBM aproveche mejor. Los rankings incorporan además la distribución contemporánea del conjunto de clientes. Las fórmulas exactas se fijaron antes de correr en docs/experimentos_historia.md.', '',
