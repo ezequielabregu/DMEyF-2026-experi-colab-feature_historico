@@ -19,3 +19,19 @@ El notebook no incluye resultados inventados ni conclusiones anticipadas. Su eje
 Cada familia conserva su propio baseline, así puede ejecutarse también de forma independiente. No cambia el protocolo según los resultados de las primeras familias. El respaldo del ZIP agregado se actualiza en el bucket después de cada experimento; los archivos individuales grandes permanecen en el disco de la VM.
 
 La cola está desacoplada de SSH con nohup; cerrar la conexión no la interrumpe. Detener la VM sí interrumpe el entrenamiento. No tiene reanudación automática: antes de relanzar revisar estado y usar una nueva carpeta para cualquier experimento incompleto.
+
+## Corrida iniciada el 5/11/2026
+
+- Versión desplegada: commit `c9930bd`, con manifiesto SHA-256.
+- Código aislado en VM: `/home/tomas_henseler/historia_c9930bd`.
+- Salidas: `/home/tomas_henseler/experimento_historia/exp/familias_c9930bd`.
+- Log de cola: `/home/tomas_henseler/experimento_historia/familias_c9930bd.log`.
+- Estado: `exp/familias_c9930bd/batch_status.json`.
+- Respaldo agregado: `gs://tomas_henseler_buckito2026/exp/familias_c9930bd/tutoria_resultados.zip`, disponible después de completar la primera familia.
+- Comprobación inicial: cinco tests pasaron; Jupyter leyó y convirtió el notebook sin errores; cola activa con `historia_reciente` como primera familia. Resultados todavía pendientes al registrar este estado.
+
+Para descargar el paquete a la computadora al terminar:
+
+```bash
+gcloud storage cp gs://tomas_henseler_buckito2026/exp/familias_c9930bd/tutoria_resultados.zip .
+```
