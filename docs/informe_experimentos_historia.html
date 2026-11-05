@@ -1,0 +1,70 @@
+<!doctype html><html lang="es"><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Experimentos de historia corta para mejorar la AUC</title>
+<style>body{font:16px/1.6 system-ui,sans-serif;color:#202833;margin:0;background:#f5f6f8}
+main{max-width:1080px;margin:auto;background:white;padding:36px 42px}h1{font-size:30px;line-height:1.2}
+h2{font-size:23px;margin-top:36px}h3{font-size:19px;margin-top:28px}p{max-width:95ch}
+.table{overflow-x:auto;margin:20px 0}table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{border:1px solid #d9dfe5;padding:10px 12px;text-align:left;vertical-align:top}
+th{background:#edf2f7}tbody tr:nth-child(even){background:#fafbfd}code{overflow-wrap:anywhere}
+li{margin:8px 0}@media print{body{background:white}main{max-width:none;padding:0}
+.table{overflow:visible}thead{display:table-header-group}tr{break-inside:avoid}h2,h3{break-after:avoid}}
+</style><main><h1>Experimentos de historia corta para mejorar la AUC</h1>
+<p><strong>Corte de resultados:</strong> 2026-11-05T20:50:13.811990+00:00 (UTC). Informe regenerable desde las tablas del snapshot.</p>
+<p>Buscamos mejorar el baseline histórico de la cátedra. Este documento registra qué probamos, los resultados disponibles y las decisiones. Una corrida parcial no se clasifica como éxito ni como fracaso.</p>
+<h2>Qué sabemos antes de estas pruebas</h2>
+<p>El baseline ya contiene las 152 variables actuales más lag1, lag2, delta1 y delta2: 760 predictores. Reprodujimos los controles A (mayo–junio) y A-consigna (marzo–junio) con dos semillas, con coincidencia a la precisión mostrada. Esa verificación no fue un experimento de mejora.</p>
+<p>En el trabajo previo de Ezequiel se probaron lags/deltas de orden 3 y 4, tendencias, rankings simples, segundas diferencias, ratio3, rachas de ceros, historia curada y mezclas. Ninguna de las seis variantes principales superó su regla con corrección Holm frente a A; LT3 fue la más cercana (p ajustado 0,0703). Las señales posteriores de ganancia fueron exploratorias y no equivalen a mejoras confirmadas de AUC. El notebook 09 contiene otras propuestas implementadas, sin resultados publicados en el snapshot revisado.</p>
+<p>Fuentes de antecedentes: código y tablas de la rama ezequiel/etapa-1, commit 3b44f21; detalle en docs/revision_experimentos_20261104.md. Las métricas nuevas de este informe provienen de nuestras corridas, no de esas tablas.</p>
+<h2>Diseño que mantuvimos fijo</h2>
+<div class="table"><table><thead><tr><th>Elemento</th><th>Definición</th></tr></thead><tbody>
+<tr><td>Dataset</td><td>competencia_02_crudo.csv.gz; parquet 2019 preparado y verificado</td></tr>
+<tr><td>Entrenamiento</td><td>Marzo–junio, 506.871 filas, sin sampling</td></tr>
+<tr><td>Etiqueta de entrenamiento</td><td>BAJA+1 o BAJA+2 frente a CONTINUA</td></tr>
+<tr><td>Evaluación</td><td>Agosto de 2019, 131.775 filas; AUC positiva BAJA+2</td></tr>
+<tr><td>Control</td><td>760 predictores, sin ID ni foto_mes como features</td></tr>
+<tr><td>Ajuste</td><td>Parámetros del 07, 339 árboles, max_bin 31, bagging_freq 1</td></tr>
+<tr><td>Semillas</td><td>Diez por brazo; iguales entre baseline y variante</td></tr>
+<tr><td>Recursos</td><td>Ocho hilos; cuatro familias ejecutadas secuencialmente</td></tr>
+<tr><td>Faltantes</td><td>NaN; mismas filas en ambos brazos; saneamiento antes de calcular historia</td></tr>
+<tr><td>Meses cargados</td><td>Enero–agosto; no se consultó octubre en estas pruebas</td></tr>
+</tbody></table></div>
+<h2>Qué probamos</h2>
+<div class="table"><table><thead><tr><th>Familia</th><th>Nuevas columnas</th><th>Pregunta</th></tr></thead><tbody>
+<tr><td>Historia reciente</td><td>387</td><td>Dar mayor peso a las fotos recientes: media 4:2:1 y comparación con pasado ponderado 2:1.</td></tr>
+<tr><td>Cambios relativos</td><td>258</td><td>Medir cambios proporcionales simétricos de uno y dos meses, con valores finitos acotados entre −1 y 1.</td></tr>
+<tr><td>Persistencia y reversión</td><td>516</td><td>Separar dos caídas, dos subidas, reversión y aceleración relativa en tres fotos.</td></tr>
+<tr><td>Rankings con cero fijo</td><td>365</td><td>Comparar la posición del cliente dentro del mes y signo, y su cambio en uno y dos meses.</td></tr>
+</tbody></table></div>
+<p>Las tres primeras familias transforman información ya contenida en las tres fotos; buscamos una representación que LightGBM aproveche mejor. Los rankings incorporan además la distribución contemporánea del conjunto de clientes. Las fórmulas exactas se fijaron antes de correr en docs/experimentos_historia.md.</p>
+<h2>Resultados al corte</h2>
+<p>Las medias siguientes usan únicamente semillas emparejadas. Si hay tres variantes y diez baselines, se comparan esos tres pares, no medias de tamaños diferentes. La diferencia está en unidades de AUC; +0,001 equivale a pasar de 0,912 a 0,913.</p>
+<div class="table"><table><thead><tr><th>Familia</th><th>Estado</th><th>Pares</th><th>AUC control</th><th>AUC variante</th><th>Diferencia media</th><th>A favor</th></tr></thead><tbody>
+<tr><td>Historia reciente</td><td>Parcial</td><td>4/10</td><td>0.912117</td><td>0.910812</td><td>-0.001305</td><td>1/4</td></tr>
+<tr><td>Cambios relativos</td><td>Pendiente</td><td>0/10</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>Persistencia y reversión</td><td>Pendiente</td><td>0/10</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>Rankings con cero fijo</td><td>Pendiente</td><td>0/10</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+</tbody></table></div>
+<h3>Historia reciente</h3>
+<div class="table"><table><thead><tr><th>Semilla</th><th>AUC control</th><th>AUC variante</th><th>Diferencia</th></tr></thead><tbody>
+<tr><td>161093</td><td>0.909832201</td><td>0.908692345</td><td>-0.001139856</td></tr>
+<tr><td>294103</td><td>0.914852804</td><td>0.910844762</td><td>-0.004008042</td></tr>
+<tr><td>342929</td><td>0.911741449</td><td>0.911399274</td><td>-0.000342174</td></tr>
+<tr><td>677561</td><td>0.912040962</td><td>0.912311328</td><td>+0.000270366</td></tr>
+</tbody></table></div>
+<p><strong>Avance parcial:</strong> 4/10 variantes y 10/10 baselines. No cerrar una conclusión ni detener la prueba por estos resultados.</p>
+<h2>Qué resultó y qué no podemos afirmar todavía</h2>
+<p>Las familias pendientes no tienen un resultado negativo: todavía no fueron evaluadas. Las filas parciales muestran avance del entrenamiento, no una conclusión final. Cuando estén completos los diez pares, reportaremos conjuntamente la diferencia media, la dirección por semilla y el cambio en AUC del ensamble.</p>
+<p>No se elegirá una familia por una semilla favorable. Tampoco se confundirá una mejora de ganancia económica de antecedentes con una mejora de AUC en esta comparación.</p>
+<h2>Decisiones y siguientes pasos</h2>
+<ul>
+<li>Terminar las cuatro familias y conservar también resultados negativos.</li>
+<li>Ajustar el decaimiento solo si historia reciente presenta una señal favorable al completar diez semillas, considerando media, consistencia y ensamble. No se fijó un umbral numérico formal: cualquier criterio nuevo debe registrarse antes de la búsqueda, no reconstruirse como si hubiera sido predefinido.</li>
+<li>Si se habilita esa búsqueda, seleccionar alfa dentro de una partición temporal interna al bloque de entrenamiento, respetando las etiquetas a dos meses; reentrenar marzo–junio y evaluar la elección en agosto. No usar agosto para elegir alfa.</li>
+<li>No modificar la cola ni los pesos actuales a partir de resultados parciales.</li>
+</ul>
+<h2>Límites de la evidencia</h2>
+<p>Agosto ya se usó para optimizar el baseline y discutir otras variantes. Sigue siendo validación exploratoria, aunque una búsqueda posterior de alfa use otro bloque. Los parámetros del 07 favorecen potencialmente al baseline: aquí medimos el efecto de agregar features con ese ajuste fijo, no modelos optimizados individualmente. Las diez semillas comparten clientes y mes; su dispersión no mide incertidumbre entre períodos. Comparar cuatro familias introduce selección múltiple. El catálogo de roturas fue construido retrospectivamente y no representa una política estrictamente disponible en tiempo real.</p>
+<h2>Trazabilidad</h2>
+<p>Cada experimento conserva config.json con hashes SHA-256, versiones y semillas; metrics.csv con AUC por modelo; summary.json con el ensamble; extra_coverage.csv con faltantes; y status.json al completar. El paquete para tutoría no contiene datos individuales. El notebook notebooks/tutoria_historia.ipynb permite revisar estas tablas y visualizar las diferencias.</p>
+<p>Corrida: familias_c9930bd. Código desplegado: c9930bd. Rama: feat/historia-transformaciones. El informe y el notebook pueden evolucionar sin modificar el código de la corrida en curso.</p></main></html>

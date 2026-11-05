@@ -56,3 +56,7 @@ Para las otras familias, cambiar solo el script y la carpeta de salida. Corrida 
 No se lanzaron corridas nuevas al crear esta rama. El experimento previo sin/con historia queda separado de estas familias.
 
 Verificación: sintaxis y whitespace comprobados localmente; cinco pruebas sintéticas pasaron en el entorno de la VM (calendario con huecos, signos/ceros/nulos, persistencia, pesos y rankings con empates). No se entrenaron modelos nuevos durante esa verificación.
+
+## Próximo experimento acordado: decaimiento ajustable
+
+Solo si historia reciente muestra una señal favorable al completar las diez semillas (considerando diferencia media, consistencia entre semillas y ensamble), preparar un archivo independiente que seleccione alfa en una partición temporal interna al bloque marzo–junio y evalúe esa elección en agosto. No hay umbral numérico de habilitación predefinido; no presentarlo retrospectivamente como una regla formal. Si no aparece señal, conservar el negativo y priorizar las otras familias. No modificar la cola en ejecución ni elegir alfa mirando sus AUC de agosto. Definir antes de correr la grilla, las semillas de selección y la partición con separación suficiente para las etiquetas a dos meses; las ventanas internas son cortas, lo que limita esta estrategia. Reentrenar luego con marzo–junio y el alfa seleccionado. Los parámetros del 07 ya fueron elegidos usando agosto: esta separación evita usarlo para la nueva búsqueda de alfa, pero no convierte agosto en un test independiente de todo el pipeline.

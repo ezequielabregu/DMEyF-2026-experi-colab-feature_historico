@@ -12,6 +12,16 @@ El paquete contiene exclusivamente métricas, configuración, cobertura y logs; 
 
 El notebook no incluye resultados inventados ni conclusiones anticipadas. Su ejecución con resultados reales y la revisión visual de los gráficos quedan para cuando termine al menos una familia.
 
+Actualización: el notebook ya fue ejecutado con un snapshot real parcial y conserva sus tablas visibles. Muestra progreso y medias calculadas solo sobre pares disponibles; los gráficos finales siguen reservados para familias completas. El informe narrativo está en `docs/informe_experimentos_historia.md` y su versión para navegador en `docs/informe_experimentos_historia.html`.
+
+Para regenerar el informe desde un paquete actualizado, descomprimirlo en `resultados/familias_c9930bd` y ejecutar:
+
+```bash
+python scripts/historia/build_report.py --results resultados/familias_c9930bd --out docs/informe_experimentos_historia.md
+```
+
+El exportador `scripts/historia/export_results.py` permite capturar un snapshot antes de que termine toda la cola, sin incluir predicciones ni identificadores. La condición de ajustar alfa solo si aparece señal en historia reciente figura tanto en el notebook como en el informe y el protocolo.
+
 ## Cola en la VM
 
 `scripts/historia/run_batch.py` ejecuta las familias secuencialmente, diez semillas por brazo (80 modelos en total). Historia reciente primero. Espera la corrida previa sin/con historia para no competir por CPU. Si una familia falla, conserva el log y continúa con las demás; el estado final lo indica.

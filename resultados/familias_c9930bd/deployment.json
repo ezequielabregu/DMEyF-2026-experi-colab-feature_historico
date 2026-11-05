@@ -1,0 +1,20 @@
+{
+  "commit": "c9930bd",
+  "branch": "feat/historia-transformaciones",
+  "files_sha256": {
+    "scripts/historia/baseline07.json": "bb2c74452765a320900db6d78b6b15b97e8597ba93c4d5890cc4b0eeed9c7030",
+    "scripts/historia/common.py": "f0f40a952648ee4d24bdf67f449d1f6e8c947777bfdbd56ac3c4ceed9c9ee7d4",
+    "scripts/historia/exp_cambios_relativos.py": "95cb03a32a8eae8558abd7b99e1b3731f4a8d5e7dc36103ecb99ce210bcb868e",
+    "scripts/historia/exp_historia_reciente.py": "16afb9be0081c61cbbc633e6592b0aaed2ebc4681c347e2af211438cb6476747",
+    "scripts/historia/exp_persistencia.py": "1b2ef2998d54c97c48f9c7d22eb493ed68ffe8f13a4d88c912641f48f66ec3c5",
+    "scripts/historia/exp_rankings_cero_fijo.py": "2dc8234f124b17fe573c8aa8f09474a2b8c1313972e67396585799b0d63b73ec",
+    "scripts/historia/requirements.txt": "fe2b498ce3143ee223ddb0adcca75dbe2f8a92ce119fed627a6d047446550d53",
+    "scripts/historia/run_batch.py": "495c9f8f5d83337993ebf327633b6642f9ea32fad42e6c288989632beeb03ebb",
+    "scripts/historia/test_features.py": "b084913c99a2dcd6b2a9ee21902fa58c64bafad4e96a5b3041b41a90ca9750df",
+    "scripts/historia/transforms.py": "4c7d846d237671fdbee240da166bc954dfb0f4d2c25e563ba0062e5a1a1ee96d",
+    "scripts/historia/__init__.py": "7e304b3ad6b13c65a2687ee0e4d0bdc321065ead1f878dff3abd9fa27784225b",
+    "notebooks/tutoria_historia.ipynb": "c891d75d3e61773dd558c0efdbb7e2f51d8f57847309c07fc029836008ffb5c1",
+    "docs/experimentos_historia.md": "bcf08413e0916a6d625a4494de2c95d03ccc7750e4a994e350d439da1e30ac2a",
+    "docs/tutoria_historia.md": "10509d99cf3283b898d15d2656ff3c3270693ea8e881548d17daacd1c0eea168"
+  }
+}
