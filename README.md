@@ -49,7 +49,7 @@ Se corren en orden, con "Run All", desde la carpeta `notebooks/`. Cada uno frena
 | `09_exploratorio` | Eventos entre productos, ratios intra-mes, historial del puntaje y hojas de Random Forest sobre la historia curada. Es exploratorio, posterior a la regla, y usa las salidas del `06` y del `08` | `exp/09/`, `resultados/09_*`, `resultados/figuras/09_*` | ~50 min |
 | `10_exploratorio` | Separa el puntaje del mes de su pasado y repite `ACP` con otras dos particiones. Es exploratorio, posterior a la regla, y usa las salidas del `06`, del `08` y del `09` | `exp/10/`, `resultados/10_*`, `resultados/figuras/10_*` | ~35 min |
 | `11_exploratorio` | Repite `ACPH` con las particiones B y C. Es exploratorio, posterior a la regla, y usa las salidas del `06`, del `08`, del `09` y del `10` | `exp/11/`, `resultados/11_*`, `resultados/figuras/11_*` | ~15 min |
-| `12_exploratorio` | Mide un modelo sin lags ni deltas y entrena `AC`, `ACH` y `ACPH` con los meses más recientes. Es exploratorio, posterior a la regla, y usa las salidas del `06`, del `08`, del `09`, del `10` y del `11` | `exp/12/`, `resultados/12_*`, `resultados/figuras/12_*` | ~1,5 h |
+| `12_exploratorio` | Mide un modelo sin lags ni deltas y entrena `AC`, `ACH` y `ACPH` con los meses más recientes. Es exploratorio, posterior a la regla, y usa las salidas del `06`, del `08`, del `09`, del `10` y del `11` | `exp/12/`, `resultados/12_*`, `resultados/figuras/12_*` | ~1,7 h |
 
 Si una corrida del `03`, del `05`, del `06`, del `07`, del `08`, del `09`, del `10`, del `11` o del `12` se corta, se vuelve a correr entera: las semillas ya hechas no se repiten.
 
