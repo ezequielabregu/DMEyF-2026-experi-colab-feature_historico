@@ -1,0 +1,12 @@
+{
+  "source_commit": "3b44f21",
+  "source_file": "resultados/07_hiperparametros.json",
+  "params": {
+    "num_leaves": 246,
+    "min_data_in_leaf": 1545,
+    "learning_rate": 0.02181730691113298,
+    "feature_fraction": 0.7745010298799831,
+    "bagging_fraction": 0.7122542124809171
+  },
+  "arboles": 339
+}
