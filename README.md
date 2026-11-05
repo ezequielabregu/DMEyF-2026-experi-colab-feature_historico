@@ -50,8 +50,9 @@ Se corren en orden, con "Run All", desde la carpeta `notebooks/`. Cada uno frena
 | `10_exploratorio` | Separa el puntaje del mes de su pasado y repite `ACP` con otras dos particiones. Es exploratorio, posterior a la regla, y usa las salidas del `06`, del `08` y del `09` | `exp/10/`, `resultados/10_*`, `resultados/figuras/10_*` | ~35 min |
 | `11_exploratorio` | Repite `ACPH` con las particiones B y C. Es exploratorio, posterior a la regla, y usa las salidas del `06`, del `08`, del `09` y del `10` | `exp/11/`, `resultados/11_*`, `resultados/figuras/11_*` | ~15 min |
 | `12_exploratorio` | Mide un modelo sin lags ni deltas y entrena `AC`, `ACH` y `ACPH` con los meses más recientes. Es exploratorio, posterior a la regla, y usa las salidas del `06`, del `08`, del `09`, del `10` y del `11` | `exp/12/`, `resultados/12_*`, `resultados/figuras/12_*` | ~1,7 h |
+| `13_exploratorio` | Banco de pruebas: evalúa ideas de historia en 201903–08, sobre clientes que el modelo no vio. No carga 201909 ni 201910. Es exploratorio, posterior a la regla, y usa las salidas del `03`, del `06` y del `08` | `exp/13/`, `resultados/13_*`, `resultados/figuras/13_*` | ~1,5 h |
 
-Si una corrida del `03`, del `05`, del `06`, del `07`, del `08`, del `09`, del `10`, del `11` o del `12` se corta, se vuelve a correr entera: las semillas ya hechas no se repiten.
+Si una corrida del `03`, del `05`, del `06`, del `07`, del `08`, del `09`, del `10`, del `11`, del `12` o del `13` se corta, se vuelve a correr entera: las semillas ya hechas no se repiten.
 
 ### Qué tener en cuenta
 
