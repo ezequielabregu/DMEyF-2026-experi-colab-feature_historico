@@ -1,7 +1,9 @@
 """Cola secuencial de las cuatro familias y paquete agregado para tutoría."""
 import argparse
+import csv
 from datetime import datetime, timezone
 import json
+import hashlib
 from pathlib import Path
 import shutil
 import subprocess
@@ -25,6 +27,7 @@ def main():
     p.add_argument('--out', type=Path, required=True)
     p.add_argument('--wait-pid', type=int)
     p.add_argument('--bucket', help='Prefijo gs:// de respaldo del paquete agregado')
+    p.add_argument('--reuse-complete', type=Path, help='Reutiliza solo familias completas y verificadas de una cola anterior')
     args = p.parse_args()
     args.out.mkdir(parents=True, exist_ok=False)
     status = args.out / 'batch_status.json'
@@ -50,13 +53,41 @@ def main():
     for experiment in EXPERIMENTS:
         write_status(status, status='running', current=experiment, completed=completed, failed=failed)
         out = args.out / experiment
+        previous = args.reuse_complete / experiment if args.reuse_complete else None
+        reuse = previous is not None and (previous / 'status.json').exists()
+        if reuse:
+            if json.loads((previous / 'status.json').read_text()).get('status') != 'complete':
+                raise ValueError(f'Estado previo inválido: {experiment}')
+            config = json.loads((previous / 'config.json').read_text())
+            # No reutilizar resultados si cambiaron entrada, código o parámetros.
+            for filename, expected in config['hashes'].items():
+                digest = hashlib.file_digest(open(filename, 'rb'), 'sha256').hexdigest()
+                if digest != expected:
+                    raise ValueError(f'Cambió el archivo de la corrida completa: {filename}')
+            if Path(config['data']).resolve() != args.data.resolve() or Path(config['broken']).resolve() != args.broken.resolve():
+                raise ValueError('Las rutas de entrada no coinciden con la corrida anterior')
+            with (previous / 'metrics.csv').open() as f:
+                metrics = list(csv.DictReader(f))
+            pairs = {(r['variant'], int(r['seed'])) for r in metrics}
+            seeds = set(config['seeds_used'])
+            if len(seeds) != 10 or len(metrics) != 20 or pairs != {(v, s) for v in ['baseline', experiment] for s in seeds}:
+                raise ValueError('Corrida completa sin los diez pares esperados')
+            shutil.copytree(previous, out)
+            old_log = args.reuse_complete / f'{experiment}.log'
+            if old_log.exists():
+                shutil.copy2(old_log, args.out / old_log.name)
+            else:
+                (args.out / f'{experiment}.log').write_text('Reutilizado de ' + str(previous))
+            result = subprocess.CompletedProcess([], 0)
+            print(f'REUTILIZADO {experiment}: {previous}', flush=True)
         command = [sys.executable, '-u', str(here / f'exp_{experiment}.py'),
                    '--data', str(args.data.resolve()), '--broken', str(args.broken.resolve()),
                    '--hyper', str(here / 'baseline07.json'), '--out', str(out.resolve()),
                    '--seeds', '10', '--threads', '8']
-        print(f'INICIO {experiment}', flush=True)
-        with (args.out / f'{experiment}.log').open('w', encoding='utf-8') as log:
-            result = subprocess.run(command, stdout=log, stderr=subprocess.STDOUT)
+        if not reuse:
+            print(f'INICIO {experiment}', flush=True)
+            with (args.out / f'{experiment}.log').open('w', encoding='utf-8') as log:
+                result = subprocess.run(command, stdout=log, stderr=subprocess.STDOUT)
         if result.returncode == 0 and (out / 'status.json').exists():
             completed.append(experiment)
         else:

@@ -1,7 +1,9 @@
 {
   "status": "running",
-  "current": "historia_reciente",
-  "completed": [],
+  "current": "cambios_relativos",
+  "completed": [
+    "historia_reciente"
+  ],
   "failed": [],
-  "updated_utc": "2026-11-05T20:26:44.718489+00:00"
+  "updated_utc": "2026-11-05T21:01:46.452131+00:00"
 }

@@ -1,6 +1,6 @@
 # Informe grupal de experimentos de historia
 
-**Corte de resultados:** 2026-11-05T20:50:13.811990+00:00 (UTC). Informe regenerable desde las tablas del snapshot.
+**Corte de resultados:** 2026-11-05T21:21:42.233417+00:00 (UTC). Informe regenerable desde las tablas del snapshot.
 
 Registro conjunto del trabajo de Clara, Ezequiel y Tomás sobre feature engineering histórico. Reúne propuestas, corridas realizadas, resultados positivos y negativos, réplicas y tareas pendientes. Distingue la regla principal de ganancia, las exploraciones posteriores y nuestra serie actual orientada a AUC. Una corrida parcial no se clasifica como éxito ni como fracaso.
 
@@ -268,8 +268,8 @@ Las medias siguientes usan únicamente semillas emparejadas. Si hay tres variant
 
 | Familia | Estado | Pares | AUC control | AUC variante | Diferencia media | A favor |
 |---|---|---:|---:|---:|---:|---:|
-| Historia reciente | Parcial | 4/10 | 0.912117 | 0.910812 | -0.001305 | 1/4 |
-| Cambios relativos | Pendiente | 0/10 | — | — | — | — |
+| Historia reciente | Completo | 10/10 | 0.911657 | 0.910525 | -0.001132 | 3/10 |
+| Cambios relativos | Parcial | 3/10 | 0.912142 | 0.910844 | -0.001299 | 1/3 |
 | Persistencia y reversión | Pendiente | 0/10 | — | — | — | — |
 | Rankings con cero fijo | Pendiente | 0/10 | — | — | — | — |
 
@@ -277,12 +277,30 @@ Las medias siguientes usan únicamente semillas emparejadas. Si hay tres variant
 
 | Semilla | AUC control | AUC variante | Diferencia |
 |---|---:|---:|---:|
+| 118147 | 0.910461455 | 0.908168607 | -0.002292848 |
 | 161093 | 0.909832201 | 0.908692345 | -0.001139856 |
 | 294103 | 0.914852804 | 0.910844762 | -0.004008042 |
+| 312773 | 0.911760323 | 0.910921383 | -0.000838940 |
+| 330679 | 0.910671646 | 0.911928821 | +0.001257175 |
 | 342929 | 0.911741449 | 0.911399274 | -0.000342174 |
+| 431077 | 0.911529503 | 0.910106314 | -0.001423189 |
+| 511579 | 0.911200366 | 0.911532324 | +0.000331958 |
+| 567529 | 0.912476865 | 0.909343884 | -0.003132981 |
 | 677561 | 0.912040962 | 0.912311328 | +0.000270366 |
 
-**Avance parcial:** 4/10 variantes y 10/10 baselines. No cerrar una conclusión ni detener la prueba por estos resultados.
+AUC del ensamble: control 0.913309; variante 0.912135; diferencia -0.001174.
+
+Lectura descriptiva: la media entre semillas no mejora el control. Esto no demuestra generalización a otros períodos.
+
+### Cambios relativos
+
+| Semilla | AUC control | AUC variante | Diferencia |
+|---|---:|---:|---:|
+| 161093 | 0.909832201 | 0.910612566 | +0.000780365 |
+| 294103 | 0.914852804 | 0.910919377 | -0.003933427 |
+| 342929 | 0.911741449 | 0.910998918 | -0.000742531 |
+
+**Avance parcial:** 3/10 variantes y 10/10 baselines. No cerrar una conclusión ni detener la prueba por estos resultados.
 
 ## Qué resultó y qué no podemos afirmar todavía
 
