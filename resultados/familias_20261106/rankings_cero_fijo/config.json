@@ -1,0 +1,43 @@
+{
+  "data": "/home/tomas_henseler/experimento_historia/data/base_2019.parquet",
+  "broken": "/home/tomas_henseler/experimento_historia/resultados_replica/01_meses_rotos.csv",
+  "hyper": "/home/tomas_henseler/historia_c9930bd/scripts/historia/baseline07.json",
+  "out": "/home/tomas_henseler/experimento_historia/exp/familias_20261106/rankings_cero_fijo",
+  "seeds": 10,
+  "threads": 8,
+  "seeds_used": [
+    294103,
+    342929,
+    161093,
+    677561,
+    431077,
+    330679,
+    511579,
+    312773,
+    118147,
+    567529
+  ],
+  "experiment": "rankings_cero_fijo",
+  "train": [
+    201903,
+    201904,
+    201905,
+    201906
+  ],
+  "validation": 201908,
+  "hashes": {
+    "/home/tomas_henseler/experimento_historia/data/base_2019.parquet": "760847553919c76a3c463660a068b3a264a32da24a735570b61c45e323c51a9e",
+    "/home/tomas_henseler/experimento_historia/resultados_replica/01_meses_rotos.csv": "ce9e515e3cce6d8b103a4fe2d0883563e5528326e4cb7d6a35de60054da915a6",
+    "/home/tomas_henseler/historia_c9930bd/scripts/historia/baseline07.json": "bb2c74452765a320900db6d78b6b15b97e8597ba93c4d5890cc4b0eeed9c7030",
+    "/home/tomas_henseler/historia_c9930bd/scripts/historia/common.py": "f0f40a952648ee4d24bdf67f449d1f6e8c947777bfdbd56ac3c4ceed9c9ee7d4",
+    "/home/tomas_henseler/historia_c9930bd/scripts/historia/transforms.py": "4c7d846d237671fdbee240da166bc954dfb0f4d2c25e563ba0062e5a1a1ee96d",
+    "/home/tomas_henseler/historia_c9930bd/scripts/historia/exp_rankings_cero_fijo.py": "2dc8234f124b17fe573c8aa8f09474a2b8c1313972e67396585799b0d63b73ec"
+  },
+  "versions": {
+    "pandas": "2.3.3",
+    "numpy": "2.4.3",
+    "duckdb": "1.5.5",
+    "lightgbm": "4.7.0",
+    "scikit-learn": "1.8.0"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "prueba": 24,
+  "params": {
+    "num_leaves": 50,
+    "min_data_in_leaf": 764,
+    "learning_rate": 0.016711332559601208,
+    "feature_fraction": 0.4170576239818614,
+    "bagging_fraction": 0.641424496819069
+  },
+  "arboles": 296,
+  "auc_201908": 0.9095100314099377,
+  "pruebas": 50,
+  "segundos_por_prueba": 32.888000000000005,
+  "maquina": "MBA-M4",
+  "fecha_hora": "2026-11-03 15:35"
+}

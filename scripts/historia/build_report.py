@@ -47,6 +47,9 @@ def render_html(markdown):
                 table = True
             else:
                 out.append('<tr>' + ''.join(f'<td>{inline(c)}</td>' for c in cells) + '</tr>')
+        elif re.fullmatch(r'!\[([^\]]*)\]\(([^)]+)\)', line):
+            match = re.fullmatch(r'!\[([^\]]*)\]\(([^)]+)\)', line)
+            out.append(f'<figure><img src="{html.escape(match[2], quote=True)}" alt="{html.escape(match[1], quote=True)}"><figcaption>{html.escape(match[1])}</figcaption></figure>')
         elif line.startswith('#'):
             level = len(line) - len(line.lstrip('#'))
             out.append(f'<h{level}>{inline(line[level:].strip())}</h{level}>')
@@ -70,7 +73,7 @@ h2{font-size:23px;margin-top:36px}h3{font-size:19px;margin-top:28px}p{max-width:
 .table{overflow-x:auto;margin:20px 0}table{border-collapse:collapse;width:100%;font-size:14px}
 th,td{border:1px solid #d9dfe5;padding:10px 12px;text-align:left;vertical-align:top}
 th{background:#edf2f7}tbody tr:nth-child(even){background:#fafbfd}code{overflow-wrap:anywhere}
-li{margin:8px 0}@media print{body{background:white}main{max-width:none;padding:0}
+li{margin:8px 0}figure{margin:24px 0}img{max-width:100%;height:auto}figcaption{font-size:13px;color:#526070}@media print{body{background:white}main{max-width:none;padding:0}
 .table{overflow:visible}thead{display:table-header-group}tr{break-inside:avoid}h2,h3{break-after:avoid}}
 </style><main>''' + '\n'.join(out) + '</main></html>'
 

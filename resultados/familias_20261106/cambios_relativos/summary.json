@@ -1,0 +1,11 @@
+{
+  "cambios_relativos-baseline": {
+    "mean_delta": -0.0009079305321479825,
+    "wins": 4,
+    "seeds": 10
+  },
+  "ensemble_auc": {
+    "baseline": 0.9133091808672635,
+    "cambios_relativos": 0.912283036455646
+  }
+}

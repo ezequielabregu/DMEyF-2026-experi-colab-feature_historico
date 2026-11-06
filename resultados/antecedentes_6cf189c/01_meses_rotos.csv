@@ -1,0 +1,24 @@
+variable,medida,foto_mes,porcentaje,origen
+ccomisiones_otras,ceros,201905,100.0,regla
+ccomisiones_otras,ceros,201910,100.0,regla
+chomebanking_transacciones,ceros,201910,100.0,regla
+ctarjeta_visa_debitos_automaticos,ceros,201904,100.0,regla
+mactivos_margen,ceros,201905,100.0,regla
+mactivos_margen,ceros,201910,100.0,regla
+mcomisiones,ceros,201905,100.0,regla
+mcomisiones,ceros,201910,100.0,regla
+mcomisiones_otras,ceros,201905,100.0,regla
+mcomisiones_otras,ceros,201910,100.0,regla
+mpasivos_margen,ceros,201905,100.0,regla
+mpasivos_margen,ceros,201910,100.0,regla
+mrentabilidad,ceros,201905,100.0,regla
+mrentabilidad,ceros,201910,100.0,regla
+mrentabilidad_annual,ceros,201905,100.0,regla
+mrentabilidad_annual,ceros,201910,100.0,regla
+mttarjeta_visa_debitos_automaticos,ceros,201904,100.0,regla
+Visa_fultimo_cierre,ceros,201907,66.19,a mano
+Master_fultimo_cierre,ceros,201907,63.44,a mano
+mcajeros_propios_descuentos,ceros,201910,100.0,a mano
+ccajeros_propios_descuentos,ceros,201910,100.0,a mano
+ctarjeta_visa_descuentos,ceros,201910,100.0,a mano
+mtarjeta_visa_descuentos,ceros,201910,100.0,a mano

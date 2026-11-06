@@ -1,5 +1,7 @@
 # Informe grupal de experimentos de historia
 
+**Nota de actualizaci?n del 6 de noviembre:** este informe conserva las tablas del snapshot anterior 3b44f21. El PDF nuevo revel? resultados publicados hasta el 14 en 6cf189c; la versi?n actualizada con esa estructura est? en docs/estado_grupal_para_tutoria.html y docs/estado_grupal_para_tutoria.md.
+
 **Corte de resultados:** 2026-11-05T21:21:42.233417+00:00 (UTC). Informe regenerable desde las tablas del snapshot.
 
 Registro conjunto del trabajo de Clara, Ezequiel y Tomás sobre feature engineering histórico. Reúne propuestas, corridas realizadas, resultados positivos y negativos, réplicas y tareas pendientes. Distingue la regla principal de ganancia, las exploraciones posteriores y nuestra serie actual orientada a AUC. Una corrida parcial no se clasifica como éxito ni como fracaso.
