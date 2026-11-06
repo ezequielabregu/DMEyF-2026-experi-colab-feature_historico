@@ -5,6 +5,8 @@ Experimento colaborativo de Data Mining en Economía y Finanzas (UBA, comisión 
 - **Integrantes:** Tomás H., Clara M. R., Ezequiel A.
 - **Tutor:** Alejandro Bolaños.
 
+Para retomar el trabajo después de reiniciar, leer [contexto maestro](docs/CONTEXTO_MAESTRO.md) y [último checkpoint](docs/RETOMAR_20261107.md).
+
 ## Cómo trabajamos con git
 
 - `main` tiene siempre código que corre.
@@ -13,6 +15,8 @@ Experimento colaborativo de Data Mining en Economía y Finanzas (UBA, comisión 
 - Antes de empezar una rama: `git switch main && git pull`.
 
 ## Baseline
+
+La URL del dataset original y los comandos para descargarlo en la VM están en [docs/dataset.md](docs/dataset.md).
 
 Con el dataset etiquetado disponible en `datasets/competencia_02_con_clase.csv.gz`:
 
