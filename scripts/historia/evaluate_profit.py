@@ -38,6 +38,7 @@ def main():
     parser.add_argument('--root', type=Path, required=True)
     parser.add_argument('--data', type=Path, required=True)
     parser.add_argument('--out', type=Path, required=True, help='Carpeta nueva')
+    parser.add_argument('--families', nargs='+', choices=FAMILIES, default=FAMILIES)
     args = parser.parse_args()
     args.out.mkdir(parents=True, exist_ok=False)
     manifest = {'created_utc': datetime.now(timezone.utc).isoformat(), 'month': 201908,
@@ -49,7 +50,7 @@ def main():
     with duckdb.connect() as con:
         labels = con.execute('SELECT numero_de_cliente, foto_mes, clase_ternaria FROM read_parquet(?) WHERE foto_mes=201908', [str(args.data)]).df()
     records, skipped = [], []
-    for family in FAMILIES:
+    for family in args.families:
         folder = args.root / family
         state = folder / 'status.json'
         if not state.exists() or json.loads(state.read_text()).get('status') != 'complete':
@@ -67,8 +68,8 @@ def main():
             raise ValueError('Cantidad de positivos distinta de la réplica')
         config = json.loads((folder / 'config.json').read_text())
         seeds = config['seeds_used']
-        if len(seeds) != 10 or len(set(seeds)) != 10:
-            raise ValueError('Se requieren diez semillas por brazo')
+        if len(seeds) not in [10, 20] or len(set(seeds)) != len(seeds):
+            raise ValueError('Se requieren diez o veinte semillas únicas por brazo')
         previous = pd.read_csv(folder / 'metrics.csv').set_index(['variant', 'seed'])
         manifest['input_hashes'][str(keys_path)] = digest(keys_path)
         outputs = args.out / family
@@ -105,7 +106,7 @@ def main():
         print(family, json.dumps(summary), flush=True)
     pd.DataFrame(records).to_csv(args.out / 'profit_metrics.csv', index=False)
     manifest['skipped_incomplete'] = skipped
-    manifest['completed'] = [f for f in FAMILIES if f not in skipped]
+    manifest['completed'] = [f for f in args.families if f not in skipped]
     (args.out / 'config.json').write_text(json.dumps(manifest, indent=2), encoding='utf-8')
     (args.out / 'status.json').write_text('{"status":"complete"}', encoding='utf-8')
     print('Pendientes:', skipped, flush=True)

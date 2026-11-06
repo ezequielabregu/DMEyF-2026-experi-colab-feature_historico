@@ -12,8 +12,11 @@ import numpy as np
 import pandas as pd
 from sklearn.metrics import roc_auc_score
 
-SEEDS = [294103, 342929, 161093, 677561, 431077, 330679, 511579,
-         312773, 118147, 567529]
+try:
+    from .seed_schedule import seeds20
+except ImportError:
+    from seed_schedule import seeds20
+SEEDS = seeds20()
 ANCHORS = ['ctrx_quarter', 'mpayroll', 'mcaja_ahorro', 'cpayroll_trx',
            'ctarjeta_visa_transacciones']
 TRAIN = [201903, 201904, 201905, 201906]
@@ -61,13 +64,13 @@ def run(experiment, build_extra, experiment_file):
     p.add_argument('--broken', type=Path, required=True)
     p.add_argument('--hyper', type=Path, required=True)
     p.add_argument('--out', type=Path, required=True, help='Carpeta nueva')
-    p.add_argument('--seeds', type=int, default=10, choices=range(1, 11))
+    p.add_argument('--seeds', type=int, default=10, choices=range(1, 21))
     p.add_argument('--threads', type=int, default=8)
     args = p.parse_args()
     args.out.mkdir(parents=True, exist_ok=False)
     config = {k: str(v) if isinstance(v, Path) else v for k, v in vars(args).items()}
     config.update(seeds_used=SEEDS[:args.seeds], experiment=experiment, train=TRAIN, validation=201908,
-                  hashes={str(f): fingerprint(f) for f in [args.data, args.broken, args.hyper, Path(__file__), Path(__file__).with_name('transforms.py'), Path(experiment_file)]},
+                  hashes={str(f): fingerprint(f) for f in [args.data, args.broken, args.hyper, Path(__file__), Path(__file__).with_name('transforms.py'), Path(__file__).with_name('seed_schedule.py'), Path(experiment_file)]},
                   versions={name: importlib.metadata.version(name) for name in
                             ['pandas', 'numpy', 'duckdb', 'lightgbm', 'scikit-learn']})
     (args.out / 'config.json').write_text(json.dumps(config, indent=2), encoding='utf-8')
