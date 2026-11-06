@@ -12,6 +12,7 @@ def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--root', type=Path, required=True)
     p.add_argument('--out', type=Path, required=True)
+    p.add_argument('--profit', type=Path, help='Evaluación económica agregada opcional')
     args = p.parse_args()
     args.out.parent.mkdir(parents=True, exist_ok=True)
     with zipfile.ZipFile(args.out, 'w', compression=zipfile.ZIP_DEFLATED) as z:
@@ -25,6 +26,13 @@ def main():
                 file = args.root / family / name
                 if file.exists():
                     z.write(file, f'{family}/{name}')
+            if args.profit:
+                for name in ['profit_metrics.csv', 'profit_summary.json']:
+                    file = args.profit / family / name
+                    if file.exists():
+                        z.write(file, f'{family}/{name}')
+        if args.profit and (args.profit / 'config.json').exists():
+            z.write(args.profit / 'config.json', 'profit_config.json')
     print(args.out)
 
 

@@ -2,7 +2,7 @@
 
 **Versión de trabajo para tutoría del grupo completo.** Conserva el orden y el enfoque del PDF nuevo de Ezequiel, incorporando la evidencia publicada hasta el commit 6cf189c y nuestras corridas de Google Cloud. El PDF original se conserva sin editar.
 
-**Corte de nuestras métricas:** 2026-11-06T22:32:06.095526+00:00 (UTC). Los resultados parciales se identifican como tales. Integrantes: Tomás Henseler, Clara M. Rodríguez y Ezequiel Abregú. Tutor: Alejandro Bolaños.
+**Corte de nuestras métricas:** 2026-11-06T23:01:55.994865+00:00 (UTC). Los resultados parciales se identifican como tales. Integrantes: Tomás Henseler, Clara M. Rodríguez y Ezequiel Abregú. Tutor: Alejandro Bolaños.
 
 La historia básica aporta valor, pero mejorarla es más difícil. El experimento original no superó la regla propia de ganancia; las exploraciones posteriores dejaron señales pequeñas. El nuevo banco por clientes encuentra una señal intermedia para cuatro bloques juntos. En nuestras pruebas de AUC, historia reciente y cambios relativos no mejoraron; persistencia dio una mejora pequeña que no fue uniforme entre semillas. Rankings sigue pendiente al corte.
 
@@ -187,9 +187,24 @@ Control ACO de marzo–junio, parámetros fijos del 07, 339 árboles, diez semil
 | historia_reciente | 10/10 | Completo | -0.001132 | 3/10 | -0.001174 |
 | cambios_relativos | 10/10 | Completo | -0.000908 | 4/10 | -0.001026 |
 | persistencia | 10/10 | Completo | +0.000231 | 5/10 | +0.000161 |
-| rankings_cero_fijo | 0/10 | En curso | — | — | — |
+| rankings_cero_fijo | 7/10 | En curso | -0.000490 | 2/7 | — |
 
-Historia reciente no dejó la señal acordada para habilitar una búsqueda de pesos; no la iniciaremos. Persistencia tiene una señal pequeña, con solo la mitad de las semillas a favor: no es una ganadora confirmada. No se decide sobre rankings hasta terminar. Estas pruebas no prueban ganancia económica y no se comparan numéricamente con los millones del banco 13/14.
+Historia reciente no dejó la señal de AUC acordada para habilitar una búsqueda de pesos; no la iniciaremos. Persistencia tiene una señal pequeña, con solo la mitad de las semillas a favor: no es una ganadora confirmada. No se decide sobre rankings hasta terminar. Las AUC no se convierten automáticamente en ganancia; la evaluación económica secundaria sigue a continuación y no se compara directamente con los millones del banco 13/14.
+
+### Ganancia económica de nuestras familias en agosto
+
+Análisis secundario fijado después de mirar parte de las AUC. Usa las mismas probabilidades guardadas, sin reentrenar. Resultado por contacto: +1.072.500 para BAJA+2 y −27.500 en otro caso. No se optimiza N por modelo: se informa la banda inclusiva de 3.000–6.000 envíos y un presupuesto común N=4.000. Media entre diez pares y cambio del ensamble. Todo es descriptivo en agosto, mes usado para ajuste; no es test independiente ni reemplaza la regla original de septiembre/octubre.
+
+| Familia | Δ banda media M | Favorables banda | Δ banda ensamble M | Δ N4000 media M | Δ N4000 ensamble M |
+|---|---:|---:|---:|---:|---:|
+| historia_reciente | +0.7577 | 6/10 | +0.8863 | -0.9900 | -1.1000 |
+| cambios_relativos | +4.7005 | 8/10 | +5.4736 | +4.1800 | +11.0000 |
+| persistencia | +0.6607 | 6/10 | +0.8398 | +0.5500 | -1.1000 |
+| rankings_cero_fijo | Pendiente | — | — | — | — |
+
+![Ganancia económica de nuestras familias completas en agosto Media de diez semillas y corte exploratorio](figuras/ganancia_banda_agosto.png)
+
+La dirección puede cambiar entre AUC, banda y N fijo: ordenamiento global y beneficio cerca del corte son métricas diferentes. No se elige retrospectivamente la métrica que favorezca a una familia. La decisión de no buscar pesos se tomó sobre la señal de AUC y no se revierte automáticamente al observar otra métrica.
 
 ## Por qué está trabado y qué cambió con esta actualización
 

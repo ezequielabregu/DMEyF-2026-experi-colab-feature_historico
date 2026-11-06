@@ -108,7 +108,20 @@ def main():
             a=json.loads((folder/'summary.json').read_text())['ensemble_auc']
             ensemble=f'{a[family]-a["baseline"]:+.6f}'
         lines.append(f'| {family} | {len(paired)}/10 | {state} | {mean(d):+.6f} | {sum(x>0 for x in d)}/{len(d)} | {ensemble} |')
-    lines += ['', 'Historia reciente no dejó la señal acordada para habilitar una búsqueda de pesos; no la iniciaremos. Persistencia tiene una señal pequeña, con solo la mitad de las semillas a favor: no es una ganadora confirmada. No se decide sobre rankings hasta terminar. Estas pruebas no prueban ganancia económica y no se comparan numéricamente con los millones del banco 13/14.', '',
+    lines += ['', 'Historia reciente no dejó la señal de AUC acordada para habilitar una búsqueda de pesos; no la iniciaremos. Persistencia tiene una señal pequeña, con solo la mitad de las semillas a favor: no es una ganadora confirmada. No se decide sobre rankings hasta terminar. Las AUC no se convierten automáticamente en ganancia; la evaluación económica secundaria sigue a continuación y no se compara directamente con los millones del banco 13/14.', '',
+              '### Ganancia económica de nuestras familias en agosto', '',
+              'Análisis secundario fijado después de mirar parte de las AUC. Usa las mismas probabilidades guardadas, sin reentrenar. Resultado por contacto: +1.072.500 para BAJA+2 y −27.500 en otro caso. No se optimiza N por modelo: se informa la banda inclusiva de 3.000–6.000 envíos y un presupuesto común N=4.000. Media entre diez pares y cambio del ensamble. Todo es descriptivo en agosto, mes usado para ajuste; no es test independiente ni reemplaza la regla original de septiembre/octubre.', '',
+              '| Familia | Δ banda media M | Favorables banda | Δ banda ensamble M | Δ N4000 media M | Δ N4000 ensamble M |', '|---|---:|---:|---:|---:|---:|']
+    for family in ['historia_reciente','cambios_relativos','persistencia','rankings_cero_fijo']:
+        file=args.results/family/'profit_summary.json'
+        if not file.exists():
+            lines.append(f'| {family} | Pendiente | — | — | — | — |')
+            continue
+        summary=json.loads(file.read_text())
+        band=summary['gain_band_3000_6000_M']
+        fixed=summary['gain_4000_M']
+        lines.append(f'| {family} | {band["mean_delta"]:+.4f} | {band["wins"]}/{band["seeds"]} | {band["ensemble_delta"]:+.4f} | {fixed["mean_delta"]:+.4f} | {fixed["ensemble_delta"]:+.4f} |')
+    lines += ['', '![Ganancia económica de nuestras familias completas en agosto Media de diez semillas y corte exploratorio](figuras/ganancia_banda_agosto.png)', '', 'La dirección puede cambiar entre AUC, banda y N fijo: ordenamiento global y beneficio cerca del corte son métricas diferentes. No se elige retrospectivamente la métrica que favorezca a una familia. La decisión de no buscar pesos se tomó sobre la señal de AUC y no se revierte automáticamente al observar otra métrica.', '',
               '## Por qué está trabado y qué cambió con esta actualización', '',
               '- El aporte marginal es pequeño frente al valor de los dos primeros meses de historia. Una mejora de 1–2 M depende del control y del procedimiento de medición.',
               '- Septiembre y octubre se consultaron repetidamente; noviembre y diciembre están reservados para el dashboard. No presentamos los nuevos análisis como pruebas ciegas.',
