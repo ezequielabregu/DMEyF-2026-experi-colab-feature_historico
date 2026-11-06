@@ -19,10 +19,12 @@ Alcance grupal: el informe cubre las propuestas y etapas 01–09 de los compañe
 Para regenerar el informe desde un paquete actualizado, descomprimirlo en `resultados/familias_c9930bd` y ejecutar:
 
 ```bash
-python scripts/historia/build_report.py --results resultados/familias_c9930bd --out docs/informe_experimentos_historia.md
+python scripts/historia/complete_tutoria_template.py --results resultados/familias_20261106 --out docs/informe_experimentos_historia.md
 ```
 
 El exportador `scripts/historia/export_results.py` permite capturar un snapshot antes de que termine toda la cola, sin incluir predicciones ni identificadores. La condición de ajustar alfa solo si aparece señal en historia reciente figura tanto en el notebook como en el informe y el protocolo.
+
+El archivo principal `informe_experimentos_historia.html` ahora usa también la estructura del PDF nuevo, incluye antecedentes hasta 14 y la sección de ganancia económica de agosto con tabla y gráfico. `estado_grupal_para_tutoria.html` conserva la misma versión de trabajo. La evaluación económica entra al paquete con `--profit`; rankings se agregará cuando termine la evaluación final automática.
 
 ## Cola en la VM
 

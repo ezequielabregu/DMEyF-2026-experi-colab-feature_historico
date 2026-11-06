@@ -1,6 +1,6 @@
 <!doctype html><html lang="es"><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Informe grupal de experimentos de historia</title>
+<title>Experimento feature_historico dónde estamos</title>
 <style>body{font:16px/1.6 system-ui,sans-serif;color:#202833;margin:0;background:#f5f6f8}
 main{max-width:1080px;margin:auto;background:white;padding:36px 42px}h1{font-size:30px;line-height:1.2}
 h2{font-size:23px;margin-top:36px}h3{font-size:19px;margin-top:28px}p{max-width:95ch}
@@ -9,242 +9,206 @@ th,td{border:1px solid #d9dfe5;padding:10px 12px;text-align:left;vertical-align:
 th{background:#edf2f7}tbody tr:nth-child(even){background:#fafbfd}code{overflow-wrap:anywhere}
 li{margin:8px 0}figure{margin:24px 0}img{max-width:100%;height:auto}figcaption{font-size:13px;color:#526070}@media print{body{background:white}main{max-width:none;padding:0}
 .table{overflow:visible}thead{display:table-header-group}tr{break-inside:avoid}h2,h3{break-after:avoid}}
-</style><main><h1>Informe grupal de experimentos de historia</h1>
-<p><strong>Nota de actualizaci?n del 6 de noviembre:</strong> este informe conserva las tablas del snapshot anterior 3b44f21. El PDF nuevo revel? resultados publicados hasta el 14 en 6cf189c; la versi?n actualizada con esa estructura est? en docs/estado_grupal_para_tutoria.html y docs/estado_grupal_para_tutoria.md.</p>
-<p><strong>Corte de resultados:</strong> 2026-11-05T21:21:42.233417+00:00 (UTC). Informe regenerable desde las tablas del snapshot.</p>
-<p>Registro conjunto del trabajo de Clara, Ezequiel y Tomás sobre feature engineering histórico. Reúne propuestas, corridas realizadas, resultados positivos y negativos, réplicas y tareas pendientes. Distingue la regla principal de ganancia, las exploraciones posteriores y nuestra serie actual orientada a AUC. Una corrida parcial no se clasifica como éxito ni como fracaso.</p>
-<h2>Alcance del informe grupal</h2>
-<p>Este registro reúne el trabajo disponible de Clara, Ezequiel y Tomás: propuestas, preparación, experimento principal, exploraciones posteriores y nuevas corridas en Google Cloud. La atribución sigue los archivos disponibles: las ideas de clasificación y el protocolo están documentadas como aportes de Clara; los notebooks 01–09 y sus tablas están en la rama de Ezequiel; las réplicas y la nueva serie se ejecutaron en la VM de Tomás. No se atribuye autoría exclusiva de cada conclusión.</p>
-<p>Los antecedentes se congelan en el commit 3b44f21 de ezequiel/etapa-1. No se afirma que incluya cambios posteriores. Las tablas agregadas se conservan en resultados/antecedentes_3b44f21. Para los experimentos nuevos, el corte temporal figura al inicio.</p>
-<h2>Mapa de todo lo documentado</h2>
-<div class="table"><table><thead><tr><th>Etapa</th><th>Trabajo</th><th>Evidencia disponible</th></tr></thead><tbody>
-<tr><td>Propuesta de Clara</td><td>Clasificación por tipo de variable e historia de 3–6 meses; luego protocolo de resúmenes, rachas, ratios, rankings y canaritos</td><td>Documentos y código propuesto; no equivale a una corrida completa de ese protocolo</td></tr>
-<tr><td>01</td><td>Clase ternaria, calidad, cobertura y meses rotos</td><td>Tablas y controles</td></tr>
-<tr><td>02</td><td>Prueba mínima A frente a LT4 con cinco semillas en agosto</td><td>Tabla de AUC y ganancia de validación</td></tr>
-<tr><td>03–04</td><td>Diez configuraciones, 100 modelos, seis contrastes principales y evaluación</td><td>Métricas, regla y figuras</td></tr>
-<tr><td>05</td><td>Ensambles y segundas diferencias</td><td>Tablas de semillas, ensambles y contrastes</td></tr>
-<tr><td>06</td><td>Ratio3, zero_streak3 y combinación</td><td>Diez semillas y ensambles</td></tr>
-<tr><td>07</td><td>Optimización propia para marzo–junio</td><td>Hiperparámetros y comparación con AC</td></tr>
-<tr><td>08</td><td>Historia sin quitar meses, historia curada y mezclas</td><td>Diez semillas y ensambles</td></tr>
-<tr><td>09</td><td>Eventos, ratios entre tarjetas, puntajes y hojas RF</td><td>Código; sin resultados publicados en el snapshot revisado</td></tr>
-<tr><td>Réplica en Google Cloud</td><td>Preparación, A y A-consigna con dos semillas</td><td>Logs del usuario; coincidencia a precisión mostrada</td></tr>
-<tr><td>Preparativos no ejecutados</td><td>Baseline local y experimento de disponibilidad de historia</td><td>Scripts preparados; no se presentan como resultados experimentales</td></tr>
-<tr><td>Sin historia frente a con historia</td><td>152 frente a 760 columnas, diez semillas</td><td>Corrida complementaria en agosto</td></tr>
-<tr><td>Nuevas cuatro familias</td><td>Historia reciente, cambios relativos, persistencia, rankings con cero fijo</td><td>Estado y métricas al corte en la sección final</td></tr>
+</style><main><h1>Experimento feature_historico dónde estamos</h1>
+<p><strong>Versión de trabajo para tutoría del grupo completo.</strong> Conserva el orden y el enfoque del PDF nuevo de Ezequiel, incorporando la evidencia publicada hasta el commit 6cf189c y nuestras corridas de Google Cloud. El PDF original se conserva sin editar.</p>
+<p><strong>Corte de nuestras métricas:</strong> 2026-11-06T23:01:55.994865+00:00 (UTC). Los resultados parciales se identifican como tales. Integrantes: Tomás Henseler, Clara M. Rodríguez y Ezequiel Abregú. Tutor: Alejandro Bolaños.</p>
+<p>La historia básica aporta valor, pero mejorarla es más difícil. El experimento original no superó la regla propia de ganancia; las exploraciones posteriores dejaron señales pequeñas. El nuevo banco por clientes encuentra una señal intermedia para cuatro bloques juntos. En nuestras pruebas de AUC, historia reciente y cambios relativos no mejoraron; persistencia dio una mejora pequeña que no fue uniforme entre semillas. Rankings sigue pendiente al corte.</p>
+<h2>El problema y el baseline</h2>
+<p>El objetivo del ejercicio es identificar clientes por abandonar el banco. En la métrica económica usada por el grupo, contactar a un BAJA+2 suma 1.072.500 y contactar a otro cliente resta 27.500. Un acierto compensa 39 errores; el punto de equilibrio del estímulo corresponde a una probabilidad de BAJA+2 de 2,5 %. Estos valores son los del ejercicio, no una estimación de beneficio real del banco.</p>
+<p>El baseline de la cátedra ya contiene historia: 152 variables actuales, lag1 y lag2, y delta1 y delta2, total 760 columnas. Lag busca el mes calendario exacto del mismo cliente; delta es actual menos lag. No se incluyen ID, foto_mes ni clase como predictores en los notebooks revisados.</p>
+<div class="table"><table><thead><tr><th>Control</th><th>Entrenamiento</th><th>Ajuste y función</th></tr></thead><tbody>
+<tr><td>A</td><td>Mayo–junio</td><td>Control del experimento principal; ventana adaptada para tener hasta cuatro meses anteriores</td></tr>
+<tr><td>A-consigna / AC</td><td>Marzo–junio</td><td>Conserva meses de la consigna, con parámetros elegidos sobre A; AC añade correcciones de dos roturas Master en octubre</td></tr>
+<tr><td>ACO</td><td>Marzo–junio</td><td>Ajuste propio del 07, 339 árboles; control de nuestra serie de AUC</td></tr>
+<tr><td>ACH</td><td>Marzo–junio o banco por clientes, según el experimento</td><td>AC más 120 features de historia curada sobre 30 variables; no es el baseline de la cátedra</td></tr>
 </tbody></table></div>
-<h2>Controles y métricas que no debemos mezclar</h2>
-<div class="table"><table><thead><tr><th>Nombre</th><th>Entrenamiento</th><th>Ajuste</th><th>Uso</th></tr></thead><tbody>
-<tr><td>A</td><td>Mayo–junio</td><td>50 trials sobre A; 296 árboles</td><td>Control del experimento principal adaptado para historia hasta cuatro meses</td></tr>
-<tr><td>A-consigna / AC</td><td>Marzo–junio</td><td>Hereda parámetros y 296 árboles de A</td><td>Referencia con todos los meses de la consigna; AC agrega saneamiento de dos roturas Master en octubre</td></tr>
-<tr><td>ACO</td><td>Marzo–junio</td><td>50 trials propios; 339 árboles</td><td>Baseline reajustado del 07 y control de nuestras cuatro familias</td></tr>
-<tr><td>AC2</td><td>Marzo–junio</td><td>Mezcla de dos semillas del control AC</td><td>Control de mezclas por semilla del 08</td></tr>
+<p>La evaluación original usa agosto para AUC, early stopping y N; octubre para el contraste principal y septiembre como control adicional. Entrenamiento positivo: BAJA+1 o BAJA+2; AUC de evaluación positiva: BAJA+2. La ganancia se calcula exclusivamente con BAJA+2. Los distintos ajustes, ventanas y métricas no se mezclan en un único ranking de ganadores.</p>
+<p>Diferencias documentadas frente a la referencia de la cátedra: saneamiento retrospectivo de roturas; septiembre como mes adicional; y, para A, ventana mayo–junio. La búsqueda propia de marzo–junio del 07 elevó la AUC de selección, pero no la ganancia posterior. Consultar al tutor qué adaptaciones acepta.</p>
+<p>Hipótesis original: al menos una variante con tres o cuatro meses mejora la ganancia de A en octubre bajo una regla propia predefinida. Hipótesis secundaria: la ganancia crece al agregar meses. La principal no se confirmó bajo esa regla; la secundaria tuvo una señal descriptiva más clara de dos a tres meses que de tres a cuatro.</p>
+<p>La regla no fue exigida por la consigna: pide p de Wilcoxon ajustado por Holm menor que 0,05 en seis contrastes, diferencia media positiva en octubre y no negativa en septiembre. Todas las variantes cumplieron las condiciones de dirección, pero ninguna la de p ajustado. No pasar no demuestra efecto nulo.</p>
+<h2>Qué se probó y qué dio</h2>
+<div class="table"><table><thead><tr><th>Paso</th><th>Pregunta</th><th>Resultado disponible</th></tr></thead><tbody>
+<tr><td>Preparación y mínimo 01–02</td><td>¿Datos, clase y pipeline están listos?</td><td>Controles de filas/clases; ensayo A–LT4 con cinco semillas en agosto</td></tr>
+<tr><td>1 Prueba principal 03–04</td><td>¿Tres o cuatro meses mejoran sobre dos?</td><td>Ventajas medias de ganancia, ninguna pasa la regla de seis contrastes</td></tr>
+<tr><td>2 Exploraciones 05–11</td><td>¿Otras representaciones o puntajes suman?</td><td>Señales pequeñas y dependientes del mes; resultados posteriores a abrir test</td></tr>
+<tr><td>3 Cambio de pregunta 12</td><td>¿Cuánto vale la historia y entrenar más cerca?</td><td>Unos 20 M/mes de banda al recuperar historia básica; mejoras variables al acercar la ventana</td></tr>
+<tr><td>4 Banco por clientes 13</td><td>¿Podemos medir con menor ruido?</td><td>Cuatro bloques solos: +0,74 a +1,60 M/mes frente a ACH en el banco</td></tr>
+<tr><td>5 Combinación 14</td><td>¿Los cuatro bloques juntos se complementan?</td><td>+1,9263 M/mes; señal intermedia; no supera claramente la mejor idea sola</td></tr>
+<tr><td>6 Nuestra serie de AUC</td><td>¿Otras transformaciones superan ACO en agosto?</td><td>Dos negativos, persistencia pequeña y rankings en curso al corte</td></tr>
 </tbody></table></div>
-<p>Todos estos modelos usan 760 variables de partida. Entrenan con ambas bajas; la AUC reportada por los notebooks usa BAJA+2 como positivo. Ganancia y AUC responden preguntas distintas. La ganancia usa +1.072.500 por BAJA+2 contactado y −27.500 por el resto; N se elige en agosto y se conserva para los meses posteriores. M significa millones de las unidades monetarias del ejercicio.</p>
-<p>La regla principal evalúa ganancia, no mejora de AUC. Las comparaciones posteriores ya conocen septiembre y octubre: son exploratorias. No corresponde ordenar todas las variantes en una única tabla de ganancia sin respetar sus distintos controles, ventanas y reglas de selección.</p>
-<h2>Preparación y prueba mínima de los notebooks 01 y 02</h2>
-<p>El crudo contiene 4.707.495 filas, 154 columnas y 185.094 clientes. El corte 2019 tiene 1.563.565 filas, 146.623 clientes y cero claves duplicadas. El 01 construye la clase después de cortar a diciembre de 2019 y detecta 23 casos de variable/mes roto: 17 por regla y 6 manuales. Después se identificaron dos roturas Master adicionales en octubre. El catálogo usa información retrospectiva de calidad; no es un detector estrictamente disponible a cada fecha.</p>
-<p>La cobertura explica la adaptación de ventana: marzo dispone como máximo de dos meses anteriores; lag6 queda vacío en todo marzo–junio. El principal se limita a mayo–junio para comparar historia hasta cuatro meses; el 08 explora explícitamente conservar marzo–abril aun con historia parcial.</p>
-<div class="table"><table><thead><tr><th>Prueba mínima</th><th>Semillas</th><th>AUC agosto media</th><th>Ganancia meseta agosto media M</th></tr></thead><tbody>
-<tr><td>A</td><td>5</td><td>0.907642</td><td>195.0108</td></tr>
-<tr><td>LT4</td><td>5</td><td>0.909006</td><td>198.5370</td></tr>
+<h3>Preparación y prueba mínima</h3>
+<p>El original tiene 4.707.495 filas y 154 columnas; el corte 2019 tiene 1.563.565 filas y cero claves duplicadas. La clase se construye con calendario hasta diciembre de 2019. Se identificaron 23 casos de variable/mes roto y luego dos correcciones Master adicionales. La detección de calidad usa información retrospectiva y se declara como limitación. El ensayo mínimo 02 compara A con LT4 en agosto y sirve para probar el pipeline; no es un test independiente.</p>
+<h3>Paso 1 La regla y los dos controles</h3>
+<div class="table"><table><thead><tr><th>Variante contra A</th><th>Δ septiembre M</th><th>Δ octubre M</th><th>p sin ajustar</th><th>p Holm</th><th>Pasa regla</th></tr></thead><tbody>
+<tr><td>L3</td><td>+4.6750</td><td>+3.4650</td><td>0.1211</td><td>0.2422</td><td>No</td></tr>
+<tr><td>L4</td><td>+6.0225</td><td>+5.0325</td><td>0.0293</td><td>0.1465</td><td>No</td></tr>
+<tr><td>T3</td><td>+5.0600</td><td>+3.6300</td><td>0.0410</td><td>0.1484</td><td>No</td></tr>
+<tr><td>T4</td><td>+4.1525</td><td>+3.6025</td><td>0.1562</td><td>0.2422</td><td>No</td></tr>
+<tr><td>LT3</td><td>+6.1875</td><td>+5.4175</td><td>0.0117</td><td>0.0703</td><td>No</td></tr>
+<tr><td>LT4</td><td>+5.1150</td><td>+5.2250</td><td>0.0371</td><td>0.1484</td><td>No</td></tr>
 </tbody></table></div>
-<p>Fue una prueba técnica y exploratoria sobre validación, con 370 árboles. No reemplaza las corridas posteriores de 296 árboles ni ofrece una evaluación independiente.</p>
-<h2>Experimento principal de los notebooks 03 y 04</h2>
-<p>Se optimizó A una vez y se congelaron sus parámetros para diez configuraciones. L3/L4 añaden lags y deltas; T3/T4 añaden tendencias; LT combina ambas. La ventana de T3 va de t−3 a t (cuatro fotos), y T4 de t−4 a t (cinco). La historia adicional se adapta a montos, conteos, banderas y estados, excluyendo fechas y edad/antigüedad de esas extensiones. Los controles mantienen lag/delta1/2 de todas las variables.</p>
-<p>Regla: Wilcoxon pareado exacto entre diez semillas y Holm para seis contrastes; diferencia media positiva en octubre y no negativa en septiembre. La banda de N entre 3.000 y 6.000 verifica la dirección. Ninguna variante pasó la regla.</p>
-<div class="table"><table><thead><tr><th>Variante frente a A</th><th>Δ ganancia septiembre M</th><th>Δ ganancia octubre M</th><th>p Holm</th><th>Semillas favorables octubre</th><th>Pasa regla</th></tr></thead><tbody>
-<tr><td>L3</td><td>+4.6750</td><td>+3.4650</td><td>0.2422</td><td>6/10</td><td>No</td></tr>
-<tr><td>L4</td><td>+6.0225</td><td>+5.0325</td><td>0.1465</td><td>9/10</td><td>No</td></tr>
-<tr><td>T3</td><td>+5.0600</td><td>+3.6300</td><td>0.1484</td><td>9/10</td><td>No</td></tr>
-<tr><td>T4</td><td>+4.1525</td><td>+3.6025</td><td>0.2422</td><td>8/10</td><td>No</td></tr>
-<tr><td>LT3</td><td>+6.1875</td><td>+5.4175</td><td>0.0703</td><td>8/10</td><td>No</td></tr>
-<tr><td>LT4</td><td>+5.1150</td><td>+5.2250</td><td>0.1484</td><td>9/10</td><td>No</td></tr>
+<p>L suma lags/deltas, T suma pendiente, promedio, mínimo y máximo, y LT combina ambas. Las ventanas extendidas se adaptan al tipo de variable. Las diez configuraciones se evaluaron con diez semillas cada una. LT3 es la más cercana, pero p Holm 0,0703 no cumple el umbral. Agregar semillas hasta que el p baje no es una regla válida de parada.</p>
+<h3>Paso 2 Exploraciones de 05 a 11</h3>
+<div class="table"><table><thead><tr><th>Notebook</th><th>Qué agrega</th><th>Lectura</th></tr></thead><tbody>
+<tr><td>05</td><td>Ensambles y segundas diferencias</td><td>Ensambles con señales puntuales; segundas diferencias sin mejora consistente</td></tr>
+<tr><td>06</td><td>Ratio3, rachas de ceros y combinación</td><td>Ratio3 dejó señal de ganancia; rachas solas generalmente desfavorables</td></tr>
+<tr><td>07</td><td>Parámetros propios para marzo–junio</td><td>Mejor AUC de selección sin mejora de ganancia posterior</td></tr>
+<tr><td>08</td><td>Historia curada, lags/tendencias sin quitar meses y mezclas</td><td>Señales más favorables en octubre que en septiembre</td></tr>
+<tr><td>09</td><td>Eventos, ratios entre tarjetas, puntaje y hojas RF</td><td>Ahora sí hay resultados publicados en 6cf189c; el informe anterior con fuente 3b44f21 quedó desactualizado</td></tr>
+<tr><td>10</td><td>Puntaje actual separado del pasado y otras particiones por cliente</td><td>Permite distinguir aporte del nivel actual y de la trayectoria de riesgo</td></tr>
+<tr><td>11</td><td>Puntaje pasado con particiones B y C</td><td>Explora sensibilidad a cómo se divide a los clientes</td></tr>
 </tbody></table></div>
-<p>AUC media de cada configuración (la regla anterior se aplica a ganancia):</p>
-<div class="table"><table><thead><tr><th>Configuración</th><th>AUC agosto media</th><th>AUC septiembre media</th><th>AUC octubre media</th></tr></thead><tbody>
-<tr><td>A</td><td>0.907533</td><td>0.909347</td><td>0.922030</td></tr>
-<tr><td>L3</td><td>0.907012</td><td>0.910674</td><td>0.922116</td></tr>
-<tr><td>L4</td><td>0.908105</td><td>0.910558</td><td>0.921909</td></tr>
-<tr><td>T3</td><td>0.907416</td><td>0.910340</td><td>0.922211</td></tr>
-<tr><td>T4</td><td>0.908935</td><td>0.910494</td><td>0.922166</td></tr>
-<tr><td>LT3</td><td>0.907458</td><td>0.911026</td><td>0.922776</td></tr>
-<tr><td>LT4</td><td>0.908244</td><td>0.910841</td><td>0.921871</td></tr>
-<tr><td>A-ranking</td><td>0.906664</td><td>0.907995</td><td>0.920734</td></tr>
-<tr><td>LT4-ranking</td><td>0.908092</td><td>0.907763</td><td>0.920643</td></tr>
-<tr><td>A-consigna</td><td>0.910871</td><td>0.911917</td><td>0.923561</td></tr>
-</tbody></table></div>
-<p>A-consigna frente a A dio +9.1850 M en septiembre y +3.9050 M en octubre. Esto muestra la importancia práctica de conservar meses, pero mezcla ventana y ajuste: no aísla solo historia.</p>
-<p>Los rankings simples también se ejecutaron: LT4-ranking mejora frente a A-ranking, pero ese control era débil. Su superioridad sobre un control rankeado no demuestra que supere al nominal. La ausencia de significancia no prueba efecto nulo.</p>
-<h2>Exploraciones del notebook 05</h2>
-<p>Se promediaron probabilidades de diez semillas y se recalculó N en agosto. Las diferencias frente al ensamble de A son:</p>
-<div class="table"><table><thead><tr><th>Ensamble</th><th>Δ ganancia septiembre M</th><th>Δ ganancia octubre M</th></tr></thead><tbody>
-<tr><td>L3</td><td>+8.9375</td><td>+2.3375</td></tr>
-<tr><td>L4</td><td>+13.6950</td><td>+5.9950</td></tr>
-<tr><td>T3</td><td>+12.1550</td><td>+5.5550</td></tr>
-<tr><td>T4</td><td>+5.6925</td><td>+3.4925</td></tr>
-<tr><td>LT3</td><td>+7.1225</td><td>+13.7225</td></tr>
-<tr><td>LT4</td><td>+12.7875</td><td>+7.2875</td></tr>
-<tr><td>A-consigna</td><td>+12.7875</td><td>+2.8875</td></tr>
-</tbody></table></div>
-<p>Son resultados posteriores al principal. Los intervalos de bootstrap de clientes pueden ser amplios; no se interpreta una diferencia puntual en N como confirmación. El ensamble de LT3, por ejemplo, da una ventaja grande en el corte de octubre, pero menor en la banda de cortes.</p>
-<p>Segundas diferencias: D2 añade la segunda diferencia sobre A; LT3D2 la añade sobre LT3.</p>
-<div class="table"><table><thead><tr><th>Variante</th><th>Control</th><th>Mes</th><th>Δ ganancia M</th><th>Δ banda M</th></tr></thead><tbody>
-<tr><td>D2</td><td>A</td><td>201909</td><td>-0.8525</td><td>+0.2505</td></tr>
-<tr><td>D2</td><td>A</td><td>201910</td><td>+0.7975</td><td>-0.6251</td></tr>
-<tr><td>LT3D2</td><td>LT3</td><td>201909</td><td>-2.1725</td><td>-1.0348</td></tr>
-<tr><td>LT3D2</td><td>LT3</td><td>201910</td><td>-1.6225</td><td>-0.1014</td></tr>
-</tbody></table></div>
-<p>No aparece una mejora clara de segundas diferencias: D2 cambia de signo entre meses y LT3D2 pierde en ambos. No se retiran resultados negativos del registro.</p>
-<h2>Ratios y rachas del notebook 06</h2>
-<p>AC_R agrega ratio3 = actual/promedio(actual, lag1, lag2); AC_Z agrega racha de ceros en tres fotos; AC_RZ combina ambas. Se aplican a 129 variables de montos/conteos y requieren observaciones completas, conservando NaN cuando no se puede calcular. Se usa marzo–junio, con el ajuste heredado de A.</p>
-<p>Diferencias de la media entre semillas:</p>
+<p>La historia curada (ACH) usa ratio3 (actual frente a promedio de tres fotos), z4 (apartamiento frente al pasado), relmax4 (actual frente a máximo previo) y mes_ratio3 (posición del ratio dentro del mes). El puntaje pasado usa predicciones de un modelo construido para no entrenar con el cliente que recibe el puntaje.</p>
+<p>Para no seleccionar solo ejemplos favorables, se conservan todos los contrastes por semilla de 09–11. Diferencias de ganancia contra el control indicado; banda: promedio entre 3.000 y 6.000 envíos.</p>
+<h4>Contrastes del 09</h4>
 <div class="table"><table><thead><tr><th>Variante</th><th>Control</th><th>Δ ganancia septiembre M</th><th>Δ ganancia octubre M</th><th>Δ banda octubre M</th></tr></thead><tbody>
-<tr><td>AC_R</td><td>AC</td><td>+3.1625</td><td>+3.4925</td><td>+2.4163</td></tr>
-<tr><td>AC_Z</td><td>AC</td><td>-3.1350</td><td>-3.0250</td><td>-0.6157</td></tr>
-<tr><td>AC_RZ</td><td>AC</td><td>+4.5925</td><td>+1.2925</td><td>+1.4731</td></tr>
-</tbody></table></div>
-<p>Diferencias de ensambles:</p>
-<div class="table"><table><thead><tr><th>Variante</th><th>Control</th><th>Δ ganancia septiembre M</th><th>Δ ganancia octubre M</th><th>Δ banda octubre M</th></tr></thead><tbody>
-<tr><td>AC_R</td><td>AC</td><td>+0.8525</td><td>+9.6525</td><td>+2.2004</td></tr>
-<tr><td>AC_Z</td><td>AC</td><td>-5.5825</td><td>+1.0175</td><td>-0.9391</td></tr>
-<tr><td>AC_RZ</td><td>AC</td><td>+4.2075</td><td>+5.3075</td><td>+1.0454</td></tr>
-</tbody></table></div>
-<p>AUC media:</p>
-<div class="table"><table><thead><tr><th>Configuración</th><th>AUC agosto media</th><th>AUC septiembre media</th><th>AUC octubre media</th></tr></thead><tbody>
-<tr><td>AC</td><td>0.910871</td><td>0.911917</td><td>0.923559</td></tr>
-<tr><td>AC_R</td><td>0.909484</td><td>0.912501</td><td>0.924026</td></tr>
-<tr><td>AC_Z</td><td>0.910171</td><td>0.912089</td><td>0.923400</td></tr>
-<tr><td>AC_RZ</td><td>0.910304</td><td>0.912552</td><td>0.923682</td></tr>
-</tbody></table></div>
-<p>Ratio3 mostró señal de ganancia; las rachas solas fueron desfavorables en la media y la banda. La combinación no domina de manera uniforme. Estas observaciones no se convierten automáticamente en una mejora de AUC ni en una validación independiente.</p>
-<h2>Optimización del control en el notebook 07</h2>
-<p>Se optimizaron parámetros específicamente para marzo–junio (ACO): trial 38, 339 árboles. La mejor AUC de agosto de la búsqueda fue 0,914852804, frente a 0,909510031 del ajuste anterior sobre A. No son medias ni estimaciones independientes: son valores de selección sobre ventanas y búsquedas distintas.</p>
-<div class="table"><table><thead><tr><th>Variante</th><th>Control</th><th>Δ ganancia septiembre M</th><th>Δ ganancia octubre M</th><th>Δ banda octubre M</th></tr></thead><tbody>
-<tr><td>ACO</td><td>AC</td><td>-0.7150</td><td>-5.8850</td><td>-4.7824</td></tr>
-</tbody></table></div>
-<p>AUC media de ACO:</p>
-<div class="table"><table><thead><tr><th>Configuración</th><th>AUC agosto media</th><th>AUC septiembre media</th><th>AUC octubre media</th></tr></thead><tbody>
-<tr><td>ACO</td><td>0.911657</td><td>0.909938</td><td>0.920699</td></tr>
-</tbody></table></div>
-<p>La optimización mejora AUC de validación pero la ganancia posterior no mejora frente a AC: aproximadamente −5,9 M de media en octubre. No se elige retrospectivamente el ajuste anterior por ese resultado. Las cuatro familias nuevas usan el ajuste ACO como control congelado y apuntan específicamente a AUC.</p>
-<h2>Historia sin quitar meses en el notebook 08</h2>
-<p>ACL3/ACL4 agregan lags y tendencias sobre marzo–junio; ACH agrega historia curada sobre 30 variables seleccionadas por importancia de entrenamiento: ratio3, z frente al pasado, relación al máximo previo y ranking mensual del ratio. M_LT3 y M_LT4 mezclan AC con LT3/LT4; M_H mezcla ACH con LT3. Por semilla, las mezclas se comparan contra AC2 (mezcla de dos semillas de AC); los ensambles se comparan contra AC. Por eso no deben confundirse los controles.</p>
-<p>Diferencias de la media entre semillas:</p>
-<div class="table"><table><thead><tr><th>Variante</th><th>Control</th><th>Δ ganancia septiembre M</th><th>Δ ganancia octubre M</th><th>Δ banda octubre M</th></tr></thead><tbody>
-<tr><td>M_LT3</td><td>AC2</td><td>-1.5400</td><td>+1.6500</td><td>+0.9574</td></tr>
-<tr><td>M_LT4</td><td>AC2</td><td>-1.8150</td><td>+3.9050</td><td>+2.5678</td></tr>
-<tr><td>ACL3</td><td>AC</td><td>+0.8525</td><td>+3.2725</td><td>+3.3287</td></tr>
-<tr><td>ACL4</td><td>AC</td><td>-0.6875</td><td>+0.7425</td><td>+2.3455</td></tr>
 <tr><td>ACH</td><td>AC</td><td>+1.5675</td><td>+5.1975</td><td>+5.4438</td></tr>
-<tr><td>M_H</td><td>AC2</td><td>+1.7050</td><td>+6.7650</td><td>+5.2494</td></tr>
+<tr><td>ACE</td><td>AC</td><td>-0.4400</td><td>+5.6100</td><td>+5.3351</td></tr>
+<tr><td>ACR</td><td>AC</td><td>-1.5950</td><td>+5.1150</td><td>+5.9371</td></tr>
+<tr><td>ACP</td><td>AC</td><td>+4.7850</td><td>+4.1250</td><td>+5.9410</td></tr>
+<tr><td>ACF</td><td>AC</td><td>+1.5400</td><td>+5.8300</td><td>+5.3191</td></tr>
+<tr><td>ACK</td><td>AC</td><td>+0.7425</td><td>+5.2525</td><td>+4.0581</td></tr>
+<tr><td>ACX</td><td>AC</td><td>+1.0725</td><td>+6.1325</td><td>+7.2899</td></tr>
+<tr><td>ACE</td><td>ACH</td><td>-2.0075</td><td>+0.4125</td><td>-0.1087</td></tr>
+<tr><td>ACR</td><td>ACH</td><td>-3.1625</td><td>-0.0825</td><td>+0.4934</td></tr>
+<tr><td>ACP</td><td>ACH</td><td>+3.2175</td><td>-1.0725</td><td>+0.4972</td></tr>
+<tr><td>ACF</td><td>ACH</td><td>-0.0275</td><td>+0.6325</td><td>-0.1247</td></tr>
+<tr><td>ACK</td><td>ACH</td><td>-0.8250</td><td>+0.0550</td><td>-1.3857</td></tr>
+<tr><td>ACX</td><td>ACH</td><td>-0.4950</td><td>+0.9350</td><td>+1.8461</td></tr>
 </tbody></table></div>
-<p>Diferencias de ensambles:</p>
+<h4>Contrastes del 10</h4>
 <div class="table"><table><thead><tr><th>Variante</th><th>Control</th><th>Δ ganancia septiembre M</th><th>Δ ganancia octubre M</th><th>Δ banda octubre M</th></tr></thead><tbody>
-<tr><td>M_LT3</td><td>AC</td><td>-4.5100</td><td>+2.0900</td><td>+0.8999</td></tr>
-<tr><td>M_LT4</td><td>AC</td><td>-3.9050</td><td>+7.0950</td><td>+2.7945</td></tr>
-<tr><td>ACL3</td><td>AC</td><td>+0.7150</td><td>+7.3150</td><td>+4.5441</td></tr>
-<tr><td>ACL4</td><td>AC</td><td>-4.7850</td><td>+2.9150</td><td>+2.8371</td></tr>
-<tr><td>ACH</td><td>AC</td><td>-3.9325</td><td>+10.3675</td><td>+6.1250</td></tr>
-<tr><td>M_H</td><td>AC</td><td>+1.4025</td><td>+6.9025</td><td>+5.7082</td></tr>
+<tr><td>ACH</td><td>AC</td><td>+1.5675</td><td>+5.1975</td><td>+5.4438</td></tr>
+<tr><td>ACP</td><td>AC</td><td>+4.7850</td><td>+4.1250</td><td>+5.9410</td></tr>
+<tr><td>ACP0</td><td>AC</td><td>+5.3625</td><td>+3.0525</td><td>+4.3214</td></tr>
+<tr><td>ACPH</td><td>AC</td><td>+4.7300</td><td>+6.7100</td><td>+5.3088</td></tr>
+<tr><td>ACP_B</td><td>AC</td><td>+5.3350</td><td>+4.6750</td><td>+4.4189</td></tr>
+<tr><td>ACP_C</td><td>AC</td><td>+5.8300</td><td>+5.7200</td><td>+4.5517</td></tr>
+<tr><td>ACP</td><td>ACH</td><td>+3.2175</td><td>-1.0725</td><td>+0.4972</td></tr>
+<tr><td>ACP0</td><td>ACH</td><td>+3.7950</td><td>-2.1450</td><td>-1.1224</td></tr>
+<tr><td>ACPH</td><td>ACH</td><td>+3.1625</td><td>+1.5125</td><td>-0.1349</td></tr>
+<tr><td>ACP_B</td><td>ACH</td><td>+3.7675</td><td>-0.5225</td><td>-1.0249</td></tr>
+<tr><td>ACP_C</td><td>ACH</td><td>+4.2625</td><td>+0.5225</td><td>-0.8921</td></tr>
+<tr><td>ACPH</td><td>ACP0</td><td>-0.6325</td><td>+3.6575</td><td>+0.9874</td></tr>
 </tbody></table></div>
-<p>AUC media:</p>
-<div class="table"><table><thead><tr><th>Configuración</th><th>AUC agosto media</th><th>AUC septiembre media</th><th>AUC octubre media</th></tr></thead><tbody>
-<tr><td>AC</td><td>0.910871</td><td>0.911917</td><td>0.923559</td></tr>
-<tr><td>AC2</td><td>0.911351</td><td>0.912348</td><td>0.923932</td></tr>
-<tr><td>ACL3</td><td>0.910028</td><td>0.913537</td><td>0.923442</td></tr>
-<tr><td>ACL4</td><td>0.910908</td><td>0.913573</td><td>0.923894</td></tr>
-<tr><td>ACH</td><td>0.909973</td><td>0.913955</td><td>0.924312</td></tr>
-<tr><td>M_LT3</td><td>0.910602</td><td>0.912868</td><td>0.924332</td></tr>
-<tr><td>M_LT4</td><td>0.911116</td><td>0.912850</td><td>0.923980</td></tr>
-<tr><td>M_H</td><td>0.910334</td><td>0.914065</td><td>0.924875</td></tr>
+<h4>Contrastes del 11</h4>
+<div class="table"><table><thead><tr><th>Variante</th><th>Control</th><th>Δ ganancia septiembre M</th><th>Δ ganancia octubre M</th><th>Δ banda octubre M</th></tr></thead><tbody>
+<tr><td>ACH</td><td>AC</td><td>+1.5675</td><td>+5.1975</td><td>+5.4438</td></tr>
+<tr><td>ACPH</td><td>AC</td><td>+4.7300</td><td>+6.7100</td><td>+5.3088</td></tr>
+<tr><td>ACPH_B</td><td>AC</td><td>+4.6200</td><td>+7.5900</td><td>+6.4594</td></tr>
+<tr><td>ACPH_C</td><td>AC</td><td>+5.9125</td><td>+6.2425</td><td>+5.9345</td></tr>
+<tr><td>ACPH</td><td>ACH</td><td>+3.1625</td><td>+1.5125</td><td>-0.1349</td></tr>
+<tr><td>ACPH_B</td><td>ACH</td><td>+3.0525</td><td>+2.3925</td><td>+1.0157</td></tr>
+<tr><td>ACPH_C</td><td>ACH</td><td>+4.3450</td><td>+1.0450</td><td>+0.4908</td></tr>
 </tbody></table></div>
-<p>Hay señales favorables en octubre, especialmente ACH y ciertas mezclas, pero las diferencias y la banda de septiembre son menos favorables. Es evidencia exploratoria dependiente del mes, sin nueva confirmación ciega.</p>
-<h2>Código del notebook 09 y propuestas sin resultado publicado</h2>
-<p>El 09 implementa cuatro bloques sobre ACH: eventos de pérdida de productos (ACE), ratios Visa/Master (ACR), historia de un puntaje base calculado con pliegues por cliente (ACP) y hojas de Random Forest (ACF). Incluye una combinación (ACX) y un control de ruido (ACK). No hay tablas 09 publicadas en el snapshot; no se afirma ni éxito ni fracaso de esas variantes.</p>
-<p>El segundo PDF contiene además un protocolo de 20 semillas, resúmenes trimestrales, inactividad, ratios personales, rankings con cero fijo, selección por canaritos y reoptimización final. Es una propuesta con código, no evidencia de que se haya ejecutado íntegramente. Algunas familias se solapan con 06/08/09, pero no deben contabilizarse como corridas adicionales sin sus salidas.</p>
-<p>También se preparó un script de disponibilidad de historia (foto ausente, nulo y cero observado), pero se priorizaron otras hipótesis antes de ejecutarlo. El baseline local de 30 trials es otra implementación, con decisiones distintas de etiqueta de AUC y predictores; no hay una corrida suya que se incorpore como resultado en este registro.</p>
-<h2>Réplicas y comparación complementaria en Google Cloud</h2>
-<p>La preparación en la VM pasó controles de filas, clases, duplicados y relectura de parquet. A y A-consigna coincidieron con los valores publicados a la precisión mostrada para las primeras dos semillas. La diferencia de entorno registrada es pandas 2.3.3 frente a 2.2.2; el resto de versiones científicas principales coincide. Esta etapa verifica ejecución, no constituye una mejora.</p>
-<p>También se completó una ablación sin historia (152 columnas) frente a con historia (760), en marzo–junio, con parámetros del 07 y diez semillas. Es contexto sobre el aporte del baseline, no una mejora sobre la referencia de la cátedra.</p>
-<div class="table"><table><thead><tr><th>Modelo</th><th>AUC agosto media</th><th>Semillas</th></tr></thead><tbody>
-<tr><td>sin_historia</td><td>0.905180</td><td>10</td></tr>
-<tr><td>con_historia</td><td>0.911657</td><td>10</td></tr>
+<h3>Paso 3 Cuánto vale la historia en el 12</h3>
+<p>AC contra ACS (ACS usa solo 152 variables actuales) mejora la banda media por semilla en +20,1406 M en septiembre y +19,9258 M en octubre. La ganancia en N cambia +18,59 y +19,36 M. Es una comparación económica distinta de nuestra ablación de AUC, que dio +0,006477 AUC media en agosto con diez semillas y parámetros del 07.</p>
+<p>El 12 también acerca los meses de entrenamiento para AC, ACH y variantes de puntaje pasado. Los efectos varían por modelo, partición y mes. Estas son las comparaciones completas por semilla:</p>
+<div class="table"><table><thead><tr><th>Variante</th><th>Control</th><th>Δ ganancia septiembre M</th><th>Δ ganancia octubre M</th><th>Δ banda octubre M</th></tr></thead><tbody>
+<tr><td>AC</td><td>ACS</td><td>+18.5900</td><td>+19.3600</td><td>+19.9258</td></tr>
+<tr><td>ACH</td><td>AC</td><td>+1.5675</td><td>+5.1975</td><td>+5.4438</td></tr>
+<tr><td>ACPH</td><td>AC</td><td>+4.7300</td><td>+6.7100</td><td>+5.3088</td></tr>
+<tr><td>ACPH_B</td><td>AC</td><td>+4.6200</td><td>+7.5900</td><td>+6.4594</td></tr>
+<tr><td>ACPH_C</td><td>AC</td><td>+5.9125</td><td>+6.2425</td><td>+5.9345</td></tr>
+<tr><td>AC_R</td><td>AC</td><td>+1.5400</td><td>+9.2400</td><td>+6.4355</td></tr>
+<tr><td>ACH_R</td><td>AC</td><td>+6.7375</td><td>+9.3775</td><td>+7.5309</td></tr>
+<tr><td>ACPH_R</td><td>AC</td><td>+7.4800</td><td>+8.3600</td><td>+6.8347</td></tr>
+<tr><td>ACPH_R_B</td><td>AC</td><td>+6.8200</td><td>+7.8100</td><td>+7.5501</td></tr>
+<tr><td>ACPH_R_C</td><td>AC</td><td>+8.8825</td><td>+8.8825</td><td>+7.8672</td></tr>
+<tr><td>ACH_R</td><td>AC_R</td><td>+5.1975</td><td>+0.1375</td><td>+1.0954</td></tr>
+<tr><td>ACPH_R</td><td>AC_R</td><td>+5.9400</td><td>-0.8800</td><td>+0.3991</td></tr>
+<tr><td>ACPH_R_B</td><td>AC_R</td><td>+5.2800</td><td>-1.4300</td><td>+1.1146</td></tr>
+<tr><td>ACPH_R_C</td><td>AC_R</td><td>+7.3425</td><td>-0.3575</td><td>+1.4316</td></tr>
+<tr><td>ACH_R</td><td>ACH</td><td>+5.1700</td><td>+4.1800</td><td>+2.0871</td></tr>
+<tr><td>ACPH_R</td><td>ACPH</td><td>+2.7500</td><td>+1.6500</td><td>+1.5258</td></tr>
+<tr><td>ACPH_R_B</td><td>ACPH_B</td><td>+2.2000</td><td>+0.2200</td><td>+1.0907</td></tr>
+<tr><td>ACPH_R_C</td><td>ACPH_C</td><td>+2.9700</td><td>+2.6400</td><td>+1.9326</td></tr>
 </tbody></table></div>
-<p>Diferencia media con − sin: +0.006477 AUC; 10/10 semillas favorables. El ajuste se eligió para con_historia: la ablación con parámetros fijos no compara óptimos independientes.</p>
-<h2>Síntesis del trabajo previo y preguntas abiertas</h2>
+<h3>Paso 4 Banco de pruebas del 13</h3>
+<p>Banco exploratorio: marzo–agosto, cinco grupos de clientes, dos semillas. El modelo predice clientes no vistos, pero entrena con los mismos meses de calendario que evalúa. No es validación fuera de tiempo. No carga septiembre ni octubre. Se usa la ganancia promedio de la banda, frente a ACH. Los intervalos de esta tabla son los reportados por el 13 y no incorporan la misma estimación de ruido de semillas que la tabla del 14.</p>
+<div class="table"><table><thead><tr><th>Variante</th><th>Idea</th><th>Δ M por mes frente a ACH</th><th>IC reportado</th></tr></thead><tbody>
+<tr><td>ACH_V</td><td>Inestabilidad: variación de niveles y cambios</td><td>+1.6009</td><td>-0.2354 a 3.4063</td></tr>
+<tr><td>ACH_Q</td><td>Quiebre reciente, peor cambio y cantidad de caídas</td><td>+0.7395</td><td>-1.2638 a 2.5184</td></tr>
+<tr><td>ACH_T</td><td>Media/máximo de todo el pasado y tiempo desde el máximo</td><td>+1.2028</td><td>-0.7427 a 3.0956</td></tr>
+<tr><td>ACH_Z</td><td>Ranking mensual de cambios con cero fijo</td><td>+1.1765</td><td>-0.4686 a 2.8629</td></tr>
+</tbody></table></div>
+<figure><img src="figuras/13_1_banco.png" alt="Banco del 13 y diferencias de ganancia frente a ACH Fuente Ezequiel 6cf189c"><figcaption>Banco del 13 y diferencias de ganancia frente a ACH Fuente Ezequiel 6cf189c</figcaption></figure>
+<p>Esto también limita la novedad de nuestras pruebas: persistencia y rankings tienen parentesco con quiebre y ranking de cambios, aunque difieren en fórmulas, variables, control (ACO frente a ACH), métrica (AUC frente a ganancia) y esquema de evaluación. No afirmamos originalidad de esas familias sin aclarar ese solapamiento.</p>
+<h3>Paso 5 Las cuatro ideas juntas en el 14</h3>
+<p>ACH_4 añade 300 columnas a ACH. Se comparan con cinco semillas sobre el banco por clientes; las candidatas individuales heredadas tienen dos semillas. El error total reportado combina estimaciones de variación de clientes y de semillas; no se interpreta como incertidumbre temporal.</p>
+<div class="table"><table><thead><tr><th>Variante frente a ACH</th><th>Semillas</th><th>Δ M por mes</th><th>IC reportado total</th></tr></thead><tbody>
+<tr><td>ACH_4</td><td>5</td><td>+1.9263</td><td>0.0876 a 3.7651</td></tr>
+<tr><td>ACH_V</td><td>2</td><td>+2.0047</td><td>0.1717 a 3.8377</td></tr>
+<tr><td>ACH_Q</td><td>2</td><td>+1.1434</td><td>-0.7270 a 3.0137</td></tr>
+<tr><td>ACH_T</td><td>2</td><td>+1.6066</td><td>-0.4031 a 3.6163</td></tr>
+<tr><td>ACH_Z</td><td>2</td><td>+1.5803</td><td>-0.1493 a 3.3098</td></tr>
+<tr><td>ACK</td><td>2</td><td>-0.4475</td><td>-2.2270 a 1.3320</td></tr>
+</tbody></table></div>
+<figure><img src="figuras/14_1_juntas.png" alt="Combinación del 14 frente a ACH e ideas individuales Fuente Ezequiel 6cf189c"><figcaption>Combinación del 14 frente a ACH e ideas individuales Fuente Ezequiel 6cf189c</figcaption></figure>
+<p>La combinación cumple la categoría de señal intermedia fijada para ese análisis: de +1,5 a menos de +3 M. Su +1,9263 M no supera numéricamente a inestabilidad sola (+2,0047 M), cuya comparación tiene menos semillas y no permite concluir equivalencia. En mayo–agosto la combinación da +2,7488 M; el ensamble reporta +1,9828 M. Queda pendiente la evaluación que propone el PDF en septiembre/octubre; esos meses ya fueron consultados, así que tampoco sería una confirmación independiente.</p>
+<h3>Paso 6 Nuestras cuatro familias con objetivo AUC</h3>
+<p>Control ACO de marzo–junio, parámetros fijos del 07, 339 árboles, diez semillas por brazo. Solo enero–agosto cargados. Se agrega una familia por vez a las 760 columnas. Historia reciente usa pesos 4:2:1; cambios relativos usa diferencia simétrica acotada; persistencia usa dos caídas/subidas, reversión y aceleración; rankings rankea niveles por mes/signo con cero fijo y agrega lags/deltas.</p>
+<div class="table"><table><thead><tr><th>Familia</th><th>Pares disponibles</th><th>Estado</th><th>Δ AUC media</th><th>Favorables</th><th>Δ AUC ensamble</th></tr></thead><tbody>
+<tr><td>historia_reciente</td><td>10/10</td><td>Completo</td><td>-0.001132</td><td>3/10</td><td>-0.001174</td></tr>
+<tr><td>cambios_relativos</td><td>10/10</td><td>Completo</td><td>-0.000908</td><td>4/10</td><td>-0.001026</td></tr>
+<tr><td>persistencia</td><td>10/10</td><td>Completo</td><td>+0.000231</td><td>5/10</td><td>+0.000161</td></tr>
+<tr><td>rankings_cero_fijo</td><td>7/10</td><td>En curso</td><td>-0.000490</td><td>2/7</td><td>—</td></tr>
+</tbody></table></div>
+<p>Historia reciente no dejó la señal de AUC acordada para habilitar una búsqueda de pesos; no la iniciaremos. Persistencia tiene una señal pequeña, con solo la mitad de las semillas a favor: no es una ganadora confirmada. No se decide sobre rankings hasta terminar. Las AUC no se convierten automáticamente en ganancia; la evaluación económica secundaria sigue a continuación y no se compara directamente con los millones del banco 13/14.</p>
+<h3>Ganancia económica de nuestras familias en agosto</h3>
+<p>Análisis secundario fijado después de mirar parte de las AUC. Usa las mismas probabilidades guardadas, sin reentrenar. Resultado por contacto: +1.072.500 para BAJA+2 y −27.500 en otro caso. No se optimiza N por modelo: se informa la banda inclusiva de 3.000–6.000 envíos y un presupuesto común N=4.000. Media entre diez pares y cambio del ensamble. Todo es descriptivo en agosto, mes usado para ajuste; no es test independiente ni reemplaza la regla original de septiembre/octubre.</p>
+<div class="table"><table><thead><tr><th>Familia</th><th>Δ banda media M</th><th>Favorables banda</th><th>Δ banda ensamble M</th><th>Δ N4000 media M</th><th>Δ N4000 ensamble M</th></tr></thead><tbody>
+<tr><td>historia_reciente</td><td>+0.7577</td><td>6/10</td><td>+0.8863</td><td>-0.9900</td><td>-1.1000</td></tr>
+<tr><td>cambios_relativos</td><td>+4.7005</td><td>8/10</td><td>+5.4736</td><td>+4.1800</td><td>+11.0000</td></tr>
+<tr><td>persistencia</td><td>+0.6607</td><td>6/10</td><td>+0.8398</td><td>+0.5500</td><td>-1.1000</td></tr>
+<tr><td>rankings_cero_fijo</td><td>Pendiente</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+</tbody></table></div>
+<figure><img src="figuras/ganancia_banda_agosto.png" alt="Ganancia económica de nuestras familias completas en agosto Media de diez semillas y corte exploratorio"><figcaption>Ganancia económica de nuestras familias completas en agosto Media de diez semillas y corte exploratorio</figcaption></figure>
+<p>La dirección puede cambiar entre AUC, banda y N fijo: ordenamiento global y beneficio cerca del corte son métricas diferentes. No se elige retrospectivamente la métrica que favorezca a una familia. La decisión de no buscar pesos se tomó sobre la señal de AUC y no se revierte automáticamente al observar otra métrica.</p>
+<h2>Por qué está trabado y qué cambió con esta actualización</h2>
 <ul>
-<li>El experimento principal no demostró mejora bajo su regla de ganancia; sí hubo diferencias medias favorables frente al control adaptado A.</li>
-<li>Recuperar meses de entrenamiento fue tan importante como extender la historia; no evaluar las features sin identificar el control.</li>
-<li>Ratio3, historia curada y mezclas dejaron señales exploratorias, no una combinación ganadora confirmada en todos los meses y métricas.</li>
-<li>Segundas diferencias y rachas solas no mostraron una ventaja consistente en los contrastes reportados.</li>
-<li>Optimizar AUC no garantiza aumentar ganancia en otro mes.</li>
-<li>Falta resultado publicado del 09 y del protocolo completo del segundo PDF. No confundir ausencia de tabla con resultado negativo.</li>
-<li>Nuestro aporte nuevo evalúa representaciones específicas sobre el control ACO, con objetivo AUC y sin abrir octubre. Sus resultados al corte siguen a continuación.</li>
+<li>El aporte marginal es pequeño frente al valor de los dos primeros meses de historia. Una mejora de 1–2 M depende del control y del procedimiento de medición.</li>
+<li>Septiembre y octubre se consultaron repetidamente; noviembre y diciembre están reservados para el dashboard. No presentamos los nuevos análisis como pruebas ciegas.</li>
+<li>El banco 13/14 reduce ruido al reunir clientes y meses, pero evalúa clientes nuevos dentro de meses conocidos, no meses futuros.</li>
+<li>Ganancia y AUC no son intercambiables. El PDF centra la discusión en dinero; nuestra serie mide AUC de agosto. Hay que acordar con el tutor cuál guía la entrega.</li>
+<li>Los parámetros y N dependen de agosto. Se deben declarar los baselines y no cambiar el control después de mirar el resultado.</li>
+<li>El desfase entre ramas era real: ahora contrastamos contra 6cf189c, no solo 3b44f21. Conviene acordar una versión de resultados para la tutoría.</li>
+<li>El PDF incluye diagnósticos macroeconómicos y de clientes fuera del corte: caída de dólares, estabilidad de bajas y quince señales nuevas sin un segmento claramente rentable. Se conservan como observaciones del PDF, no como verificaciones nuestras; las tablas subyacentes de esos diagnósticos deben adjuntarse para auditarlas.</li>
 </ul>
-<h2>Serie nueva de cuatro familias</h2>
-<h2>Diseño que mantuvimos fijo</h2>
-<div class="table"><table><thead><tr><th>Elemento</th><th>Definición</th></tr></thead><tbody>
-<tr><td>Dataset</td><td>competencia_02_crudo.csv.gz; parquet 2019 preparado y verificado</td></tr>
-<tr><td>Entrenamiento</td><td>Marzo–junio, 506.871 filas, sin sampling</td></tr>
-<tr><td>Etiqueta de entrenamiento</td><td>BAJA+1 o BAJA+2 frente a CONTINUA</td></tr>
-<tr><td>Evaluación</td><td>Agosto de 2019, 131.775 filas; AUC positiva BAJA+2</td></tr>
-<tr><td>Control</td><td>760 predictores, sin ID ni foto_mes como features</td></tr>
-<tr><td>Ajuste</td><td>Parámetros del 07, 339 árboles, max_bin 31, bagging_freq 1</td></tr>
-<tr><td>Semillas</td><td>Diez por brazo; iguales entre baseline y variante</td></tr>
-<tr><td>Recursos</td><td>Ocho hilos; cuatro familias ejecutadas secuencialmente</td></tr>
-<tr><td>Faltantes</td><td>NaN; mismas filas en ambos brazos; saneamiento antes de calcular historia</td></tr>
-<tr><td>Meses cargados</td><td>Enero–agosto; no se consultó octubre en estas pruebas</td></tr>
+<p>Los datos de nuestro lado aportan una verificación del pipeline y pruebas adicionales de representación. No reemplazan la regla original ni convierten un resultado exploratorio en confirmatorio. Que una familia falle también delimita lo que no parece útil con ese ajuste.</p>
+<h2>Preguntas para Alejandro Bolaños</h2>
+<p>Se conserva el orden de prioridad del PDF. La última columna registra lo que sabemos internamente; <strong>no son respuestas atribuidas al tutor</strong>. Sus respuestas siguen pendientes.</p>
+<div class="table"><table><thead><tr><th>Prioridad</th><th>Pregunta</th><th>Evidencia para llevar</th><th>Respuesta del tutor</th></tr></thead><tbody>
+<tr><td>1</td><td>¿Qué contar en el video si la hipótesis original no pasó la regla? ¿Podemos centrar una hipótesis exploratoria? ¿La regla propia es necesaria?</td><td>Regla fallida, señales 13/14 y limitaciones explícitas; video del 23/11 según el PDF</td><td>Pendiente</td></tr>
+<tr><td>2</td><td>¿Seguimos buscando o cerramos? ¿Qué efecto sería útil?</td><td>ACH_4 +1,9263 M/mes en el banco; dos familias nuevas negativas y persistencia pequeña en AUC</td><td>Pendiente</td></tr>
+<tr><td>3</td><td>¿Qué variable histórica diferente valdría probar?</td><td>Inventario hasta 14, fórmulas y solapamientos; evitar repetir familias por desconocer otra rama</td><td>Pendiente</td></tr>
+<tr><td>4</td><td>¿Qué baseline debe regir y qué adaptaciones son válidas?</td><td>A, AC, ACO y ACH claramente separados; saneamiento y segundo mes de test</td><td>Pendiente</td></tr>
+<tr><td>5</td><td>¿Cómo validar sin meses no consultados? ¿Sirve el banco por clientes?</td><td>Banco útil para explorar, sin medir transporte temporal</td><td>Pendiente</td></tr>
+<tr><td>6</td><td>¿Qué mejora y cuántas semillas justifican adoptar una variante?</td><td>Principal con 10; banco 13 con 2; combinación 14 con 5; no agregar semillas hasta lograr p bajo</td><td>Pendiente</td></tr>
+<tr><td>7</td><td>¿Cómo interpretar variación mensual del valor de historia y el quiebre de PASO?</td><td>Diagnósticos macro y valor de historia variable; adjuntar tablas fuente antes de concluir</td><td>Pendiente</td></tr>
+<tr><td>8</td><td>¿Podemos cambiar la ventana del baseline?</td><td>Notebook 12 muestra efectos variables al acercar entrenamiento</td><td>Pendiente</td></tr>
+<tr><td>9</td><td>¿Tratar inflación aquí o coordinar con esos grupos?</td><td>Rankings y ratios ya probados; aclarar alcance y métrica</td><td>Pendiente</td></tr>
+<tr><td>10</td><td>¿Cómo ordenar ramas y notebooks para entregar?</td><td>Rama ezequiel/etapa-1 y feat/historia-transformaciones; integrar resultados positivos y negativos</td><td>Pendiente</td></tr>
 </tbody></table></div>
-<h2>Qué probamos</h2>
-<div class="table"><table><thead><tr><th>Familia</th><th>Nuevas columnas</th><th>Pregunta</th></tr></thead><tbody>
-<tr><td>Historia reciente</td><td>387</td><td>Dar mayor peso a las fotos recientes: media 4:2:1 y comparación con pasado ponderado 2:1.</td></tr>
-<tr><td>Cambios relativos</td><td>258</td><td>Medir cambios proporcionales simétricos de uno y dos meses, con valores finitos acotados entre −1 y 1.</td></tr>
-<tr><td>Persistencia y reversión</td><td>516</td><td>Separar dos caídas, dos subidas, reversión y aceleración relativa en tres fotos.</td></tr>
-<tr><td>Rankings con cero fijo</td><td>365</td><td>Comparar la posición del cliente dentro del mes y signo, y su cambio en uno y dos meses.</td></tr>
+<h2>Glosario</h2>
+<div class="table"><table><thead><tr><th>Término</th><th>Uso en este documento</th></tr></thead><tbody>
+<tr><td>A AC ACO ACH</td><td>Controles distintos definidos al comienzo; no intercambiables</td></tr>
+<tr><td>ACS</td><td>Modelo sin lags ni deltas</td></tr>
+<tr><td>ACH_4</td><td>ACH más los cuatro bloques de 13, combinado en 14</td></tr>
+<tr><td>L T LT</td><td>Lags/deltas adicionales, tendencias y combinación</td></tr>
+<tr><td>Puntaje pasado</td><td>Predicciones históricas generadas sin entrenar con el cliente puntuado</td></tr>
+<tr><td>Partición</td><td>Asignación de clientes a grupos; no equivale a una partición temporal</td></tr>
+<tr><td>Banda</td><td>Ganancia promedio entre 3.000 y 6.000 envíos</td></tr>
+<tr><td>M</td><td>Millones de las unidades monetarias del ejercicio</td></tr>
+<tr><td>AUC</td><td>Capacidad de ordenar positivos frente a negativos; no determina por sí sola la rentabilidad de un corte</td></tr>
+<tr><td>p Holm</td><td>p del contraste ajustado por comparaciones múltiples; no es probabilidad de que la hipótesis nula sea verdadera</td></tr>
+<tr><td>Intervalo 95 %</td><td>Intervalo obtenido bajo el procedimiento y sus supuestos; no garantiza cobertura temporal fuera de muestra</td></tr>
+<tr><td>Señal intermedia</td><td>Categoría exploratoria fijada para 14: +1,5 a menos de +3 M/mes</td></tr>
+<tr><td>Ruido de clientes y de semillas</td><td>Variación por remuestreo de clientes y por aleatoriedad del modelo; no cubre automáticamente cambios de período</td></tr>
+<tr><td>Mes no consultado</td><td>Mes no usado para elegir decisiones; septiembre/octubre ya no lo son</td></tr>
+<tr><td>Banco por clientes</td><td>Cinco grupos de clientes en marzo–agosto, con meses compartidos entre entrenamiento y evaluación</td></tr>
+<tr><td>Dashboard</td><td>Noviembre/diciembre reservados por la consigna</td></tr>
 </tbody></table></div>
-<p>Las tres primeras familias transforman información ya contenida en las tres fotos; buscamos una representación que LightGBM aproveche mejor. Los rankings incorporan además la distribución contemporánea del conjunto de clientes. Las fórmulas exactas se fijaron antes de correr en docs/experimentos_historia.md.</p>
-<h2>Resultados al corte</h2>
-<p>Las medias siguientes usan únicamente semillas emparejadas. Si hay tres variantes y diez baselines, se comparan esos tres pares, no medias de tamaños diferentes. La diferencia está en unidades de AUC; +0,001 equivale a pasar de 0,912 a 0,913.</p>
-<div class="table"><table><thead><tr><th>Familia</th><th>Estado</th><th>Pares</th><th>AUC control</th><th>AUC variante</th><th>Diferencia media</th><th>A favor</th></tr></thead><tbody>
-<tr><td>Historia reciente</td><td>Completo</td><td>10/10</td><td>0.911657</td><td>0.910525</td><td>-0.001132</td><td>3/10</td></tr>
-<tr><td>Cambios relativos</td><td>Parcial</td><td>3/10</td><td>0.912142</td><td>0.910844</td><td>-0.001299</td><td>1/3</td></tr>
-<tr><td>Persistencia y reversión</td><td>Pendiente</td><td>0/10</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
-<tr><td>Rankings con cero fijo</td><td>Pendiente</td><td>0/10</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
-</tbody></table></div>
-<h3>Historia reciente</h3>
-<div class="table"><table><thead><tr><th>Semilla</th><th>AUC control</th><th>AUC variante</th><th>Diferencia</th></tr></thead><tbody>
-<tr><td>118147</td><td>0.910461455</td><td>0.908168607</td><td>-0.002292848</td></tr>
-<tr><td>161093</td><td>0.909832201</td><td>0.908692345</td><td>-0.001139856</td></tr>
-<tr><td>294103</td><td>0.914852804</td><td>0.910844762</td><td>-0.004008042</td></tr>
-<tr><td>312773</td><td>0.911760323</td><td>0.910921383</td><td>-0.000838940</td></tr>
-<tr><td>330679</td><td>0.910671646</td><td>0.911928821</td><td>+0.001257175</td></tr>
-<tr><td>342929</td><td>0.911741449</td><td>0.911399274</td><td>-0.000342174</td></tr>
-<tr><td>431077</td><td>0.911529503</td><td>0.910106314</td><td>-0.001423189</td></tr>
-<tr><td>511579</td><td>0.911200366</td><td>0.911532324</td><td>+0.000331958</td></tr>
-<tr><td>567529</td><td>0.912476865</td><td>0.909343884</td><td>-0.003132981</td></tr>
-<tr><td>677561</td><td>0.912040962</td><td>0.912311328</td><td>+0.000270366</td></tr>
-</tbody></table></div>
-<p>AUC del ensamble: control 0.913309; variante 0.912135; diferencia -0.001174.</p>
-<p>Lectura descriptiva: la media entre semillas no mejora el control. Esto no demuestra generalización a otros períodos.</p>
-<h3>Cambios relativos</h3>
-<div class="table"><table><thead><tr><th>Semilla</th><th>AUC control</th><th>AUC variante</th><th>Diferencia</th></tr></thead><tbody>
-<tr><td>161093</td><td>0.909832201</td><td>0.910612566</td><td>+0.000780365</td></tr>
-<tr><td>294103</td><td>0.914852804</td><td>0.910919377</td><td>-0.003933427</td></tr>
-<tr><td>342929</td><td>0.911741449</td><td>0.910998918</td><td>-0.000742531</td></tr>
-</tbody></table></div>
-<p><strong>Avance parcial:</strong> 3/10 variantes y 10/10 baselines. No cerrar una conclusión ni detener la prueba por estos resultados.</p>
-<h2>Qué resultó y qué no podemos afirmar todavía</h2>
-<p>Las familias pendientes no tienen un resultado negativo: todavía no fueron evaluadas. Las filas parciales muestran avance del entrenamiento, no una conclusión final. Cuando estén completos los diez pares, reportaremos conjuntamente la diferencia media, la dirección por semilla y el cambio en AUC del ensamble.</p>
-<p>No se elegirá una familia por una semilla favorable. Tampoco se confundirá una mejora de ganancia económica de antecedentes con una mejora de AUC en esta comparación.</p>
-<h2>Decisiones y siguientes pasos</h2>
-<ul>
-<li>Terminar las cuatro familias y conservar también resultados negativos.</li>
-<li>Ajustar el decaimiento solo si historia reciente presenta una señal favorable al completar diez semillas, considerando media, consistencia y ensamble. No se fijó un umbral numérico formal: cualquier criterio nuevo debe registrarse antes de la búsqueda, no reconstruirse como si hubiera sido predefinido.</li>
-<li>Si se habilita esa búsqueda, seleccionar alfa dentro de una partición temporal interna al bloque de entrenamiento, respetando las etiquetas a dos meses; reentrenar marzo–junio y evaluar la elección en agosto. No usar agosto para elegir alfa.</li>
-<li>No modificar la cola ni los pesos actuales a partir de resultados parciales.</li>
-</ul>
-<h2>Límites de la evidencia</h2>
-<p>Agosto ya se usó para optimizar el baseline y discutir otras variantes. Sigue siendo validación exploratoria, aunque una búsqueda posterior de alfa use otro bloque. Los parámetros del 07 favorecen potencialmente al baseline: aquí medimos el efecto de agregar features con ese ajuste fijo, no modelos optimizados individualmente. Las diez semillas comparten clientes y mes; su dispersión no mide incertidumbre entre períodos. Comparar cuatro familias introduce selección múltiple. El catálogo de roturas fue construido retrospectivamente y no representa una política estrictamente disponible en tiempo real.</p>
-<h2>Trazabilidad</h2>
-<p>Cada experimento conserva config.json con hashes SHA-256, versiones y semillas; metrics.csv con AUC por modelo; summary.json con el ensamble; extra_coverage.csv con faltantes; y status.json al completar. El paquete para tutoría no contiene datos individuales. El notebook notebooks/tutoria_historia.ipynb permite revisar estas tablas y visualizar las diferencias.</p>
-<p>Corrida: familias_c9930bd. Código desplegado: c9930bd. Rama: feat/historia-transformaciones. El informe y el notebook pueden evolucionar sin modificar el código de la corrida en curso.</p></main></html>
+<h2>Fuentes y pendientes para cerrar esta versión</h2>
+<p>Referencia de estructura: PDF nuevo de Ezequiel Experimento feature_historico dónde estamos (1).pdf, 13 páginas. Evidencia numérica: resultados/antecedentes_6cf189c y resultados/familias_20261106, con manifiestos de fuente. No se editó el PDF original ni se mezclaron ramas.</p>
+<p>Pendientes: terminar rankings; actualizar el notebook con el snapshot completo y el alcance hasta 14; respuestas del tutor; tablas fuente de diagnósticos macro/segmentos del PDF; bibliografía verificada; decidir el mensaje del video y el baseline de entrega. No completar respuestas, resultados o verificaciones que todavía no existen.</p></main></html>
