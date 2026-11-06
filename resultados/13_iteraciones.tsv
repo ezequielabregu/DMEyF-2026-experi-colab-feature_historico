@@ -1,0 +1,9 @@
+config	hipotesis	columnas_nuevas	ganancia_banda_M	d_contra_ACH_M	resultado
+ACS	Calibración: sin lags ni deltas pierde claramente contra AC	0	264.487		calibración
+AC	Calibración: pierde por poco contra ACH, o empata	0	281.429	-3.603	calibración
+ACH	Base de la comparación	0	285.032		calibración
+ACK	Calibración: columnas de ruido, cerca de 0 o negativo contra ACH	90	284.181	-0.851	calibración
+ACH_V	Quien se va sin caer puede volverse errático antes: std3 del nivel y del delta	60	286.633	1.601	suma
+ACH_Q	Un quiebre corto se pierde en promedios y pendientes: contraste de 4 meses, peor delta y cantidad de caídas	90	285.771	0.74	suma
+ACH_T	Importa la distancia a su mejor momento, aunque sea de hace más de 4 meses: contra el máximo y la media de todas las fotos previas, y meses desde el máximo	90	286.235	1.203	suma
+ACH_Z	Un delta en pesos no significa lo mismo con inflación alta: percentil del delta 1 y 2 dentro del mes, con el cero fijo	60	286.208	1.176	suma
