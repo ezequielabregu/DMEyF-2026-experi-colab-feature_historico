@@ -1,0 +1,8 @@
+config	hipotesis	ganancia_banda_201909_10_M	contra	d_M	resultado
+AC	Referencia: el baseline, con todos los meses disponibles	269.481			base
+ACH	La historia curada suma también cuando pasa el tiempo	272.677	AC	4.089	Suma
+ACH_4	Los cuatro bloques del 14 suman también cuando pasa el tiempo	276.275	ACH	1.606	Suma
+ACH_4_P2	Solo BAJA+2 paga: con el doble de peso, el modelo se concentra en esos clientes	275.577	ACH_4	0.941	Empate
+ACH_4_P3	Lo mismo, con el triple de peso	276.485	ACH_4	1.103	Suma
+ACH_4_F	La ventana de la consigna, 201903-06: pierde contra todos los meses disponibles	270.483	ACH_4	-5.792	Resta
+ACH_4_U4	Los últimos 4 meses: lo reciente vale más que tener más meses	276.294	ACH_4	0.02	Empate
