@@ -54,6 +54,7 @@ Se corren en orden, con "Run All", desde la carpeta `notebooks/`. Cada uno frena
 | `14_exploratorio` | Prueba las cuatro ideas del `13` juntas, con 5 semillas y sobre el mismo banco. No carga 201909 ni 201910. Es exploratorio, posterior a la regla, y usa las salidas del `13` | `exp/14/`, `resultados/14_*`, `resultados/figuras/14_*` | ~40 min |
 | `15_exploratorio` | Banco temporal: cada modelo entrena hasta dos meses antes del mes evaluado, de 201906 a 201910. Mide `ACH`, `ACH_4`, más peso para `BAJA+2` y tres ventanas. Es exploratorio, posterior a la regla, y usa las salidas del `12` | `exp/15/`, `resultados/15_*`, `resultados/figuras/15_*` | ~2 h |
 | `16_exploratorio` | Cantidad de árboles sobre `ACH_4_P3`, en el banco del `15`: decide la regla de árboles proporcionales a las filas de entrenamiento contra 296, y muestra la curva hasta 1.000. Es exploratorio, posterior a la regla, y usa las salidas del `15` | `exp/16/`, `resultados/16_*`, `resultados/figuras/16_*` | ~1 h |
+| `17_exploratorio` | Combinaciones de Visa y Master (sumas, fechas y cocientes contra el límite, de la cátedra 2021) sobre `ACH_4_P3`, en el banco del `15`: decide la versión con lags y deltas. Es exploratorio, posterior a la regla, y usa las salidas del `15` | `exp/17/`, `resultados/17_*`, `resultados/figuras/17_*` | ~45 min |
 
 Si una corrida del `03`, del `05`, del `06`, del `07`, del `08`, del `09`, del `10`, del `11`, del `12`, del `13` o del `14` se corta, se vuelve a correr entera: las semillas ya hechas no se repiten.
 
