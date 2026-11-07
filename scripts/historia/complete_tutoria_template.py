@@ -17,19 +17,66 @@ def read_csv(root, name):
         return list(csv.DictReader(f))
 
 
+def twenty_section(root):
+    lines = ['## Dos estrategias de historia evaluadas con veinte semillas', '',
+             'Comparamos dos formas de representar la historia de un cliente: su cambio relativo respecto de sí mismo y su posición respecto de los demás clientes del mes. Cada estrategia se añade por separado al baseline ACO de 760 columnas; no se reemplazan las variables originales, sus lags ni sus deltas.', '',
+             '### Cambios relativos: medir la variación respecto del propio pasado', '',
+             'La pregunta es si una caída representa un cambio importante para ese cliente, aunque su nivel de actividad sea muy distinto del de otros. La diferencia absoluta ya está en el baseline; esta estrategia agrega una diferencia normalizada por el tamaño de los valores comparados.', '',
+             'Para cada una de 129 variables numéricas seleccionadas se compara el valor actual con el de uno y dos meses atrás. Las dos features son:', '',
+             '`r1 = (actual - lag1) / (abs(actual) + abs(lag1))`', '',
+             '`r2 = (actual - lag2) / (abs(actual) + abs(lag2))`', '',
+             'El resultado está entre -1 y 1. Dos ceros observados producen cero; si falta cualquiera de los valores, se conserva NaN. No se divide solamente por el valor previo, por lo que un previo igual a cero no genera infinito. Es un cambio simétrico acotado, no un porcentaje convencional.', '',
+             'Ejemplo: pasar de 200 a 100 y pasar de 200.000 a 100.000 producen ambos -0,3333. La escala absoluta difiere, pero la señal de reducción relativa es la misma. Los niveles originales siguen disponibles para que el modelo distinga el tamaño de cada cliente.', '',
+             'Se agregan 129 × 2 = 258 columnas; total 1.018. Los lags buscan el mes calendario exacto del mismo cliente. La selección excluye indicadores, estados, fechas, edad y antigüedad; no aplica la fórmula indiscriminadamente a todos los campos.', '',
+             '### Rankings con cero fijo: medir la posición dentro del mes', '',
+             'La pregunta es si cambia la posición del cliente frente a los demás, aun cuando todos los montos se muevan de escala. Para cada una de 73 variables monetarias se calcula un percentil en cada foto mensual, por separado para los valores positivos y los negativos. No se usan etiquetas para construirlo.', '',
+             'Los positivos reciben percentiles entre 0 y 1. Los negativos se ordenan por magnitud absoluta dentro del grupo negativo y recuperan el signo menos. Los ceros quedan exactamente en cero y los faltantes siguen como NaN. Los empates reciben el rango promedio.', '',
+             'Ejemplo: si cuatro montos positivos son 100, 200, 300 y 400, sus ranks son 0,25; 0,50; 0,75 y 1. Si todos se duplican y se conserva el mismo orden y población, los ranks no cambian. Así se representa posición relativa; esto no constituye por sí solo un ajuste de inflación ni una prueba de robustez macroeconómica.', '',
+             'Para cada variable se agregan el rank actual, sus lags de uno y dos meses y las diferencias rank actual menos cada lag: cinco features por variable. Son 73 × 5 = 365 columnas; total 1.125. Los lags son por calendario exacto dentro del cliente. La foto completa define la distribución de referencia: cambios en su composición también pueden mover el rank de un cliente.', '',
+             '### Cómo se compararon', '',
+             'Veinte pares por estrategia: baseline ACO y baseline más las features propuestas, con las mismas veinte semillas y un baseline canónico común auditado. Entrenamiento marzo-junio de 2019, validación agosto, parámetros del 07 congelados, 339 árboles y ocho hilos. Entrenar positivo BAJA+1 o BAJA+2; evaluar AUC y ganancia positivas solo BAJA+2. No se abren otros meses.', '',
+             'Ganancia del ejercicio: +1.072.500 por BAJA+2 contactado y -27.500 por el resto. Se informa la banda inclusiva N=3.000-6.000 y el corte común N=4.000; no se optimiza N por variante. Las diferencias siguientes son variante menos baseline en los mismos pares.', '',
+             '| Estrategia | Pares | Δ AUC media | Δ banda media M | Favorables banda | Δ N4000 media M |',
+             '|---|---:|---:|---:|---:|---:|']
+    ensembles = []
+    for family, label in [('cambios_relativos', 'Cambios relativos'), ('rankings_cero_fijo', 'Rankings con cero fijo')]:
+        folder = root / family
+        seeds = json.loads((folder / 'config.json').read_text(encoding='utf-8'))['seeds_used']
+        rows = read_csv(folder, 'profit_metrics.csv')
+        indexed = {(r['variant'], int(float(r['seed']))): r for r in rows if r['kind'] == 'seed'}
+        if len(seeds) != 20 or len(set(seeds)) != 20 or len(indexed) != 40:
+            raise ValueError(f'Comparación incompleta: {family}')
+        differences = {metric: [float(indexed[family, s][metric]) - float(indexed['baseline', s][metric]) for s in seeds]
+                       for metric in ['auc', 'gain_band_3000_6000_M', 'gain_4000_M']}
+        band = differences['gain_band_3000_6000_M']
+        lines.append(f'| {label} | 20 | {mean(differences["auc"]):+.6f} | {mean(band):+.4f} | {sum(x > 0 for x in band)}/20 | {mean(differences["gain_4000_M"]):+.4f} |')
+        ensemble = {r['variant']: r for r in rows if r['kind'] == 'ensemble'}
+        ensembles.append((label, [float(ensemble[family][m]) - float(ensemble['baseline'][m]) for m in ['auc', 'gain_band_3000_6000_M', 'gain_4000_M']]))
+    lines += ['', 'El ensamble promedia las probabilidades de veinte modelos por brazo. Sus métricas se calculan después de promediar las probabilidades y se presentan aparte de la media entre semillas.', '',
+              '| Estrategia | Δ AUC ensamble | Δ banda ensamble M | Δ N4000 ensamble M |', '|---|---:|---:|---:|']
+    for label, (auc, band, fixed) in ensembles:
+        lines.append(f'| {label} | {auc:+.6f} | {band:+.4f} | {fixed:+.4f} |')
+    lines += ['', '### Cierre de esta tanda y lectura para tutoría', '',
+              'Cambios relativos muestra una mejora media de banda de +3,1109 M y 15 de 20 semillas favorables. Rankings muestra +0,7599 M y 11 de 20 favorables. Ambas estrategias reducen la AUC media frente a ACO. Dentro de agosto, la señal económica resulta más consistente para cambios relativos; no se declara una ganadora confirmada.', '',
+              'La evaluación económica es secundaria y la cantidad de veinte semillas se fijó después de una exploración inicial con diez. Sigue siendo una ampliación exploratoria, no una prueba independiente. Agosto también intervino en el ajuste del baseline: las semillas describen variación del algoritmo y no añaden meses de validación.', '',
+              'No quedan entrenamientos pendientes de esta tanda. No se sumarán semillas para fortalecer el resultado; una evaluación temporal adicional requiere un protocolo nuevo. Los detalles de auditoría y el desglose por bloques de semillas se conservan en docs/auditoria_bins_20261107.md y en el notebook técnico.', '',
+              'El registro de historia reciente y persistencia, incluidos sus resultados negativos o pequeños, permanece en el notebook y los agregados de diez semillas. Esta sección presenta las dos estrategias que completaron veinte pares.', '']
+    return lines
+
+
 def main():
     p = argparse.ArgumentParser()
     p.add_argument('--prior', type=Path, default=Path('resultados/antecedentes_6cf189c'))
-    p.add_argument('--results', type=Path, default=Path('resultados/familias_20261106'))
+    p.add_argument('--results', type=Path, default=Path('resultados/familias_final_20261106'))
+    p.add_argument('--twenty', type=Path, default=Path('resultados/ampliaciones_20261107'))
     p.add_argument('--out', type=Path, default=Path('docs/estado_grupal_para_tutoria.md'))
     args = p.parse_args()
     source = args.prior
-    snapshot = json.loads((args.results/'snapshot.json').read_text())
     lines = [
         '# Experimento feature_historico dónde estamos', '',
         '**Versión de trabajo para tutoría del grupo completo.** Conserva el orden y el enfoque del PDF nuevo de Ezequiel, incorporando la evidencia publicada hasta el commit 6cf189c y nuestras corridas de Google Cloud. El PDF original se conserva sin editar.', '',
-        f'**Corte de nuestras métricas:** {snapshot["captured_utc"]} (UTC). Los resultados parciales se identifican como tales. Integrantes: Tomás Henseler, Clara M. Rodríguez y Ezequiel Abregú. Tutor: Alejandro Bolaños.', '',
-        'La historia básica aporta valor, pero mejorarla es más difícil. El experimento original no superó la regla propia de ganancia; las exploraciones posteriores dejaron señales pequeñas. El nuevo banco por clientes encuentra una señal intermedia para cuatro bloques juntos. En nuestras pruebas de AUC, historia reciente y cambios relativos no mejoraron; persistencia dio una mejora pequeña que no fue uniforme entre semillas. Rankings sigue pendiente al corte.', '',
+        '**Comparaciones de veinte semillas: cierre auditado del 7 de noviembre de 2026.** Integrantes: Tomás Henseler, Clara M. Rodríguez y Ezequiel Abregú. Tutor: Alejandro Bolaños.', '',
+        'La historia básica aporta valor, pero mejorarla es más difícil. El experimento original no superó la regla propia de ganancia; las exploraciones posteriores dejaron señales pequeñas. El nuevo banco por clientes encuentra una señal intermedia para cuatro bloques juntos. Nuestro aporte compara cambios relativos y rankings con veinte semillas por estrategia: ambos reducen la AUC media frente a ACO, pero muestran mayor ganancia media de banda en agosto. La señal económica es más consistente para cambios relativos y sigue siendo exploratoria.', '',
         '## El problema y el baseline', '',
         'El objetivo del ejercicio es identificar clientes por abandonar el banco. En la métrica económica usada por el grupo, contactar a un BAJA+2 suma 1.072.500 y contactar a otro cliente resta 27.500. Un acierto compensa 39 errores; el punto de equilibrio del estímulo corresponde a una probabilidad de BAJA+2 de 2,5 %. Estos valores son los del ejercicio, no una estimación de beneficio real del banco.', '',
         'El baseline de la cátedra ya contiene historia: 152 variables actuales, lag1 y lag2, y delta1 y delta2, total 760 columnas. Lag busca el mes calendario exacto del mismo cliente; delta es actual menos lag. No se incluyen ID, foto_mes ni clase como predictores en los notebooks revisados.', '',
@@ -50,7 +97,7 @@ def main():
         '| 3 Cambio de pregunta 12 | ¿Cuánto vale la historia y entrenar más cerca? | Unos 20 M/mes de banda al recuperar historia básica; mejoras variables al acercar la ventana |',
         '| 4 Banco por clientes 13 | ¿Podemos medir con menor ruido? | Cuatro bloques solos: +0,74 a +1,60 M/mes frente a ACH en el banco |',
         '| 5 Combinación 14 | ¿Los cuatro bloques juntos se complementan? | +1,9263 M/mes; señal intermedia; no supera claramente la mejor idea sola |',
-        '| 6 Nuestra serie de AUC | ¿Otras transformaciones superan ACO en agosto? | Dos negativos, persistencia pequeña y rankings en curso al corte |', '',
+        '| Aporte complementario | ¿Cambiar la representación de la historia mejora ACO en agosto? | Cambios relativos y rankings, explicados y comparados directamente con veinte pares por estrategia |', '',
         '### Preparación y prueba mínima', '',
         'El original tiene 4.707.495 filas y 154 columnas; el corte 2019 tiene 1.563.565 filas y cero claves duplicadas. La clase se construye con calendario hasta diciembre de 2019. Se identificaron 23 casos de variable/mes roto y luego dos correcciones Master adicionales. La detección de calidad usa información retrospectiva y se declara como limitación. El ensayo mínimo 02 compara A con LT4 en agosto y sirve para probar el pipeline; no es un test independiente.', '',
         '### Paso 1 La regla y los dos controles', '',
@@ -88,40 +135,9 @@ def main():
     for r in read_csv(source,'14_comparacion.csv'):
         lines.append(f'| {r["config"]} | {r["semillas"]} | {float(r["d_M"]):+.4f} | {float(r["ic95_inf_M"]):.4f} a {float(r["ic95_sup_M"]):.4f} |')
     lines += ['', '![Combinación del 14 frente a ACH e ideas individuales Fuente Ezequiel 6cf189c](figuras/14_1_juntas.png)', '', 'La combinación cumple la categoría de señal intermedia fijada para ese análisis: de +1,5 a menos de +3 M. Su +1,9263 M no supera numéricamente a inestabilidad sola (+2,0047 M), cuya comparación tiene menos semillas y no permite concluir equivalencia. En mayo–agosto la combinación da +2,7488 M; el ensamble reporta +1,9828 M. Queda pendiente la evaluación que propone el PDF en septiembre/octubre; esos meses ya fueron consultados, así que tampoco sería una confirmación independiente.', '',
-              '### Paso 6 Nuestras cuatro familias con objetivo AUC', '',
-              'Control ACO de marzo–junio, parámetros fijos del 07, 339 árboles, diez semillas por brazo. Solo enero–agosto cargados. Se agrega una familia por vez a las 760 columnas. Historia reciente usa pesos 4:2:1; cambios relativos usa diferencia simétrica acotada; persistencia usa dos caídas/subidas, reversión y aceleración; rankings rankea niveles por mes/signo con cero fijo y agrega lags/deltas.', '',
-              '| Familia | Pares disponibles | Estado | Δ AUC media | Favorables | Δ AUC ensamble |', '|---|---:|---|---:|---:|---:|']
-    for family in ['historia_reciente','cambios_relativos','persistencia','rankings_cero_fijo']:
-        folder=args.results/family
-        data=read_csv(folder,'metrics.csv') if (folder/'metrics.csv').exists() else []
-        b={r['seed']:float(r['auc']) for r in data if r['variant']=='baseline'}
-        v={r['seed']:float(r['auc']) for r in data if r['variant']==family}
-        paired=b.keys() & v.keys()
-        complete=(folder/'status.json').exists() and json.loads((folder/'status.json').read_text()).get('status')=='complete'
-        state='Completo' if complete else ('En curso' if data or (folder/'config.json').exists() else 'Pendiente')
-        if not paired:
-            lines.append(f'| {family} | 0/10 | {state} | — | — | — |')
-            continue
-        d=[v[s]-b[s] for s in paired]
-        ensemble='—'
-        if complete:
-            a=json.loads((folder/'summary.json').read_text())['ensemble_auc']
-            ensemble=f'{a[family]-a["baseline"]:+.6f}'
-        lines.append(f'| {family} | {len(paired)}/10 | {state} | {mean(d):+.6f} | {sum(x>0 for x in d)}/{len(d)} | {ensemble} |')
-    lines += ['', 'Historia reciente no dejó la señal de AUC acordada para habilitar una búsqueda de pesos; no la iniciaremos. Persistencia tiene una señal pequeña, con solo la mitad de las semillas a favor: no es una ganadora confirmada. No se decide sobre rankings hasta terminar. Las AUC no se convierten automáticamente en ganancia; la evaluación económica secundaria sigue a continuación y no se compara directamente con los millones del banco 13/14.', '',
-              '### Ganancia económica de nuestras familias en agosto', '',
-              'Análisis secundario fijado después de mirar parte de las AUC. Usa las mismas probabilidades guardadas, sin reentrenar. Resultado por contacto: +1.072.500 para BAJA+2 y −27.500 en otro caso. No se optimiza N por modelo: se informa la banda inclusiva de 3.000–6.000 envíos y un presupuesto común N=4.000. Media entre diez pares y cambio del ensamble. Todo es descriptivo en agosto, mes usado para ajuste; no es test independiente ni reemplaza la regla original de septiembre/octubre.', '',
-              '| Familia | Δ banda media M | Favorables banda | Δ banda ensamble M | Δ N4000 media M | Δ N4000 ensamble M |', '|---|---:|---:|---:|---:|---:|']
-    for family in ['historia_reciente','cambios_relativos','persistencia','rankings_cero_fijo']:
-        file=args.results/family/'profit_summary.json'
-        if not file.exists():
-            lines.append(f'| {family} | Pendiente | — | — | — | — |')
-            continue
-        summary=json.loads(file.read_text())
-        band=summary['gain_band_3000_6000_M']
-        fixed=summary['gain_4000_M']
-        lines.append(f'| {family} | {band["mean_delta"]:+.4f} | {band["wins"]}/{band["seeds"]} | {band["ensemble_delta"]:+.4f} | {fixed["mean_delta"]:+.4f} | {fixed["ensemble_delta"]:+.4f} |')
-    lines += ['', '![Ganancia económica de nuestras familias completas en agosto Media de diez semillas y corte exploratorio](figuras/ganancia_banda_agosto.png)', '', 'La dirección puede cambiar entre AUC, banda y N fijo: ordenamiento global y beneficio cerca del corte son métricas diferentes. No se elige retrospectivamente la métrica que favorezca a una familia. La decisión de no buscar pesos se tomó sobre la señal de AUC y no se revierte automáticamente al observar otra métrica.', '',
+              ]
+    lines += twenty_section(args.twenty)
+    lines += ['',
               '## Por qué está trabado y qué cambió con esta actualización', '',
               '- El aporte marginal es pequeño frente al valor de los dos primeros meses de historia. Una mejora de 1–2 M depende del control y del procedimiento de medición.',
               '- Septiembre y octubre se consultaron repetidamente; noviembre y diciembre están reservados para el dashboard. No presentamos los nuevos análisis como pruebas ciegas.',
@@ -135,7 +151,7 @@ def main():
               'Se conserva el orden de prioridad del PDF. La última columna registra lo que sabemos internamente; **no son respuestas atribuidas al tutor**. Sus respuestas siguen pendientes.', '',
               '| Prioridad | Pregunta | Evidencia para llevar | Respuesta del tutor |', '|---:|---|---|---|',
               '| 1 | ¿Qué contar en el video si la hipótesis original no pasó la regla? ¿Podemos centrar una hipótesis exploratoria? ¿La regla propia es necesaria? | Regla fallida, señales 13/14 y limitaciones explícitas; video del 23/11 según el PDF | Pendiente |',
-              '| 2 | ¿Seguimos buscando o cerramos? ¿Qué efecto sería útil? | ACH_4 +1,9263 M/mes en el banco; dos familias nuevas negativas y persistencia pequeña en AUC | Pendiente |',
+              '| 2 | ¿Seguimos buscando o cerramos? ¿Qué efecto sería útil? | ACH_4 +1,9263 M/mes en el banco; cambios relativos +3,1109 M y rankings +0,7599 M de banda en agosto con veinte pares; ambos bajan AUC | Pendiente |',
               '| 3 | ¿Qué variable histórica diferente valdría probar? | Inventario hasta 14, fórmulas y solapamientos; evitar repetir familias por desconocer otra rama | Pendiente |',
               '| 4 | ¿Qué baseline debe regir y qué adaptaciones son válidas? | A, AC, ACO y ACH claramente separados; saneamiento y segundo mes de test | Pendiente |',
               '| 5 | ¿Cómo validar sin meses no consultados? ¿Sirve el banco por clientes? | Banco útil para explorar, sin medir transporte temporal | Pendiente |',
@@ -163,8 +179,15 @@ def main():
               '| Banco por clientes | Cinco grupos de clientes en marzo–agosto, con meses compartidos entre entrenamiento y evaluación |',
               '| Dashboard | Noviembre/diciembre reservados por la consigna |', '',
               '## Fuentes y pendientes para cerrar esta versión', '',
-              'Referencia de estructura: PDF nuevo de Ezequiel Experimento feature_historico dónde estamos (1).pdf, 13 páginas. Evidencia numérica: resultados/antecedentes_6cf189c y resultados/familias_20261106, con manifiestos de fuente. No se editó el PDF original ni se mezclaron ramas.', '',
-              'Pendientes: terminar rankings; actualizar el notebook con el snapshot completo y el alcance hasta 14; respuestas del tutor; tablas fuente de diagnósticos macro/segmentos del PDF; bibliografía verificada; decidir el mensaje del video y el baseline de entrega. No completar respuestas, resultados o verificaciones que todavía no existen.', '']
+              'Referencia de estructura: PDF nuevo de Ezequiel Experimento feature_historico dónde estamos (1).pdf, 13 páginas. Evidencia numérica: resultados/antecedentes_6cf189c, resultados/familias_final_20261106 y, para las ampliaciones auditadas, resultados/ampliaciones_20261107, con manifiestos de fuente. No se editó el PDF original ni se mezclaron ramas.', '',
+              'Documentación de resultados cerrada: notebook ejecutado con antecedentes hasta 14 y agregados finales de diez/veinte semillas, informes editables, PDF actualizado y bibliografía metodológica verificada. Pendientes: respuestas del tutor; tablas fuente de diagnósticos macro/segmentos del PDF; decidir el mensaje del video y el baseline de entrega. No completar respuestas, resultados o verificaciones que todavía no existen.', '']
+    bibliography = Path('docs/bibliografia_historia.md')
+    if bibliography.exists():
+        references = bibliography.read_text(encoding='utf-8').replace('# Bibliografía', '## Bibliografía', 1)
+        import re
+        references = re.sub(r'\n[ \t]+', ' ', references)
+        references = re.sub(r'(?<!\n)\n(?!\n|[-#])', ' ', references)
+        lines += [line.rstrip() for line in references.splitlines()] + ['']
     args.out.parent.mkdir(parents=True,exist_ok=True)
     text='\n'.join(lines)
     args.out.write_text(text,encoding='utf-8')

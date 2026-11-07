@@ -1,0 +1,11 @@
+{
+  "historia_reciente-baseline": {
+    "mean_delta": -0.0011318531997990267,
+    "wins": 3,
+    "seeds": 10
+  },
+  "ensemble_auc": {
+    "baseline": 0.9133091808672635,
+    "historia_reciente": 0.9121350410648618
+  }
+}

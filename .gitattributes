@@ -1,0 +1,10 @@
+# Mantener el PDF y las imágenes como archivos binarios.
+*.pdf binary
+*.png binary
+
+# Los manifiestos SHA256 verifican bytes exactos de estos snapshots.
+# Evitar conversiones LF/CRLF al clonar en Windows.
+resultados/ampliaciones_20261107/** -text
+resultados/familias_final_20261106/** -text
+
+notebooks/*.ipynb text eol=lf

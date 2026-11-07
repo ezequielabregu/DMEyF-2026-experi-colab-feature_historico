@@ -1,0 +1,20 @@
+{
+  "captured_utc": "2026-11-07T17:23:23.991489+00:00",
+  "description": "Agregados finales; baseline com\u00fan auditado, veinte semillas por brazo.",
+  "sources": {
+    "cambios_relativos": "gs://tomas_henseler_buckito2026/exp/relativos20_auditado_20261107/checkpoint_completo",
+    "rankings_cero_fijo": "gs://tomas_henseler_buckito2026/exp/rankings20_resume_v4_20261107/checkpoint_completo"
+  },
+  "sha256": {
+    "cambios_relativos/config.json": "5c977877505092fe65cc07b6b9296f48f2073c2a98ba3badebc91b21e4cd1218",
+    "cambios_relativos/control_audit.json": "8d27e7e0e6eda7824aeec06732c0760fd56b9a4862242301c6173fbb4d95a0b2",
+    "cambios_relativos/metrics.csv": "0fe9e48546019507b54522770ae4262fd6b4817c5b70ca5dd3be53b3524f9f60",
+    "cambios_relativos/profit_metrics.csv": "79c7fa1d1b5619abc0f88664eb891fd025ca2474230bb874958c493c9727b6c1",
+    "cambios_relativos/profit_summary.json": "91a0bc2e78732a58baec23b07ee804f6213d115fda38979c7a1167ecc4bb77d9",
+    "rankings_cero_fijo/baseline_bin_audit.json": "56c13093f4e7194ca11e7b9ab27db3943e98196e03dff41d22cf3b960f9e74c1",
+    "rankings_cero_fijo/config.json": "58a933fefec27b68224b0a4ad0902cd0cf3701eb248c8b938cd1f5dedbae31fc",
+    "rankings_cero_fijo/metrics.csv": "33d87780c3946d298fd5aeb47f96d3070898880aba135347f83c1d31504216c7",
+    "rankings_cero_fijo/profit_metrics.csv": "aa6fcf7020fc81f151d174c87133d2c507d5a8486cacc448f4d3f5a84d244f55",
+    "rankings_cero_fijo/profit_summary.json": "2badca2a66d4187969f52b3b5f6e8ff47b996c372920f6fedf92faa867a7ebb7"
+  }
+}

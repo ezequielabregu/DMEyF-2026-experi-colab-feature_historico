@@ -1,0 +1,330 @@
+{
+  "relative_source": "/home/tomas_henseler/experimento_historia/exp/relativos20_resume_v2_20261107/cambios_relativos",
+  "canonical_source": "/home/tomas_henseler/experimento_historia/exp/rankings20_resume_v4_20261107/rankings_cero_fijo",
+  "baseline_changes": [
+    {
+      "seed": 294103,
+      "identical": true,
+      "previous_sha256": "eee42df43d7a3ad3c2ce2e0cad6988c13ed2fd72cf328ac18f953430c0b50850",
+      "canonical_sha256": "eee42df43d7a3ad3c2ce2e0cad6988c13ed2fd72cf328ac18f953430c0b50850"
+    },
+    {
+      "seed": 342929,
+      "identical": true,
+      "previous_sha256": "b109e7c715da18e625b1f353361686feaccadaa02e231157eea50c69285aefbe",
+      "canonical_sha256": "b109e7c715da18e625b1f353361686feaccadaa02e231157eea50c69285aefbe"
+    },
+    {
+      "seed": 161093,
+      "identical": true,
+      "previous_sha256": "d112d652c2653e4217de09cf8dfc8017df13e71790b45ea38c7981d76dd722f1",
+      "canonical_sha256": "d112d652c2653e4217de09cf8dfc8017df13e71790b45ea38c7981d76dd722f1"
+    },
+    {
+      "seed": 677561,
+      "identical": true,
+      "previous_sha256": "574529dd06e13bc6aec621d6cfcf5c18e4d75ba6fea74ac5b7bccb455e5e9855",
+      "canonical_sha256": "574529dd06e13bc6aec621d6cfcf5c18e4d75ba6fea74ac5b7bccb455e5e9855"
+    },
+    {
+      "seed": 431077,
+      "identical": true,
+      "previous_sha256": "967986b5fb1a451aaf8c5bd8f3d24fcc4ee1e34c217ac49dfd4ca73a800749a8",
+      "canonical_sha256": "967986b5fb1a451aaf8c5bd8f3d24fcc4ee1e34c217ac49dfd4ca73a800749a8"
+    },
+    {
+      "seed": 330679,
+      "identical": true,
+      "previous_sha256": "97fcb43fd3866876f6ce521674017befce4d46177a397d04fead72e9db6a92d1",
+      "canonical_sha256": "97fcb43fd3866876f6ce521674017befce4d46177a397d04fead72e9db6a92d1"
+    },
+    {
+      "seed": 511579,
+      "identical": true,
+      "previous_sha256": "f9d364972834134de7f9c300fe94e59b0622249ff7f83cbf07a26407994a087f",
+      "canonical_sha256": "f9d364972834134de7f9c300fe94e59b0622249ff7f83cbf07a26407994a087f"
+    },
+    {
+      "seed": 312773,
+      "identical": true,
+      "previous_sha256": "59722468a646a54dce2acf45d864aeca1a9bc326a07a0dfaa93d59c1f0fc2902",
+      "canonical_sha256": "59722468a646a54dce2acf45d864aeca1a9bc326a07a0dfaa93d59c1f0fc2902"
+    },
+    {
+      "seed": 118147,
+      "identical": true,
+      "previous_sha256": "44cd9f83a5032828943e3b1ac095e05793ed21b8ed4fb291186c7fbef066d94e",
+      "canonical_sha256": "44cd9f83a5032828943e3b1ac095e05793ed21b8ed4fb291186c7fbef066d94e"
+    },
+    {
+      "seed": 567529,
+      "identical": true,
+      "previous_sha256": "d028f3bd5f679afffb6daf394ae86c1640267429dc82d57fe7c456e515be7bf0",
+      "canonical_sha256": "d028f3bd5f679afffb6daf394ae86c1640267429dc82d57fe7c456e515be7bf0"
+    },
+    {
+      "seed": 859783,
+      "identical": false,
+      "previous_sha256": "3a831219bc9acebe87b3edc823dd2a6467c63307dbcf599479dfe387481f8359",
+      "canonical_sha256": "155bcc301e90eae6e9136ce27316df1c6be3d8fccb786af90f4296b47e383943"
+    },
+    {
+      "seed": 505619,
+      "identical": false,
+      "previous_sha256": "fb2b5b04689be65086600c9c23937286c597675a743cdec9659c41327610d915",
+      "canonical_sha256": "d99dc699c881d62ab17b041d6180627f992861dafa86e733431f26c5e5f0e097"
+    },
+    {
+      "seed": 909541,
+      "identical": false,
+      "previous_sha256": "58792f40aae7daa335ff1f41a77c8710e586b17a5de84283c888c2af484d5cd6",
+      "canonical_sha256": "d0b6a6eb2724b4d7d7d07603f04419f72c7e7b6a4e5e766ec8eba19c79c461c5"
+    },
+    {
+      "seed": 646669,
+      "identical": false,
+      "previous_sha256": "66306ba39eba99d812a3ad5dc16676e77a2bf16cdc0a5492f2b1f5f1c90c4069",
+      "canonical_sha256": "d3e6ab8abed33bf097fe8bacbd3e8c61008a01bc41cb0babb6e517d391b3ba80"
+    },
+    {
+      "seed": 902723,
+      "identical": false,
+      "previous_sha256": "aa3af23d294280e0abfcf02b3bdcd2058b30a13676bd7eb94c5ba7710e433998",
+      "canonical_sha256": "f18ff9e52a9d2a6ecb92d33fac7ad995663a335b8f297e6603a89ff185b729c1"
+    },
+    {
+      "seed": 138629,
+      "identical": false,
+      "previous_sha256": "790ed0c4fca2cd84ef2289fa13bd424f43004c9f2df2cc4b196cc24ed254c37a",
+      "canonical_sha256": "3968ff2a738ef5316ab0517031111f847de80dacf52ce932993e063831f295d0"
+    },
+    {
+      "seed": 865801,
+      "identical": false,
+      "previous_sha256": "157df5973841def76b9bc72640804281c1ec49223529dc44f2cbb02836602b1c",
+      "canonical_sha256": "a5ff64151eb1f900de233091408dbb050edcef21d218f1cd503208639a086639"
+    },
+    {
+      "seed": 316957,
+      "identical": false,
+      "previous_sha256": "aac15b5b254e8de16d839d933a031e8190c04ce42027ed7f18f491f21b036ab4",
+      "canonical_sha256": "f2c7c2fc9abb97bb6a079cd4ba61b16eb47493275cc3df687dcd31aa18192544"
+    },
+    {
+      "seed": 254447,
+      "identical": false,
+      "previous_sha256": "07113152e23962286dac423ff33fd1e63b855bb658a65483a060960d16b99bc6",
+      "canonical_sha256": "9c55417023cd762a4f3adb5d3cf33d17bde263e6cf7ff85da805a0bad0793761"
+    },
+    {
+      "seed": 994321,
+      "identical": false,
+      "previous_sha256": "54bdf93e898aadf46167aae3f9d107504dd633e2b0d37a627436df18cf610813",
+      "canonical_sha256": "a25b1821affb8c40f0f48216a345fbb1d0158a2f1c632cac71f8bbc87814265d"
+    }
+  ],
+  "canonical_config_sha256": "58a933fefec27b68224b0a4ad0902cd0cf3701eb248c8b938cd1f5dedbae31fc",
+  "relative_config_sha256": "4e91300caf910079212d3fd7f37d8ae3dfac19af12c3ce9172293fd4148378bc",
+  "predictions": [
+    {
+      "file": "cambios_relativos_294103_201908.npy",
+      "sha256": "342d5fd021a086285a89e9ebd30b4bd26f6260cf6e953da4c1d6d63d8eb8d0cc",
+      "source": "/home/tomas_henseler/experimento_historia/exp/relativos20_resume_v2_20261107/cambios_relativos"
+    },
+    {
+      "file": "cambios_relativos_342929_201908.npy",
+      "sha256": "d3e1dde6581425bb08fb91fc0f49a218403c295eb4f96cbdaa6b8006001437fe",
+      "source": "/home/tomas_henseler/experimento_historia/exp/relativos20_resume_v2_20261107/cambios_relativos"
+    },
+    {
+      "file": "cambios_relativos_161093_201908.npy",
+      "sha256": "2c73a0b970d251e7ea804ae9dff4fa5ae38b523a44d0586d64f0905496886d9e",
+      "source": "/home/tomas_henseler/experimento_historia/exp/relativos20_resume_v2_20261107/cambios_relativos"
+    },
+    {
+      "file": "cambios_relativos_677561_201908.npy",
+      "sha256": "2820f7cb7f904643dbcf4f806e640edc2b8b9a00bc44db4749199e521282affb",
+      "source": "/home/tomas_henseler/experimento_historia/exp/relativos20_resume_v2_20261107/cambios_relativos"
+    },
+    {
+      "file": "cambios_relativos_431077_201908.npy",
+      "sha256": "0124dbb850e06040050c54604a20bdaf86cac1c3bf2b7e420ac0de1ad95354ef",
+      "source": "/home/tomas_henseler/experimento_historia/exp/relativos20_resume_v2_20261107/cambios_relativos"
+    },
+    {
+      "file": "cambios_relativos_330679_201908.npy",
+      "sha256": "f9c5df6e2d639ca1175f2229b1e383845a31f1cc19ce0aac004d7e5b55c17128",
+      "source": "/home/tomas_henseler/experimento_historia/exp/relativos20_resume_v2_20261107/cambios_relativos"
+    },
+    {
+      "file": "cambios_relativos_511579_201908.npy",
+      "sha256": "34e6dc4d9fa963fe2ed158fc3601679196740ece0532e152f24ccecac9fd6b1e",
+      "source": "/home/tomas_henseler/experimento_historia/exp/relativos20_resume_v2_20261107/cambios_relativos"
+    },
+    {
+      "file": "cambios_relativos_312773_201908.npy",
+      "sha256": "31c104e4ebe8ff01fb8aedf47109acab66c0f796d08df051409197ab57b39c68",
+      "source": "/home/tomas_henseler/experimento_historia/exp/relativos20_resume_v2_20261107/cambios_relativos"
+    },
+    {
+      "file": "cambios_relativos_118147_201908.npy",
+      "sha256": "a682dab55a8c821bcdc2eb33c67f5bc105ee4d0b666c6000afd6b037a1f1256f",
+      "source": "/home/tomas_henseler/experimento_historia/exp/relativos20_resume_v2_20261107/cambios_relativos"
+    },
+    {
+      "file": "cambios_relativos_567529_201908.npy",
+      "sha256": "a85f67f5c230a33b2ed36e8e2794979460303c51ac1ef7877a377bf5b17d6eb1",
+      "source": "/home/tomas_henseler/experimento_historia/exp/relativos20_resume_v2_20261107/cambios_relativos"
+    },
+    {
+      "file": "cambios_relativos_859783_201908.npy",
+      "sha256": "58ecfcbddace75b11403d18f575a5f6d8767e62085e1177bc924c583a9b7e958",
+      "source": "/home/tomas_henseler/experimento_historia/exp/relativos20_resume_v2_20261107/cambios_relativos"
+    },
+    {
+      "file": "cambios_relativos_505619_201908.npy",
+      "sha256": "ad5b16fde554a01ecbe7d27629b20e4b2b0905babe0ae38199c7b15138bebdfe",
+      "source": "/home/tomas_henseler/experimento_historia/exp/relativos20_resume_v2_20261107/cambios_relativos"
+    },
+    {
+      "file": "cambios_relativos_909541_201908.npy",
+      "sha256": "713c25fa7ccf5e3b6c2424e241a4cca78a25ce881210c9c764a95b0d4f61bf0d",
+      "source": "/home/tomas_henseler/experimento_historia/exp/relativos20_resume_v2_20261107/cambios_relativos"
+    },
+    {
+      "file": "cambios_relativos_646669_201908.npy",
+      "sha256": "bddeeb43ec3cdaa1ce8c062fddf7a1492838c4ed7f665f70ac6b2b27310a3f65",
+      "source": "/home/tomas_henseler/experimento_historia/exp/relativos20_resume_v2_20261107/cambios_relativos"
+    },
+    {
+      "file": "cambios_relativos_902723_201908.npy",
+      "sha256": "9cc71796f72920ca73617c92102f6b90fe4886a32bbdd016eca6f279166c70cf",
+      "source": "/home/tomas_henseler/experimento_historia/exp/relativos20_resume_v2_20261107/cambios_relativos"
+    },
+    {
+      "file": "cambios_relativos_138629_201908.npy",
+      "sha256": "5c86e94d98621480f74341317a5f6354b92d735b015013bc7b052a1a965928dc",
+      "source": "/home/tomas_henseler/experimento_historia/exp/relativos20_resume_v2_20261107/cambios_relativos"
+    },
+    {
+      "file": "cambios_relativos_865801_201908.npy",
+      "sha256": "35bdfa35c510617252c442e1b1d0c1d506eb59137e2bc2192aa6423f8f6be828",
+      "source": "/home/tomas_henseler/experimento_historia/exp/relativos20_resume_v2_20261107/cambios_relativos"
+    },
+    {
+      "file": "cambios_relativos_316957_201908.npy",
+      "sha256": "2a38032993acb6c2618e5951415e41f98e3c83b198b31f353791b371783d306d",
+      "source": "/home/tomas_henseler/experimento_historia/exp/relativos20_resume_v2_20261107/cambios_relativos"
+    },
+    {
+      "file": "cambios_relativos_254447_201908.npy",
+      "sha256": "2393558d89bdbd5317cc3008bdcce63097e18215df5e30b138fb194f202ee0da",
+      "source": "/home/tomas_henseler/experimento_historia/exp/relativos20_resume_v2_20261107/cambios_relativos"
+    },
+    {
+      "file": "cambios_relativos_994321_201908.npy",
+      "sha256": "74c60c3c4e7df96573b3872e87c0abeed08e3c0985763ab963f0f2873c3de909",
+      "source": "/home/tomas_henseler/experimento_historia/exp/relativos20_resume_v2_20261107/cambios_relativos"
+    },
+    {
+      "file": "baseline_294103_201908.npy",
+      "sha256": "eee42df43d7a3ad3c2ce2e0cad6988c13ed2fd72cf328ac18f953430c0b50850",
+      "source": "/home/tomas_henseler/experimento_historia/exp/rankings20_resume_v4_20261107/rankings_cero_fijo"
+    },
+    {
+      "file": "baseline_342929_201908.npy",
+      "sha256": "b109e7c715da18e625b1f353361686feaccadaa02e231157eea50c69285aefbe",
+      "source": "/home/tomas_henseler/experimento_historia/exp/rankings20_resume_v4_20261107/rankings_cero_fijo"
+    },
+    {
+      "file": "baseline_161093_201908.npy",
+      "sha256": "d112d652c2653e4217de09cf8dfc8017df13e71790b45ea38c7981d76dd722f1",
+      "source": "/home/tomas_henseler/experimento_historia/exp/rankings20_resume_v4_20261107/rankings_cero_fijo"
+    },
+    {
+      "file": "baseline_677561_201908.npy",
+      "sha256": "574529dd06e13bc6aec621d6cfcf5c18e4d75ba6fea74ac5b7bccb455e5e9855",
+      "source": "/home/tomas_henseler/experimento_historia/exp/rankings20_resume_v4_20261107/rankings_cero_fijo"
+    },
+    {
+      "file": "baseline_431077_201908.npy",
+      "sha256": "967986b5fb1a451aaf8c5bd8f3d24fcc4ee1e34c217ac49dfd4ca73a800749a8",
+      "source": "/home/tomas_henseler/experimento_historia/exp/rankings20_resume_v4_20261107/rankings_cero_fijo"
+    },
+    {
+      "file": "baseline_330679_201908.npy",
+      "sha256": "97fcb43fd3866876f6ce521674017befce4d46177a397d04fead72e9db6a92d1",
+      "source": "/home/tomas_henseler/experimento_historia/exp/rankings20_resume_v4_20261107/rankings_cero_fijo"
+    },
+    {
+      "file": "baseline_511579_201908.npy",
+      "sha256": "f9d364972834134de7f9c300fe94e59b0622249ff7f83cbf07a26407994a087f",
+      "source": "/home/tomas_henseler/experimento_historia/exp/rankings20_resume_v4_20261107/rankings_cero_fijo"
+    },
+    {
+      "file": "baseline_312773_201908.npy",
+      "sha256": "59722468a646a54dce2acf45d864aeca1a9bc326a07a0dfaa93d59c1f0fc2902",
+      "source": "/home/tomas_henseler/experimento_historia/exp/rankings20_resume_v4_20261107/rankings_cero_fijo"
+    },
+    {
+      "file": "baseline_118147_201908.npy",
+      "sha256": "44cd9f83a5032828943e3b1ac095e05793ed21b8ed4fb291186c7fbef066d94e",
+      "source": "/home/tomas_henseler/experimento_historia/exp/rankings20_resume_v4_20261107/rankings_cero_fijo"
+    },
+    {
+      "file": "baseline_567529_201908.npy",
+      "sha256": "d028f3bd5f679afffb6daf394ae86c1640267429dc82d57fe7c456e515be7bf0",
+      "source": "/home/tomas_henseler/experimento_historia/exp/rankings20_resume_v4_20261107/rankings_cero_fijo"
+    },
+    {
+      "file": "baseline_859783_201908.npy",
+      "sha256": "155bcc301e90eae6e9136ce27316df1c6be3d8fccb786af90f4296b47e383943",
+      "source": "/home/tomas_henseler/experimento_historia/exp/rankings20_resume_v4_20261107/rankings_cero_fijo"
+    },
+    {
+      "file": "baseline_505619_201908.npy",
+      "sha256": "d99dc699c881d62ab17b041d6180627f992861dafa86e733431f26c5e5f0e097",
+      "source": "/home/tomas_henseler/experimento_historia/exp/rankings20_resume_v4_20261107/rankings_cero_fijo"
+    },
+    {
+      "file": "baseline_909541_201908.npy",
+      "sha256": "d0b6a6eb2724b4d7d7d07603f04419f72c7e7b6a4e5e766ec8eba19c79c461c5",
+      "source": "/home/tomas_henseler/experimento_historia/exp/rankings20_resume_v4_20261107/rankings_cero_fijo"
+    },
+    {
+      "file": "baseline_646669_201908.npy",
+      "sha256": "d3e6ab8abed33bf097fe8bacbd3e8c61008a01bc41cb0babb6e517d391b3ba80",
+      "source": "/home/tomas_henseler/experimento_historia/exp/rankings20_resume_v4_20261107/rankings_cero_fijo"
+    },
+    {
+      "file": "baseline_902723_201908.npy",
+      "sha256": "f18ff9e52a9d2a6ecb92d33fac7ad995663a335b8f297e6603a89ff185b729c1",
+      "source": "/home/tomas_henseler/experimento_historia/exp/rankings20_resume_v4_20261107/rankings_cero_fijo"
+    },
+    {
+      "file": "baseline_138629_201908.npy",
+      "sha256": "3968ff2a738ef5316ab0517031111f847de80dacf52ce932993e063831f295d0",
+      "source": "/home/tomas_henseler/experimento_historia/exp/rankings20_resume_v4_20261107/rankings_cero_fijo"
+    },
+    {
+      "file": "baseline_865801_201908.npy",
+      "sha256": "a5ff64151eb1f900de233091408dbb050edcef21d218f1cd503208639a086639",
+      "source": "/home/tomas_henseler/experimento_historia/exp/rankings20_resume_v4_20261107/rankings_cero_fijo"
+    },
+    {
+      "file": "baseline_316957_201908.npy",
+      "sha256": "f2c7c2fc9abb97bb6a079cd4ba61b16eb47493275cc3df687dcd31aa18192544",
+      "source": "/home/tomas_henseler/experimento_historia/exp/rankings20_resume_v4_20261107/rankings_cero_fijo"
+    },
+    {
+      "file": "baseline_254447_201908.npy",
+      "sha256": "9c55417023cd762a4f3adb5d3cf33d17bde263e6cf7ff85da805a0bad0793761",
+      "source": "/home/tomas_henseler/experimento_historia/exp/rankings20_resume_v4_20261107/rankings_cero_fijo"
+    },
+    {
+      "file": "baseline_994321_201908.npy",
+      "sha256": "a25b1821affb8c40f0f48216a345fbb1d0158a2f1c632cac71f8bbc87814265d",
+      "source": "/home/tomas_henseler/experimento_historia/exp/rankings20_resume_v4_20261107/rankings_cero_fijo"
+    }
+  ]
+}

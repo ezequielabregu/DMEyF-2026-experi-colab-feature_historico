@@ -1,0 +1,22 @@
+{
+  "gain_4000_M": {
+    "baseline_mean": 209.0,
+    "variant_mean": 208.01,
+    "mean_delta": -0.9899999999999978,
+    "wins": 4,
+    "seeds": 10,
+    "baseline_ensemble": 211.2,
+    "variant_ensemble": 210.1,
+    "ensemble_delta": -1.0999999999999943
+  },
+  "gain_band_3000_6000_M": {
+    "baseline_mean": 205.79742752415865,
+    "variant_mean": 206.55511162945686,
+    "mean_delta": 0.7576841052982217,
+    "wins": 6,
+    "seeds": 10,
+    "baseline_ensemble": 208.16482839053648,
+    "variant_ensemble": 209.05113295568145,
+    "ensemble_delta": 0.8863045651449681
+  }
+}

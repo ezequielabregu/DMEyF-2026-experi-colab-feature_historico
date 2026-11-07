@@ -1,0 +1,11 @@
+{
+  "rankings_cero_fijo-baseline": {
+    "mean_delta": -0.0006111707246536646,
+    "wins": 3,
+    "seeds": 10
+  },
+  "ensemble_auc": {
+    "baseline": 0.9133091808672635,
+    "rankings_cero_fijo": 0.9125621311201553
+  }
+}

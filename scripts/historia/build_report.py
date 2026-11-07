@@ -29,6 +29,7 @@ def render_html(markdown):
     def inline(text):
         text = html.escape(text)
         text = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', text)
+        text = re.sub(r'\[([^\]]+)\]\((https?://[^)]+)\)', r'<a href="\2">\1</a>', text)
         return re.sub(r'`(.+?)`', r'<code>\1</code>', text)
     out, table, listing = [], False, False
     for line in markdown.splitlines():

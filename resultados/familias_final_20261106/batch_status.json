@@ -1,0 +1,11 @@
+{
+  "status": "complete",
+  "completed": [
+    "historia_reciente",
+    "cambios_relativos",
+    "persistencia",
+    "rankings_cero_fijo"
+  ],
+  "failed": [],
+  "updated_utc": "2026-11-06T23:07:22.651992+00:00"
+}

@@ -1,17 +1,40 @@
-# Plantilla de tutoría y actualización de fuentes
+# Plantilla de tutoría y fuentes del cierre
 
-La versión completada del PDF nuevo está en `estado_grupal_para_tutoria.md` y `estado_grupal_para_tutoria.html`. Conserva los bloques del original: problema/baseline, recorrido de pruebas, obstáculos, preguntas para Alejandro y glosario. Agrega preparación, estado de nuestras cuatro familias y trazabilidad.
+El reporte conserva la estructura del PDF original de Ezequiel: problema y
+baseline, recorrido de pruebas, obstáculos, preguntas para Alejandro y glosario.
+El original se preserva. Las versiones editables son
+`estado_grupal_para_tutoria.md/.html` e `informe_experimentos_historia.md/.html`.
+El PDF nuevo está en `output/pdf/informe_ezequiel_actualizado_20261107.pdf`.
 
-La misma versión actualizada se publica también como `informe_experimentos_historia.md` y `.html`, que es el archivo principal abierto por el usuario. Incluye la ganancia económica de nuestras familias en agosto, con sus diferencias frente a ACO y sin mezclarla con otros meses o controles.
+## Fuentes vigentes
 
-El PDF nuevo permitió detectar un desfase de fuentes. El informe y notebook anteriores se basaban en `3b44f21` (hasta 09, sin resultados 09 publicados entonces). El 6/11 se actualizó origin y se obtuvo `6cf189c`, que incluye resultados 09–14. No corresponde seguir diciendo que el 09 carece de resultados sin aclarar el snapshot histórico. La nueva versión incluye esa corrección.
+- Antecedentes: commit **6cf189c**, con resultados hasta 14, congelados en
+  `resultados/antecedentes_6cf189c`. El antiguo 3b44f21 es histórico; su ausencia
+  de tablas 09 no describe el estado actual.
+- Cuatro familias de diez semillas: `resultados/familias_final_20261106`.
+- Ampliaciones auditadas de veinte: `resultados/ampliaciones_20261107`.
+  `snapshot.json` registra hashes y prefijos de respaldo completos.
+- Auditoría: `docs/auditoria_bins_20261107.md`.
 
-Las tablas fuente recientes están en `resultados/antecedentes_6cf189c`; las de nuestra cola en `resultados/familias_20261106`. No se mezclaron ni fusionaron ramas. La versión completada es de trabajo; los resultados parciales, respuestas del tutor y verificaciones aún no realizadas se señalan como pendientes.
+El notebook `notebooks/tutoria_historia.ipynb` ya utiliza estas fuentes y se
+ejecutó con ocho celdas de código y dos gráficos, sin errores, sobre agregados
+finales. No se mezclaron ramas ni se descargaron claves/predicciones al repositorio.
 
-Regeneración:
+## Regeneración de los informes
 
 ```bash
-python scripts/historia/complete_tutoria_template.py
+python scripts/historia/complete_tutoria_template.py --twenty resultados/ampliaciones_20261107 --out docs/estado_grupal_para_tutoria.md
+python scripts/historia/complete_tutoria_template.py --twenty resultados/ampliaciones_20261107 --out docs/informe_experimentos_historia.md
 ```
 
-El PDF original no se modifica. Su estructura se adapta en Markdown editable y HTML imprimible, con figuras originales de 13 y 14 conservadas en `docs/figuras`.
+`--twenty` incorpora las ampliaciones auditadas. El valor predeterminado de
+`--results` apunta al paquete final de diez semillas. El PDF se genera desde el
+Markdown de Ezequiel; las figuras de 13 y 14 se conservan en `docs/figuras`.
+Instrucciones de notebook y paquete: `docs/tutoria_historia.md`.
+
+Todas las corridas de esta tanda terminaron y la VM está apagada. Siguen pendientes
+las respuestas del tutor, verificaciones de diagnósticos sin sus tablas fuente,
+decisiones de entrega; no se inventan respuestas o resultados.
+
+La bibliografía metodológica se verificó con seis fuentes primarias y se incluye
+en `docs/bibliografia_historia.md`, los informes, el PDF y el notebook.

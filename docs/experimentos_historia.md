@@ -1,5 +1,15 @@
 # Nuevas representaciones de historia corta
 
+## Cierre documental del 7/11/2026
+
+Las cuatro familias completaron diez pares. Cambios relativos y rankings
+completaron además veinte pares totales, con control común auditado. Los
+resultados definitivos, originales/adicionales/total y ensambles están en el
+informe grupal y el notebook ejecutado. Guía: `docs/tutoria_historia.md`.
+Historia reciente no dejó señal de AUC para habilitar la búsqueda de pesos;
+esa búsqueda no se inició. No quedan entrenamientos pendientes de esta tanda.
+Las secciones siguientes conservan el diseño original, no una cola activa.
+
 Rama de trabajo: `feat/historia-transformaciones`. Diseño fijado el 5/11/2026 antes de ejecutar estas cuatro familias. Los resultados anteriores quedan como antecedentes; no se presentan como nuevas validaciones independientes.
 
 ## Archivos independientes

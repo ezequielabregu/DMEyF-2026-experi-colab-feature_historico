@@ -1,0 +1,11 @@
+{
+  "persistencia-baseline": {
+    "mean_delta": 0.00023069795445846976,
+    "wins": 5,
+    "seeds": 10
+  },
+  "ensemble_auc": {
+    "baseline": 0.9133091808672635,
+    "persistencia": 0.913470550011833
+  }
+}

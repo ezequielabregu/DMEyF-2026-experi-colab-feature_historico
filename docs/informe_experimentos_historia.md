@@ -2,9 +2,9 @@
 
 **Versión de trabajo para tutoría del grupo completo.** Conserva el orden y el enfoque del PDF nuevo de Ezequiel, incorporando la evidencia publicada hasta el commit 6cf189c y nuestras corridas de Google Cloud. El PDF original se conserva sin editar.
 
-**Corte de nuestras métricas:** 2026-11-06T23:01:55.994865+00:00 (UTC). Los resultados parciales se identifican como tales. Integrantes: Tomás Henseler, Clara M. Rodríguez y Ezequiel Abregú. Tutor: Alejandro Bolaños.
+**Comparaciones de veinte semillas: cierre auditado del 7 de noviembre de 2026.** Integrantes: Tomás Henseler, Clara M. Rodríguez y Ezequiel Abregú. Tutor: Alejandro Bolaños.
 
-La historia básica aporta valor, pero mejorarla es más difícil. El experimento original no superó la regla propia de ganancia; las exploraciones posteriores dejaron señales pequeñas. El nuevo banco por clientes encuentra una señal intermedia para cuatro bloques juntos. En nuestras pruebas de AUC, historia reciente y cambios relativos no mejoraron; persistencia dio una mejora pequeña que no fue uniforme entre semillas. Rankings sigue pendiente al corte.
+La historia básica aporta valor, pero mejorarla es más difícil. El experimento original no superó la regla propia de ganancia; las exploraciones posteriores dejaron señales pequeñas. El nuevo banco por clientes encuentra una señal intermedia para cuatro bloques juntos. Nuestro aporte compara cambios relativos y rankings con veinte semillas por estrategia: ambos reducen la AUC media frente a ACO, pero muestran mayor ganancia media de banda en agosto. La señal económica es más consistente para cambios relativos y sigue siendo exploratoria.
 
 ## El problema y el baseline
 
@@ -37,7 +37,7 @@ La regla no fue exigida por la consigna: pide p de Wilcoxon ajustado por Holm me
 | 3 Cambio de pregunta 12 | ¿Cuánto vale la historia y entrenar más cerca? | Unos 20 M/mes de banda al recuperar historia básica; mejoras variables al acercar la ventana |
 | 4 Banco por clientes 13 | ¿Podemos medir con menor ruido? | Cuatro bloques solos: +0,74 a +1,60 M/mes frente a ACH en el banco |
 | 5 Combinación 14 | ¿Los cuatro bloques juntos se complementan? | +1,9263 M/mes; señal intermedia; no supera claramente la mejor idea sola |
-| 6 Nuestra serie de AUC | ¿Otras transformaciones superan ACO en agosto? | Dos negativos, persistencia pequeña y rankings en curso al corte |
+| Aporte complementario | ¿Cambiar la representación de la historia mejora ACO en agosto? | Cambios relativos y rankings, explicados y comparados directamente con veinte pares por estrategia |
 
 ### Preparación y prueba mínima
 
@@ -178,33 +178,64 @@ ACH_4 añade 300 columnas a ACH. Se comparan con cinco semillas sobre el banco p
 
 La combinación cumple la categoría de señal intermedia fijada para ese análisis: de +1,5 a menos de +3 M. Su +1,9263 M no supera numéricamente a inestabilidad sola (+2,0047 M), cuya comparación tiene menos semillas y no permite concluir equivalencia. En mayo–agosto la combinación da +2,7488 M; el ensamble reporta +1,9828 M. Queda pendiente la evaluación que propone el PDF en septiembre/octubre; esos meses ya fueron consultados, así que tampoco sería una confirmación independiente.
 
-### Paso 6 Nuestras cuatro familias con objetivo AUC
+## Dos estrategias de historia evaluadas con veinte semillas
 
-Control ACO de marzo–junio, parámetros fijos del 07, 339 árboles, diez semillas por brazo. Solo enero–agosto cargados. Se agrega una familia por vez a las 760 columnas. Historia reciente usa pesos 4:2:1; cambios relativos usa diferencia simétrica acotada; persistencia usa dos caídas/subidas, reversión y aceleración; rankings rankea niveles por mes/signo con cero fijo y agrega lags/deltas.
+Comparamos dos formas de representar la historia de un cliente: su cambio relativo respecto de sí mismo y su posición respecto de los demás clientes del mes. Cada estrategia se añade por separado al baseline ACO de 760 columnas; no se reemplazan las variables originales, sus lags ni sus deltas.
 
-| Familia | Pares disponibles | Estado | Δ AUC media | Favorables | Δ AUC ensamble |
-|---|---:|---|---:|---:|---:|
-| historia_reciente | 10/10 | Completo | -0.001132 | 3/10 | -0.001174 |
-| cambios_relativos | 10/10 | Completo | -0.000908 | 4/10 | -0.001026 |
-| persistencia | 10/10 | Completo | +0.000231 | 5/10 | +0.000161 |
-| rankings_cero_fijo | 7/10 | En curso | -0.000490 | 2/7 | — |
+### Cambios relativos: medir la variación respecto del propio pasado
 
-Historia reciente no dejó la señal de AUC acordada para habilitar una búsqueda de pesos; no la iniciaremos. Persistencia tiene una señal pequeña, con solo la mitad de las semillas a favor: no es una ganadora confirmada. No se decide sobre rankings hasta terminar. Las AUC no se convierten automáticamente en ganancia; la evaluación económica secundaria sigue a continuación y no se compara directamente con los millones del banco 13/14.
+La pregunta es si una caída representa un cambio importante para ese cliente, aunque su nivel de actividad sea muy distinto del de otros. La diferencia absoluta ya está en el baseline; esta estrategia agrega una diferencia normalizada por el tamaño de los valores comparados.
 
-### Ganancia económica de nuestras familias en agosto
+Para cada una de 129 variables numéricas seleccionadas se compara el valor actual con el de uno y dos meses atrás. Las dos features son:
 
-Análisis secundario fijado después de mirar parte de las AUC. Usa las mismas probabilidades guardadas, sin reentrenar. Resultado por contacto: +1.072.500 para BAJA+2 y −27.500 en otro caso. No se optimiza N por modelo: se informa la banda inclusiva de 3.000–6.000 envíos y un presupuesto común N=4.000. Media entre diez pares y cambio del ensamble. Todo es descriptivo en agosto, mes usado para ajuste; no es test independiente ni reemplaza la regla original de septiembre/octubre.
+`r1 = (actual - lag1) / (abs(actual) + abs(lag1))`
 
-| Familia | Δ banda media M | Favorables banda | Δ banda ensamble M | Δ N4000 media M | Δ N4000 ensamble M |
+`r2 = (actual - lag2) / (abs(actual) + abs(lag2))`
+
+El resultado está entre -1 y 1. Dos ceros observados producen cero; si falta cualquiera de los valores, se conserva NaN. No se divide solamente por el valor previo, por lo que un previo igual a cero no genera infinito. Es un cambio simétrico acotado, no un porcentaje convencional.
+
+Ejemplo: pasar de 200 a 100 y pasar de 200.000 a 100.000 producen ambos -0,3333. La escala absoluta difiere, pero la señal de reducción relativa es la misma. Los niveles originales siguen disponibles para que el modelo distinga el tamaño de cada cliente.
+
+Se agregan 129 × 2 = 258 columnas; total 1.018. Los lags buscan el mes calendario exacto del mismo cliente. La selección excluye indicadores, estados, fechas, edad y antigüedad; no aplica la fórmula indiscriminadamente a todos los campos.
+
+### Rankings con cero fijo: medir la posición dentro del mes
+
+La pregunta es si cambia la posición del cliente frente a los demás, aun cuando todos los montos se muevan de escala. Para cada una de 73 variables monetarias se calcula un percentil en cada foto mensual, por separado para los valores positivos y los negativos. No se usan etiquetas para construirlo.
+
+Los positivos reciben percentiles entre 0 y 1. Los negativos se ordenan por magnitud absoluta dentro del grupo negativo y recuperan el signo menos. Los ceros quedan exactamente en cero y los faltantes siguen como NaN. Los empates reciben el rango promedio.
+
+Ejemplo: si cuatro montos positivos son 100, 200, 300 y 400, sus ranks son 0,25; 0,50; 0,75 y 1. Si todos se duplican y se conserva el mismo orden y población, los ranks no cambian. Así se representa posición relativa; esto no constituye por sí solo un ajuste de inflación ni una prueba de robustez macroeconómica.
+
+Para cada variable se agregan el rank actual, sus lags de uno y dos meses y las diferencias rank actual menos cada lag: cinco features por variable. Son 73 × 5 = 365 columnas; total 1.125. Los lags son por calendario exacto dentro del cliente. La foto completa define la distribución de referencia: cambios en su composición también pueden mover el rank de un cliente.
+
+### Cómo se compararon
+
+Veinte pares por estrategia: baseline ACO y baseline más las features propuestas, con las mismas veinte semillas y un baseline canónico común auditado. Entrenamiento marzo-junio de 2019, validación agosto, parámetros del 07 congelados, 339 árboles y ocho hilos. Entrenar positivo BAJA+1 o BAJA+2; evaluar AUC y ganancia positivas solo BAJA+2. No se abren otros meses.
+
+Ganancia del ejercicio: +1.072.500 por BAJA+2 contactado y -27.500 por el resto. Se informa la banda inclusiva N=3.000-6.000 y el corte común N=4.000; no se optimiza N por variante. Las diferencias siguientes son variante menos baseline en los mismos pares.
+
+| Estrategia | Pares | Δ AUC media | Δ banda media M | Favorables banda | Δ N4000 media M |
 |---|---:|---:|---:|---:|---:|
-| historia_reciente | +0.7577 | 6/10 | +0.8863 | -0.9900 | -1.1000 |
-| cambios_relativos | +4.7005 | 8/10 | +5.4736 | +4.1800 | +11.0000 |
-| persistencia | +0.6607 | 6/10 | +0.8398 | +0.5500 | -1.1000 |
-| rankings_cero_fijo | Pendiente | — | — | — | — |
+| Cambios relativos | 20 | -0.000375 | +3.1109 | 15/20 | +3.7950 |
+| Rankings con cero fijo | 20 | -0.000668 | +0.7599 | 11/20 | +0.8250 |
 
-![Ganancia económica de nuestras familias completas en agosto Media de diez semillas y corte exploratorio](figuras/ganancia_banda_agosto.png)
+El ensamble promedia las probabilidades de veinte modelos por brazo. Sus métricas se calculan después de promediar las probabilidades y se presentan aparte de la media entre semillas.
 
-La dirección puede cambiar entre AUC, banda y N fijo: ordenamiento global y beneficio cerca del corte son métricas diferentes. No se elige retrospectivamente la métrica que favorezca a una familia. La decisión de no buscar pesos se tomó sobre la señal de AUC y no se revierte automáticamente al observar otra métrica.
+| Estrategia | Δ AUC ensamble | Δ banda ensamble M | Δ N4000 ensamble M |
+|---|---:|---:|---:|
+| Cambios relativos | -0.000471 | +3.2527 | +7.7000 |
+| Rankings con cero fijo | -0.000763 | +1.2012 | +3.3000 |
+
+### Cierre de esta tanda y lectura para tutoría
+
+Cambios relativos muestra una mejora media de banda de +3,1109 M y 15 de 20 semillas favorables. Rankings muestra +0,7599 M y 11 de 20 favorables. Ambas estrategias reducen la AUC media frente a ACO. Dentro de agosto, la señal económica resulta más consistente para cambios relativos; no se declara una ganadora confirmada.
+
+La evaluación económica es secundaria y la cantidad de veinte semillas se fijó después de una exploración inicial con diez. Sigue siendo una ampliación exploratoria, no una prueba independiente. Agosto también intervino en el ajuste del baseline: las semillas describen variación del algoritmo y no añaden meses de validación.
+
+No quedan entrenamientos pendientes de esta tanda. No se sumarán semillas para fortalecer el resultado; una evaluación temporal adicional requiere un protocolo nuevo. Los detalles de auditoría y el desglose por bloques de semillas se conservan en docs/auditoria_bins_20261107.md y en el notebook técnico.
+
+El registro de historia reciente y persistencia, incluidos sus resultados negativos o pequeños, permanece en el notebook y los agregados de diez semillas. Esta sección presenta las dos estrategias que completaron veinte pares.
+
 
 ## Por qué está trabado y qué cambió con esta actualización
 
@@ -225,7 +256,7 @@ Se conserva el orden de prioridad del PDF. La última columna registra lo que sa
 | Prioridad | Pregunta | Evidencia para llevar | Respuesta del tutor |
 |---:|---|---|---|
 | 1 | ¿Qué contar en el video si la hipótesis original no pasó la regla? ¿Podemos centrar una hipótesis exploratoria? ¿La regla propia es necesaria? | Regla fallida, señales 13/14 y limitaciones explícitas; video del 23/11 según el PDF | Pendiente |
-| 2 | ¿Seguimos buscando o cerramos? ¿Qué efecto sería útil? | ACH_4 +1,9263 M/mes en el banco; dos familias nuevas negativas y persistencia pequeña en AUC | Pendiente |
+| 2 | ¿Seguimos buscando o cerramos? ¿Qué efecto sería útil? | ACH_4 +1,9263 M/mes en el banco; cambios relativos +3,1109 M y rankings +0,7599 M de banda en agosto con veinte pares; ambos bajan AUC | Pendiente |
 | 3 | ¿Qué variable histórica diferente valdría probar? | Inventario hasta 14, fórmulas y solapamientos; evitar repetir familias por desconocer otra rama | Pendiente |
 | 4 | ¿Qué baseline debe regir y qué adaptaciones son válidas? | A, AC, ACO y ACH claramente separados; saneamiento y segundo mes de test | Pendiente |
 | 5 | ¿Cómo validar sin meses no consultados? ¿Sirve el banco por clientes? | Banco útil para explorar, sin medir transporte temporal | Pendiente |
@@ -258,6 +289,19 @@ Se conserva el orden de prioridad del PDF. La última columna registra lo que sa
 
 ## Fuentes y pendientes para cerrar esta versión
 
-Referencia de estructura: PDF nuevo de Ezequiel Experimento feature_historico dónde estamos (1).pdf, 13 páginas. Evidencia numérica: resultados/antecedentes_6cf189c y resultados/familias_20261106, con manifiestos de fuente. No se editó el PDF original ni se mezclaron ramas.
+Referencia de estructura: PDF nuevo de Ezequiel Experimento feature_historico dónde estamos (1).pdf, 13 páginas. Evidencia numérica: resultados/antecedentes_6cf189c, resultados/familias_final_20261106 y, para las ampliaciones auditadas, resultados/ampliaciones_20261107, con manifiestos de fuente. No se editó el PDF original ni se mezclaron ramas.
 
-Pendientes: terminar rankings; actualizar el notebook con el snapshot completo y el alcance hasta 14; respuestas del tutor; tablas fuente de diagnósticos macro/segmentos del PDF; bibliografía verificada; decidir el mensaje del video y el baseline de entrega. No completar respuestas, resultados o verificaciones que todavía no existen.
+Documentación de resultados cerrada: notebook ejecutado con antecedentes hasta 14 y agregados finales de diez/veinte semillas, informes editables, PDF actualizado y bibliografía metodológica verificada. Pendientes: respuestas del tutor; tablas fuente de diagnósticos macro/segmentos del PDF; decidir el mensaje del video y el baseline de entrega. No completar respuestas, resultados o verificaciones que todavía no existen.
+
+## Bibliografía metodológica verificada
+
+Fuentes primarias consultadas el 7 de noviembre de 2026. Respaldan conceptos y herramientas; las métricas del trabajo provienen de los agregados y manifiestos del repositorio. Esta revisión no recalcula los contrastes de los compañeros.
+
+- Ke, G., Meng, Q., Finley, T., Wang, T., Chen, W., Ma, W., Ye, Q. y Liu, T.-Y. (2017). [LightGBM: A Highly Efficient Gradient Boosting Decision Tree](https://proceedings.neurips.cc/paper_files/paper/2017/hash/6449f44a102fde848669bdd9eb6b76fa-Abstract.html). Advances in Neural Information Processing Systems 30. Artículo del software usado.
+- Proyecto LightGBM. [Parameters](https://lightgbm.readthedocs.io/en/stable/Parameters.html). Documenta seed, data_random_seed y muestreo para construir bins. La auditoría concreta del trabajo se verificó además mediante predicciones idénticas.
+- Proyecto scikit-learn. [roc_auc_score](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html). Define el cálculo de ROC-AUC desde scores. No sustituye la función económica particular de la consigna, que se documenta por separado.
+- Proyecto SciPy. [scipy.stats.wilcoxon](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.wilcoxon.html). Describe el contraste de rangos con signo para pares y las precauciones con ceros, empates y método exacto. Los p del informe se atribuyen a sus tablas fuente.
+- Proyecto statsmodels. [multipletests](https://www.statsmodels.org/stable/generated/statsmodels.stats.multitest.multipletests.html). Documenta Holm como corrección escalonada basada en Bonferroni para múltiples contrastes. La regla de seis contrastes es una decisión del grupo.
+- Proyecto scikit-learn. [TimeSeriesSplit](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.TimeSeriesSplit.html). Referencia conceptual sobre particiones con orden temporal. No se afirma haber usado esta clase: el trabajo usa los meses y particiones descritos en su protocolo.
+
+Las páginas de documentación pueden mostrar versiones posteriores al entorno de entrenamiento. Las versiones efectivamente usadas siguen registradas en cada config.json; consultar estas referencias no cambia la configuración de las corridas.
