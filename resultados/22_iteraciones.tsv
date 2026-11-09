@@ -1,0 +1,3 @@
+config	hipotesis	contra	columnas	d_M	resultado	decide
+PAQ_P3	Los dos empates a favor juntos (Visa y Master con historia, y cambios relativos) ganan más que ACH_4_P3	ACH_4_P3	1653	2.201	Suma	True
+PAQ_C_P3	El paquete sin las columnas que quedan debajo de los canaritos	ACH_4_P3	352	1.414	Suma	False

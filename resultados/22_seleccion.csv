@@ -1,0 +1,1654 @@
+columna,grupo,elegida_201906,estricta_201906,elegida_201907,estricta_201907,elegida_201908,estricta_201908,elegida_201909,estricta_201909,elegida_201910,estricta_201910,meses_elegida
+active_quarter,del mes,False,False,True,False,True,True,True,False,True,True,4
+cliente_vip,del mes,False,False,False,False,False,False,False,False,False,False,0
+internet,del mes,True,False,True,False,True,False,True,False,True,False,5
+cliente_edad,del mes,True,False,False,False,True,False,True,False,True,False,4
+cliente_antiguedad,del mes,False,False,False,False,True,False,True,False,True,False,3
+mrentabilidad,del mes,True,True,False,False,True,False,True,False,True,True,4
+mrentabilidad_annual,del mes,True,False,False,False,True,False,True,False,True,True,4
+mcomisiones,del mes,False,False,False,False,False,False,True,False,True,False,2
+mactivos_margen,del mes,True,False,True,False,True,False,True,False,True,True,5
+mpasivos_margen,del mes,True,True,True,False,True,False,True,True,True,True,5
+cproductos,del mes,True,True,True,True,True,True,True,True,True,True,5
+tcuentas,del mes,False,False,False,False,False,False,False,False,False,False,0
+ccuenta_corriente,del mes,False,False,False,False,False,False,False,False,False,False,0
+mcuenta_corriente_adicional,del mes,False,False,False,False,False,False,False,False,False,False,0
+mcuenta_corriente,del mes,True,True,True,True,True,True,True,True,True,True,5
+ccaja_ahorro,del mes,True,True,True,True,True,True,True,True,True,True,5
+mcaja_ahorro,del mes,True,True,True,True,True,True,True,True,True,True,5
+mcaja_ahorro_adicional,del mes,False,False,False,False,False,False,False,False,False,False,0
+mcaja_ahorro_dolares,del mes,False,False,False,False,False,False,False,False,False,False,0
+cdescubierto_preacordado,del mes,True,True,True,True,True,True,True,True,True,True,5
+mcuentas_saldo,del mes,True,True,True,True,True,True,True,True,True,True,5
+ctarjeta_debito,del mes,False,False,False,False,False,False,False,False,False,False,0
+ctarjeta_debito_transacciones,del mes,True,False,False,False,False,False,True,False,False,False,2
+mautoservicio,del mes,False,False,True,False,True,False,True,False,True,False,4
+ctarjeta_visa,del mes,False,False,False,False,False,False,True,False,False,False,1
+ctarjeta_visa_transacciones,del mes,True,True,True,True,True,True,True,True,True,True,5
+mtarjeta_visa_consumo,del mes,True,True,True,True,True,True,True,True,True,True,5
+ctarjeta_master,del mes,False,False,False,False,False,False,False,False,False,False,0
+ctarjeta_master_transacciones,del mes,False,False,False,False,False,False,False,False,False,False,0
+mtarjeta_master_consumo,del mes,True,False,False,False,True,False,True,False,True,False,4
+cprestamos_personales,del mes,False,False,False,False,False,False,True,False,False,False,1
+mprestamos_personales,del mes,True,True,True,True,True,True,True,True,True,True,5
+cprestamos_prendarios,del mes,False,False,False,False,False,False,False,False,False,False,0
+mprestamos_prendarios,del mes,False,False,False,False,False,False,True,False,True,False,2
+cprestamos_hipotecarios,del mes,False,False,False,False,False,False,True,False,True,False,2
+mprestamos_hipotecarios,del mes,False,False,False,False,False,False,False,False,True,False,1
+cplazo_fijo,del mes,False,False,False,False,False,False,True,False,True,False,2
+mplazo_fijo_dolares,del mes,False,False,False,False,True,False,True,False,True,False,3
+mplazo_fijo_pesos,del mes,False,False,False,False,False,False,False,False,False,False,0
+cinversion1,del mes,False,False,False,False,False,False,False,False,False,False,0
+minversion1_pesos,del mes,False,False,False,False,False,False,False,False,False,False,0
+minversion1_dolares,del mes,False,False,False,False,False,False,False,False,False,False,0
+cinversion2,del mes,False,False,False,False,False,False,False,False,False,False,0
+minversion2,del mes,False,False,False,False,False,False,False,False,False,False,0
+cseguro_vida,del mes,False,False,False,False,False,False,False,False,False,False,0
+cseguro_auto,del mes,False,False,False,False,False,False,False,False,False,False,0
+cseguro_vivienda,del mes,False,False,False,False,False,False,False,False,False,False,0
+cseguro_accidentes_personales,del mes,False,False,False,False,False,False,False,False,False,False,0
+ccaja_seguridad,del mes,True,True,True,True,True,True,True,True,True,True,5
+cpayroll_trx,del mes,True,True,True,True,True,True,True,True,True,True,5
+mpayroll,del mes,True,True,True,True,True,True,True,True,True,True,5
+mpayroll2,del mes,False,False,False,False,False,False,False,False,False,False,0
+cpayroll2_trx,del mes,False,False,False,False,False,False,False,False,False,False,0
+ccuenta_debitos_automaticos,del mes,False,False,False,False,False,False,False,False,False,False,0
+mcuenta_debitos_automaticos,del mes,True,True,True,True,True,True,True,True,True,True,5
+ctarjeta_visa_debitos_automaticos,del mes,False,False,False,False,False,False,False,False,True,False,1
+mttarjeta_visa_debitos_automaticos,del mes,True,False,True,False,True,False,False,False,True,False,4
+ctarjeta_master_debitos_automaticos,del mes,False,False,False,False,False,False,False,False,False,False,0
+mttarjeta_master_debitos_automaticos,del mes,False,False,False,False,False,False,False,False,False,False,0
+cpagodeservicios,del mes,False,False,False,False,False,False,False,False,False,False,0
+mpagodeservicios,del mes,False,False,False,False,False,False,False,False,False,False,0
+cpagomiscuentas,del mes,False,False,False,False,False,False,True,False,True,False,2
+mpagomiscuentas,del mes,True,False,True,False,True,True,True,True,True,True,5
+ccajeros_propios_descuentos,del mes,False,False,False,False,False,False,False,False,False,False,0
+mcajeros_propios_descuentos,del mes,False,False,False,False,False,False,False,False,False,False,0
+ctarjeta_visa_descuentos,del mes,False,False,False,False,False,False,False,False,False,False,0
+mtarjeta_visa_descuentos,del mes,False,False,False,False,False,False,False,False,False,False,0
+ctarjeta_master_descuentos,del mes,False,False,False,False,False,False,False,False,False,False,0
+mtarjeta_master_descuentos,del mes,False,False,False,False,False,False,False,False,False,False,0
+ccomisiones_mantenimiento,del mes,False,False,False,False,False,False,False,False,False,False,0
+mcomisiones_mantenimiento,del mes,True,False,True,False,True,False,True,False,True,True,5
+ccomisiones_otras,del mes,True,False,False,False,False,False,False,False,False,False,1
+mcomisiones_otras,del mes,False,False,False,False,False,False,True,False,False,False,1
+cforex,del mes,False,False,False,False,False,False,False,False,False,False,0
+cforex_buy,del mes,False,False,False,False,False,False,False,False,False,False,0
+mforex_buy,del mes,False,False,False,False,False,False,False,False,False,False,0
+cforex_sell,del mes,False,False,False,False,False,False,False,False,False,False,0
+mforex_sell,del mes,False,False,False,False,False,False,False,False,False,False,0
+ctransferencias_recibidas,del mes,False,False,False,False,False,False,False,False,False,False,0
+mtransferencias_recibidas,del mes,False,False,False,False,False,False,False,False,True,False,1
+ctransferencias_emitidas,del mes,False,False,False,False,False,False,False,False,True,False,1
+mtransferencias_emitidas,del mes,False,False,True,False,True,False,True,False,True,False,4
+cextraccion_autoservicio,del mes,False,False,False,False,False,False,False,False,False,False,0
+mextraccion_autoservicio,del mes,False,False,False,False,False,False,False,False,False,False,0
+ccheques_depositados,del mes,False,False,False,False,False,False,False,False,False,False,0
+mcheques_depositados,del mes,False,False,False,False,False,False,False,False,False,False,0
+ccheques_emitidos,del mes,False,False,False,False,False,False,False,False,False,False,0
+mcheques_emitidos,del mes,False,False,False,False,False,False,False,False,False,False,0
+ccheques_depositados_rechazados,del mes,False,False,False,False,False,False,False,False,False,False,0
+mcheques_depositados_rechazados,del mes,False,False,False,False,False,False,False,False,False,False,0
+ccheques_emitidos_rechazados,del mes,False,False,False,False,False,False,True,False,True,False,2
+mcheques_emitidos_rechazados,del mes,True,False,False,False,True,False,True,False,True,True,4
+tcallcenter,del mes,False,False,False,False,False,False,False,False,False,False,0
+ccallcenter_transacciones,del mes,False,False,False,False,False,False,False,False,False,False,0
+thomebanking,del mes,False,False,False,False,False,False,False,False,False,False,0
+chomebanking_transacciones,del mes,False,False,False,False,True,False,True,False,True,False,3
+ccajas_transacciones,del mes,False,False,False,False,False,False,False,False,False,False,0
+ccajas_consultas,del mes,False,False,False,False,False,False,False,False,False,False,0
+ccajas_depositos,del mes,False,False,False,False,False,False,False,False,False,False,0
+ccajas_extracciones,del mes,False,False,False,False,False,False,False,False,False,False,0
+ccajas_otras,del mes,False,False,False,False,False,False,False,False,False,False,0
+catm_trx,del mes,False,False,False,False,False,False,False,False,False,False,0
+matm,del mes,False,False,False,False,False,False,False,False,False,False,0
+catm_trx_other,del mes,False,False,False,False,False,False,False,False,False,False,0
+matm_other,del mes,False,False,False,False,False,False,False,False,False,False,0
+ctrx_quarter,del mes,True,True,True,True,True,True,True,True,True,True,5
+tmobile_app,del mes,False,False,False,False,False,False,False,False,False,False,0
+cmobile_app_trx,del mes,False,False,False,False,False,False,False,False,False,False,0
+Master_delinquency,del mes,False,False,False,False,False,False,False,False,False,False,0
+Master_status,del mes,False,False,False,False,False,False,False,False,False,False,0
+Master_mfinanciacion_limite,del mes,False,False,False,False,True,False,False,False,True,False,2
+Master_Fvencimiento,del mes,False,False,False,False,False,False,True,False,True,False,2
+Master_Finiciomora,del mes,True,False,True,False,True,False,True,False,True,True,5
+Master_msaldototal,del mes,False,False,False,False,False,False,False,False,True,False,1
+Master_msaldopesos,del mes,False,False,False,False,True,False,True,False,True,False,3
+Master_msaldodolares,del mes,False,False,False,False,False,False,False,False,False,False,0
+Master_mconsumospesos,del mes,False,False,False,False,False,False,False,False,False,False,0
+Master_mconsumosdolares,del mes,False,False,False,False,False,False,False,False,False,False,0
+Master_mlimitecompra,del mes,False,False,False,False,False,False,False,False,False,False,0
+Master_madelantopesos,del mes,False,False,False,False,False,False,False,False,False,False,0
+Master_madelantodolares,del mes,False,False,False,False,False,False,False,False,False,False,0
+Master_fultimo_cierre,del mes,False,False,False,False,False,False,False,False,False,False,0
+Master_mpagado,del mes,False,False,False,False,False,False,False,False,False,False,0
+Master_mpagospesos,del mes,True,False,True,False,True,False,True,False,True,False,5
+Master_mpagosdolares,del mes,False,False,False,False,False,False,False,False,False,False,0
+Master_fechaalta,del mes,False,False,True,False,True,False,True,False,True,False,4
+Master_mconsumototal,del mes,False,False,False,False,False,False,False,False,False,False,0
+Master_cconsumos,del mes,False,False,False,False,False,False,False,False,False,False,0
+Master_cadelantosefectivo,del mes,False,False,False,False,False,False,False,False,False,False,0
+Master_mpagominimo,del mes,False,False,False,False,False,False,True,False,True,False,2
+Visa_delinquency,del mes,True,False,True,True,True,False,True,True,True,True,5
+Visa_status,del mes,False,False,False,False,True,True,False,False,True,True,2
+Visa_mfinanciacion_limite,del mes,True,False,True,False,True,False,True,False,True,True,5
+Visa_Fvencimiento,del mes,True,False,True,False,True,False,True,False,True,False,5
+Visa_Finiciomora,del mes,True,True,True,True,True,True,True,True,True,True,5
+Visa_msaldototal,del mes,False,False,False,False,True,False,True,False,True,True,3
+Visa_msaldopesos,del mes,False,False,True,False,False,False,False,False,False,False,1
+Visa_msaldodolares,del mes,False,False,False,False,False,False,False,False,False,False,0
+Visa_mconsumospesos,del mes,False,False,False,False,True,False,False,False,False,False,1
+Visa_mconsumosdolares,del mes,False,False,False,False,False,False,True,False,True,False,2
+Visa_mlimitecompra,del mes,False,False,True,False,False,False,False,False,False,False,1
+Visa_madelantopesos,del mes,False,False,False,False,False,False,False,False,False,False,0
+Visa_madelantodolares,del mes,False,False,False,False,False,False,False,False,False,False,0
+Visa_fultimo_cierre,del mes,True,False,False,False,False,False,False,False,False,False,1
+Visa_mpagado,del mes,False,False,False,False,False,False,False,False,False,False,0
+Visa_mpagospesos,del mes,True,True,True,True,True,True,True,True,True,True,5
+Visa_mpagosdolares,del mes,False,False,False,False,False,False,False,False,False,False,0
+Visa_fechaalta,del mes,False,False,False,False,True,False,True,False,True,False,3
+Visa_mconsumototal,del mes,False,False,False,False,False,False,False,False,False,False,0
+Visa_cconsumos,del mes,False,False,False,False,False,False,False,False,False,False,0
+Visa_cadelantosefectivo,del mes,False,False,False,False,False,False,False,False,False,False,0
+Visa_mpagominimo,del mes,True,False,True,True,True,True,True,True,True,True,5
+active_quarter_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+cliente_vip_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+internet_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+cliente_edad_lag1,lags y deltas 1 y 2,True,False,True,False,True,False,True,False,True,False,5
+cliente_antiguedad_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,True,False,True,False,2
+mrentabilidad_lag1,lags y deltas 1 y 2,True,False,True,False,False,False,True,False,True,True,4
+mrentabilidad_annual_lag1,lags y deltas 1 y 2,False,False,True,False,True,False,True,False,True,False,4
+mcomisiones_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,True,False,True,False,2
+mactivos_margen_lag1,lags y deltas 1 y 2,True,False,True,False,True,False,True,False,True,False,5
+mpasivos_margen_lag1,lags y deltas 1 y 2,False,False,True,False,True,False,True,False,True,False,4
+cproductos_lag1,lags y deltas 1 y 2,False,False,False,False,True,False,True,False,False,False,2
+tcuentas_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ccuenta_corriente_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mcuenta_corriente_adicional_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mcuenta_corriente_lag1,lags y deltas 1 y 2,True,True,True,True,True,True,True,False,True,False,5
+ccaja_ahorro_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mcaja_ahorro_lag1,lags y deltas 1 y 2,True,True,True,False,True,False,True,False,True,True,5
+mcaja_ahorro_adicional_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mcaja_ahorro_dolares_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,True,False,1
+cdescubierto_preacordado_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mcuentas_saldo_lag1,lags y deltas 1 y 2,True,True,True,True,True,True,True,True,True,True,5
+ctarjeta_debito_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ctarjeta_debito_transacciones_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mautoservicio_lag1,lags y deltas 1 y 2,False,False,True,False,False,False,False,False,False,False,1
+ctarjeta_visa_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ctarjeta_visa_transacciones_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mtarjeta_visa_consumo_lag1,lags y deltas 1 y 2,False,False,False,False,True,False,False,False,False,False,1
+ctarjeta_master_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ctarjeta_master_transacciones_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mtarjeta_master_consumo_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+cprestamos_personales_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mprestamos_personales_lag1,lags y deltas 1 y 2,False,False,False,False,True,False,False,False,True,False,2
+cprestamos_prendarios_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mprestamos_prendarios_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,True,False,1
+cprestamos_hipotecarios_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mprestamos_hipotecarios_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+cplazo_fijo_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mplazo_fijo_dolares_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mplazo_fijo_pesos_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+cinversion1_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+minversion1_pesos_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+minversion1_dolares_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+cinversion2_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+minversion2_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+cseguro_vida_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+cseguro_auto_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+cseguro_vivienda_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+cseguro_accidentes_personales_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ccaja_seguridad_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,True,False,False,False,1
+cpayroll_trx_lag1,lags y deltas 1 y 2,False,False,False,False,True,False,False,False,False,False,1
+mpayroll_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,True,False,1
+mpayroll2_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+cpayroll2_trx_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ccuenta_debitos_automaticos_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mcuenta_debitos_automaticos_lag1,lags y deltas 1 y 2,True,False,False,False,False,False,False,False,True,False,2
+ctarjeta_visa_debitos_automaticos_lag1,lags y deltas 1 y 2,False,False,False,False,True,False,False,False,True,False,2
+mttarjeta_visa_debitos_automaticos_lag1,lags y deltas 1 y 2,False,False,True,False,True,False,True,False,True,False,4
+ctarjeta_master_debitos_automaticos_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mttarjeta_master_debitos_automaticos_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+cpagodeservicios_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mpagodeservicios_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+cpagomiscuentas_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mpagomiscuentas_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,True,False,False,False,1
+ccajeros_propios_descuentos_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mcajeros_propios_descuentos_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ctarjeta_visa_descuentos_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mtarjeta_visa_descuentos_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ctarjeta_master_descuentos_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mtarjeta_master_descuentos_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ccomisiones_mantenimiento_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mcomisiones_mantenimiento_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ccomisiones_otras_lag1,lags y deltas 1 y 2,False,False,False,False,True,False,False,False,False,False,1
+mcomisiones_otras_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,True,False,True,False,2
+cforex_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+cforex_buy_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mforex_buy_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+cforex_sell_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mforex_sell_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ctransferencias_recibidas_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mtransferencias_recibidas_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,True,False,1
+ctransferencias_emitidas_lag1,lags y deltas 1 y 2,False,False,False,False,True,False,False,False,False,False,1
+mtransferencias_emitidas_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,True,False,True,False,2
+cextraccion_autoservicio_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mextraccion_autoservicio_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ccheques_depositados_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mcheques_depositados_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ccheques_emitidos_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mcheques_emitidos_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ccheques_depositados_rechazados_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mcheques_depositados_rechazados_lag1,lags y deltas 1 y 2,False,False,False,False,True,False,False,False,False,False,1
+ccheques_emitidos_rechazados_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mcheques_emitidos_rechazados_lag1,lags y deltas 1 y 2,False,False,True,False,True,False,True,False,True,False,4
+tcallcenter_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ccallcenter_transacciones_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+thomebanking_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+chomebanking_transacciones_lag1,lags y deltas 1 y 2,True,False,True,False,False,False,False,False,False,False,2
+ccajas_transacciones_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ccajas_consultas_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ccajas_depositos_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ccajas_extracciones_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ccajas_otras_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+catm_trx_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+matm_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+catm_trx_other_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,True,False,1
+matm_other_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,True,False,1
+ctrx_quarter_lag1,lags y deltas 1 y 2,True,True,True,False,True,False,True,False,True,True,5
+tmobile_app_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+cmobile_app_trx_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Master_delinquency_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Master_status_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Master_mfinanciacion_limite_lag1,lags y deltas 1 y 2,False,False,True,False,True,False,False,False,False,False,2
+Master_Fvencimiento_lag1,lags y deltas 1 y 2,True,False,True,False,False,False,True,False,True,False,4
+Master_Finiciomora_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Master_msaldototal_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Master_msaldopesos_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Master_msaldodolares_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Master_mconsumospesos_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Master_mconsumosdolares_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Master_mlimitecompra_lag1,lags y deltas 1 y 2,False,False,False,False,True,False,False,False,False,False,1
+Master_madelantopesos_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Master_madelantodolares_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Master_fultimo_cierre_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,True,False,1
+Master_mpagado_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,True,False,False,False,1
+Master_mpagospesos_lag1,lags y deltas 1 y 2,False,False,True,False,True,False,True,False,True,False,4
+Master_mpagosdolares_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Master_fechaalta_lag1,lags y deltas 1 y 2,True,False,False,False,True,False,False,False,True,False,3
+Master_mconsumototal_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Master_cconsumos_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Master_cadelantosefectivo_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Master_mpagominimo_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Visa_delinquency_lag1,lags y deltas 1 y 2,True,False,True,False,True,True,False,False,False,False,3
+Visa_status_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Visa_mfinanciacion_limite_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,True,False,True,False,2
+Visa_Fvencimiento_lag1,lags y deltas 1 y 2,True,False,True,False,True,False,False,False,True,False,4
+Visa_Finiciomora_lag1,lags y deltas 1 y 2,True,False,True,False,True,False,True,False,True,True,5
+Visa_msaldototal_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Visa_msaldopesos_lag1,lags y deltas 1 y 2,False,False,False,False,True,False,False,False,False,False,1
+Visa_msaldodolares_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Visa_mconsumospesos_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,True,False,1
+Visa_mconsumosdolares_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Visa_mlimitecompra_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,True,False,1
+Visa_madelantopesos_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Visa_madelantodolares_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Visa_fultimo_cierre_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,True,False,1
+Visa_mpagado_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Visa_mpagospesos_lag1,lags y deltas 1 y 2,False,False,True,False,False,False,False,False,True,False,2
+Visa_mpagosdolares_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Visa_fechaalta_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,True,False,1
+Visa_mconsumototal_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Visa_cconsumos_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Visa_cadelantosefectivo_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Visa_mpagominimo_lag1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,True,False,1
+active_quarter_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+cliente_vip_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+internet_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+cliente_edad_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+cliente_antiguedad_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mrentabilidad_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mrentabilidad_annual_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,True,False,False,False,1
+mcomisiones_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,True,False,1
+mactivos_margen_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,True,False,1
+mpasivos_margen_delta1,lags y deltas 1 y 2,True,False,False,False,False,False,True,False,False,False,2
+cproductos_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+tcuentas_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ccuenta_corriente_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mcuenta_corriente_adicional_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mcuenta_corriente_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,True,False,True,False,2
+ccaja_ahorro_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mcaja_ahorro_delta1,lags y deltas 1 y 2,False,False,False,False,True,False,True,False,True,False,3
+mcaja_ahorro_adicional_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mcaja_ahorro_dolares_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+cdescubierto_preacordado_delta1,lags y deltas 1 y 2,True,False,True,True,True,False,True,False,True,False,5
+mcuentas_saldo_delta1,lags y deltas 1 y 2,True,False,True,False,False,False,True,False,True,False,4
+ctarjeta_debito_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ctarjeta_debito_transacciones_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,True,False,1
+mautoservicio_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ctarjeta_visa_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ctarjeta_visa_transacciones_delta1,lags y deltas 1 y 2,True,True,True,False,False,False,True,False,True,True,4
+mtarjeta_visa_consumo_delta1,lags y deltas 1 y 2,False,False,True,False,False,False,True,False,True,False,3
+ctarjeta_master_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ctarjeta_master_transacciones_delta1,lags y deltas 1 y 2,False,False,False,False,True,False,True,False,True,False,3
+mtarjeta_master_consumo_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+cprestamos_personales_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mprestamos_personales_delta1,lags y deltas 1 y 2,True,True,True,False,True,True,True,True,True,True,5
+cprestamos_prendarios_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mprestamos_prendarios_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+cprestamos_hipotecarios_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mprestamos_hipotecarios_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+cplazo_fijo_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mplazo_fijo_dolares_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mplazo_fijo_pesos_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+cinversion1_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+minversion1_pesos_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+minversion1_dolares_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+cinversion2_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+minversion2_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+cseguro_vida_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+cseguro_auto_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+cseguro_vivienda_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+cseguro_accidentes_personales_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ccaja_seguridad_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+cpayroll_trx_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mpayroll_delta1,lags y deltas 1 y 2,False,False,False,False,True,False,True,False,True,False,3
+mpayroll2_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+cpayroll2_trx_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ccuenta_debitos_automaticos_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mcuenta_debitos_automaticos_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ctarjeta_visa_debitos_automaticos_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mttarjeta_visa_debitos_automaticos_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ctarjeta_master_debitos_automaticos_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mttarjeta_master_debitos_automaticos_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+cpagodeservicios_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mpagodeservicios_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+cpagomiscuentas_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mpagomiscuentas_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ccajeros_propios_descuentos_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mcajeros_propios_descuentos_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ctarjeta_visa_descuentos_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mtarjeta_visa_descuentos_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ctarjeta_master_descuentos_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mtarjeta_master_descuentos_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ccomisiones_mantenimiento_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mcomisiones_mantenimiento_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ccomisiones_otras_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mcomisiones_otras_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+cforex_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+cforex_buy_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mforex_buy_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+cforex_sell_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mforex_sell_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ctransferencias_recibidas_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mtransferencias_recibidas_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ctransferencias_emitidas_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mtransferencias_emitidas_delta1,lags y deltas 1 y 2,False,False,False,False,True,False,False,False,True,False,2
+cextraccion_autoservicio_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mextraccion_autoservicio_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ccheques_depositados_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mcheques_depositados_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ccheques_emitidos_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mcheques_emitidos_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ccheques_depositados_rechazados_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mcheques_depositados_rechazados_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ccheques_emitidos_rechazados_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mcheques_emitidos_rechazados_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+tcallcenter_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ccallcenter_transacciones_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,True,False,1
+thomebanking_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+chomebanking_transacciones_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ccajas_transacciones_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ccajas_consultas_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ccajas_depositos_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ccajas_extracciones_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ccajas_otras_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+catm_trx_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+matm_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+catm_trx_other_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+matm_other_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ctrx_quarter_delta1,lags y deltas 1 y 2,True,False,True,False,True,False,True,False,True,False,5
+tmobile_app_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+cmobile_app_trx_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Master_delinquency_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Master_status_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Master_mfinanciacion_limite_delta1,lags y deltas 1 y 2,True,False,False,False,False,False,False,False,False,False,1
+Master_Fvencimiento_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Master_Finiciomora_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Master_msaldototal_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Master_msaldopesos_delta1,lags y deltas 1 y 2,False,False,True,False,False,False,False,False,False,False,1
+Master_msaldodolares_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Master_mconsumospesos_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Master_mconsumosdolares_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Master_mlimitecompra_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Master_madelantopesos_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Master_madelantodolares_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Master_fultimo_cierre_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Master_mpagado_delta1,lags y deltas 1 y 2,False,False,False,False,True,False,True,False,True,False,3
+Master_mpagospesos_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Master_mpagosdolares_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Master_fechaalta_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Master_mconsumototal_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Master_cconsumos_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Master_cadelantosefectivo_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Master_mpagominimo_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Visa_delinquency_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Visa_status_delta1,lags y deltas 1 y 2,True,True,True,False,True,False,True,False,True,False,5
+Visa_mfinanciacion_limite_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Visa_Fvencimiento_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Visa_Finiciomora_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Visa_msaldototal_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Visa_msaldopesos_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Visa_msaldodolares_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Visa_mconsumospesos_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,True,False,False,False,1
+Visa_mconsumosdolares_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Visa_mlimitecompra_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Visa_madelantopesos_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Visa_madelantodolares_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Visa_fultimo_cierre_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Visa_mpagado_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Visa_mpagospesos_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Visa_mpagosdolares_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Visa_fechaalta_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Visa_mconsumototal_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Visa_cconsumos_delta1,lags y deltas 1 y 2,True,False,False,False,True,False,False,False,False,False,2
+Visa_cadelantosefectivo_delta1,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Visa_mpagominimo_delta1,lags y deltas 1 y 2,True,False,False,False,False,False,True,False,True,False,3
+active_quarter_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+cliente_vip_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+internet_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+cliente_edad_lag2,lags y deltas 1 y 2,True,False,True,False,True,False,True,False,True,False,5
+cliente_antiguedad_lag2,lags y deltas 1 y 2,False,False,False,False,True,False,True,False,True,False,3
+mrentabilidad_lag2,lags y deltas 1 y 2,True,False,True,False,True,False,True,False,True,False,5
+mrentabilidad_annual_lag2,lags y deltas 1 y 2,True,False,True,False,True,True,True,True,True,True,5
+mcomisiones_lag2,lags y deltas 1 y 2,False,False,False,False,True,False,True,False,True,False,3
+mactivos_margen_lag2,lags y deltas 1 y 2,True,False,True,False,True,False,True,False,True,False,5
+mpasivos_margen_lag2,lags y deltas 1 y 2,True,False,True,False,True,False,True,False,True,True,5
+cproductos_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+tcuentas_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ccuenta_corriente_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mcuenta_corriente_adicional_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mcuenta_corriente_lag2,lags y deltas 1 y 2,True,False,True,False,True,False,True,False,True,False,5
+ccaja_ahorro_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mcaja_ahorro_lag2,lags y deltas 1 y 2,True,False,True,False,True,False,True,False,True,False,5
+mcaja_ahorro_adicional_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mcaja_ahorro_dolares_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,True,False,1
+cdescubierto_preacordado_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mcuentas_saldo_lag2,lags y deltas 1 y 2,True,True,True,True,True,False,True,True,True,True,5
+ctarjeta_debito_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ctarjeta_debito_transacciones_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,True,False,1
+mautoservicio_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ctarjeta_visa_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ctarjeta_visa_transacciones_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mtarjeta_visa_consumo_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,True,False,1
+ctarjeta_master_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ctarjeta_master_transacciones_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mtarjeta_master_consumo_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+cprestamos_personales_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mprestamos_personales_lag2,lags y deltas 1 y 2,True,False,True,False,True,False,True,False,True,False,5
+cprestamos_prendarios_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mprestamos_prendarios_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+cprestamos_hipotecarios_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mprestamos_hipotecarios_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+cplazo_fijo_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mplazo_fijo_dolares_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mplazo_fijo_pesos_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+cinversion1_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+minversion1_pesos_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+minversion1_dolares_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+cinversion2_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+minversion2_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+cseguro_vida_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+cseguro_auto_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+cseguro_vivienda_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+cseguro_accidentes_personales_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ccaja_seguridad_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,True,False,1
+cpayroll_trx_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mpayroll_lag2,lags y deltas 1 y 2,True,False,False,False,True,False,False,False,True,False,3
+mpayroll2_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+cpayroll2_trx_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ccuenta_debitos_automaticos_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mcuenta_debitos_automaticos_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ctarjeta_visa_debitos_automaticos_lag2,lags y deltas 1 y 2,True,False,True,False,True,False,True,False,True,False,5
+mttarjeta_visa_debitos_automaticos_lag2,lags y deltas 1 y 2,True,False,True,True,True,True,True,True,True,True,5
+ctarjeta_master_debitos_automaticos_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mttarjeta_master_debitos_automaticos_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+cpagodeservicios_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mpagodeservicios_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+cpagomiscuentas_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mpagomiscuentas_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ccajeros_propios_descuentos_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mcajeros_propios_descuentos_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ctarjeta_visa_descuentos_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mtarjeta_visa_descuentos_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ctarjeta_master_descuentos_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mtarjeta_master_descuentos_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ccomisiones_mantenimiento_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mcomisiones_mantenimiento_lag2,lags y deltas 1 y 2,False,False,False,False,True,False,True,False,True,False,3
+ccomisiones_otras_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,True,False,1
+mcomisiones_otras_lag2,lags y deltas 1 y 2,False,False,False,False,True,False,True,False,False,False,2
+cforex_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+cforex_buy_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mforex_buy_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+cforex_sell_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mforex_sell_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ctransferencias_recibidas_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mtransferencias_recibidas_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ctransferencias_emitidas_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,True,False,1
+mtransferencias_emitidas_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+cextraccion_autoservicio_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mextraccion_autoservicio_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ccheques_depositados_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mcheques_depositados_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ccheques_emitidos_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mcheques_emitidos_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ccheques_depositados_rechazados_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mcheques_depositados_rechazados_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ccheques_emitidos_rechazados_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mcheques_emitidos_rechazados_lag2,lags y deltas 1 y 2,False,False,False,False,True,False,True,False,False,False,2
+tcallcenter_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ccallcenter_transacciones_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+thomebanking_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+chomebanking_transacciones_lag2,lags y deltas 1 y 2,False,False,True,False,True,False,True,False,True,False,4
+ccajas_transacciones_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ccajas_consultas_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ccajas_depositos_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ccajas_extracciones_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ccajas_otras_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+catm_trx_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+matm_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+catm_trx_other_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+matm_other_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ctrx_quarter_lag2,lags y deltas 1 y 2,True,False,True,False,True,False,True,False,True,True,5
+tmobile_app_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+cmobile_app_trx_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Master_delinquency_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Master_status_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Master_mfinanciacion_limite_lag2,lags y deltas 1 y 2,False,False,False,False,True,False,True,False,True,False,3
+Master_Fvencimiento_lag2,lags y deltas 1 y 2,False,False,True,False,True,False,True,False,True,False,4
+Master_Finiciomora_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Master_msaldototal_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Master_msaldopesos_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Master_msaldodolares_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Master_mconsumospesos_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Master_mconsumosdolares_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Master_mlimitecompra_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Master_madelantopesos_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Master_madelantodolares_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Master_fultimo_cierre_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,True,False,1
+Master_mpagado_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Master_mpagospesos_lag2,lags y deltas 1 y 2,True,False,False,False,True,False,True,False,True,False,4
+Master_mpagosdolares_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Master_fechaalta_lag2,lags y deltas 1 y 2,True,False,False,False,True,False,True,False,True,False,4
+Master_mconsumototal_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Master_cconsumos_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Master_cadelantosefectivo_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Master_mpagominimo_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Visa_delinquency_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Visa_status_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Visa_mfinanciacion_limite_lag2,lags y deltas 1 y 2,False,False,False,False,True,False,True,False,True,False,3
+Visa_Fvencimiento_lag2,lags y deltas 1 y 2,True,False,True,False,True,False,True,False,True,False,5
+Visa_Finiciomora_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Visa_msaldototal_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Visa_msaldopesos_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,True,False,1
+Visa_msaldodolares_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Visa_mconsumospesos_lag2,lags y deltas 1 y 2,False,False,False,False,True,False,False,False,False,False,1
+Visa_mconsumosdolares_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Visa_mlimitecompra_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,True,False,True,False,2
+Visa_madelantopesos_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Visa_madelantodolares_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Visa_fultimo_cierre_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Visa_mpagado_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Visa_mpagospesos_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,True,False,1
+Visa_mpagosdolares_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Visa_fechaalta_lag2,lags y deltas 1 y 2,False,False,True,False,False,False,False,False,True,False,2
+Visa_mconsumototal_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Visa_cconsumos_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Visa_cadelantosefectivo_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Visa_mpagominimo_lag2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,True,False,1
+active_quarter_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+cliente_vip_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+internet_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+cliente_edad_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+cliente_antiguedad_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mrentabilidad_delta2,lags y deltas 1 y 2,True,False,False,False,True,False,True,False,False,False,3
+mrentabilidad_annual_delta2,lags y deltas 1 y 2,True,False,True,False,True,False,True,False,False,False,4
+mcomisiones_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mactivos_margen_delta2,lags y deltas 1 y 2,False,False,False,False,True,False,False,False,False,False,1
+mpasivos_margen_delta2,lags y deltas 1 y 2,True,False,False,False,False,False,False,False,False,False,1
+cproductos_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+tcuentas_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ccuenta_corriente_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mcuenta_corriente_adicional_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mcuenta_corriente_delta2,lags y deltas 1 y 2,True,False,True,False,True,True,True,True,True,True,5
+ccaja_ahorro_delta2,lags y deltas 1 y 2,True,False,True,False,True,False,True,False,True,False,5
+mcaja_ahorro_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,True,False,False,False,1
+mcaja_ahorro_adicional_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mcaja_ahorro_dolares_delta2,lags y deltas 1 y 2,True,False,False,False,False,False,True,False,False,False,2
+cdescubierto_preacordado_delta2,lags y deltas 1 y 2,True,True,True,True,True,True,True,True,True,True,5
+mcuentas_saldo_delta2,lags y deltas 1 y 2,True,False,True,False,True,False,True,False,True,False,5
+ctarjeta_debito_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ctarjeta_debito_transacciones_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,True,False,True,False,2
+mautoservicio_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ctarjeta_visa_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ctarjeta_visa_transacciones_delta2,lags y deltas 1 y 2,True,False,True,False,True,False,True,False,True,False,5
+mtarjeta_visa_consumo_delta2,lags y deltas 1 y 2,True,False,True,False,True,False,True,True,True,True,5
+ctarjeta_master_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ctarjeta_master_transacciones_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,True,False,1
+mtarjeta_master_consumo_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+cprestamos_personales_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mprestamos_personales_delta2,lags y deltas 1 y 2,True,False,True,False,True,False,True,True,True,False,5
+cprestamos_prendarios_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mprestamos_prendarios_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+cprestamos_hipotecarios_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mprestamos_hipotecarios_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+cplazo_fijo_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mplazo_fijo_dolares_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mplazo_fijo_pesos_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+cinversion1_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+minversion1_pesos_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+minversion1_dolares_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+cinversion2_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+minversion2_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+cseguro_vida_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+cseguro_auto_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+cseguro_vivienda_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+cseguro_accidentes_personales_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ccaja_seguridad_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+cpayroll_trx_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mpayroll_delta2,lags y deltas 1 y 2,False,False,True,False,False,False,False,False,True,False,2
+mpayroll2_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+cpayroll2_trx_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ccuenta_debitos_automaticos_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mcuenta_debitos_automaticos_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ctarjeta_visa_debitos_automaticos_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mttarjeta_visa_debitos_automaticos_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,True,False,True,False,2
+ctarjeta_master_debitos_automaticos_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,True,False,True,False,2
+mttarjeta_master_debitos_automaticos_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+cpagodeservicios_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mpagodeservicios_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+cpagomiscuentas_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,True,False,False,False,1
+mpagomiscuentas_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ccajeros_propios_descuentos_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mcajeros_propios_descuentos_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ctarjeta_visa_descuentos_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mtarjeta_visa_descuentos_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ctarjeta_master_descuentos_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mtarjeta_master_descuentos_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ccomisiones_mantenimiento_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mcomisiones_mantenimiento_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ccomisiones_otras_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mcomisiones_otras_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+cforex_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+cforex_buy_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mforex_buy_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+cforex_sell_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mforex_sell_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ctransferencias_recibidas_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mtransferencias_recibidas_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ctransferencias_emitidas_delta2,lags y deltas 1 y 2,False,False,False,False,True,False,True,False,True,False,3
+mtransferencias_emitidas_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,True,False,True,False,2
+cextraccion_autoservicio_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mextraccion_autoservicio_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ccheques_depositados_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mcheques_depositados_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ccheques_emitidos_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mcheques_emitidos_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ccheques_depositados_rechazados_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mcheques_depositados_rechazados_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ccheques_emitidos_rechazados_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+mcheques_emitidos_rechazados_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+tcallcenter_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ccallcenter_transacciones_delta2,lags y deltas 1 y 2,False,False,True,False,True,False,True,False,True,False,4
+thomebanking_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+chomebanking_transacciones_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,True,False,1
+ccajas_transacciones_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ccajas_consultas_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ccajas_depositos_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ccajas_extracciones_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+ccajas_otras_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+catm_trx_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+matm_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+catm_trx_other_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+matm_other_delta2,lags y deltas 1 y 2,False,False,False,False,True,False,False,False,False,False,1
+ctrx_quarter_delta2,lags y deltas 1 y 2,True,False,True,False,True,False,True,False,True,False,5
+tmobile_app_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+cmobile_app_trx_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Master_delinquency_delta2,lags y deltas 1 y 2,False,False,False,False,True,False,False,False,False,False,1
+Master_status_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Master_mfinanciacion_limite_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Master_Fvencimiento_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Master_Finiciomora_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Master_msaldototal_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Master_msaldopesos_delta2,lags y deltas 1 y 2,False,False,False,False,True,False,True,False,False,False,2
+Master_msaldodolares_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Master_mconsumospesos_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Master_mconsumosdolares_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Master_mlimitecompra_delta2,lags y deltas 1 y 2,True,False,False,False,False,False,False,False,False,False,1
+Master_madelantopesos_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Master_madelantodolares_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Master_fultimo_cierre_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Master_mpagado_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Master_mpagospesos_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Master_mpagosdolares_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Master_fechaalta_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Master_mconsumototal_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Master_cconsumos_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,True,False,False,False,1
+Master_cadelantosefectivo_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Master_mpagominimo_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Visa_delinquency_delta2,lags y deltas 1 y 2,False,False,True,False,False,False,False,False,True,False,2
+Visa_status_delta2,lags y deltas 1 y 2,True,False,False,False,True,True,False,False,False,False,2
+Visa_mfinanciacion_limite_delta2,lags y deltas 1 y 2,False,False,True,False,False,False,False,False,False,False,1
+Visa_Fvencimiento_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Visa_Finiciomora_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Visa_msaldototal_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,True,False,1
+Visa_msaldopesos_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Visa_msaldodolares_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Visa_mconsumospesos_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Visa_mconsumosdolares_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Visa_mlimitecompra_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Visa_madelantopesos_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Visa_madelantodolares_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Visa_fultimo_cierre_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Visa_mpagado_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Visa_mpagospesos_delta2,lags y deltas 1 y 2,True,False,False,False,False,False,False,False,False,False,1
+Visa_mpagosdolares_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,True,False,1
+Visa_fechaalta_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Visa_mconsumototal_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Visa_cconsumos_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,True,False,1
+Visa_cadelantosefectivo_delta2,lags y deltas 1 y 2,False,False,False,False,False,False,False,False,False,False,0
+Visa_mpagominimo_delta2,lags y deltas 1 y 2,True,False,False,False,False,False,False,False,True,False,2
+ctrx_quarter_ratio3,historia curada,True,True,True,True,True,True,True,True,True,True,5
+mcaja_ahorro_ratio3,historia curada,True,False,True,False,True,True,True,True,True,True,5
+ctarjeta_visa_ratio3,historia curada,False,False,False,False,False,False,False,False,False,False,0
+mcuenta_corriente_ratio3,historia curada,True,False,True,False,True,False,True,True,True,True,5
+mcuentas_saldo_ratio3,historia curada,True,False,True,False,True,False,True,False,True,False,5
+ctarjeta_visa_transacciones_ratio3,historia curada,True,True,True,True,True,False,True,True,True,True,5
+mprestamos_personales_ratio3,historia curada,True,True,True,True,True,True,True,True,True,True,5
+mtarjeta_visa_consumo_ratio3,historia curada,True,False,True,True,True,False,False,False,True,False,4
+Visa_mpagospesos_ratio3,historia curada,False,False,False,False,False,False,False,False,False,False,0
+mpayroll_ratio3,historia curada,True,False,True,False,True,False,True,False,True,False,5
+cpayroll_trx_ratio3,historia curada,True,False,False,False,False,False,True,False,True,False,3
+cproductos_ratio3,historia curada,True,True,True,True,True,True,True,True,True,False,5
+Visa_mpagominimo_ratio3,historia curada,False,False,False,False,False,False,True,False,True,False,2
+ccaja_ahorro_ratio3,historia curada,False,False,False,False,False,False,False,False,False,False,0
+mpasivos_margen_ratio3,historia curada,True,False,True,False,False,False,False,False,False,False,2
+mactivos_margen_ratio3,historia curada,True,False,False,False,False,False,True,False,False,False,2
+mrentabilidad_annual_ratio3,historia curada,False,False,False,False,False,False,False,False,False,False,0
+cprestamos_personales_ratio3,historia curada,False,False,False,False,False,False,False,False,False,False,0
+Visa_msaldototal_ratio3,historia curada,False,False,False,False,False,False,False,False,False,False,0
+mrentabilidad_ratio3,historia curada,False,False,False,False,False,False,False,False,False,False,0
+Visa_msaldopesos_ratio3,historia curada,False,False,False,False,False,False,False,False,True,False,1
+Visa_cconsumos_ratio3,historia curada,False,False,False,False,False,False,False,False,False,False,0
+Visa_mfinanciacion_limite_ratio3,historia curada,False,False,False,False,False,False,False,False,False,False,0
+mcomisiones_ratio3,historia curada,False,False,False,False,False,False,False,False,False,False,0
+mcuenta_debitos_automaticos_ratio3,historia curada,False,False,False,False,False,False,False,False,False,False,0
+mttarjeta_visa_debitos_automaticos_ratio3,historia curada,False,False,False,False,False,False,True,False,True,False,2
+mcomisiones_mantenimiento_ratio3,historia curada,False,False,True,False,True,False,False,False,False,False,2
+mautoservicio_ratio3,historia curada,False,False,False,False,False,False,False,False,False,False,0
+Master_mpagospesos_ratio3,historia curada,False,False,False,False,False,False,False,False,False,False,0
+ccaja_seguridad_ratio3,historia curada,False,False,False,False,False,False,True,False,False,False,1
+ctrx_quarter_z4,historia curada,True,False,True,False,True,False,True,False,True,True,5
+mcaja_ahorro_z4,historia curada,True,False,True,False,True,False,True,False,True,False,5
+ctarjeta_visa_z4,historia curada,False,False,False,False,False,False,False,False,False,False,0
+mcuenta_corriente_z4,historia curada,True,False,True,True,True,True,True,True,True,True,5
+mcuentas_saldo_z4,historia curada,True,True,True,True,True,True,True,True,True,True,5
+ctarjeta_visa_transacciones_z4,historia curada,True,False,True,False,True,False,True,False,True,True,5
+mprestamos_personales_z4,historia curada,True,True,True,True,True,True,True,True,True,True,5
+mtarjeta_visa_consumo_z4,historia curada,True,False,True,False,True,False,True,False,True,True,5
+Visa_mpagospesos_z4,historia curada,True,False,True,False,True,False,True,False,True,False,5
+mpayroll_z4,historia curada,True,False,True,False,True,True,True,True,True,True,5
+cpayroll_trx_z4,historia curada,False,False,False,False,False,False,False,False,False,False,0
+cproductos_z4,historia curada,False,False,False,False,False,False,False,False,False,False,0
+Visa_mpagominimo_z4,historia curada,True,False,True,False,True,False,True,False,True,False,5
+ccaja_ahorro_z4,historia curada,False,False,False,False,False,False,False,False,False,False,0
+mpasivos_margen_z4,historia curada,True,False,False,False,True,False,True,False,True,False,4
+mactivos_margen_z4,historia curada,True,True,True,False,True,False,True,False,True,False,5
+mrentabilidad_annual_z4,historia curada,True,False,False,False,False,False,False,False,True,False,2
+cprestamos_personales_z4,historia curada,False,False,False,False,False,False,False,False,False,False,0
+Visa_msaldototal_z4,historia curada,False,False,False,False,False,False,False,False,True,False,1
+mrentabilidad_z4,historia curada,True,False,False,False,True,False,True,True,True,True,4
+Visa_msaldopesos_z4,historia curada,False,False,False,False,True,False,True,False,True,False,3
+Visa_cconsumos_z4,historia curada,True,False,True,False,True,False,True,False,True,False,5
+Visa_mfinanciacion_limite_z4,historia curada,False,False,False,False,False,False,False,False,True,False,1
+mcomisiones_z4,historia curada,True,False,False,False,True,False,True,False,True,False,4
+mcuenta_debitos_automaticos_z4,historia curada,False,False,True,False,False,False,False,False,True,False,2
+mttarjeta_visa_debitos_automaticos_z4,historia curada,False,False,False,False,False,False,True,False,True,False,2
+mcomisiones_mantenimiento_z4,historia curada,False,False,True,False,True,False,False,False,True,False,3
+mautoservicio_z4,historia curada,True,False,False,False,True,False,True,False,True,False,4
+Master_mpagospesos_z4,historia curada,False,False,False,False,False,False,False,False,False,False,0
+ccaja_seguridad_z4,historia curada,False,False,False,False,False,False,False,False,False,False,0
+ctrx_quarter_relmax4,historia curada,True,True,True,True,True,True,True,True,True,True,5
+mcaja_ahorro_relmax4,historia curada,True,False,True,False,True,True,True,True,True,False,5
+ctarjeta_visa_relmax4,historia curada,False,False,False,False,False,False,True,False,True,False,2
+mcuenta_corriente_relmax4,historia curada,False,False,False,False,False,False,False,False,True,False,1
+mcuentas_saldo_relmax4,historia curada,True,True,True,True,True,True,True,True,True,True,5
+ctarjeta_visa_transacciones_relmax4,historia curada,True,False,True,False,True,False,True,False,True,True,5
+mprestamos_personales_relmax4,historia curada,True,True,True,True,True,True,True,True,True,True,5
+mtarjeta_visa_consumo_relmax4,historia curada,False,False,True,False,False,False,False,False,True,False,2
+Visa_mpagospesos_relmax4,historia curada,False,False,False,False,False,False,False,False,False,False,0
+mpayroll_relmax4,historia curada,True,True,True,True,True,False,True,False,True,False,5
+cpayroll_trx_relmax4,historia curada,True,False,True,False,True,False,True,False,True,False,5
+cproductos_relmax4,historia curada,True,False,True,True,True,True,True,True,True,True,5
+Visa_mpagominimo_relmax4,historia curada,False,False,True,False,False,False,False,False,False,False,1
+ccaja_ahorro_relmax4,historia curada,False,False,False,False,False,False,False,False,False,False,0
+mpasivos_margen_relmax4,historia curada,False,False,False,False,True,False,True,False,True,False,3
+mactivos_margen_relmax4,historia curada,True,False,False,False,False,False,True,False,False,False,2
+mrentabilidad_annual_relmax4,historia curada,False,False,False,False,False,False,True,False,True,False,2
+cprestamos_personales_relmax4,historia curada,False,False,True,False,False,False,False,False,True,False,2
+Visa_msaldototal_relmax4,historia curada,False,False,False,False,False,False,False,False,False,False,0
+mrentabilidad_relmax4,historia curada,False,False,False,False,False,False,False,False,False,False,0
+Visa_msaldopesos_relmax4,historia curada,False,False,False,False,False,False,False,False,False,False,0
+Visa_cconsumos_relmax4,historia curada,False,False,False,False,False,False,False,False,True,False,1
+Visa_mfinanciacion_limite_relmax4,historia curada,False,False,False,False,False,False,False,False,False,False,0
+mcomisiones_relmax4,historia curada,True,False,True,False,False,False,True,False,True,False,4
+mcuenta_debitos_automaticos_relmax4,historia curada,False,False,False,False,False,False,False,False,True,False,1
+mttarjeta_visa_debitos_automaticos_relmax4,historia curada,False,False,True,False,True,False,True,False,True,False,4
+mcomisiones_mantenimiento_relmax4,historia curada,False,False,False,False,False,False,False,False,False,False,0
+mautoservicio_relmax4,historia curada,False,False,False,False,False,False,False,False,False,False,0
+Master_mpagospesos_relmax4,historia curada,False,False,False,False,False,False,False,False,False,False,0
+ccaja_seguridad_relmax4,historia curada,False,False,False,False,False,False,False,False,False,False,0
+ctrx_quarter_mes_ratio3,historia curada,True,True,True,True,True,False,True,True,True,True,5
+mcaja_ahorro_mes_ratio3,historia curada,True,False,True,False,True,False,True,False,True,True,5
+ctarjeta_visa_mes_ratio3,historia curada,False,False,False,False,False,False,False,False,False,False,0
+mcuenta_corriente_mes_ratio3,historia curada,True,False,False,False,True,True,True,True,True,False,4
+mcuentas_saldo_mes_ratio3,historia curada,False,False,True,False,True,False,True,False,True,True,4
+ctarjeta_visa_transacciones_mes_ratio3,historia curada,True,True,True,True,True,True,True,True,True,True,5
+mprestamos_personales_mes_ratio3,historia curada,True,True,True,True,True,True,True,True,True,True,5
+mtarjeta_visa_consumo_mes_ratio3,historia curada,False,False,True,False,True,False,True,False,False,False,3
+Visa_mpagospesos_mes_ratio3,historia curada,False,False,False,False,False,False,False,False,False,False,0
+mpayroll_mes_ratio3,historia curada,True,False,True,False,True,True,True,True,True,True,5
+cpayroll_trx_mes_ratio3,historia curada,False,False,True,False,True,False,True,False,True,False,4
+cproductos_mes_ratio3,historia curada,True,False,True,False,True,True,True,True,True,False,5
+Visa_mpagominimo_mes_ratio3,historia curada,True,False,False,False,True,False,False,False,False,False,2
+ccaja_ahorro_mes_ratio3,historia curada,False,False,False,False,False,False,False,False,False,False,0
+mpasivos_margen_mes_ratio3,historia curada,False,False,False,False,False,False,False,False,False,False,0
+mactivos_margen_mes_ratio3,historia curada,True,False,True,False,True,False,False,False,False,False,3
+mrentabilidad_annual_mes_ratio3,historia curada,False,False,False,False,False,False,False,False,False,False,0
+cprestamos_personales_mes_ratio3,historia curada,False,False,False,False,False,False,False,False,True,False,1
+Visa_msaldototal_mes_ratio3,historia curada,False,False,False,False,True,False,True,False,False,False,2
+mrentabilidad_mes_ratio3,historia curada,False,False,False,False,False,False,False,False,False,False,0
+Visa_msaldopesos_mes_ratio3,historia curada,False,False,False,False,False,False,False,False,False,False,0
+Visa_cconsumos_mes_ratio3,historia curada,False,False,False,False,True,False,False,False,True,False,2
+Visa_mfinanciacion_limite_mes_ratio3,historia curada,True,False,True,False,True,False,True,False,False,False,4
+mcomisiones_mes_ratio3,historia curada,True,False,False,False,False,False,True,False,False,False,2
+mcuenta_debitos_automaticos_mes_ratio3,historia curada,False,False,False,False,False,False,False,False,False,False,0
+mttarjeta_visa_debitos_automaticos_mes_ratio3,historia curada,False,False,False,False,False,False,True,False,False,False,1
+mcomisiones_mantenimiento_mes_ratio3,historia curada,True,False,True,False,True,False,True,False,True,True,5
+mautoservicio_mes_ratio3,historia curada,False,False,False,False,False,False,False,False,False,False,0
+Master_mpagospesos_mes_ratio3,historia curada,False,False,False,False,False,False,False,False,False,False,0
+ccaja_seguridad_mes_ratio3,historia curada,False,False,False,False,False,False,False,False,True,False,1
+ctrx_quarter_std3,bloques del 14,True,False,True,False,True,False,True,False,False,False,4
+ctrx_quarter_dstd3,bloques del 14,False,False,True,False,True,False,True,False,False,False,3
+mcaja_ahorro_std3,bloques del 14,True,False,True,False,True,False,True,False,True,False,5
+mcaja_ahorro_dstd3,bloques del 14,True,False,True,False,True,False,True,False,True,True,5
+ctarjeta_visa_std3,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+ctarjeta_visa_dstd3,bloques del 14,False,False,False,False,False,False,False,False,True,False,1
+mcuenta_corriente_std3,bloques del 14,True,False,True,False,True,False,False,False,True,False,4
+mcuenta_corriente_dstd3,bloques del 14,True,False,True,False,True,False,True,True,True,False,5
+mcuentas_saldo_std3,bloques del 14,False,False,True,False,True,False,True,False,True,False,4
+mcuentas_saldo_dstd3,bloques del 14,True,False,True,False,False,False,True,False,True,True,4
+ctarjeta_visa_transacciones_std3,bloques del 14,False,False,False,False,True,False,True,False,False,False,2
+ctarjeta_visa_transacciones_dstd3,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+mprestamos_personales_std3,bloques del 14,True,True,True,True,True,True,True,True,True,True,5
+mprestamos_personales_dstd3,bloques del 14,True,False,True,False,True,False,True,False,True,False,5
+mtarjeta_visa_consumo_std3,bloques del 14,True,False,True,False,True,False,True,False,True,False,5
+mtarjeta_visa_consumo_dstd3,bloques del 14,True,False,True,False,True,False,True,False,True,False,5
+Visa_mpagospesos_std3,bloques del 14,True,False,False,False,False,False,False,False,True,False,2
+Visa_mpagospesos_dstd3,bloques del 14,False,False,False,False,False,False,True,False,False,False,1
+mpayroll_std3,bloques del 14,True,False,True,False,True,False,True,False,True,False,5
+mpayroll_dstd3,bloques del 14,True,False,False,False,True,False,False,False,False,False,2
+cpayroll_trx_std3,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+cpayroll_trx_dstd3,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+cproductos_std3,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+cproductos_dstd3,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+Visa_mpagominimo_std3,bloques del 14,False,False,False,False,True,False,True,False,True,False,3
+Visa_mpagominimo_dstd3,bloques del 14,False,False,True,False,False,False,False,False,True,False,2
+ccaja_ahorro_std3,bloques del 14,False,False,False,False,False,False,True,False,True,False,2
+ccaja_ahorro_dstd3,bloques del 14,False,False,True,False,True,False,True,False,True,False,4
+mpasivos_margen_std3,bloques del 14,True,False,True,False,False,False,False,False,False,False,2
+mpasivos_margen_dstd3,bloques del 14,True,False,True,False,True,False,True,False,True,False,5
+mactivos_margen_std3,bloques del 14,True,False,True,False,True,False,False,False,False,False,3
+mactivos_margen_dstd3,bloques del 14,True,False,True,True,True,False,True,False,True,False,5
+mrentabilidad_annual_std3,bloques del 14,True,False,True,False,True,False,True,False,True,False,5
+mrentabilidad_annual_dstd3,bloques del 14,True,True,True,True,True,False,True,False,True,True,5
+cprestamos_personales_std3,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+cprestamos_personales_dstd3,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+Visa_msaldototal_std3,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+Visa_msaldototal_dstd3,bloques del 14,False,False,False,False,False,False,True,False,True,False,2
+mrentabilidad_std3,bloques del 14,True,False,True,False,True,False,True,False,False,False,4
+mrentabilidad_dstd3,bloques del 14,False,False,True,False,True,False,True,False,False,False,3
+Visa_msaldopesos_std3,bloques del 14,False,False,False,False,False,False,True,False,True,False,2
+Visa_msaldopesos_dstd3,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+Visa_cconsumos_std3,bloques del 14,True,False,True,False,True,False,True,False,True,True,5
+Visa_cconsumos_dstd3,bloques del 14,True,False,True,False,False,False,True,False,False,False,3
+Visa_mfinanciacion_limite_std3,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+Visa_mfinanciacion_limite_dstd3,bloques del 14,True,False,True,False,True,False,True,False,True,False,5
+mcomisiones_std3,bloques del 14,True,False,False,False,True,False,False,False,False,False,2
+mcomisiones_dstd3,bloques del 14,True,False,True,False,True,False,True,False,True,False,5
+mcuenta_debitos_automaticos_std3,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+mcuenta_debitos_automaticos_dstd3,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+mttarjeta_visa_debitos_automaticos_std3,bloques del 14,True,False,False,False,False,False,False,False,True,False,2
+mttarjeta_visa_debitos_automaticos_dstd3,bloques del 14,True,False,False,False,False,False,False,False,True,False,2
+mcomisiones_mantenimiento_std3,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+mcomisiones_mantenimiento_dstd3,bloques del 14,True,False,True,False,True,False,True,False,True,False,5
+mautoservicio_std3,bloques del 14,False,False,False,False,True,False,True,False,True,False,3
+mautoservicio_dstd3,bloques del 14,False,False,True,False,False,False,False,False,False,False,1
+Master_mpagospesos_std3,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+Master_mpagospesos_dstd3,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+ccaja_seguridad_std3,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+ccaja_seguridad_dstd3,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+ctrx_quarter_q4,bloques del 14,False,False,True,False,True,False,False,False,True,False,3
+ctrx_quarter_peor3,bloques del 14,True,False,True,False,True,False,True,False,True,False,5
+ctrx_quarter_caidas3,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+mcaja_ahorro_q4,bloques del 14,False,False,True,False,True,False,True,False,True,False,4
+mcaja_ahorro_peor3,bloques del 14,True,False,False,False,False,False,False,False,False,False,1
+mcaja_ahorro_caidas3,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+ctarjeta_visa_q4,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+ctarjeta_visa_peor3,bloques del 14,False,False,True,False,True,False,True,False,False,False,3
+ctarjeta_visa_caidas3,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+mcuenta_corriente_q4,bloques del 14,False,False,True,False,True,False,True,False,True,True,4
+mcuenta_corriente_peor3,bloques del 14,False,False,True,False,False,False,True,False,False,False,2
+mcuenta_corriente_caidas3,bloques del 14,False,False,False,False,False,False,True,False,False,False,1
+mcuentas_saldo_q4,bloques del 14,False,False,True,False,True,False,True,False,True,True,4
+mcuentas_saldo_peor3,bloques del 14,True,False,True,False,True,False,True,False,True,True,5
+mcuentas_saldo_caidas3,bloques del 14,False,False,False,False,True,False,True,False,True,True,3
+ctarjeta_visa_transacciones_q4,bloques del 14,False,False,False,False,False,False,False,False,True,False,1
+ctarjeta_visa_transacciones_peor3,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+ctarjeta_visa_transacciones_caidas3,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+mprestamos_personales_q4,bloques del 14,False,False,False,False,False,False,True,False,True,False,2
+mprestamos_personales_peor3,bloques del 14,False,False,False,False,True,False,True,False,True,False,3
+mprestamos_personales_caidas3,bloques del 14,True,True,True,True,True,True,True,True,True,True,5
+mtarjeta_visa_consumo_q4,bloques del 14,False,False,False,False,False,False,True,False,True,False,2
+mtarjeta_visa_consumo_peor3,bloques del 14,False,False,False,False,True,False,False,False,False,False,1
+mtarjeta_visa_consumo_caidas3,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+Visa_mpagospesos_q4,bloques del 14,False,False,True,False,True,False,False,False,True,False,3
+Visa_mpagospesos_peor3,bloques del 14,True,False,True,False,True,False,True,False,True,False,5
+Visa_mpagospesos_caidas3,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+mpayroll_q4,bloques del 14,True,False,True,False,True,False,True,False,True,False,5
+mpayroll_peor3,bloques del 14,False,False,False,False,True,False,True,False,False,False,2
+mpayroll_caidas3,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+cpayroll_trx_q4,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+cpayroll_trx_peor3,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+cpayroll_trx_caidas3,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+cproductos_q4,bloques del 14,False,False,False,False,False,False,False,False,True,False,1
+cproductos_peor3,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+cproductos_caidas3,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+Visa_mpagominimo_q4,bloques del 14,False,False,True,False,False,False,False,False,True,False,2
+Visa_mpagominimo_peor3,bloques del 14,True,False,True,False,True,False,True,True,True,False,5
+Visa_mpagominimo_caidas3,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+ccaja_ahorro_q4,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+ccaja_ahorro_peor3,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+ccaja_ahorro_caidas3,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+mpasivos_margen_q4,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+mpasivos_margen_peor3,bloques del 14,False,False,False,False,True,False,False,False,False,False,1
+mpasivos_margen_caidas3,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+mactivos_margen_q4,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+mactivos_margen_peor3,bloques del 14,True,False,True,True,True,False,True,False,True,False,5
+mactivos_margen_caidas3,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+mrentabilidad_annual_q4,bloques del 14,True,False,False,False,False,False,False,False,False,False,1
+mrentabilidad_annual_peor3,bloques del 14,True,True,True,True,True,False,True,False,True,False,5
+mrentabilidad_annual_caidas3,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+cprestamos_personales_q4,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+cprestamos_personales_peor3,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+cprestamos_personales_caidas3,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+Visa_msaldototal_q4,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+Visa_msaldototal_peor3,bloques del 14,False,False,False,False,False,False,True,False,True,False,2
+Visa_msaldototal_caidas3,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+mrentabilidad_q4,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+mrentabilidad_peor3,bloques del 14,False,False,False,False,True,False,False,False,False,False,1
+mrentabilidad_caidas3,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+Visa_msaldopesos_q4,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+Visa_msaldopesos_peor3,bloques del 14,False,False,False,False,False,False,False,False,True,False,1
+Visa_msaldopesos_caidas3,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+Visa_cconsumos_q4,bloques del 14,False,False,False,False,True,False,True,False,True,False,3
+Visa_cconsumos_peor3,bloques del 14,False,False,False,False,True,False,True,False,False,False,2
+Visa_cconsumos_caidas3,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+Visa_mfinanciacion_limite_q4,bloques del 14,False,False,True,False,True,False,True,False,True,False,4
+Visa_mfinanciacion_limite_peor3,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+Visa_mfinanciacion_limite_caidas3,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+mcomisiones_q4,bloques del 14,True,False,False,False,False,False,True,False,False,False,2
+mcomisiones_peor3,bloques del 14,True,False,True,False,True,False,True,False,True,False,5
+mcomisiones_caidas3,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+mcuenta_debitos_automaticos_q4,bloques del 14,False,False,False,False,False,False,True,False,True,False,2
+mcuenta_debitos_automaticos_peor3,bloques del 14,False,False,False,False,False,False,False,False,True,False,1
+mcuenta_debitos_automaticos_caidas3,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+mttarjeta_visa_debitos_automaticos_q4,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+mttarjeta_visa_debitos_automaticos_peor3,bloques del 14,True,False,False,False,False,False,False,False,False,False,1
+mttarjeta_visa_debitos_automaticos_caidas3,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+mcomisiones_mantenimiento_q4,bloques del 14,False,False,True,False,True,False,True,True,True,True,4
+mcomisiones_mantenimiento_peor3,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+mcomisiones_mantenimiento_caidas3,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+mautoservicio_q4,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+mautoservicio_peor3,bloques del 14,False,False,False,False,False,False,True,False,False,False,1
+mautoservicio_caidas3,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+Master_mpagospesos_q4,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+Master_mpagospesos_peor3,bloques del 14,True,False,True,False,True,False,True,False,False,False,4
+Master_mpagospesos_caidas3,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+ccaja_seguridad_q4,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+ccaja_seguridad_peor3,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+ccaja_seguridad_caidas3,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+ctrx_quarter_relmaxT,bloques del 14,False,False,False,False,True,True,True,True,True,True,3
+ctrx_quarter_relmediaT,bloques del 14,True,True,True,True,True,True,True,True,True,True,5
+ctrx_quarter_desdemaxT,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+mcaja_ahorro_relmaxT,bloques del 14,False,False,False,False,True,False,True,False,True,True,3
+mcaja_ahorro_relmediaT,bloques del 14,True,False,True,True,True,False,True,False,True,True,5
+mcaja_ahorro_desdemaxT,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+ctarjeta_visa_relmaxT,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+ctarjeta_visa_relmediaT,bloques del 14,False,False,True,False,False,False,False,False,False,False,1
+ctarjeta_visa_desdemaxT,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+mcuenta_corriente_relmaxT,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+mcuenta_corriente_relmediaT,bloques del 14,True,True,True,False,True,False,True,True,True,True,5
+mcuenta_corriente_desdemaxT,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+mcuentas_saldo_relmaxT,bloques del 14,False,False,False,False,True,True,True,True,True,True,3
+mcuentas_saldo_relmediaT,bloques del 14,True,False,True,False,True,False,True,False,True,False,5
+mcuentas_saldo_desdemaxT,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+ctarjeta_visa_transacciones_relmaxT,bloques del 14,False,False,False,False,True,False,True,True,True,True,3
+ctarjeta_visa_transacciones_relmediaT,bloques del 14,True,False,True,True,True,True,True,True,True,True,5
+ctarjeta_visa_transacciones_desdemaxT,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+mprestamos_personales_relmaxT,bloques del 14,False,False,False,False,True,True,True,True,True,True,3
+mprestamos_personales_relmediaT,bloques del 14,True,True,True,True,True,True,True,True,True,True,5
+mprestamos_personales_desdemaxT,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+mtarjeta_visa_consumo_relmaxT,bloques del 14,False,False,False,False,True,False,False,False,False,False,1
+mtarjeta_visa_consumo_relmediaT,bloques del 14,True,False,False,False,True,False,True,False,True,False,4
+mtarjeta_visa_consumo_desdemaxT,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+Visa_mpagospesos_relmaxT,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+Visa_mpagospesos_relmediaT,bloques del 14,True,False,False,False,False,False,True,False,True,False,3
+Visa_mpagospesos_desdemaxT,bloques del 14,False,False,False,False,True,False,False,False,True,False,2
+mpayroll_relmaxT,bloques del 14,False,False,False,False,True,False,True,False,True,True,3
+mpayroll_relmediaT,bloques del 14,False,False,True,False,True,False,True,True,True,True,4
+mpayroll_desdemaxT,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+cpayroll_trx_relmaxT,bloques del 14,False,False,False,False,True,False,True,False,True,False,3
+cpayroll_trx_relmediaT,bloques del 14,False,False,False,False,True,False,False,False,False,False,1
+cpayroll_trx_desdemaxT,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+cproductos_relmaxT,bloques del 14,False,False,False,False,True,False,True,True,True,True,3
+cproductos_relmediaT,bloques del 14,True,True,True,True,True,False,True,True,True,True,5
+cproductos_desdemaxT,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+Visa_mpagominimo_relmaxT,bloques del 14,False,False,False,False,True,False,True,False,True,False,3
+Visa_mpagominimo_relmediaT,bloques del 14,True,False,True,False,True,False,True,False,True,False,5
+Visa_mpagominimo_desdemaxT,bloques del 14,False,False,False,False,False,False,True,False,True,False,2
+ccaja_ahorro_relmaxT,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+ccaja_ahorro_relmediaT,bloques del 14,True,True,True,True,True,True,True,True,True,True,5
+ccaja_ahorro_desdemaxT,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+mpasivos_margen_relmaxT,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+mpasivos_margen_relmediaT,bloques del 14,True,False,False,False,False,False,True,False,True,False,3
+mpasivos_margen_desdemaxT,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+mactivos_margen_relmaxT,bloques del 14,False,False,False,False,True,False,True,False,True,False,3
+mactivos_margen_relmediaT,bloques del 14,True,False,False,False,True,False,True,False,True,False,4
+mactivos_margen_desdemaxT,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+mrentabilidad_annual_relmaxT,bloques del 14,False,False,False,False,False,False,True,False,True,False,2
+mrentabilidad_annual_relmediaT,bloques del 14,False,False,False,False,True,False,True,False,True,False,3
+mrentabilidad_annual_desdemaxT,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+cprestamos_personales_relmaxT,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+cprestamos_personales_relmediaT,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+cprestamos_personales_desdemaxT,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+Visa_msaldototal_relmaxT,bloques del 14,False,False,False,False,False,False,True,False,True,False,2
+Visa_msaldototal_relmediaT,bloques del 14,False,False,True,False,False,False,True,False,True,False,3
+Visa_msaldototal_desdemaxT,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+mrentabilidad_relmaxT,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+mrentabilidad_relmediaT,bloques del 14,False,False,False,False,True,False,True,False,True,False,3
+mrentabilidad_desdemaxT,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+Visa_msaldopesos_relmaxT,bloques del 14,False,False,False,False,False,False,True,False,False,False,1
+Visa_msaldopesos_relmediaT,bloques del 14,False,False,False,False,False,False,True,False,True,False,2
+Visa_msaldopesos_desdemaxT,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+Visa_cconsumos_relmaxT,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+Visa_cconsumos_relmediaT,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+Visa_cconsumos_desdemaxT,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+Visa_mfinanciacion_limite_relmaxT,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+Visa_mfinanciacion_limite_relmediaT,bloques del 14,True,False,True,False,True,False,True,False,True,False,5
+Visa_mfinanciacion_limite_desdemaxT,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+mcomisiones_relmaxT,bloques del 14,False,False,False,False,True,False,True,False,True,False,3
+mcomisiones_relmediaT,bloques del 14,True,False,True,False,True,False,True,False,True,False,5
+mcomisiones_desdemaxT,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+mcuenta_debitos_automaticos_relmaxT,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+mcuenta_debitos_automaticos_relmediaT,bloques del 14,True,False,True,False,True,False,True,False,True,False,5
+mcuenta_debitos_automaticos_desdemaxT,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+mttarjeta_visa_debitos_automaticos_relmaxT,bloques del 14,False,False,False,False,True,False,True,False,True,False,3
+mttarjeta_visa_debitos_automaticos_relmediaT,bloques del 14,False,False,True,False,True,False,True,False,True,False,4
+mttarjeta_visa_debitos_automaticos_desdemaxT,bloques del 14,False,False,False,False,False,False,True,False,False,False,1
+mcomisiones_mantenimiento_relmaxT,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+mcomisiones_mantenimiento_relmediaT,bloques del 14,False,False,True,False,True,False,True,True,True,True,4
+mcomisiones_mantenimiento_desdemaxT,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+mautoservicio_relmaxT,bloques del 14,False,False,False,False,False,False,False,False,True,False,1
+mautoservicio_relmediaT,bloques del 14,False,False,False,False,False,False,False,False,True,False,1
+mautoservicio_desdemaxT,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+Master_mpagospesos_relmaxT,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+Master_mpagospesos_relmediaT,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+Master_mpagospesos_desdemaxT,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+ccaja_seguridad_relmaxT,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+ccaja_seguridad_relmediaT,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+ccaja_seguridad_desdemaxT,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+ctrx_quarter_zc1,bloques del 14,False,False,False,False,True,False,True,False,True,False,3
+ctrx_quarter_zc2,bloques del 14,True,False,True,True,True,False,True,True,True,True,5
+mcaja_ahorro_zc1,bloques del 14,False,False,False,False,True,False,True,False,True,False,3
+mcaja_ahorro_zc2,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+ctarjeta_visa_zc1,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+ctarjeta_visa_zc2,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+mcuenta_corriente_zc1,bloques del 14,False,False,True,False,False,False,True,False,True,False,3
+mcuenta_corriente_zc2,bloques del 14,True,False,True,True,True,True,True,True,True,True,5
+mcuentas_saldo_zc1,bloques del 14,False,False,True,False,True,False,True,False,True,False,4
+mcuentas_saldo_zc2,bloques del 14,True,False,True,False,True,False,True,False,True,False,5
+ctarjeta_visa_transacciones_zc1,bloques del 14,False,False,False,False,False,False,False,False,True,False,1
+ctarjeta_visa_transacciones_zc2,bloques del 14,False,False,True,False,False,False,True,False,False,False,2
+mprestamos_personales_zc1,bloques del 14,False,False,True,True,True,False,True,False,True,True,4
+mprestamos_personales_zc2,bloques del 14,False,False,True,False,False,False,False,False,False,False,1
+mtarjeta_visa_consumo_zc1,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+mtarjeta_visa_consumo_zc2,bloques del 14,False,False,False,False,True,False,False,False,False,False,1
+Visa_mpagospesos_zc1,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+Visa_mpagospesos_zc2,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+mpayroll_zc1,bloques del 14,False,False,False,False,True,False,False,False,False,False,1
+mpayroll_zc2,bloques del 14,False,False,False,False,True,False,True,False,True,False,3
+cpayroll_trx_zc1,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+cpayroll_trx_zc2,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+cproductos_zc1,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+cproductos_zc2,bloques del 14,False,False,False,False,True,False,True,False,False,False,2
+Visa_mpagominimo_zc1,bloques del 14,True,False,False,False,False,False,False,False,True,False,2
+Visa_mpagominimo_zc2,bloques del 14,False,False,False,False,True,False,False,False,True,False,2
+ccaja_ahorro_zc1,bloques del 14,False,False,False,False,False,False,False,False,True,False,1
+ccaja_ahorro_zc2,bloques del 14,False,False,False,False,False,False,True,False,True,False,2
+mpasivos_margen_zc1,bloques del 14,True,False,False,False,False,False,False,False,False,False,1
+mpasivos_margen_zc2,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+mactivos_margen_zc1,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+mactivos_margen_zc2,bloques del 14,False,False,False,False,True,False,False,False,True,False,2
+mrentabilidad_annual_zc1,bloques del 14,False,False,False,False,False,False,True,False,True,False,2
+mrentabilidad_annual_zc2,bloques del 14,False,False,False,False,True,False,False,False,True,False,2
+cprestamos_personales_zc1,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+cprestamos_personales_zc2,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+Visa_msaldototal_zc1,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+Visa_msaldototal_zc2,bloques del 14,False,False,True,False,False,False,False,False,False,False,1
+mrentabilidad_zc1,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+mrentabilidad_zc2,bloques del 14,True,False,False,False,False,False,False,False,False,False,1
+Visa_msaldopesos_zc1,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+Visa_msaldopesos_zc2,bloques del 14,False,False,False,False,False,False,False,False,True,True,1
+Visa_cconsumos_zc1,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+Visa_cconsumos_zc2,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+Visa_mfinanciacion_limite_zc1,bloques del 14,True,False,False,False,False,False,False,False,False,False,1
+Visa_mfinanciacion_limite_zc2,bloques del 14,False,False,True,False,False,False,False,False,False,False,1
+mcomisiones_zc1,bloques del 14,False,False,False,False,False,False,True,False,False,False,1
+mcomisiones_zc2,bloques del 14,False,False,False,False,False,False,False,False,True,False,1
+mcuenta_debitos_automaticos_zc1,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+mcuenta_debitos_automaticos_zc2,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+mttarjeta_visa_debitos_automaticos_zc1,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+mttarjeta_visa_debitos_automaticos_zc2,bloques del 14,False,False,False,False,False,False,True,False,True,False,2
+mcomisiones_mantenimiento_zc1,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+mcomisiones_mantenimiento_zc2,bloques del 14,False,False,False,False,False,False,False,False,True,False,1
+mautoservicio_zc1,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+mautoservicio_zc2,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+Master_mpagospesos_zc1,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+Master_mpagospesos_zc2,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+ccaja_seguridad_zc1,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+ccaja_seguridad_zc2,bloques del 14,False,False,False,False,False,False,False,False,False,False,0
+mv_status01,Visa y Master,True,True,True,True,True,True,True,True,True,True,5
+mv_status02,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_status03,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_status04,Visa y Master,True,True,True,False,True,True,True,True,True,True,5
+mv_status05,Visa y Master,True,False,False,False,False,False,False,False,True,False,2
+mv_status06,Visa y Master,False,False,True,False,False,False,True,False,True,True,3
+mv_status07,Visa y Master,True,True,True,True,True,True,True,True,True,True,5
+mv_mfinanciacion_limite,Visa y Master,True,False,True,False,True,False,True,False,True,True,5
+mv_msaldototal,Visa y Master,True,True,True,True,True,True,True,True,True,True,5
+mv_msaldopesos,Visa y Master,False,False,False,False,True,False,True,False,True,True,3
+mv_msaldodolares,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_mconsumospesos,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_mconsumosdolares,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_mlimitecompra,Visa y Master,False,False,False,False,True,False,False,False,True,False,2
+mv_madelantopesos,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_madelantodolares,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_mpagado,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_mpagospesos,Visa y Master,True,True,True,True,True,True,True,True,True,True,5
+mv_mpagosdolares,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_mconsumototal,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_cconsumos,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_cadelantosefectivo,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_mpagominimo,Visa y Master,True,False,True,True,True,True,True,True,True,True,5
+mv_Fvencimiento,Visa y Master,False,False,True,False,True,False,True,False,True,False,4
+mv_Finiciomora,Visa y Master,True,True,True,True,True,True,True,True,True,True,5
+mv_fultimo_cierre,Visa y Master,False,False,False,False,False,False,True,False,False,False,1
+mv_fechaalta,Visa y Master,False,False,True,False,False,False,True,False,True,False,3
+mvr_Master_mlimitecompra,Visa y Master,False,False,True,False,True,False,True,False,False,False,3
+mvr_Visa_mlimitecompra,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mvr_msaldototal,Visa y Master,False,False,True,False,True,False,False,False,True,False,3
+mvr_msaldopesos,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mvr_msaldopesos2,Visa y Master,True,False,True,False,True,False,True,False,True,False,5
+mvr_msaldodolares,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mvr_msaldodolares2,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mvr_mconsumospesos,Visa y Master,False,False,False,False,True,False,False,False,True,False,2
+mvr_mconsumosdolares,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mvr_madelantopesos,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mvr_madelantodolares,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mvr_mpagado,Visa y Master,False,False,False,False,False,False,False,False,True,False,1
+mvr_mpagospesos,Visa y Master,True,True,True,True,True,True,True,True,True,True,5
+mvr_mpagosdolares,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mvr_mconsumototal,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mvr_mpagominimo,Visa y Master,True,True,True,True,True,True,True,True,True,True,5
+mv_status01_lag1,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_status02_lag1,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_status03_lag1,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_status04_lag1,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_status05_lag1,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_status06_lag1,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_status07_lag1,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_mfinanciacion_limite_lag1,Visa y Master,False,False,True,False,False,False,True,False,False,False,2
+mv_msaldototal_lag1,Visa y Master,False,False,False,False,False,False,True,False,True,False,2
+mv_msaldopesos_lag1,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_msaldodolares_lag1,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_mconsumospesos_lag1,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_mconsumosdolares_lag1,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_mlimitecompra_lag1,Visa y Master,False,False,False,False,True,False,False,False,False,False,1
+mv_madelantopesos_lag1,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_madelantodolares_lag1,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_mpagado_lag1,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_mpagospesos_lag1,Visa y Master,False,False,False,False,True,False,True,False,True,True,3
+mv_mpagosdolares_lag1,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_mconsumototal_lag1,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_cconsumos_lag1,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_cadelantosefectivo_lag1,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_mpagominimo_lag1,Visa y Master,False,False,True,False,True,False,False,False,False,False,2
+mv_Fvencimiento_lag1,Visa y Master,True,False,True,False,False,False,False,False,True,False,3
+mv_Finiciomora_lag1,Visa y Master,True,True,True,True,True,True,True,True,True,True,5
+mv_fultimo_cierre_lag1,Visa y Master,False,False,False,False,True,False,False,False,True,False,2
+mv_fechaalta_lag1,Visa y Master,False,False,False,False,False,False,True,False,True,False,2
+mvr_Master_mlimitecompra_lag1,Visa y Master,False,False,True,False,True,False,False,False,True,False,3
+mvr_Visa_mlimitecompra_lag1,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mvr_msaldototal_lag1,Visa y Master,False,False,False,False,False,False,True,False,False,False,1
+mvr_msaldopesos_lag1,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mvr_msaldopesos2_lag1,Visa y Master,False,False,False,False,False,False,False,False,True,False,1
+mvr_msaldodolares_lag1,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mvr_msaldodolares2_lag1,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mvr_mconsumospesos_lag1,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mvr_mconsumosdolares_lag1,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mvr_madelantopesos_lag1,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mvr_madelantodolares_lag1,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mvr_mpagado_lag1,Visa y Master,False,False,True,False,True,False,True,False,True,False,4
+mvr_mpagospesos_lag1,Visa y Master,False,False,True,False,True,False,True,False,True,False,4
+mvr_mpagosdolares_lag1,Visa y Master,True,False,True,False,False,False,False,False,False,False,2
+mvr_mconsumototal_lag1,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mvr_mpagominimo_lag1,Visa y Master,True,False,False,False,False,False,True,False,True,False,3
+mv_status01_delta1,Visa y Master,False,False,True,False,True,True,True,True,True,True,4
+mv_status02_delta1,Visa y Master,False,False,False,False,True,False,True,False,True,False,3
+mv_status03_delta1,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_status04_delta1,Visa y Master,False,False,True,True,False,False,False,False,True,False,2
+mv_status05_delta1,Visa y Master,False,False,False,False,True,False,False,False,False,False,1
+mv_status06_delta1,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_status07_delta1,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_mfinanciacion_limite_delta1,Visa y Master,False,False,True,False,False,False,True,False,False,False,2
+mv_msaldototal_delta1,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_msaldopesos_delta1,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_msaldodolares_delta1,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_mconsumospesos_delta1,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_mconsumosdolares_delta1,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_mlimitecompra_delta1,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_madelantopesos_delta1,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_madelantodolares_delta1,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_mpagado_delta1,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_mpagospesos_delta1,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_mpagosdolares_delta1,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_mconsumototal_delta1,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_cconsumos_delta1,Visa y Master,False,False,False,False,False,False,True,False,True,False,2
+mv_cadelantosefectivo_delta1,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_mpagominimo_delta1,Visa y Master,False,False,True,False,True,False,True,False,False,False,3
+mv_Fvencimiento_delta1,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_Finiciomora_delta1,Visa y Master,True,True,True,True,True,True,True,True,True,True,5
+mv_fultimo_cierre_delta1,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_fechaalta_delta1,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mvr_Master_mlimitecompra_delta1,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mvr_Visa_mlimitecompra_delta1,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mvr_msaldototal_delta1,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mvr_msaldopesos_delta1,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mvr_msaldopesos2_delta1,Visa y Master,False,False,False,False,True,False,True,False,True,False,3
+mvr_msaldodolares_delta1,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mvr_msaldodolares2_delta1,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mvr_mconsumospesos_delta1,Visa y Master,False,False,False,False,True,False,True,False,False,False,2
+mvr_mconsumosdolares_delta1,Visa y Master,False,False,False,False,False,False,False,False,True,False,1
+mvr_madelantopesos_delta1,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mvr_madelantodolares_delta1,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mvr_mpagado_delta1,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mvr_mpagospesos_delta1,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mvr_mpagosdolares_delta1,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mvr_mconsumototal_delta1,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mvr_mpagominimo_delta1,Visa y Master,True,False,True,False,True,False,True,False,True,False,5
+mv_status01_lag2,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_status02_lag2,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_status03_lag2,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_status04_lag2,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_status05_lag2,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_status06_lag2,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_status07_lag2,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_mfinanciacion_limite_lag2,Visa y Master,False,False,False,False,False,False,True,False,True,False,2
+mv_msaldototal_lag2,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_msaldopesos_lag2,Visa y Master,False,False,False,False,False,False,True,False,False,False,1
+mv_msaldodolares_lag2,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_mconsumospesos_lag2,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_mconsumosdolares_lag2,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_mlimitecompra_lag2,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_madelantopesos_lag2,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_madelantodolares_lag2,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_mpagado_lag2,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_mpagospesos_lag2,Visa y Master,False,False,False,False,False,False,True,False,True,False,2
+mv_mpagosdolares_lag2,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_mconsumototal_lag2,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_cconsumos_lag2,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_cadelantosefectivo_lag2,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_mpagominimo_lag2,Visa y Master,False,False,False,False,False,False,False,False,True,False,1
+mv_Fvencimiento_lag2,Visa y Master,False,False,True,False,True,False,False,False,True,False,3
+mv_Finiciomora_lag2,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_fultimo_cierre_lag2,Visa y Master,False,False,False,False,False,False,True,False,False,False,1
+mv_fechaalta_lag2,Visa y Master,False,False,True,False,False,False,False,False,True,False,2
+mvr_Master_mlimitecompra_lag2,Visa y Master,True,True,True,False,True,False,True,False,True,False,5
+mvr_Visa_mlimitecompra_lag2,Visa y Master,True,False,True,False,False,False,False,False,False,False,2
+mvr_msaldototal_lag2,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mvr_msaldopesos_lag2,Visa y Master,False,False,True,False,False,False,False,False,False,False,1
+mvr_msaldopesos2_lag2,Visa y Master,True,False,False,False,False,False,True,False,False,False,2
+mvr_msaldodolares_lag2,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mvr_msaldodolares2_lag2,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mvr_mconsumospesos_lag2,Visa y Master,False,False,False,False,False,False,True,False,False,False,1
+mvr_mconsumosdolares_lag2,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mvr_madelantopesos_lag2,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mvr_madelantodolares_lag2,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mvr_mpagado_lag2,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mvr_mpagospesos_lag2,Visa y Master,True,False,False,False,False,False,True,False,False,False,2
+mvr_mpagosdolares_lag2,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mvr_mconsumototal_lag2,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mvr_mpagominimo_lag2,Visa y Master,False,False,False,False,False,False,False,False,True,False,1
+mv_status01_delta2,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_status02_delta2,Visa y Master,False,False,False,False,False,False,True,False,False,False,1
+mv_status03_delta2,Visa y Master,True,False,False,False,False,False,False,False,True,False,2
+mv_status04_delta2,Visa y Master,True,False,True,False,True,True,True,False,True,True,5
+mv_status05_delta2,Visa y Master,True,True,True,True,True,False,True,True,True,True,5
+mv_status06_delta2,Visa y Master,False,False,True,True,True,True,True,True,True,True,4
+mv_status07_delta2,Visa y Master,True,False,True,False,True,False,True,False,True,False,5
+mv_mfinanciacion_limite_delta2,Visa y Master,True,False,True,False,True,False,True,False,False,False,4
+mv_msaldototal_delta2,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_msaldopesos_delta2,Visa y Master,False,False,False,False,True,False,False,False,False,False,1
+mv_msaldodolares_delta2,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_mconsumospesos_delta2,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_mconsumosdolares_delta2,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_mlimitecompra_delta2,Visa y Master,True,False,True,False,True,False,False,False,False,False,3
+mv_madelantopesos_delta2,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_madelantodolares_delta2,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_mpagado_delta2,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_mpagospesos_delta2,Visa y Master,False,False,False,False,False,False,True,False,False,False,1
+mv_mpagosdolares_delta2,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_mconsumototal_delta2,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_cconsumos_delta2,Visa y Master,False,False,True,False,True,False,True,False,True,False,4
+mv_cadelantosefectivo_delta2,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_mpagominimo_delta2,Visa y Master,False,False,False,False,True,False,True,False,True,False,3
+mv_Fvencimiento_delta2,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_Finiciomora_delta2,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mv_fultimo_cierre_delta2,Visa y Master,False,False,False,False,True,False,False,False,False,False,1
+mv_fechaalta_delta2,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mvr_Master_mlimitecompra_delta2,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mvr_Visa_mlimitecompra_delta2,Visa y Master,False,False,False,False,False,False,True,False,False,False,1
+mvr_msaldototal_delta2,Visa y Master,True,False,False,False,False,False,True,False,False,False,2
+mvr_msaldopesos_delta2,Visa y Master,False,False,True,False,False,False,False,False,False,False,1
+mvr_msaldopesos2_delta2,Visa y Master,False,False,True,False,False,False,False,False,False,False,1
+mvr_msaldodolares_delta2,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mvr_msaldodolares2_delta2,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mvr_mconsumospesos_delta2,Visa y Master,False,False,False,False,True,False,False,False,False,False,1
+mvr_mconsumosdolares_delta2,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mvr_madelantopesos_delta2,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mvr_madelantodolares_delta2,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mvr_mpagado_delta2,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mvr_mpagospesos_delta2,Visa y Master,True,False,False,False,False,False,True,False,False,False,2
+mvr_mpagosdolares_delta2,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mvr_mconsumototal_delta2,Visa y Master,False,False,False,False,False,False,False,False,False,False,0
+mvr_mpagominimo_delta2,Visa y Master,False,False,True,False,False,False,True,False,True,False,3
+mrentabilidad_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+mrentabilidad_annual_rel_sim1,cambios relativos,False,False,True,False,False,False,True,False,True,False,3
+mcomisiones_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+mactivos_margen_rel_sim1,cambios relativos,True,False,True,False,False,False,True,False,True,False,4
+mpasivos_margen_rel_sim1,cambios relativos,True,False,False,False,False,False,False,False,True,False,2
+cproductos_rel_sim1,cambios relativos,True,False,True,False,True,False,False,False,True,False,4
+ccuenta_corriente_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+mcuenta_corriente_adicional_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+mcuenta_corriente_rel_sim1,cambios relativos,True,False,False,False,True,False,True,False,False,False,3
+ccaja_ahorro_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+mcaja_ahorro_rel_sim1,cambios relativos,False,False,False,False,True,False,True,False,True,False,3
+mcaja_ahorro_adicional_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+mcaja_ahorro_dolares_rel_sim1,cambios relativos,False,False,False,False,True,False,True,False,True,False,3
+mcuentas_saldo_rel_sim1,cambios relativos,True,True,True,True,True,False,True,True,True,True,5
+ctarjeta_debito_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+ctarjeta_debito_transacciones_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+mautoservicio_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+ctarjeta_visa_rel_sim1,cambios relativos,False,False,True,False,False,False,False,False,False,False,1
+ctarjeta_visa_transacciones_rel_sim1,cambios relativos,True,False,True,False,True,False,True,False,True,False,5
+mtarjeta_visa_consumo_rel_sim1,cambios relativos,False,False,False,False,False,False,True,False,True,False,2
+ctarjeta_master_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+ctarjeta_master_transacciones_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+mtarjeta_master_consumo_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+cprestamos_personales_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+mprestamos_personales_rel_sim1,cambios relativos,True,False,True,True,True,True,True,True,True,True,5
+cprestamos_prendarios_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+mprestamos_prendarios_rel_sim1,cambios relativos,False,False,False,False,False,False,True,False,True,False,2
+cprestamos_hipotecarios_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+mprestamos_hipotecarios_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+cplazo_fijo_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+mplazo_fijo_dolares_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+mplazo_fijo_pesos_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+cinversion1_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+minversion1_pesos_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+minversion1_dolares_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+cinversion2_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+minversion2_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+cseguro_vida_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+cseguro_auto_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+cseguro_vivienda_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+cseguro_accidentes_personales_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+ccaja_seguridad_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+cpayroll_trx_rel_sim1,cambios relativos,False,False,False,False,False,False,True,False,True,False,2
+mpayroll_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,True,False,1
+mpayroll2_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+cpayroll2_trx_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+ccuenta_debitos_automaticos_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+mcuenta_debitos_automaticos_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+ctarjeta_visa_debitos_automaticos_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+mttarjeta_visa_debitos_automaticos_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+ctarjeta_master_debitos_automaticos_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+mttarjeta_master_debitos_automaticos_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+cpagodeservicios_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+mpagodeservicios_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+cpagomiscuentas_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+mpagomiscuentas_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+ccajeros_propios_descuentos_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+mcajeros_propios_descuentos_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+ctarjeta_visa_descuentos_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+mtarjeta_visa_descuentos_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+ctarjeta_master_descuentos_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+mtarjeta_master_descuentos_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+ccomisiones_mantenimiento_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+mcomisiones_mantenimiento_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+ccomisiones_otras_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+mcomisiones_otras_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+cforex_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+cforex_buy_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+mforex_buy_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+cforex_sell_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+mforex_sell_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+ctransferencias_recibidas_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+mtransferencias_recibidas_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+ctransferencias_emitidas_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+mtransferencias_emitidas_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+cextraccion_autoservicio_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+mextraccion_autoservicio_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+ccheques_depositados_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+mcheques_depositados_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+ccheques_emitidos_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+mcheques_emitidos_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+ccheques_depositados_rechazados_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+mcheques_depositados_rechazados_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+ccheques_emitidos_rechazados_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+mcheques_emitidos_rechazados_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+ccallcenter_transacciones_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+chomebanking_transacciones_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+ccajas_consultas_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+ccajas_depositos_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+ccajas_extracciones_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+ccajas_otras_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+catm_trx_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+matm_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+catm_trx_other_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+matm_other_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+ctrx_quarter_rel_sim1,cambios relativos,True,False,True,True,True,True,True,True,True,True,5
+cmobile_app_trx_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+Master_mfinanciacion_limite_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+Master_msaldototal_rel_sim1,cambios relativos,False,False,False,False,False,False,True,False,True,False,2
+Master_msaldopesos_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+Master_msaldodolares_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+Master_mconsumospesos_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+Master_mconsumosdolares_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+Master_mlimitecompra_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+Master_madelantopesos_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+Master_madelantodolares_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+Master_mpagado_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+Master_mpagospesos_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+Master_mpagosdolares_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+Master_mconsumototal_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+Master_cconsumos_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+Master_cadelantosefectivo_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+Master_mpagominimo_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+Visa_mfinanciacion_limite_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+Visa_msaldototal_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+Visa_msaldopesos_rel_sim1,cambios relativos,False,False,False,False,False,False,True,False,True,False,2
+Visa_msaldodolares_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+Visa_mconsumospesos_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+Visa_mconsumosdolares_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+Visa_mlimitecompra_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+Visa_madelantopesos_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+Visa_madelantodolares_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+Visa_mpagado_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+Visa_mpagospesos_rel_sim1,cambios relativos,True,False,False,False,False,False,False,False,False,False,1
+Visa_mpagosdolares_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+Visa_mconsumototal_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+Visa_cconsumos_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,True,False,1
+Visa_cadelantosefectivo_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+Visa_mpagominimo_rel_sim1,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+mrentabilidad_rel_sim2,cambios relativos,False,False,False,False,True,False,False,False,False,False,1
+mrentabilidad_annual_rel_sim2,cambios relativos,False,False,False,False,True,False,False,False,True,False,2
+mcomisiones_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+mactivos_margen_rel_sim2,cambios relativos,True,False,False,False,True,False,True,False,True,False,4
+mpasivos_margen_rel_sim2,cambios relativos,True,False,True,False,True,False,True,False,False,False,4
+cproductos_rel_sim2,cambios relativos,True,True,True,True,True,True,True,True,True,True,5
+ccuenta_corriente_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+mcuenta_corriente_adicional_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+mcuenta_corriente_rel_sim2,cambios relativos,False,False,True,False,False,False,True,False,True,False,3
+ccaja_ahorro_rel_sim2,cambios relativos,False,False,True,False,True,False,True,False,True,False,4
+mcaja_ahorro_rel_sim2,cambios relativos,True,False,True,False,True,False,True,False,True,False,5
+mcaja_ahorro_adicional_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+mcaja_ahorro_dolares_rel_sim2,cambios relativos,False,False,True,False,True,False,True,False,True,True,4
+mcuentas_saldo_rel_sim2,cambios relativos,True,True,True,True,True,False,True,True,True,True,5
+ctarjeta_debito_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+ctarjeta_debito_transacciones_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,True,False,1
+mautoservicio_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+ctarjeta_visa_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+ctarjeta_visa_transacciones_rel_sim2,cambios relativos,True,False,True,True,True,False,True,False,True,True,5
+mtarjeta_visa_consumo_rel_sim2,cambios relativos,True,False,True,False,True,True,True,False,True,False,5
+ctarjeta_master_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+ctarjeta_master_transacciones_rel_sim2,cambios relativos,True,False,False,False,False,False,True,False,False,False,2
+mtarjeta_master_consumo_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+cprestamos_personales_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+mprestamos_personales_rel_sim2,cambios relativos,True,True,True,True,True,True,True,True,True,True,5
+cprestamos_prendarios_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+mprestamos_prendarios_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,True,False,1
+cprestamos_hipotecarios_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+mprestamos_hipotecarios_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+cplazo_fijo_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+mplazo_fijo_dolares_rel_sim2,cambios relativos,False,False,False,False,False,False,True,False,True,False,2
+mplazo_fijo_pesos_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+cinversion1_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+minversion1_pesos_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+minversion1_dolares_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+cinversion2_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+minversion2_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+cseguro_vida_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+cseguro_auto_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+cseguro_vivienda_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+cseguro_accidentes_personales_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+ccaja_seguridad_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+cpayroll_trx_rel_sim2,cambios relativos,True,True,True,True,True,True,True,True,True,True,5
+mpayroll_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,True,True,1
+mpayroll2_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+cpayroll2_trx_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+ccuenta_debitos_automaticos_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+mcuenta_debitos_automaticos_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+ctarjeta_visa_debitos_automaticos_rel_sim2,cambios relativos,False,False,False,False,True,False,True,False,True,False,3
+mttarjeta_visa_debitos_automaticos_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+ctarjeta_master_debitos_automaticos_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+mttarjeta_master_debitos_automaticos_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+cpagodeservicios_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+mpagodeservicios_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+cpagomiscuentas_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+mpagomiscuentas_rel_sim2,cambios relativos,True,False,False,False,False,False,False,False,False,False,1
+ccajeros_propios_descuentos_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+mcajeros_propios_descuentos_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+ctarjeta_visa_descuentos_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+mtarjeta_visa_descuentos_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+ctarjeta_master_descuentos_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+mtarjeta_master_descuentos_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+ccomisiones_mantenimiento_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+mcomisiones_mantenimiento_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+ccomisiones_otras_rel_sim2,cambios relativos,True,False,False,False,True,False,False,False,True,False,3
+mcomisiones_otras_rel_sim2,cambios relativos,True,False,False,False,False,False,False,False,False,False,1
+cforex_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+cforex_buy_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+mforex_buy_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+cforex_sell_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+mforex_sell_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+ctransferencias_recibidas_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+mtransferencias_recibidas_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+ctransferencias_emitidas_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+mtransferencias_emitidas_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+cextraccion_autoservicio_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+mextraccion_autoservicio_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+ccheques_depositados_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+mcheques_depositados_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+ccheques_emitidos_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+mcheques_emitidos_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+ccheques_depositados_rechazados_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+mcheques_depositados_rechazados_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+ccheques_emitidos_rechazados_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+mcheques_emitidos_rechazados_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+ccallcenter_transacciones_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+chomebanking_transacciones_rel_sim2,cambios relativos,True,False,False,False,False,False,False,False,False,False,1
+ccajas_consultas_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+ccajas_depositos_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+ccajas_extracciones_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+ccajas_otras_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+catm_trx_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+matm_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+catm_trx_other_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+matm_other_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+ctrx_quarter_rel_sim2,cambios relativos,True,True,True,True,True,True,True,True,True,True,5
+cmobile_app_trx_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+Master_mfinanciacion_limite_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+Master_msaldototal_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+Master_msaldopesos_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,True,False,1
+Master_msaldodolares_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+Master_mconsumospesos_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+Master_mconsumosdolares_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+Master_mlimitecompra_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+Master_madelantopesos_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+Master_madelantodolares_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+Master_mpagado_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+Master_mpagospesos_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+Master_mpagosdolares_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+Master_mconsumototal_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+Master_cconsumos_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+Master_cadelantosefectivo_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+Master_mpagominimo_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+Visa_mfinanciacion_limite_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,True,False,1
+Visa_msaldototal_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+Visa_msaldopesos_rel_sim2,cambios relativos,False,False,True,False,True,False,False,False,False,False,2
+Visa_msaldodolares_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+Visa_mconsumospesos_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+Visa_mconsumosdolares_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+Visa_mlimitecompra_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+Visa_madelantopesos_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+Visa_madelantodolares_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+Visa_mpagado_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+Visa_mpagospesos_rel_sim2,cambios relativos,False,False,True,False,True,False,False,False,False,False,2
+Visa_mpagosdolares_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,True,False,1
+Visa_mconsumototal_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+Visa_cconsumos_rel_sim2,cambios relativos,False,False,True,False,True,False,False,False,True,False,3
+Visa_cadelantosefectivo_rel_sim2,cambios relativos,False,False,False,False,False,False,False,False,False,False,0
+Visa_mpagominimo_rel_sim2,cambios relativos,True,False,True,False,True,False,True,False,True,False,5
