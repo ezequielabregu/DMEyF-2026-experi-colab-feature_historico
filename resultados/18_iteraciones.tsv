@@ -1,0 +1,4 @@
+config	hipotesis	contra	peso	fraccion	hoja	d_M	resultado	decide
+ACH_4_P3_U10	Con el 10 % de CONTINUA, ACH_4_P3 no pierde dinero	ACH_4_P3	3	0.1		-9.555	Resta	True
+ACH_4_P1_U10	Con el 10 % de CONTINUA, el peso triple de BAJA+2 ya no hace falta	ACH_4_P3	1	0.1		-8.698	Resta	False
+ACH_4_P3_U10_H	Con el 10 % de CONTINUA, hojas de 76 filas representan los mismos clientes que las de 764	ACH_4_P3	3	0.1	76.0	-2.571	Resta	False

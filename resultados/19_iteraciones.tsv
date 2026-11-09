@@ -1,0 +1,2 @@
+config	hipotesis	contra	num_leaves	min_data_in_leaf	d_busqueda_M	d_M	resultado
+H400_M764	Con otro num_leaves y otro min_data_in_leaf, ACH_4_P3 gana más dinero	ACH_4_P3	400	764	5.341	0.599	Empate

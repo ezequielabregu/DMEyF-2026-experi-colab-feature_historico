@@ -1,0 +1,3 @@
+config	hipotesis	contra	columnas	d_M	resultado	decide
+ACH_4_MV_P3	Solo las combinaciones del mes	ACH_4_P3	1223	-0.078	Empate	False
+ACH_4_MVH_P3	Las combinaciones de Visa y Master, con sus lags y deltas, ganan más que ACH_4_P3	ACH_4_P3	1395	0.581	Empate	True
