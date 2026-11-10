@@ -1,0 +1,3 @@
+config	hipotesis	contra	meses	d_M	semillas_a_favor	resultado	decide
+PAQ2_P3	El segundo paquete (historial del puntaje, hojas de RF, rankings con cero fijo, cruce de Visa y Master, sueldo sin aguinaldo) gana más que PAQ_P3	PAQ_P3	201906-10	-1.764	1	Resta	True
+LOCRO_23	El promedio de las 5 mejores combinaciones de hiperparámetros del 23 gana más que el semillerío de PAQ_P3 con la misma cantidad de modelos	SEMILLERIO_PAQ_P3	201909-10	-0.927	1	Empate	True
