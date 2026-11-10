@@ -1,0 +1,2 @@
+config	hipotesis	contra	hiperparametros	d_M	resultado	decide
+prueba 48	Hiperparámetros buscados por ganancia (Optuna sobre 201906-08, reevaluados con 4 semillas) ganan más que los del 03 sobre PAQ_P3	PAQ_P3	"{""num_leaves"": 80, ""min_data_in_leaf"": 754, ""feature_fraction"": 0.3736, ""bagging_fraction"": 0.8101, ""learning_rate"": 0.0165, ""peso_b2"": 2.1441}"	-0.917	Empate	True

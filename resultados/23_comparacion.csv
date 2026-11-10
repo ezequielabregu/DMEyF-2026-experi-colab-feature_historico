@@ -1,0 +1,3 @@
+config,contra,meses,decide,d_M,error_clientes_M,error_semilla_M,error_total_M,ic95_inf_M,ic95_sup_M,d_ensamble_M,semillas_a_favor,d_201909,d_201910,d_201906,d_201907,d_201908
+ELEGIDA,PAQ_P3,201909-10,True,-0.9167,1.2242,1.7559,2.1406,-5.1122,3.2788,-1.4108,2,-0.4668,-1.3666,,,
+ELEGIDA,PAQ_P3,201906-10,False,1.2929,0.7592,0.9841,1.2429,-1.1433,3.729,1.1155,4,-0.4668,-1.3666,3.511,2.9858,1.8011
