@@ -1,0 +1,24 @@
+{
+  "implementation_commit": "d259778e05d3564c1269a66145c200229d66f9b9",
+  "state": {
+    "baseline_commit": "b09397e518aa3051dab41ea8fc64d3518b8bf52d",
+    "branch": "feat/medias-moviles-3m",
+    "status": "complete",
+    "completed": [
+      "02_variables.ipynb",
+      "03_modelos.ipynb",
+      "04_comparacion.ipynb"
+    ],
+    "started": 1794510306.5838583,
+    "source_sha256": {
+      "pipeline/funciones.py": "272b6929f80bc33fe6782f9dc61e6d052e5689c2f6431d56b980e4d2e1f33349",
+      "pipeline/parametros.py": "8b4b38a3bc025dc9e3b191d2c38d9a6fb0ce9438e7443a8a12f206eecb9d39c9",
+      "fichas/medias_moviles_3m.md": "89b218f6500c302bf36ad10d3042d9859cb6a5746c9d46847906e50dcb3fc62d"
+    },
+    "current": "04_comparacion.ipynb",
+    "finished": 1794511010.037922
+  },
+  "spot_interruption": true,
+  "baseline_predictions_identical": 25,
+  "new_predictions": 25
+}
