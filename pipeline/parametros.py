@@ -50,6 +50,7 @@ LAGS_MV = [1, 2]                                        # Visa y Master con su h
 ROTO_NUEVO = ('Visa_mfinanciacion_limite', 201904)      # roto solo en las combinaciones de Visa y Master (como el 17)
 LAGS_R = [1, 2]                                         # cambios relativos de Tomás (como el 20)
 EPSILON = 1e-12
+MINIMO_MM3 = 2                                          # media de t/t-1/t-2: al menos dos valores finitos
 BLOQUE_FILAS = 20_000                                   # filas por bloque al calcular (solo memoria y tiempo)
 
 # --- 5. Modelo -----------------------------------------------------------------
@@ -78,7 +79,7 @@ REFERENCIAS = {                                         # el main se compara tam
                    'ventana': 'consigna', 'hiper': HIPER_03, 'arboles': ARBOLES_03},
 }
 
-CORRIDA = MAIN                                          # en un branch: la configuración del branch (ejemplos al final)
+CORRIDA = {**MAIN, 'nombre': 'medias_moviles_3m_min2', 'bloques': BLOQUES_PAQ_P3 + ['MM3D']}
 
 # --- 7. Evaluación ---------------------------------------------------------------
 SEMILLA_PRIMIGENIA = 979201

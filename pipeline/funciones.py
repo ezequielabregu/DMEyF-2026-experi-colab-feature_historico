@@ -548,11 +548,31 @@ def bloque_r(d, filas, p):
     return {'R': (np.hstack(partes), nombres)}
 
 
+def bloque_mm3(d, filas, p):
+    """Media de valores disponibles en t, t-1 y t-2; mínimo MINIMO_MM3. 129 columnas."""
+    pos = _posiciones(d, filas, 2)
+    F = np.empty((len(filas), len(d.montos)), dtype=np.float32)
+    for inicio in range(0, len(filas), p.BLOQUE_FILAS):
+        sl = slice(inicio, inicio + p.BLOQUE_FILAS)
+        for j, v in enumerate(d.montos):
+            hk = _historia(d, pos, sl, d.variables.index(v), 2)
+            H = np.stack([hk[k] for k in range(3)]).astype(np.float64)
+            valido = np.isfinite(H)
+            cantidad = valido.sum(axis=0)
+            media = np.full(H.shape[1], np.nan)
+            np.divide(np.where(valido, H, 0.0).sum(axis=0), cantidad,
+                      out=media, where=cantidad >= p.MINIMO_MM3)
+            F[sl, j] = media
+    return {'MM3D': (F, [f'{v}_media_movil3_disponible' for v in d.montos])}
+
+
 # Productor de cada bloque. Para un bloque nuevo: agregar su función y su nombre acá.
-PRODUCTORES = {'AC': bloque_ac, 'CURADA': bloque_curada, 'ACH_4X': bloques_ach4, 'MVH': bloque_mvh, 'R': bloque_r}
+PRODUCTORES = {'AC': bloque_ac, 'CURADA': bloque_curada, 'ACH_4X': bloques_ach4, 'MVH': bloque_mvh, 'R': bloque_r,
+              'MM3D': bloque_mm3}
 BLOQUE_DE = {'AC': 'AC', 'CURADA': 'CURADA', 'ACH_V': 'ACH_4X', 'ACH_Q': 'ACH_4X', 'ACH_T': 'ACH_4X',
-             'ACH_Z': 'ACH_4X', 'MVH': 'MVH', 'R': 'R'}
-ESPERADO_COLUMNAS = {'AC': 760, 'CURADA': 120, 'ACH_V': 60, 'ACH_Q': 90, 'ACH_T': 90, 'ACH_Z': 60, 'MVH': 215, 'R': 258}
+             'ACH_Z': 'ACH_4X', 'MVH': 'MVH', 'R': 'R', 'MM3D': 'MM3D'}
+ESPERADO_COLUMNAS = {'AC': 760, 'CURADA': 120, 'ACH_V': 60, 'ACH_Q': 90, 'ACH_T': 90, 'ACH_Z': 60, 'MVH': 215, 'R': 258,
+                     'MM3D': 129}
 
 
 def control_fuga(d, productor, completo, filas, p, cortes=(201905, 201906, 201909)):
