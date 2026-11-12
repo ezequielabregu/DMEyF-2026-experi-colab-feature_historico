@@ -1,2 +1,2 @@
 config,contra,meses,n_meses,d_M,error_clientes_M,error_semilla_M,error_total_M,ic95_inf_M,ic95_sup_M,d_ensamble_M,semillas_a_favor,d_201906,d_201907,d_201908,d_201909,d_201910,eligio_entre_varias,veredicto,firma_config,firma_contra
-medias_moviles_3m_min2,main,201906-201910,5,-0.34,0.5932,0.9247,1.0986,-2.4933,1.8133,-0.3847,2,-1.1306,0.485,-0.1968,-0.9099,0.052,False,NO PASA,79b1b374f6b0d19e,786f0055d685f102
+medias_moviles_3m_min2,main,201906-201910,5,-0.0207,0.4605,0.4998,0.6796,-1.3527,1.3112,0.0224,4,-1.0983,0.7699,-0.5373,1.2192,-0.457,False,NO PASA,79b1b374f6b0d19e,786f0055d685f102

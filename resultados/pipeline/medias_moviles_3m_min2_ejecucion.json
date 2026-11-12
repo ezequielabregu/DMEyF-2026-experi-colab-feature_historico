@@ -1,24 +1,27 @@
 {
-  "implementation_commit": "d259778e05d3564c1269a66145c200229d66f9b9",
+  "configuration_commit": "cb87b1de587dd4735c65229cd39c2cbe886e551f",
   "state": {
     "baseline_commit": "b09397e518aa3051dab41ea8fc64d3518b8bf52d",
     "branch": "feat/medias-moviles-3m",
+    "n_seeds": 10,
     "status": "complete",
     "completed": [
       "02_variables.ipynb",
       "03_modelos.ipynb",
       "04_comparacion.ipynb"
     ],
-    "started": 1794510306.5838583,
+    "started": 1794511701.928045,
+    "original_started": 1794511701.9280586,
+    "attempt": 1,
     "source_sha256": {
       "pipeline/funciones.py": "272b6929f80bc33fe6782f9dc61e6d052e5689c2f6431d56b980e4d2e1f33349",
-      "pipeline/parametros.py": "8b4b38a3bc025dc9e3b191d2c38d9a6fb0ce9438e7443a8a12f206eecb9d39c9",
-      "fichas/medias_moviles_3m.md": "89b218f6500c302bf36ad10d3042d9859cb6a5746c9d46847906e50dcb3fc62d"
+      "pipeline/parametros.py": "b5f13240ff5b9c61f4184dde4d15c8965d0016d52ded70e7f95d48b8ffb4ab5d",
+      "fichas/medias_moviles_3m_10semillas.md": "ee055dc78d28c5425277ac979aa6a650a524dbee7799aaa3fc5992d80fd05bea"
     },
     "current": "04_comparacion.ipynb",
-    "finished": 1794511010.037922
+    "finished": 1794515705.047787
   },
-  "spot_interruption": true,
-  "baseline_predictions_identical": 25,
-  "new_predictions": 25
+  "original_predictions_preserved": 50,
+  "final_predictions": 100,
+  "n_seeds_per_arm": 10
 }
