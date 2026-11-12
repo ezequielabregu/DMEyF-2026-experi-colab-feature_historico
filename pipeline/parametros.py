@@ -83,7 +83,7 @@ CORRIDA = {**MAIN, 'nombre': 'medias_moviles_3m_min2', 'bloques': BLOQUES_PAQ_P3
 
 # --- 7. Evaluación ---------------------------------------------------------------
 SEMILLA_PRIMIGENIA = 979201
-N_SEMILLAS = 5                                          # decisión 4 de la ficha
+N_SEMILLAS = 10                                         # ampliación exploratoria fijada: cinco originales + cinco nuevas
 BANDA = (3_000, 6_000)                                  # ambos incluidos
 LARGO_CURVA = 25_000
 GANANCIA_ACIERTO = 1_072_500
@@ -95,7 +95,7 @@ SEMILLA_BOOTSTRAP = SEMILLA_PRIMIGENIA                  # la comparación j del 
 # de N_SEMILLAS. Se juzga en MESES_EVALUADOS; si el branch eligió entre varias configuraciones mirando los
 # meses (por ejemplo, con Optuna), elige con MESES_ELECCION y se juzga solo en MESES_REGLA_SI_ELIGIO.
 # Eso se declara en la configuración del branch con 'eligio_entre_varias': True.
-MINIMO_SEMILLAS = 3
+MINIMO_SEMILLAS = 6                                     # diagnóstico: conserva la proporción 3/5; no habilita merge automático
 MESES_ELECCION = [201906, 201907, 201908]
 MESES_REGLA_SI_ELIGIO = [201909, 201910]
 
