@@ -5,6 +5,11 @@ Experimento colaborativo de Data Mining en Economía y Finanzas (UBA, comisión 
 - **Integrantes:** Tomás H., Clara M. R., Ezequiel A.
 - **Tutor:** Alejandro Bolaños.
 
+## Cómo correr el pipeline
+
+Ver `pipeline/README.md`. Hace falta Python 3.14 y `pip install -r requirements.txt`.
+Los notebooks exploratorios `01` a `24` (cómo se llegó a `PAQ_P3`) están en el branch `ezequiel/etapa-1`.
+
 ## Cómo trabajamos con git
 
 - `main` tiene siempre código que corre.
