@@ -62,6 +62,17 @@ HIPER_03 = {'num_leaves': 50, 'min_data_in_leaf': 764, 'learning_rate': 0.016711
             'feature_fraction': 0.4170576239818614, 'bagging_fraction': 0.641424496819069}   # 03_hiperparametros.json
 ARBOLES_03 = 296
 
+# Optuna PAQ_P3: trial 27, elegido en junio-agosto de 2019.
+# HIPER_03 y ARBOLES_03 se conservan para PAQ_P3 y los controles originales.
+HIPER_MAIN = {
+    'num_leaves': 113,                         # anterior: 50
+    'min_data_in_leaf': 1852,                  # anterior: 764
+    'learning_rate': 0.01391671442151648,      # anterior: 0.016711332559601208
+    'feature_fraction': 0.29874911813255606,   # anterior: 0.4170576239818614
+    'bagging_fraction': 0.7560705071238571,    # anterior: 0.641424496819069
+}
+ARBOLES_MAIN = 451                            # anterior: 296
+
 # --- 6. Configuraciones --------------------------------------------------------
 # Una estrategia es lo que define las predicciones: bloques, peso de BAJA+2, ventana, hiperparámetros y árboles.
 # ventana: 'reciente' = todos los meses de MESES_TABLA hasta DISTANCIA antes del mes evaluado;
@@ -70,7 +81,13 @@ ARBOLES_03 = 296
 # PAQ_P3 queda congelada: es la estrategia del 22. Los controles contra el 22 se aplican solo a ella.
 PAQ_P3 = {'bloques': BLOQUES_PAQ_P3, 'peso_b2': 3, 'ventana': 'reciente', 'hiper': HIPER_03, 'arboles': ARBOLES_03}
 
-MAIN = {'nombre': 'main', 'meses': MESES_EVALUADOS, **PAQ_P3}   # al hacer merge, el cambio del branch va acá
+MAIN = {
+    'nombre': 'main',
+    'meses': MESES_EVALUADOS,
+    **PAQ_P3,
+    'hiper': HIPER_MAIN,
+    'arboles': ARBOLES_MAIN,
+}
 REFERENCIAS = {                                         # el main se compara también contra el baseline
     'AC': {'nombre': 'AC', 'meses': MESES_EVALUADOS, 'bloques': BLOQUES_AC, 'peso_b2': 1, 'ventana': 'reciente',
            'hiper': HIPER_03, 'arboles': ARBOLES_03},
