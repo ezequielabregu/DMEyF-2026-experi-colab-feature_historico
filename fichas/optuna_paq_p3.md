@@ -8,7 +8,8 @@ promediada entre junio, julio y agosto y dos semillas fijas. AUC secundaria.
 Cada modelo entrena desde marzo hasta dos meses antes de su mes evaluado.
 
 Treinta pruebas completas, incluida la configuración actual como primera prueba.
-TPE secuencial, semilla 979201, ocho pruebas iniciales aleatorias. Rangos fijados
+TPE secuencial, semilla 979201, umbral inicial de ocho pruebas completas que incluye
+el baseline encolado y siete pruebas aleatorias. Rangos fijados
 antes de entrenar: num_leaves 24-128 log, min_data_in_leaf 200-3000 log,
 learning_rate 0.005-0.05 log, feature_fraction 0.20-0.90, bagging_fraction
 0.50-1.00 y árboles 150-900 log. Límites elegidos por Codex alrededor del baseline.

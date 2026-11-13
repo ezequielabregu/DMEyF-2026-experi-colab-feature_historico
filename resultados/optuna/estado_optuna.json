@@ -1,0 +1,51 @@
+{
+  "status": "complete",
+  "phase": "evaluacion_final",
+  "started": 1794581181.2707067,
+  "attempt": 2,
+  "new_models": 245,
+  "configuration_commit": "30ef0c3e2f1408c3c4067b88faa51c63348db980",
+  "source_sha256": {
+    "funciones.py": "c34caa2b82e7beea29487300bfcfe0c7a0fdaaef5fe532ffdb457d6f98775abf",
+    "parametros.py": "fd5c6155ed6ecc46c8582fabb6598d5ae780b9847ff7e0de36deab9e7b2c509a",
+    "optuna_config.py": "ad128f2a3340ff511efed8e1a478e17b091f209b9e76fd167efecbb073d53ddf",
+    "optuna_paq.py": "5fd0586cd17bda2cd1b7c1ccc6beeaaacc2d02df3211f586afba1d470ea07562"
+  },
+  "previous_source_sha256": {
+    "funciones.py": "c34caa2b82e7beea29487300bfcfe0c7a0fdaaef5fe532ffdb457d6f98775abf",
+    "parametros.py": "fd5c6155ed6ecc46c8582fabb6598d5ae780b9847ff7e0de36deab9e7b2c509a",
+    "optuna_config.py": "ad128f2a3340ff511efed8e1a478e17b091f209b9e76fd167efecbb073d53ddf",
+    "optuna_paq.py": "5fd0586cd17bda2cd1b7c1ccc6beeaaacc2d02df3211f586afba1d470ea07562"
+  },
+  "updated": 1794605842.1996636,
+  "trial": 29,
+  "last_model": {
+    "config": "opt_42053a15b6ffcb37",
+    "month": 201910,
+    "seed": 567529,
+    "seconds": 177.54
+  },
+  "trials_complete": 30,
+  "result": {
+    "config": "opt_42053a15b6ffcb37",
+    "contra": "main",
+    "meses": "201909-201910",
+    "n_meses": 2,
+    "d_M": 0.5663478840386537,
+    "error_clientes_M": 1.4380301879409887,
+    "error_semilla_M": 0.7006391300228622,
+    "error_total_M": 1.59963308666356,
+    "ic95_inf_M": -2.5689329658219235,
+    "ic95_sup_M": 3.701628733899231,
+    "d_ensamble_M": 0.3337387537487757,
+    "semillas_a_favor": 6,
+    "d_201909": 1.380149950016687,
+    "d_201910": -0.2474541819394176,
+    "delta_auc": 0.001021118757595718,
+    "auc_semillas_a_favor": 10,
+    "n_semillas": 10,
+    "trial": 27,
+    "exploratorio": true
+  },
+  "finished": 1794605842.193599
+}
