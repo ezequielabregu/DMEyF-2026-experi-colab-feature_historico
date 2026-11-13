@@ -1,5 +1,9 @@
 # Pipeline del `main`
 
+La búsqueda de hiperparámetros de esta rama se ejecuta con
+`python pipeline/optuna_paq.py` desde la raíz del checkout. Su diseño está en
+`fichas/optuna_paq_p3.md`. El argumento `--check-only` valida los artefactos de entrada.
+
 Es la mejor estrategia del grupo hasta ahora (`PAQ_P3`). Gana +9,00 M por mes sobre el baseline de la consigna con la misma ventana (IC 95 %: 5,18 a 12,82), y +12,60 M sobre el baseline con la ventana de la consigna (7,73 a 17,46). Es exploratoria: los meses de 2019 ya se usaron para decidir.
 
 ## Archivos
