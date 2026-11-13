@@ -1,0 +1,2 @@
+config,contra,meses,n_meses,d_M,error_clientes_M,error_semilla_M,error_total_M,ic95_inf_M,ic95_sup_M,d_ensamble_M,semillas_a_favor,d_201906,d_201907,d_201908,d_201909,d_201910,eligio_entre_varias,veredicto,firma_config,firma_contra
+rango,main,201906-201910,5,-0.2294,0.5753,0.8413,1.0192,-2.2271,1.7682,-0.1139,3,-0.3437,-0.5339,1.3504,-0.7519,-0.8682,False,NO PASA,bd0d50f9b13f68f8,786f0055d685f102

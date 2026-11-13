@@ -548,11 +548,27 @@ def bloque_r(d, filas, p):
     return {'R': (np.hstack(partes), nombres)}
 
 
+def bloque_rango(d, filas, p):
+    """Rango (propuesta #3 de la tutoría): máximo menos mínimo del mes y los MESES_RANGO - 1 meses anteriores,
+    en los 129 montos (129 columnas). NA si falta cualquiera de esos meses: el cliente no estaba en el banco
+    o la variable está rota ese mes. Con MESES_RANGO = 3 nunca mira antes de 201901 (desde 201903)."""
+    j = [d.variables.index(v) for v in d.montos]
+    H = []
+    for k in range(p.MESES_RANGO):
+        q = d.indice.get_indexer(d.clave[filas] - k)
+        H.append(np.where((q >= 0)[:, None], d.X[np.maximum(q, 0)][:, j], np.float32(np.nan)))
+    H = np.stack(H)                                     # float32: el máximo y el mínimo son exactos
+    rango = H.max(axis=0).astype(np.float64) - H.min(axis=0)   # un NA en cualquier mes deja el rango en NA
+    return {'RANGO': (rango.astype(np.float32), [f'{v}_rango{p.MESES_RANGO}' for v in d.montos])}
+
+
 # Productor de cada bloque. Para un bloque nuevo: agregar su función y su nombre acá.
-PRODUCTORES = {'AC': bloque_ac, 'CURADA': bloque_curada, 'ACH_4X': bloques_ach4, 'MVH': bloque_mvh, 'R': bloque_r}
+PRODUCTORES = {'AC': bloque_ac, 'CURADA': bloque_curada, 'ACH_4X': bloques_ach4, 'MVH': bloque_mvh, 'R': bloque_r,
+               'RANGO': bloque_rango}
 BLOQUE_DE = {'AC': 'AC', 'CURADA': 'CURADA', 'ACH_V': 'ACH_4X', 'ACH_Q': 'ACH_4X', 'ACH_T': 'ACH_4X',
-             'ACH_Z': 'ACH_4X', 'MVH': 'MVH', 'R': 'R'}
-ESPERADO_COLUMNAS = {'AC': 760, 'CURADA': 120, 'ACH_V': 60, 'ACH_Q': 90, 'ACH_T': 90, 'ACH_Z': 60, 'MVH': 215, 'R': 258}
+             'ACH_Z': 'ACH_4X', 'MVH': 'MVH', 'R': 'R', 'RANGO': 'RANGO'}
+ESPERADO_COLUMNAS = {'AC': 760, 'CURADA': 120, 'ACH_V': 60, 'ACH_Q': 90, 'ACH_T': 90, 'ACH_Z': 60, 'MVH': 215, 'R': 258,
+                     'RANGO': 129}
 
 
 def control_fuga(d, productor, completo, filas, p, cortes=(201905, 201906, 201909)):

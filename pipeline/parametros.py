@@ -51,6 +51,7 @@ ROTO_NUEVO = ('Visa_mfinanciacion_limite', 201904)      # roto solo en las combi
 LAGS_R = [1, 2]                                         # cambios relativos de Tomás (como el 20)
 EPSILON = 1e-12
 BLOQUE_FILAS = 20_000                                   # filas por bloque al calcular (solo memoria y tiempo)
+MESES_RANGO = 3                                         # el rango mira el mes y los 2 anteriores (etapa 32)
 
 # --- 5. Modelo -----------------------------------------------------------------
 POSITIVOS = ['BAJA+1', 'BAJA+2']                        # clase de entrenamiento
@@ -78,7 +79,7 @@ REFERENCIAS = {                                         # el main se compara tam
                    'ventana': 'consigna', 'hiper': HIPER_03, 'arboles': ARBOLES_03},
 }
 
-CORRIDA = MAIN                                          # en un branch: la configuración del branch (ejemplos al final)
+CORRIDA = {**MAIN, 'nombre': 'rango', 'bloques': BLOQUES_PAQ_P3 + ['RANGO']}   # branch rango (propuesta #3); en el main: CORRIDA = MAIN
 
 # --- 7. Evaluación ---------------------------------------------------------------
 SEMILLA_PRIMIGENIA = 979201
