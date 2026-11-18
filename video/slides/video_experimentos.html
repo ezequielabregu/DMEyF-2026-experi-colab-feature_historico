@@ -1,0 +1,1573 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="video_experimentos_files/libs/clipboard/clipboard.min.js"></script>
+<script src="video_experimentos_files/libs/quarto-html/tabby.min.js"></script>
+<script src="video_experimentos_files/libs/quarto-html/popper.min.js"></script>
+<script src="video_experimentos_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="video_experimentos_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="video_experimentos_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="video_experimentos_files/libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.18">
+
+  <title>Historia del cliente — feature_historico</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="video_experimentos_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="video_experimentos_files/libs/revealjs/dist/reveal.css">
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="video_experimentos_files/libs/revealjs/dist/theme/quarto-d9560cf2f25b214aac7d5d5f2c904325.css">
+  <link href="video_experimentos_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="video_experimentos_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="video_experimentos_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="video_experimentos_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+  
+  <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+  <script>
+  window.PlotlyConfig = {MathJaxConfig: 'local'};
+  if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}
+  </script>
+  <script type="module">import "https://cdn.plot.ly/plotly-4.0.0.min"</script>
+
+</head>
+<body class="quarto-dark">
+  <div class="reveal">
+    <div class="slides">
+
+
+<section id="portada" class="slide level2 portada">
+<h2></h2>
+<!--
+Deck del video del grupo feature_historico (DMEyF 2026, Experimentos Colaborativos).
+Cada slide sigue un tramo de ../guion.md ("Tramo N"). Avanzar: barra espaciadora o flecha derecha.
+Ningún número está tipeado: todo sale de figuras.py, que lee ../datos/*.csv.
+(El comentario va dentro de la portada: antes del primer título generaba una slide vacía.)
+-->
+<p><span class="titulo">Historia del cliente</span></p>
+<p><span class="sub">Dos pipelines para una pregunta: ¿qué historia suma sobre lags y deltas 1–2, y cuánto dinero da?</span></p>
+<div class="dos">
+<p><span class="pill"><span class="punto bg-recetas"></span> Pipeline de recetas</span> <span class="pill"><span class="punto bg-acum"></span> Pipeline acumulativo</span></p>
+</div>
+<p><span class="autores">Tomás Henseler · Clara M. Rodríguez · Ezequiel Abregú — tutor: Alejandro Bolaños · DMEyF 2026 · grupo feature_historico</span></p>
+</section>
+<section id="pregunta" class="slide level2">
+<h2></h2>
+<!-- Tramo 1, primer párrafo -->
+<div class="kicker">
+<p>Hipótesis</p>
+</div>
+<p><span class="h2">¿Qué historia del cliente hace ganar más dinero?</span></p>
+<div class="formula">
+<p><span class="bloque">mes actual</span> <span class="op">+</span> <span class="bloque">lags 1 y 2</span> <span class="op">+</span> <span class="bloque">deltas 1 y 2</span> <span class="op">+</span> <span class="bloque nuevo"><strong>más historia</strong></span></p>
+</div>
+<div class="grid g3" style="margin-top:60px">
+<div class="card">
+<p><span class="titulo">Baseline de la consigna</span></p>
+<p><span class="sub">LightGBM con el mes actual y los dos meses anteriores: lags y deltas de 1 y 2 meses.</span></p>
+</div>
+<div class="card">
+<p><span class="titulo">Hipótesis</span></p>
+<p><span class="sub">Agregar más historia de cada cliente gana más dinero que el baseline.</span></p>
+</div>
+<div class="card">
+<p><span class="titulo">Datos</span></p>
+<p><span class="sub">Solo meses de 2019, como pide la consigna.</span></p>
+</div>
+</div>
+<div class="partes">
+<span class="activa">Hipótesis</span><span>Diseño</span><span>Limitaciones</span><span>Resultados</span><span>Conclusiones</span>
+</div>
+</section>
+<section id="sesgos" class="slide level2">
+<h2></h2>
+<!-- Tramo 1, segundo párrafo -->
+<div class="kicker">
+<p>Hipótesis · sesgos</p>
+</div>
+<p><span class="h2">Arrancamos con dos sesgos</span></p>
+<div class="grid g2">
+<div class="card sesgo fragment">
+<p><span class="quien">Ezequiel y Tomás</span></p>
+<p><span class="creencia">Sumar más meses de historia iba a dar un margen de ganancia <strong>mucho mayor</strong>.</span></p>
+</div>
+<div class="card sesgo fragment">
+<p><span class="quien">Clara</span></p>
+<p><span class="creencia">Las señales de abandono (rachas de inactividad, caída frente al propio historial) iban a <strong>superar ampliamente</strong> a los lags crudos.</span></p>
+</div>
+</div>
+<p><span class="nota">Al final vemos qué hizo la evidencia con cada uno.</span></p>
+<div class="partes">
+<span class="activa">Hipótesis</span><span>Diseño</span><span>Limitaciones</span><span>Resultados</span><span>Conclusiones</span>
+</div>
+</section>
+<section id="vara" class="slide level2">
+<h2></h2>
+<!-- Tramo 2 -->
+<div class="kicker">
+<p>Diseño · lo común</p>
+</div>
+<p><span class="h2">Los dos pipelines comparten la misma vara</span></p>
+<div class="flujo">
+<div class="paso">
+<p><span class="n">01</span></p>
+<p><span class="t">Banco temporal</span></p>
+<p><span class="d">Para evaluar el mes t, se entrena hasta t − 2: la clase de un mes se conoce dos meses después.</span></p>
+</div>
+<div class="paso">
+<p><span class="n">02</span></p>
+<p><span class="t">Ganancia</span></p>
+<p><span class="d">+1.072.500 por <code>BAJA+2</code> contactado · −27.500 por cualquier otro contacto.</span></p>
+</div>
+<div class="paso">
+<p><span class="n">03</span></p>
+<p><span class="t">Banda de envíos</span></p>
+<p><span class="d">Promedio entre 3.000 y 6.000 envíos: no elegimos después el corte que más nos favorece.</span></p>
+</div>
+<div class="paso">
+<p><span class="n">04</span></p>
+<p><span class="t">5 semillas</span></p>
+<p><span class="d">Cada configuración, con cinco semillas; sus predicciones se promedian en un ensemble.</span></p>
+</div>
+</div>
+<div style="margin-top:56px">
+<div class="calendario" style="--c:#6b6a65">
+<div class="cal-rot">
+
+</div>
+<div class="cal-mes">
+Ene
+</div>
+<div class="cal-mes">
+Feb
+</div>
+<div class="cal-mes">
+Mar
+</div>
+<div class="cal-mes">
+Abr
+</div>
+<div class="cal-mes">
+May
+</div>
+<div class="cal-mes">
+Jun
+</div>
+<div class="cal-mes">
+Jul
+</div>
+<div class="cal-mes">
+Ago
+</div>
+<div class="cal-mes">
+Sep
+</div>
+<div class="cal-mes">
+Oct
+</div>
+<div class="cal-rot">
+Evaluar octubre
+</div>
+<div class="cal-celda train">
+entrena
+</div>
+<div class="cal-celda train">
+entrena
+</div>
+<div class="cal-celda train">
+entrena
+</div>
+<div class="cal-celda train">
+entrena
+</div>
+<div class="cal-celda train">
+entrena
+</div>
+<div class="cal-celda train">
+entrena
+</div>
+<div class="cal-celda train">
+entrena
+</div>
+<div class="cal-celda train">
+entrena
+</div>
+<div class="cal-celda gap">
+
+</div>
+<div class="cal-celda eval">
+evalúa
+</div>
+</div>
+</div>
+<p><span class="nota">Para octubre, el último mes de entrenamiento es agosto: septiembre todavía no tiene clase. Desde qué mes se entrena lo define cada pipeline.</span></p>
+<div class="partes">
+<span>Hipótesis</span><span class="activa">Diseño</span><span>Limitaciones</span><span>Resultados</span><span>Conclusiones</span>
+</div>
+</section>
+<section id="recetas" class="slide level2">
+<h2></h2>
+<!-- Tramo 3, primer párrafo -->
+<div class="kicker c-recetas">
+<p><span class="punto bg-recetas"></span> Diseño · pipeline de recetas</p>
+</div>
+<p><span class="h2">Pipeline de recetas: ¿qué historia suma <strong>sola</strong>?</span></p>
+<div class="formula" style="margin-bottom:34px">
+<p><span class="bloque">B0 = baseline</span> <span class="op">+</span> <span class="bloque nuevo"><strong>una</strong> receta</span> <span class="op">→</span> <span class="bloque">comparar contra B0</span></p>
+</div>
+<div class="recetas-grilla">
+<div>
+<div class="fila cab">
+<p><span>Receta</span> <span class="txt">W3</span> <span class="txt">W4</span> <span class="txt">W6</span></p>
+</div>
+<div class="fila">
+<p><span>Promedio</span> <span class="dot"></span> <span class="dot"></span> <span class="dot"></span></p>
+</div>
+<div class="fila">
+<p><span>Mínimo</span> <span class="dot"></span> <span class="dot"></span> <span class="dot"></span></p>
+</div>
+<div class="fila">
+<p><span>Máximo</span> <span class="dot"></span> <span class="dot"></span> <span class="dot"></span></p>
+</div>
+<div class="fila">
+<p><span>Rango</span> <span class="dot"></span> <span class="dot"></span> <span class="dot"></span></p>
+</div>
+<div class="fila">
+<p><span>Tendencia</span> <span class="dot"></span> <span class="dot"></span> <span class="dot"></span></p>
+</div>
+<div class="fila">
+<p><span>Relativo al promedio</span> <span class="dot"></span> <span class="dot"></span> <span class="dot"></span></p>
+</div>
+<div class="fila">
+<p><span>Relativo al mes anterior</span> <span class="dot"></span> <span class="dot"></span> <span class="dot"></span></p>
+</div>
+<div class="fila">
+<p><span>Relativo al primer mes</span> <span class="dot"></span> <span class="dot"></span> <span class="dot"></span></p>
+</div>
+</div>
+<div>
+<div class="fila cab">
+<p><span>Receta</span> <span class="txt">variantes</span> <span class="txt"></span> <span class="txt"></span></p>
+</div>
+<div class="fila">
+<p><span>Más lags</span> <span class="txt">3</span> <span class="txt">4</span> <span class="txt">5</span></p>
+</div>
+<div class="fila">
+<p><span>Más deltas</span> <span class="txt">3</span> <span class="txt">4</span> <span class="txt">5</span></p>
+</div>
+<div class="fila">
+<p><span>Rankings</span> <span class="txt">mes</span> <span class="txt">historia</span> <span class="vacio">·</span></p>
+</div>
+<div class="fila">
+<p><span>Rachas y recencia</span> <span class="txt">ceros</span> <span class="txt">no ceros</span> <span class="txt">recencia</span></p>
+</div>
+<div class="fila">
+<p><span>Apagado y encendido</span> <span class="txt">apaga</span> <span class="txt">prende</span> <span class="txt">caídas</span></p>
+</div>
+<div class="fila">
+<p><span>Disponibilidad</span> <span class="txt">1–2</span> <span class="vacio">·</span> <span class="vacio">·</span></p>
+</div>
+</div>
+</div>
+<p><span class="nota">W3, W4 y W6 cuentan el mes actual: <strong>W4 = el mes y los tres anteriores</strong>.</span></p>
+<div class="partes">
+<span>Hipótesis</span><span class="activa">Diseño</span><span>Limitaciones</span><span>Resultados</span><span>Conclusiones</span>
+</div>
+</section>
+<section id="recetas-calendario" class="slide level2">
+<h2></h2>
+<!-- Tramo 3, segundo párrafo -->
+<div class="kicker c-recetas">
+<p><span class="punto bg-recetas"></span> Diseño · pipeline de recetas</p>
+</div>
+<p><span class="h2">Cada receta: su propia búsqueda, el mismo procedimiento</span></p>
+<div class="calendario" style="--c:#3987e5">
+<div class="cal-rot">
+
+</div>
+<div class="cal-mes">
+Ene
+</div>
+<div class="cal-mes">
+Feb
+</div>
+<div class="cal-mes">
+Mar
+</div>
+<div class="cal-mes">
+Abr
+</div>
+<div class="cal-mes">
+May
+</div>
+<div class="cal-mes">
+Jun
+</div>
+<div class="cal-mes">
+Jul
+</div>
+<div class="cal-mes">
+Ago
+</div>
+<div class="cal-mes">
+Sep
+</div>
+<div class="cal-mes">
+Oct
+</div>
+<div class="cal-rot">
+Elegir hiperparámetros
+</div>
+<div class="cal-celda hist">
+
+</div>
+<div class="cal-celda hist">
+
+</div>
+<div class="cal-celda hist">
+
+</div>
+<div class="cal-celda hist">
+
+</div>
+<div class="cal-celda hist">
+
+</div>
+<div class="cal-celda train">
+entrena
+</div>
+<div class="cal-celda valid">
+valida
+</div>
+<div class="cal-celda nada">
+
+</div>
+<div class="cal-celda nada">
+
+</div>
+<div class="cal-celda nada">
+
+</div>
+<div class="cal-rot">
+Evaluar septiembre
+</div>
+<div class="cal-celda hist">
+
+</div>
+<div class="cal-celda hist">
+
+</div>
+<div class="cal-celda hist">
+
+</div>
+<div class="cal-celda hist">
+
+</div>
+<div class="cal-celda hist">
+
+</div>
+<div class="cal-celda train">
+entrena
+</div>
+<div class="cal-celda train">
+entrena
+</div>
+<div class="cal-celda gap">
+
+</div>
+<div class="cal-celda eval">
+evalúa
+</div>
+<div class="cal-celda nada">
+
+</div>
+<div class="cal-rot">
+Evaluar octubre
+</div>
+<div class="cal-celda hist">
+
+</div>
+<div class="cal-celda hist">
+
+</div>
+<div class="cal-celda hist">
+
+</div>
+<div class="cal-celda hist">
+
+</div>
+<div class="cal-celda hist">
+
+</div>
+<div class="cal-celda train">
+entrena
+</div>
+<div class="cal-celda train">
+entrena
+</div>
+<div class="cal-celda train">
+entrena
+</div>
+<div class="cal-celda gap">
+
+</div>
+<div class="cal-celda eval">
+evalúa
+</div>
+</div>
+<div class="leyenda-cal">
+<p><span><span class="sw" style="background:#232321"></span>solo historia</span> <span><span class="sw" style="background:#3987e5"></span>entrena</span> <span><span class="sw" style="border:3px solid #3987e5"></span>valida (AUC)</span> <span><span class="sw" style="background:repeating-linear-gradient(135deg,#3a3a37 0 6px,transparent 6px 12px)"></span>sin clase todavía</span> <span><span class="sw" style="background:#f0efec"></span>evalúa (ganancia)</span></p>
+</div>
+<div class="grid g4" style="margin-top:60px">
+<div class="stat">
+<p><span class="num">39</span></p>
+<p><span class="lab">recetas, cada una sola contra B0</span></p>
+</div>
+<div class="stat">
+<p><span class="num" style="font-size:64px;line-height:92px">Optuna</span></p>
+<p><span class="lab">una búsqueda por receta, por AUC de julio</span></p>
+</div>
+<div class="stat">
+<p><span class="num">5</span></p>
+<p><span class="lab">semillas por mes evaluado</span></p>
+</div>
+<div class="stat">
+<p><span class="num">960</span></p>
+<p><span class="lab">entrenamientos en total</span></p>
+</div>
+</div>
+<div class="partes">
+<span>Hipótesis</span><span class="activa">Diseño</span><span>Limitaciones</span><span>Resultados</span><span>Conclusiones</span>
+</div>
+</section>
+<section id="escalera" class="slide level2">
+<h2></h2>
+<!-- Tramo 4, primer párrafo hasta "los cambios relativos" -->
+<div class="kicker c-acum">
+<p><span class="punto bg-acum"></span> Diseño · pipeline acumulativo</p>
+</div>
+<p><span class="h2">Pipeline acumulativo: ¿cuánto se gana <strong>combinando</strong>?</span></p>
+<div class="escalera">
+<div class="esc base" style="height:24%">
+<p><span class="k">0</span> Baseline</p>
+</div>
+<div class="esc fragment" style="height:38%">
+<p><span class="k">1</span> + historia curada: el cliente contra su propio pasado</p>
+</div>
+<div class="esc fragment" style="height:50%">
+<p><span class="k">2</span> + cuatro medidas más de historia</p>
+</div>
+<div class="esc fragment" style="height:62%">
+<p><span class="k">3</span> <code>BAJA+2</code> con peso triple</p>
+</div>
+<div class="esc fragment" style="height:74%">
+<p><span class="k">4</span> + tarjetas Visa y Master combinadas</p>
+</div>
+<div class="esc fragment" style="height:86%">
+<p><span class="k">5</span> + cambios relativos</p>
+</div>
+<div class="esc final fragment" style="height:100%">
+<p><span class="k">=</span> <strong>Estrategia final</strong></p>
+</div>
+</div>
+<p><span class="nota">Cada escalón se probó sobre el anterior y quedó solo si ganaba más.</span></p>
+<div class="partes">
+<span>Hipótesis</span><span class="activa">Diseño</span><span>Limitaciones</span><span>Resultados</span><span>Conclusiones</span>
+</div>
+</section>
+<section id="acum-calendario" class="slide level2">
+<h2></h2>
+<!-- Tramo 4, última frase del primer párrafo -->
+<div class="kicker c-acum">
+<p><span class="punto bg-acum"></span> Diseño · pipeline acumulativo</p>
+</div>
+<p><span class="h2">Evaluado en cinco meses, con la ventana creciendo</span></p>
+<div class="calendario" style="--c:#d95926">
+<div class="cal-rot">
+
+</div>
+<div class="cal-mes">
+Ene
+</div>
+<div class="cal-mes">
+Feb
+</div>
+<div class="cal-mes">
+Mar
+</div>
+<div class="cal-mes">
+Abr
+</div>
+<div class="cal-mes">
+May
+</div>
+<div class="cal-mes">
+Jun
+</div>
+<div class="cal-mes">
+Jul
+</div>
+<div class="cal-mes">
+Ago
+</div>
+<div class="cal-mes">
+Sep
+</div>
+<div class="cal-mes">
+Oct
+</div>
+<div class="cal-rot">
+Evaluar junio
+</div>
+<div class="cal-celda hist">
+
+</div>
+<div class="cal-celda hist">
+
+</div>
+<div class="cal-celda train">
+entrena
+</div>
+<div class="cal-celda train">
+entrena
+</div>
+<div class="cal-celda gap">
+
+</div>
+<div class="cal-celda eval">
+evalúa
+</div>
+<div class="cal-celda nada">
+
+</div>
+<div class="cal-celda nada">
+
+</div>
+<div class="cal-celda nada">
+
+</div>
+<div class="cal-celda nada">
+
+</div>
+<div class="cal-rot">
+Evaluar julio
+</div>
+<div class="cal-celda hist">
+
+</div>
+<div class="cal-celda hist">
+
+</div>
+<div class="cal-celda train">
+entrena
+</div>
+<div class="cal-celda train">
+entrena
+</div>
+<div class="cal-celda train">
+entrena
+</div>
+<div class="cal-celda gap">
+
+</div>
+<div class="cal-celda eval">
+evalúa
+</div>
+<div class="cal-celda nada">
+
+</div>
+<div class="cal-celda nada">
+
+</div>
+<div class="cal-celda nada">
+
+</div>
+<div class="cal-rot">
+Evaluar agosto
+</div>
+<div class="cal-celda hist">
+
+</div>
+<div class="cal-celda hist">
+
+</div>
+<div class="cal-celda train">
+entrena
+</div>
+<div class="cal-celda train">
+entrena
+</div>
+<div class="cal-celda train">
+entrena
+</div>
+<div class="cal-celda train">
+entrena
+</div>
+<div class="cal-celda gap">
+
+</div>
+<div class="cal-celda eval">
+evalúa
+</div>
+<div class="cal-celda nada">
+
+</div>
+<div class="cal-celda nada">
+
+</div>
+<div class="cal-rot">
+Evaluar septiembre
+</div>
+<div class="cal-celda hist">
+
+</div>
+<div class="cal-celda hist">
+
+</div>
+<div class="cal-celda train">
+entrena
+</div>
+<div class="cal-celda train">
+entrena
+</div>
+<div class="cal-celda train">
+entrena
+</div>
+<div class="cal-celda train">
+entrena
+</div>
+<div class="cal-celda train">
+entrena
+</div>
+<div class="cal-celda gap">
+
+</div>
+<div class="cal-celda eval">
+evalúa
+</div>
+<div class="cal-celda nada">
+
+</div>
+<div class="cal-rot">
+Evaluar octubre
+</div>
+<div class="cal-celda hist">
+
+</div>
+<div class="cal-celda hist">
+
+</div>
+<div class="cal-celda train">
+entrena
+</div>
+<div class="cal-celda train">
+entrena
+</div>
+<div class="cal-celda train">
+entrena
+</div>
+<div class="cal-celda train">
+entrena
+</div>
+<div class="cal-celda train">
+entrena
+</div>
+<div class="cal-celda train">
+entrena
+</div>
+<div class="cal-celda gap">
+
+</div>
+<div class="cal-celda eval">
+evalúa
+</div>
+</div>
+<p><span class="nota">Para cada mes, el modelo entrena con todos los meses desde marzo hasta dos antes. Enero y febrero solo aportan historia.</span></p>
+<div class="partes">
+<span>Hipótesis</span><span class="activa">Diseño</span><span>Limitaciones</span><span>Resultados</span><span>Conclusiones</span>
+</div>
+</section>
+<section id="branches" class="slide level2">
+<h2></h2>
+<!-- Tramo 4, segundo párrafo -->
+<div class="kicker c-regla">
+<p><span class="punto bg-regla"></span> Diseño · pipeline único en el main</p>
+</div>
+<p><span class="h2">Lo nuevo entra al <code>main</code> solo si cumple la regla</span></p>
+<svg class="git" viewbox="0 0 1700 430" width="1700" height="430" role="img" aria-label="Diagrama del main con dos branches: uno no cumple la regla y no vuelve; el otro la cumple y hace merge">
+<line x1="120" y1="230" x2="1640" y2="230" stroke="#c3c2b7" stroke-width="7" stroke-linecap="round"></line> <circle cx="180" cy="230" r="13" fill="#c3c2b7"></circle><circle cx="300" cy="230" r="13" fill="#c3c2b7"></circle><circle cx="600" cy="230" r="13" fill="#c3c2b7"></circle><circle cx="900" cy="230" r="13" fill="#c3c2b7"></circle> <text x="110" y="196" font-size="30" font-weight="700" fill="#f0efec">main</text> <path d="M300,230 C360,230 360,90 420,90 L740,90" fill="none" stroke="#9085e9" stroke-width="6" stroke-linecap="round"></path> <circle cx="480" cy="90" r="11" fill="#111110" stroke="#9085e9" stroke-width="5"></circle><circle cx="620" cy="90" r="11" fill="#111110" stroke="#9085e9" stroke-width="5"></circle><circle cx="740" cy="90" r="11" fill="#111110" stroke="#9085e9" stroke-width="5"></circle> <circle cx="860" cy="90" r="22" fill="#111110" stroke="#e66767" stroke-width="5"></circle> <path d="M849,79 L871,101 M871,79 L849,101" stroke="#e66767" stroke-width="5" stroke-linecap="round"></path> <text x="440" y="46" font-size="27" fill="#c3c2b7">una idea, un solo cambio</text> <text x="900" y="100" font-size="27" font-weight="700" fill="#e66767">no cumple la regla</text> <path d="M900,230 C960,230 960,370 1020,370 L1180,370 C1240,370 1240,230 1300,230" fill="none" stroke="#9085e9" stroke-width="6" stroke-linecap="round"></path> <circle cx="1060" cy="370" r="11" fill="#111110" stroke="#9085e9" stroke-width="5"></circle><circle cx="1160" cy="370" r="11" fill="#111110" stroke="#9085e9" stroke-width="5"></circle> <circle cx="1300" cy="230" r="17" fill="#0ca30c" stroke="#111110" stroke-width="4"></circle> <path d="M1292,230 l6,7 l11,-13" fill="none" stroke="#111110" stroke-width="4" stroke-linecap="round"></path> <text x="1000" y="420" font-size="27" fill="#c3c2b7">otra idea, un solo cambio</text> <text x="1334" y="312" font-size="27" font-weight="700" fill="#0ca30c">cumple la regla: merge</text>
+</svg>
+<div class="regla">
+<p>Regla de merge: <span><strong>d &gt; 0</strong></span> <span class="c-muted">·</span> <span><strong>al menos 3 de 5 semillas a favor</strong></span></p>
+</div>
+<p><span class="nota">En el camino el método cambió (ventanas, validación, reglas). Por eso congelamos la estrategia en un pipeline único: un branch por idea, un solo cambio por branch.</span></p>
+<div class="partes">
+<span>Hipótesis</span><span class="activa">Diseño</span><span>Limitaciones</span><span>Resultados</span><span>Conclusiones</span>
+</div>
+</section>
+<section id="limitaciones" class="slide level2">
+<h2></h2>
+<!-- Tramo 5 -->
+<div class="kicker">
+<p>Limitaciones</p>
+</div>
+<p><span class="h2">Cuatro limitaciones</span></p>
+<div class="grid g-5-7">
+<div>
+<div class="lim">
+<p><span class="n">1</span> <span class="t">2019 ya mirado</span> <span class="d">Todo lo nuevo es exploratorio.</span></p>
+</div>
+<div class="lim">
+<p><span class="n">2</span> <span class="t">Muchas comparaciones</span> <span class="d">La mejor de muchas sale favorecida por azar: la maldición del ganador.</span></p>
+</div>
+<div class="lim">
+<p><span class="n">3</span> <span class="t">Búsqueda acotada</span> <span class="d">Diez pruebas de Optuna por receta.</span></p>
+</div>
+<div class="lim">
+<p><span class="n">4</span> <span class="t">Pocos meses evaluados</span> <span class="d">Y variables rotas en algunos meses de 2019, tratadas como faltantes.</span></p>
+</div>
+</div>
+<div class="card">
+<p><span class="titulo">La mejor de 60 combinaciones de hiperparámetros</span></p>
+<div id="51a25cf9" class="cell" data-execution_count="14">
+<div class="cell-output cell-output-display">
+<div style="height:520px; width:760px;">            <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js"></script><script>if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}</script>                <script>window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
+        <script charset="utf-8" src="https://cdn.plot.ly/plotly-4.0.0.min.js" integrity="sha256-FEYfO0yRyLtZCpnW0Dw/0DHKQO7Afrq3ml4+rBB818o=" crossorigin="anonymous"></script>                <div id="ded567eb-8ce2-477b-a46b-103bb5aa59ef" class="plotly-graph-div" style="height:100%; width:100%;"></div>            <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("ded567eb-8ce2-477b-a46b-103bb5aa59ef")) {                    Plotly.newPlot(                        "ded567eb-8ce2-477b-a46b-103bb5aa59ef",                        [{"cliponaxis":false,"marker":{"color":["#898781","#898781","#e66767"],"line":{"width":0}},"text":["+5,25","+2,14","\u22120,92"],"textfont":{"color":"#f0efec","size":30},"textposition":"outside","width":0.55,"x":["Al elegirla","Semillas nuevas,\u003cbr\u003emismos meses","Meses nuevos"],"y":[5.252216,2.144377,-0.9167],"type":"bar"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermap":[{"type":"scattermap","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"margin":{"b":0,"l":0,"r":0,"t":30}}},"shapes":[{"line":{"color":"#6b6a65","width":2},"type":"line","x0":-0.5,"x1":2.5,"y0":0,"y1":0}],"yaxis":{"visible":false,"range":[-2.01674,6.8278808]},"xaxis":{"tickfont":{"size":22,"color":"#c3c2b7"},"showgrid":false,"showline":false},"font":{"family":"system-ui, -apple-system, \"Segoe UI\", sans-serif","size":24,"color":"#c3c2b7"},"margin":{"l":10,"r":10,"t":30,"b":20},"width":760,"height":520,"paper_bgcolor":"rgba(0,0,0,0)","plot_bgcolor":"rgba(0,0,0,0)","showlegend":false},                        {"staticPlot": true, "displayModeBar": false, "responsive": false}                    ).then(function(){
+                            
+var gd = document.getElementById('ded567eb-8ce2-477b-a46b-103bb5aa59ef');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })                };            </script>        </div>
+</div>
+</div>
+</div>
+</div>
+<div class="partes">
+<span>Hipótesis</span><span>Diseño</span><span class="activa">Limitaciones</span><span>Resultados</span><span>Conclusiones</span>
+</div>
+</section>
+<section id="resultados-recetas" class="slide level2">
+<h2></h2>
+<!-- Tramo 6. Gráfico interactivo: pasar el mouse por un punto muestra la receta y sus semillas a favor. -->
+<p><span class="h2">Recetas: 19 de 39 ganan en los dos meses</span></p>
+<div class="grid g-7-5" style="gap:40px">
+<div>
+<div id="e4c79d09" class="cell" data-execution_count="16">
+<div class="cell-output cell-output-display">
+<div style="height:820px; width:1000px;">            <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js"></script><script>if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}</script>                <script>window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
+        <script charset="utf-8" src="https://cdn.plot.ly/plotly-4.0.0.min.js" integrity="sha256-FEYfO0yRyLtZCpnW0Dw/0DHKQO7Afrq3ml4+rBB818o=" crossorigin="anonymous"></script>                <div id="2a09634e-9a0c-49e6-bee3-cd55e538980c" class="plotly-graph-div" style="height:100%; width:100%;"></div>            <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("2a09634e-9a0c-49e6-bee3-cd55e538980c")) {                    Plotly.newPlot(                        "2a09634e-9a0c-49e6-bee3-cd55e538980c",                        [{"customdata":[["Apagado",3.0,2.0],["Ca\u00eddas",3.0,4.0],["Disponibilidad",1.0,2.0],["M\u00e1ximo W3",4.0,5.0],["M\u00e1ximo W4",3.0,5.0],["Promedio W3",3.0,4.0],["Promedio W4",2.0,2.0],["Promedio W6",2.0,4.0],["M\u00ednimo W3",2.0,2.0],["M\u00ednimo W4",4.0,4.0],["M\u00ednimo W6",2.0,3.0],["Encendido",3.0,1.0],["Rango W3",4.0,5.0],["Rango W4",3.0,4.0],["Ranking del mes",1.0,2.0],["Historia de rankings",1.0,5.0],["Relativo al primer mes W3",2.0,4.0],["Relativo al primer mes W4",3.0,2.0],["Relativo al primer mes W6",4.0,3.0],["Relativo al promedio W3",5.0,3.0],["Relativo al promedio W4",4.0,2.0],["Relativo al promedio W6",5.0,3.0],["Relativo al mes anterior W3",3.0,3.0],["Relativo al mes anterior W4",3.0,3.0],["Relativo al mes anterior W6",3.0,2.0],["Racha de no ceros",3.0,5.0],["Recencia",2.0,3.0],["Racha de ceros",1.0,2.0],["Tendencia W3",1.0,3.0],["Tendencia W6",3.0,3.0]],"hovertemplate":"\u003cb\u003e%{customdata[0]}\u003c\u002fb\u003e\u003cbr\u003eSeptiembre: %{x:+.2f} M \u00b7 semillas %{customdata[1]}\u002f5\u003cbr\u003eOctubre: %{y:+.2f} M \u00b7 semillas %{customdata[2]}\u002f5\u003cextra\u003e\u003c\u002fextra\u003e","marker":{"color":"#6b6a65","line":{"color":"#111110","width":2},"size":16},"mode":"markers","x":{"dtype":"f8","bdata":"Bn3g4ua\u002fAMDrzNkKVCrbP+iWT7Maf94\u002fyMnx9Cci5j+G8EYq+s37P85q\u002fHm6JvK\u002f8z3FA78U8D9yqwtk+FXlP5NCKq\u002fpy8C\u002fJloMHKQR9j\u002fqEZ5bPs3qP+iWT7Maf74\u002ftZXNRtLX9j+N7ANiGzf6P1w8hhRxzP2\u002frj5eXCIK9r83eEJoVZriv16s3YvCufg\u002fBRJgtY1mAUD4bDG7dH4IQPAF9FX6uwpApzeq8y5AFkBzAefMjibcvy1WyVPFevQ\u002fs2o6IGuN6z8QlatjhrfnP7vWTs\u002fd4\u002fS\u002fIs6mW9SV8j9nvogliOT5v4QqFEoSEOo\u002f"},"y":{"dtype":"f8","bdata":"qU2YVdMByb9i4mfj+2SlvxMQ+guqBeS\u002fZgbdad9tDEBKWB3o14UPQJOIN521pwpA7wc7rIVp8z9F1mW7+DEDQEZ8\u002fKVLBru\u002fdG6uUHMtBEAMuYoh+jcDQEg3OFVhY+u\u002fc\u002f5W2SFACUD4F5\u002fvv+YLQCWkp7aGSPE\u002fWn66ce6IGkDNC7waFWf+Pxp3N3EkyME\u002fk4g3nbWn+j9SeU1fhmzDP4XqJkMgAQbAHujXhVfu9j8bMnMgOiXiP+N0IYPCI6A\u002fcwuVYH9O079b1twwEAf6P\u002fMzF3DO7Og\u002fjqwWWyko9j+0ysMc8oWpv6RhqZh8jdc\u002f"},"type":"scatter"},{"customdata":[["Delta 3",3.0,2.0],["Delta 4",2.0,3.0],["Delta 5",4.0,2.0],["Lag 3",4.0,2.0],["Lag 4",2.0,3.0],["Lag 5",4.0,1.0]],"hovertemplate":"\u003cb\u003e%{customdata[0]}\u003c\u002fb\u003e\u003cbr\u003eSeptiembre: %{x:+.2f} M \u00b7 semillas %{customdata[1]}\u002f5\u003cbr\u003eOctubre: %{y:+.2f} M \u00b7 semillas %{customdata[2]}\u002f5\u003cextra\u003e\u003c\u002fextra\u003e","marker":{"color":"#111110","line":{"color":"#898781","width":2.5},"size":16},"mode":"markers","x":{"dtype":"f8","bdata":"unucHE9\u002f4r8P1ZhqeMabv4CUAPZRbP8\u002f4U+uQzWmmr8PFYZxatXfvxHwXRYVHOo\u002f"},"y":{"dtype":"f8","bdata":"4I+bSie17j83roHbVoHvv+wnjL3ijs2\u002fSfdKTm9U578CR1aLrRT0P6S3hAETXv6\u002f"},"type":"scatter"},{"customdata":[["M\u00e1ximo W6",4.0,5.0],["Rango W6",5.0,4.0],["Tendencia W4",5.0,5.0]],"hovertemplate":"\u003cb\u003e%{customdata[0]}\u003c\u002fb\u003e\u003cbr\u003eSeptiembre: %{x:+.2f} M \u00b7 semillas %{customdata[1]}\u002f5\u003cbr\u003eOctubre: %{y:+.2f} M \u00b7 semillas %{customdata[2]}\u002f5\u003cextra\u003e\u003c\u002fextra\u003e","marker":{"color":"#3987e5","line":{"color":"#111110","width":2},"size":22},"mode":"markers","x":{"dtype":"f8","bdata":"sWGKRSTaAkDt7wX0VfoHQAHso9gesAFA"},"y":{"dtype":"f8","bdata":"jd1+hDJ7EUBDlOZ5Q7EQQPHK3ZgAQRJA"},"type":"scatter"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermap":[{"type":"scattermap","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"margin":{"b":0,"l":0,"r":0,"t":30}}},"shapes":[{"fillcolor":"#3987e5","layer":"below","line":{"width":0},"opacity":0.07,"type":"rect","x0":0,"x1":7.827792069310229,"y0":0,"y1":7.827792069310229},{"line":{"color":"#6b6a65","width":2},"type":"line","x0":0,"x1":0,"xref":"x","y0":-7.827792069310229,"y1":7.827792069310229,"yref":"y"},{"line":{"color":"#6b6a65","width":2},"type":"line","x0":-7.827792069310229,"x1":7.827792069310229,"xref":"x","y0":0,"y1":0,"yref":"y"}],"annotations":[{"arrowcolor":"#898781","arrowhead":0,"arrowwidth":2,"ax":-40,"ay":-60,"font":{"color":"#f0efec","size":24},"showarrow":true,"text":"Tendencia W4","x":2.210996334555148,"y":4.563478840386538},{"arrowcolor":"#898781","arrowhead":0,"arrowwidth":2,"ax":70,"ay":-40,"font":{"color":"#f0efec","size":24},"showarrow":true,"text":"M\u00e1ximo W6","x":2.3565144951682773,"y":4.370309896701099},{"arrowcolor":"#898781","arrowhead":0,"arrowwidth":2,"ax":80,"ay":30,"font":{"color":"#f0efec","size":24},"showarrow":true,"text":"Rango W6","x":2.9972342552482503,"y":4.173108963678774},{"font":{"color":"#f0efec","family":"system-ui, -apple-system, \"Segoe UI\", sans-serif","size":26},"showarrow":false,"text":"\u003cb\u003e19\u003c\u002fb\u003e ganan en los dos meses","x":7.358124545151615,"xanchor":"right","y":7.358124545151615,"yanchor":"top"},{"font":{"color":"#f0efec","family":"system-ui, -apple-system, \"Segoe UI\", sans-serif","size":26},"showarrow":false,"text":"\u003cb\u003e5\u003c\u002fb\u003e pierden en los dos","x":-7.358124545151615,"xanchor":"left","y":-7.358124545151615,"yanchor":"bottom"},{"font":{"color":"#898781","family":"system-ui, -apple-system, \"Segoe UI\", sans-serif","size":22},"showarrow":false,"text":"8 solo en octubre","x":-7.358124545151615,"xanchor":"left","y":7.358124545151615,"yanchor":"top"},{"font":{"color":"#898781","family":"system-ui, -apple-system, \"Segoe UI\", sans-serif","size":22},"showarrow":false,"text":"7 solo en septiembre","x":7.358124545151615,"xanchor":"right","y":-7.358124545151615,"yanchor":"bottom"}],"xaxis":{"tickfont":{"size":20},"title":{"font":{"size":22,"color":"#c3c2b7"},"text":"Ganancia sobre B0 en septiembre"},"range":[-7.827792069310229,7.827792069310229],"showgrid":false,"zeroline":false,"ticksuffix":" M","color":"#898781","dtick":2},"yaxis":{"tickfont":{"size":20},"title":{"font":{"size":22,"color":"#c3c2b7"},"text":"Ganancia sobre B0 en octubre"},"range":[-7.827792069310229,7.827792069310229],"showgrid":false,"zeroline":false,"ticksuffix":" M","color":"#898781","dtick":2},"font":{"family":"system-ui, -apple-system, \"Segoe UI\", sans-serif","size":24,"color":"#c3c2b7"},"hoverlabel":{"font":{"family":"system-ui, -apple-system, \"Segoe UI\", sans-serif","size":22,"color":"#f0efec"},"bgcolor":"#1a1a19","bordercolor":"#6b6a65"},"margin":{"l":20,"r":20,"t":20,"b":20},"width":1000,"height":820,"paper_bgcolor":"rgba(0,0,0,0)","plot_bgcolor":"rgba(0,0,0,0)","showlegend":false},                        {"displayModeBar": false, "responsive": false, "scrollZoom": false}                    ).then(function(){
+                            
+var gd = document.getElementById('2a09634e-9a0c-49e6-bee3-cd55e538980c');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })                };            </script>        </div>
+</div>
+</div>
+</div>
+<div style="padding-top:30px">
+<div class="chip">
+<p><span class="n">Tendencia W4</span></p>
+<p><span class="v">+2,2 sep · +4,6 oct · semillas 5/5 y 5/5</span></p>
+</div>
+<div class="chip">
+<p><span class="n">Máximo W6</span></p>
+<p><span class="v">+2,4 sep · +4,4 oct</span></p>
+</div>
+<div class="chip">
+<p><span class="n">Rango W6</span></p>
+<p><span class="v">+3,0 sep · +4,2 oct</span></p>
+</div>
+<div class="chip gris">
+<p><span class="n">Lags y deltas de 3, 4 y 5 meses</span></p>
+<p><span class="v">0 de 6 ganan en los dos meses</span></p>
+</div>
+<p><span class="nota">Si ninguna receta sirviera: unas 10 de cada lado. Millones por mes, ensemble contra B0. Sin corregir por comparaciones múltiples.</span></p>
+</div>
+</div>
+<div class="partes">
+<span>Hipótesis</span><span>Diseño</span><span>Limitaciones</span><span class="activa">Resultados</span><span>Conclusiones</span>
+</div>
+</section>
+<section id="resultados-acum" class="slide level2">
+<h2></h2>
+<!-- Tramo 7, primer párrafo -->
+<div class="kicker c-acum">
+<p><span class="punto bg-acum"></span> Resultados · pipeline acumulativo</p>
+</div>
+<p><span class="h2">Acumulativo: la estrategia final gana en los cinco meses</span></p>
+<div class="grid g-5-7">
+<div>
+<p><span class="hero">+9,0</span></p>
+<p><span class="hero-lab">millones por mes contra el baseline con el mismo calendario</span></p>
+<p><span class="nota">IC 95 %: 5,2 a 12,8 · 5 de 5 semillas a favor</span></p>
+<div class="card" style="margin-top:40px">
+<p><span class="titulo" style="font-size:54px">+12,6</span></p>
+<p><span class="sub">contra el baseline con la ventana de la consigna</span></p>
+</div>
+</div>
+<div>
+<div id="86547e56" class="cell" data-execution_count="18">
+<div class="cell-output cell-output-display">
+<div style="height:520px; width:980px;">            <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js"></script><script>if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}</script>                <script>window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
+        <script charset="utf-8" src="https://cdn.plot.ly/plotly-4.0.0.min.js" integrity="sha256-FEYfO0yRyLtZCpnW0Dw/0DHKQO7Afrq3ml4+rBB818o=" crossorigin="anonymous"></script>                <div id="3a1427bf-2eed-4a00-bb5f-606569b169bb" class="plotly-graph-div" style="height:100%; width:100%;"></div>            <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("3a1427bf-2eed-4a00-bb5f-606569b169bb")) {                    Plotly.newPlot(                        "3a1427bf-2eed-4a00-bb5f-606569b169bb",                        [{"cliponaxis":false,"marker":{"color":"#d95926","line":{"width":0}},"text":["+12,3","+4,0","+7,8","+9,7","+11,2"],"textfont":{"color":"#f0efec","size":30},"textposition":"outside","width":0.56,"x":["Junio","Julio","Agosto","Septiembre","Octubre"],"y":[12.2594,4.0378,7.8197,9.6891,11.1869],"type":"bar"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermap":[{"type":"scattermap","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"margin":{"b":0,"l":0,"r":0,"t":30}}},"shapes":[{"line":{"color":"#898781","dash":"dot","width":2},"type":"line","x0":-0.5,"x1":4.5,"y0":8.9986,"y1":8.9986}],"annotations":[{"font":{"color":"#898781","family":"system-ui, -apple-system, \"Segoe UI\", sans-serif","size":22},"showarrow":false,"text":"promedio +9,0","x":4.5,"xanchor":"left","xshift":12,"y":8.9986}],"yaxis":{"visible":false,"range":[0,14.956468]},"xaxis":{"tickfont":{"size":24,"color":"#c3c2b7"},"showgrid":false,"linecolor":"#6b6a65"},"font":{"family":"system-ui, -apple-system, \"Segoe UI\", sans-serif","size":24,"color":"#c3c2b7"},"margin":{"l":20,"r":170,"t":30,"b":40},"width":980,"height":520,"paper_bgcolor":"rgba(0,0,0,0)","plot_bgcolor":"rgba(0,0,0,0)","showlegend":false,"bargap":0.3},                        {"staticPlot": true, "displayModeBar": false, "responsive": false}                    ).then(function(){
+                            
+var gd = document.getElementById('3a1427bf-2eed-4a00-bb5f-606569b169bb');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })                };            </script>        </div>
+</div>
+</div>
+<p><span class="nota">Diferencia promedio por semilla, en millones por mes.</span></p>
+</div>
+</div>
+<div class="partes">
+<span>Hipótesis</span><span>Diseño</span><span>Limitaciones</span><span class="activa">Resultados</span><span>Conclusiones</span>
+</div>
+</section>
+<section id="de-donde" class="slide level2">
+<h2></h2>
+<!-- Tramo 7, segundo párrafo -->
+<div class="kicker c-acum">
+<p><span class="punto bg-acum"></span> Resultados · pipeline acumulativo</p>
+</div>
+<p><span class="h2">¿De dónde sale?</span></p>
+<div class="grid g2">
+<div class="card borde-acum">
+<p><span class="titulo" style="font-size:64px">+4,1 M</span></p>
+<p><span class="sub"><strong>Historia curada</strong>: comparar a cada cliente con su propio pasado.</span></p>
+</div>
+<div class="card borde-acum">
+<p><span class="titulo" style="font-size:64px">−5,8 M</span></p>
+<p><span class="sub"><strong>Ventana vieja de la consigna</strong> contra entrenar con los meses recientes.</span></p>
+</div>
+</div>
+<div style="margin-top:56px">
+<p><span class="kicker">Una interacción que solo se ve acumulando</span></p>
+<div class="suma">
+<p><span class="b"><span class="v">+0,6</span> tarjetas combinadas, solas</span> <span class="op">+</span> <span class="b"><span class="v">+0,6</span> cambios relativos, solos</span> <span class="op">→</span> <span class="b total"><span class="v">+2,2</span> juntos</span></p>
+</div>
+</div>
+<div class="partes">
+<span>Hipótesis</span><span>Diseño</span><span>Limitaciones</span><span class="activa">Resultados</span><span>Conclusiones</span>
+</div>
+</section>
+<section id="branches-resultados" class="slide level2">
+<h2></h2>
+<!-- Tramo 7, tercer párrafo -->
+<div class="kicker c-regla">
+<p><span class="punto bg-regla"></span> Resultados · branches</p>
+</div>
+<p><span class="h2">Sobre el <code>main</code>, dos branches</span></p>
+<svg class="git" viewbox="0 0 1700 430" width="1700" height="430" role="img" aria-label="Diagrama del main con dos branches: uno no cumple la regla y no vuelve; el otro la cumple y hace merge">
+<line x1="120" y1="230" x2="1640" y2="230" stroke="#c3c2b7" stroke-width="7" stroke-linecap="round"></line> <circle cx="180" cy="230" r="13" fill="#c3c2b7"></circle><circle cx="300" cy="230" r="13" fill="#c3c2b7"></circle><circle cx="600" cy="230" r="13" fill="#c3c2b7"></circle><circle cx="900" cy="230" r="13" fill="#c3c2b7"></circle> <text x="110" y="196" font-size="30" font-weight="700" fill="#f0efec">main</text> <path d="M300,230 C360,230 360,90 420,90 L740,90" fill="none" stroke="#9085e9" stroke-width="6" stroke-linecap="round"></path> <circle cx="480" cy="90" r="11" fill="#111110" stroke="#9085e9" stroke-width="5"></circle><circle cx="620" cy="90" r="11" fill="#111110" stroke="#9085e9" stroke-width="5"></circle><circle cx="740" cy="90" r="11" fill="#111110" stroke="#9085e9" stroke-width="5"></circle> <circle cx="860" cy="90" r="22" fill="#111110" stroke="#e66767" stroke-width="5"></circle> <path d="M849,79 L871,101 M871,79 L849,101" stroke="#e66767" stroke-width="5" stroke-linecap="round"></path> <text x="440" y="46" font-size="27" fill="#c3c2b7"><tspan font-weight="700" fill="#f0efec">rango</tspan> de 3 meses · −0,23 M · 3 de 5</text> <text x="900" y="100" font-size="27" font-weight="700" fill="#e66767">NO PASA</text> <path d="M900,230 C960,230 960,370 1020,370 L1180,370 C1240,370 1240,230 1300,230" fill="none" stroke="#9085e9" stroke-width="6" stroke-linecap="round"></path> <circle cx="1060" cy="370" r="11" fill="#111110" stroke="#9085e9" stroke-width="5"></circle><circle cx="1160" cy="370" r="11" fill="#111110" stroke="#9085e9" stroke-width="5"></circle> <circle cx="1300" cy="230" r="17" fill="#0ca30c" stroke="#111110" stroke-width="4"></circle> <path d="M1292,230 l6,7 l11,-13" fill="none" stroke="#111110" stroke-width="4" stroke-linecap="round"></path> <text x="1000" y="420" font-size="27" fill="#c3c2b7"><tspan font-weight="700" fill="#f0efec">Optuna</tspan> sobre el main · +0,57 M · 6 de 10</text> <text x="1334" y="312" font-size="27" font-weight="700" fill="#0ca30c">pasa: entró al main</text>
+</svg>
+<p><span class="nota">Rango: IC −2,2 a 1,8. Optuna: IC −2,6 a +3,7.</span></p>
+<div class="partes">
+<span>Hipótesis</span><span>Diseño</span><span>Limitaciones</span><span class="activa">Resultados</span><span>Conclusiones</span>
+</div>
+</section>
+<section id="coincidencias" class="slide level2">
+<h2></h2>
+<!-- Tramo 8 -->
+<p><span class="h2">Dos diseños, las mismas conclusiones</span></p>
+<table class="coinc">
+<thead>
+<tr>
+<th>
+</th>
+<th>
+Tema
+</th>
+<th>
+<span class="c-recetas">Recetas</span>
+</th>
+<th>
+<span class="c-acum">Acumulativo</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="marca c-bien">
+✓
+</td>
+<td class="tema">
+La historia suma sobre lags y deltas 1–2
+</td>
+<td>
+19 de 39 recetas en los dos meses
+</td>
+<td>
++9,0 M por mes
+</td>
+</tr>
+<tr>
+<td class="marca c-bien">
+✓
+</td>
+<td class="tema">
+Más meses crudos casi no suman
+</td>
+<td>
+lags y deltas 3–5: 0 de 6 en los dos meses
+</td>
+<td>
+3 o 4 meses: de +3,5 a +5,4 M en octubre, sin pasar la regla
+</td>
+</tr>
+<tr>
+<td class="marca c-bien">
+✓
+</td>
+<td class="tema">
+La tendencia de unos 4 meses suma
+</td>
+<td>
+W4: +2,2 / +4,6
+</td>
+<td>
+5 observaciones: +4,2 / +3,6
+</td>
+</tr>
+<tr>
+<td class="marca c-bien">
+✓
+</td>
+<td class="tema">
+Rinde comparar al cliente con su propio pasado
+</td>
+<td>
+máximo, rango, relativo al promedio
+</td>
+<td>
+historia curada +4,1
+</td>
+</tr>
+<tr>
+<td class="marca c-mal">
+≠
+</td>
+<td class="tema">
+El rango
+</td>
+<td>
+W6 suma sobre B0
+</td>
+<td>
+3 meses: NO PASA sobre el main
+</td>
+</tr>
+</tbody>
+</table>
+<div class="grid g2" style="margin-top:44px">
+<p><span class="pill"><span class="punto bg-recetas"></span> Recetas: qué suma <strong>sola</strong></span> <span class="pill"><span class="punto bg-acum"></span> Acumulativo: cuánto suma <strong>junto</strong></span></p>
+</div>
+<div class="partes">
+<span>Hipótesis</span><span>Diseño</span><span>Limitaciones</span><span>Resultados</span><span class="activa">Conclusiones</span>
+</div>
+</section>
+<section id="sesgos-evidencia" class="slide level2">
+<h2></h2>
+<!-- Tramo 9, primer párrafo -->
+<p><span class="h2">¿Qué hizo la evidencia con nuestros sesgos?</span></p>
+<div class="grid g2">
+<div class="card sesgo">
+<p><span class="sello perforado">Perforado</span></p>
+<p><span class="quien">Ezequiel y Tomás</span></p>
+<p><span class="creencia">Más meses → mucha más ganancia</span></p>
+<p><span class="evidencia">Los meses 1 y 2 ya dan entre el 69 y el 90 % de lo que aporta la historia.</span></p>
+</div>
+<div class="card sesgo">
+<p><span class="sello medias">A medias</span></p>
+<p><span class="quien">Clara</span></p>
+<p><span class="creencia">Señales de abandono &gt; lags crudos</span></p>
+<p><span class="evidencia">Las rachas, sin ganancia consistente. La caída frente al propio historial, sí.</span></p>
+</div>
+</div>
+<div class="partes">
+<span>Hipótesis</span><span>Diseño</span><span>Limitaciones</span><span>Resultados</span><span class="activa">Conclusiones</span>
+</div>
+</section>
+<section id="cierre" class="slide level2">
+<h2></h2>
+<!-- Tramo 9, segundo párrafo -->
+<p><span class="h2">Qué nos llevamos y qué seguiríamos probando</span></p>
+<div class="grid g2">
+<div class="card borde-acum">
+<p><span class="titulo">Para la competencia 2</span></p>
+<ul>
+<li>Pocas fotos hacia atrás</li>
+<li>El cliente comparado consigo mismo</li>
+<li>Entrenar con los meses más recientes</li>
+</ul>
+</div>
+<div class="card borde-regla">
+<p><span class="titulo">Seguiríamos probando</span></p>
+<ul>
+<li>Las recetas con señal, como branches del <code>main</code>, juzgadas en junio–agosto</li>
+<li>Lags sin deltas</li>
+<li>Sacar un bloque por vez del <code>main</code></li>
+</ul>
+</div>
+</div>
+<div class="repos">
+<p>github.com/ezequielabregu/DMEyF-2026-experi-colab-feature_historico · github.com/ClariRZ/ExperimentoVH</p>
+</div>
+<div class="partes">
+<span>Hipótesis</span><span>Diseño</span><span>Limitaciones</span><span>Resultados</span><span class="activa">Conclusiones</span>
+</div>
+
+</section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="video_experimentos_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="video_experimentos_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="video_experimentos_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="video_experimentos_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="video_experimentos_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="video_experimentos_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="video_experimentos_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="video_experimentos_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="video_experimentos_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="video_experimentos_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': false,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":false},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: false,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'fade',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'fast',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1920,
+
+        height: 1080,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0,
+
+        // Bounds for smallest/largest possible scale to apply to content
+        minScale: 0.1,
+
+        maxScale: 3,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>

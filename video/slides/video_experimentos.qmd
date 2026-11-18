@@ -1,0 +1,687 @@
+---
+pagetitle: "Historia del cliente — feature_historico"
+format:
+  revealjs:
+    theme: [dark, tema.scss]
+    width: 1920
+    height: 1080
+    margin: 0
+    min-scale: 0.1
+    max-scale: 3
+    center: false
+    controls: false
+    progress: true
+    slide-number: false
+    menu: false
+    hash: true
+    transition: fade
+    transition-speed: fast
+    embed-resources: false
+jupyter: python3
+execute:
+  echo: false
+  warning: false
+---
+
+## {#portada .portada}
+
+<!--
+Deck del video del grupo feature_historico (DMEyF 2026, Experimentos Colaborativos).
+Cada slide sigue un tramo de ../guion.md ("Tramo N"). Avanzar: barra espaciadora o flecha derecha.
+Ningún número está tipeado: todo sale de figuras.py, que lee ../datos/*.csv.
+(El comentario va dentro de la portada: antes del primer título generaba una slide vacía.)
+-->
+
+```{python}
+#| include: false
+from figuras import (C, mostrar, fig_recetas, fig_meses, fig_maldicion, calendario, svg_git, partes, tabla_coincidencias,
+                     RECETAS, ACUMULATIVO, GRIS_CLARO)
+```
+
+[Historia del cliente]{.titulo}
+
+[Dos pipelines para una pregunta: ¿qué historia suma sobre lags y deltas 1–2, y cuánto dinero da?]{.sub}
+
+::: {.dos}
+[[]{.punto .bg-recetas} Pipeline de recetas]{.pill}
+[[]{.punto .bg-acum} Pipeline acumulativo]{.pill}
+:::
+
+[Tomás Henseler · Clara M. Rodríguez · Ezequiel Abregú — tutor: Alejandro Bolaños · DMEyF 2026 · grupo feature_historico]{.autores}
+
+## {#pregunta}
+
+<!-- Tramo 1, primer párrafo -->
+
+::: {.kicker}
+Hipótesis
+:::
+
+[¿Qué historia del cliente hace ganar más dinero?]{.h2}
+
+::: {.formula}
+[mes actual]{.bloque} [+]{.op} [lags 1 y 2]{.bloque} [+]{.op} [deltas 1 y 2]{.bloque} [+]{.op} [**más historia**]{.bloque .nuevo}
+:::
+
+::: {.grid .g3 style="margin-top:60px"}
+::: {.card}
+[Baseline de la consigna]{.titulo}
+
+[LightGBM con el mes actual y los dos meses anteriores: lags y deltas de 1 y 2 meses.]{.sub}
+:::
+
+::: {.card}
+[Hipótesis]{.titulo}
+
+[Agregar más historia de cada cliente gana más dinero que el baseline.]{.sub}
+:::
+
+::: {.card}
+[Datos]{.titulo}
+
+[Solo meses de 2019, como pide la consigna.]{.sub}
+:::
+:::
+
+```{python}
+#| output: asis
+print(partes('Hipótesis'))
+```
+
+## {#sesgos}
+
+<!-- Tramo 1, segundo párrafo -->
+
+::: {.kicker}
+Hipótesis · sesgos
+:::
+
+[Arrancamos con dos sesgos]{.h2}
+
+::: {.grid .g2}
+::: {.card .sesgo .fragment}
+[Ezequiel y Tomás]{.quien}
+
+[Sumar más meses de historia iba a dar un margen de ganancia **mucho mayor**.]{.creencia}
+:::
+
+::: {.card .sesgo .fragment}
+[Clara]{.quien}
+
+[Las señales de abandono (rachas de inactividad, caída frente al propio historial) iban a **superar ampliamente** a los lags crudos.]{.creencia}
+:::
+:::
+
+[Al final vemos qué hizo la evidencia con cada uno.]{.nota}
+
+```{python}
+#| output: asis
+print(partes('Hipótesis'))
+```
+
+## {#vara}
+
+<!-- Tramo 2 -->
+
+::: {.kicker}
+Diseño · lo común
+:::
+
+[Los dos pipelines comparten la misma vara]{.h2}
+
+::: {.flujo}
+::: {.paso}
+[01]{.n}
+
+[Banco temporal]{.t}
+
+[Para evaluar el mes t, se entrena hasta t − 2: la clase de un mes se conoce dos meses después.]{.d}
+:::
+
+::: {.paso}
+[02]{.n}
+
+[Ganancia]{.t}
+
+[+1.072.500 por `BAJA+2` contactado · −27.500 por cualquier otro contacto.]{.d}
+:::
+
+::: {.paso}
+[03]{.n}
+
+[Banda de envíos]{.t}
+
+[Promedio entre 3.000 y 6.000 envíos: no elegimos después el corte que más nos favorece.]{.d}
+:::
+
+::: {.paso}
+[04]{.n}
+
+[5 semillas]{.t}
+
+[Cada configuración, con cinco semillas; sus predicciones se promedian en un ensemble.]{.d}
+:::
+:::
+
+::: {style="margin-top:56px"}
+```{python}
+#| output: asis
+print(calendario([('Evaluar octubre', 'eeeeeeeegt')], GRIS_CLARO))
+```
+:::
+
+[Para octubre, el último mes de entrenamiento es agosto: septiembre todavía no tiene clase. Desde qué mes se entrena lo define cada pipeline.]{.nota}
+
+```{python}
+#| output: asis
+print(partes('Diseño'))
+```
+
+## {#recetas}
+
+<!-- Tramo 3, primer párrafo -->
+
+::: {.kicker .c-recetas}
+[]{.punto .bg-recetas} Diseño · pipeline de recetas
+:::
+
+[Pipeline de recetas: ¿qué historia suma **sola**?]{.h2}
+
+::: {.formula style="margin-bottom:34px"}
+[B0 = baseline]{.bloque} [+]{.op} [**una** receta]{.bloque .nuevo} [→]{.op} [comparar contra B0]{.bloque}
+:::
+
+::: {.recetas-grilla}
+::: {}
+::: {.fila .cab}
+[Receta]{} [W3]{.txt} [W4]{.txt} [W6]{.txt}
+:::
+::: {.fila}
+[Promedio]{} []{.dot} []{.dot} []{.dot}
+:::
+::: {.fila}
+[Mínimo]{} []{.dot} []{.dot} []{.dot}
+:::
+::: {.fila}
+[Máximo]{} []{.dot} []{.dot} []{.dot}
+:::
+::: {.fila}
+[Rango]{} []{.dot} []{.dot} []{.dot}
+:::
+::: {.fila}
+[Tendencia]{} []{.dot} []{.dot} []{.dot}
+:::
+::: {.fila}
+[Relativo al promedio]{} []{.dot} []{.dot} []{.dot}
+:::
+::: {.fila}
+[Relativo al mes anterior]{} []{.dot} []{.dot} []{.dot}
+:::
+::: {.fila}
+[Relativo al primer mes]{} []{.dot} []{.dot} []{.dot}
+:::
+:::
+
+::: {}
+::: {.fila .cab}
+[Receta]{} [variantes]{.txt} []{.txt} []{.txt}
+:::
+::: {.fila}
+[Más lags]{} [3]{.txt} [4]{.txt} [5]{.txt}
+:::
+::: {.fila}
+[Más deltas]{} [3]{.txt} [4]{.txt} [5]{.txt}
+:::
+::: {.fila}
+[Rankings]{} [mes]{.txt} [historia]{.txt} [·]{.vacio}
+:::
+::: {.fila}
+[Rachas y recencia]{} [ceros]{.txt} [no ceros]{.txt} [recencia]{.txt}
+:::
+::: {.fila}
+[Apagado y encendido]{} [apaga]{.txt} [prende]{.txt} [caídas]{.txt}
+:::
+::: {.fila}
+[Disponibilidad]{} [1–2]{.txt} [·]{.vacio} [·]{.vacio}
+:::
+:::
+:::
+
+[W3, W4 y W6 cuentan el mes actual: **W4 = el mes y los tres anteriores**.]{.nota}
+
+```{python}
+#| output: asis
+print(partes('Diseño'))
+```
+
+## {#recetas-calendario}
+
+<!-- Tramo 3, segundo párrafo -->
+
+::: {.kicker .c-recetas}
+[]{.punto .bg-recetas} Diseño · pipeline de recetas
+:::
+
+[Cada receta: su propia búsqueda, el mismo procedimiento]{.h2}
+
+```{python}
+#| output: asis
+print(calendario([
+    ('Elegir hiperparámetros', 'hhhhhev...'),
+    ('Evaluar septiembre', 'hhhhheegt.'),
+    ('Evaluar octubre', 'hhhhheeegt'),
+], RECETAS))
+```
+
+::: {.leyenda-cal}
+[[]{.sw style="background:#232321"}solo historia]{} [[]{.sw style="background:#3987e5"}entrena]{} [[]{.sw style="border:3px solid #3987e5"}valida (AUC)]{} [[]{.sw style="background:repeating-linear-gradient(135deg,#3a3a37 0 6px,transparent 6px 12px)"}sin clase todavía]{} [[]{.sw style="background:#f0efec"}evalúa (ganancia)]{}
+:::
+
+::: {.grid .g4 style="margin-top:60px"}
+::: {.stat}
+[`{python} C['n_recetas']`]{.num}
+
+[recetas, cada una sola contra B0]{.lab}
+:::
+
+::: {.stat}
+[Optuna]{.num style="font-size:64px;line-height:92px"}
+
+[una búsqueda por receta, por AUC de julio]{.lab}
+:::
+
+::: {.stat}
+[5]{.num}
+
+[semillas por mes evaluado]{.lab}
+:::
+
+::: {.stat}
+[960]{.num}
+
+[entrenamientos en total]{.lab}
+:::
+:::
+
+```{python}
+#| output: asis
+print(partes('Diseño'))
+```
+
+## {#escalera}
+
+<!-- Tramo 4, primer párrafo hasta "los cambios relativos" -->
+
+::: {.kicker .c-acum}
+[]{.punto .bg-acum} Diseño · pipeline acumulativo
+:::
+
+[Pipeline acumulativo: ¿cuánto se gana **combinando**?]{.h2}
+
+::: {.escalera}
+::: {.esc .base style="height:24%"}
+[0]{.k} Baseline
+:::
+::: {.esc .fragment style="height:38%"}
+[1]{.k} \+ historia curada: el cliente contra su propio pasado
+:::
+::: {.esc .fragment style="height:50%"}
+[2]{.k} \+ cuatro medidas más de historia
+:::
+::: {.esc .fragment style="height:62%"}
+[3]{.k} `BAJA+2` con peso triple
+:::
+::: {.esc .fragment style="height:74%"}
+[4]{.k} \+ tarjetas Visa y Master combinadas
+:::
+::: {.esc .fragment style="height:86%"}
+[5]{.k} \+ cambios relativos
+:::
+::: {.esc .final .fragment style="height:100%"}
+[=]{.k} **Estrategia final**
+:::
+:::
+
+[Cada escalón se probó sobre el anterior y quedó solo si ganaba más.]{.nota}
+
+```{python}
+#| output: asis
+print(partes('Diseño'))
+```
+
+## {#acum-calendario}
+
+<!-- Tramo 4, última frase del primer párrafo -->
+
+::: {.kicker .c-acum}
+[]{.punto .bg-acum} Diseño · pipeline acumulativo
+:::
+
+[Evaluado en cinco meses, con la ventana creciendo]{.h2}
+
+```{python}
+#| output: asis
+print(calendario([
+    ('Evaluar junio', 'hheegt....'),
+    ('Evaluar julio', 'hheeegt...'),
+    ('Evaluar agosto', 'hheeeegt..'),
+    ('Evaluar septiembre', 'hheeeeegt.'),
+    ('Evaluar octubre', 'hheeeeeegt'),
+], ACUMULATIVO))
+```
+
+[Para cada mes, el modelo entrena con todos los meses desde marzo hasta dos antes. Enero y febrero solo aportan historia.]{.nota}
+
+```{python}
+#| output: asis
+print(partes('Diseño'))
+```
+
+## {#branches}
+
+<!-- Tramo 4, segundo párrafo -->
+
+::: {.kicker .c-regla}
+[]{.punto .bg-regla} Diseño · pipeline único en el main
+:::
+
+[Lo nuevo entra al `main` solo si cumple la regla]{.h2}
+
+```{python}
+#| output: asis
+print(svg_git(resultados=False))
+```
+
+::: {.regla}
+Regla de merge: [**d > 0**]{} [·]{.c-muted} [**al menos 3 de 5 semillas a favor**]{}
+:::
+
+[En el camino el método cambió (ventanas, validación, reglas). Por eso congelamos la estrategia en un pipeline único: un branch por idea, un solo cambio por branch.]{.nota}
+
+```{python}
+#| output: asis
+print(partes('Diseño'))
+```
+
+## {#limitaciones}
+
+<!-- Tramo 5 -->
+
+::: {.kicker}
+Limitaciones
+:::
+
+[Cuatro limitaciones]{.h2}
+
+::: {.grid .g-5-7}
+::: {}
+::: {.lim}
+[1]{.n}
+[2019 ya mirado]{.t}
+[Todo lo nuevo es exploratorio.]{.d}
+:::
+
+::: {.lim}
+[2]{.n}
+[Muchas comparaciones]{.t}
+[La mejor de muchas sale favorecida por azar: la maldición del ganador.]{.d}
+:::
+
+::: {.lim}
+[3]{.n}
+[Búsqueda acotada]{.t}
+[Diez pruebas de Optuna por receta.]{.d}
+:::
+
+::: {.lim}
+[4]{.n}
+[Pocos meses evaluados]{.t}
+[Y variables rotas en algunos meses de 2019, tratadas como faltantes.]{.d}
+:::
+:::
+
+::: {.card}
+[La mejor de 60 combinaciones de hiperparámetros]{.titulo}
+
+```{python}
+mostrar(fig_maldicion())
+```
+:::
+:::
+
+```{python}
+#| output: asis
+print(partes('Limitaciones'))
+```
+
+## {#resultados-recetas}
+
+<!-- Tramo 6. Gráfico interactivo: pasar el mouse por un punto muestra la receta y sus semillas a favor. -->
+
+[Recetas: `{python} C['n_ambos_mas']` de `{python} C['n_recetas']` ganan en los dos meses]{.h2}
+
+::: {.grid .g-7-5 style="gap:40px"}
+::: {}
+```{python}
+mostrar(fig_recetas(), interactiva=True)
+```
+:::
+
+::: {style="padding-top:30px"}
+::: {.chip}
+[Tendencia W4]{.n}
+
+[`{python} C['slope_W4_sep']` sep · `{python} C['slope_W4_oct']` oct · semillas `{python} C['slope_W4_sem_sep']` y `{python} C['slope_W4_sem_oct']`]{.v}
+:::
+
+::: {.chip}
+[Máximo W6]{.n}
+
+[`{python} C['max_W6_sep']` sep · `{python} C['max_W6_oct']` oct]{.v}
+:::
+
+::: {.chip}
+[Rango W6]{.n}
+
+[`{python} C['range_W6_sep']` sep · `{python} C['range_W6_oct']` oct]{.v}
+:::
+
+::: {.chip .gris}
+[Lags y deltas de 3, 4 y 5 meses]{.n}
+
+[`{python} C['n_crudos_ambos']` de 6 ganan en los dos meses]{.v}
+:::
+
+[Si ninguna receta sirviera: unas `{python} C['n_azar']` de cada lado. Millones por mes, ensemble contra B0. Sin corregir por comparaciones múltiples.]{.nota}
+:::
+:::
+
+```{python}
+#| output: asis
+print(partes('Resultados'))
+```
+
+## {#resultados-acum}
+
+<!-- Tramo 7, primer párrafo -->
+
+::: {.kicker .c-acum}
+[]{.punto .bg-acum} Resultados · pipeline acumulativo
+:::
+
+[Acumulativo: la estrategia final gana en los cinco meses]{.h2}
+
+::: {.grid .g-5-7}
+::: {}
+[`{python} C['paq_d']`]{.hero}
+
+[millones por mes contra el baseline con el mismo calendario]{.hero-lab}
+
+[IC 95 %: `{python} C['paq_ic']` · `{python} C['paq_sem']` semillas a favor]{.nota}
+
+::: {.card style="margin-top:40px"}
+[`{python} C['paq_consigna']`]{.titulo style="font-size:54px"}
+
+[contra el baseline con la ventana de la consigna]{.sub}
+:::
+:::
+
+::: {}
+```{python}
+mostrar(fig_meses())
+```
+
+[Diferencia promedio por semilla, en millones por mes.]{.nota}
+:::
+:::
+
+```{python}
+#| output: asis
+print(partes('Resultados'))
+```
+
+## {#de-donde}
+
+<!-- Tramo 7, segundo párrafo -->
+
+::: {.kicker .c-acum}
+[]{.punto .bg-acum} Resultados · pipeline acumulativo
+:::
+
+[¿De dónde sale?]{.h2}
+
+::: {.grid .g2}
+::: {.card .borde-acum}
+[`{python} C['ach']` M]{.titulo style="font-size:64px"}
+
+[**Historia curada**: comparar a cada cliente con su propio pasado.]{.sub}
+:::
+
+::: {.card .borde-acum}
+[`{python} C['ventana']` M]{.titulo style="font-size:64px"}
+
+[**Ventana vieja de la consigna** contra entrenar con los meses recientes.]{.sub}
+:::
+:::
+
+::: {style="margin-top:56px"}
+[Una interacción que solo se ve acumulando]{.kicker}
+
+::: {.suma}
+[[`{python} C['mv']`]{.v} tarjetas combinadas, solas]{.b} [+]{.op} [[`{python} C['rel']`]{.v} cambios relativos, solos]{.b} [→]{.op} [[`{python} C['juntos']`]{.v} juntos]{.b .total}
+:::
+:::
+
+```{python}
+#| output: asis
+print(partes('Resultados'))
+```
+
+## {#branches-resultados}
+
+<!-- Tramo 7, tercer párrafo -->
+
+::: {.kicker .c-regla}
+[]{.punto .bg-regla} Resultados · branches
+:::
+
+[Sobre el `main`, dos branches]{.h2}
+
+```{python}
+#| output: asis
+print(svg_git(resultados=True))
+```
+
+[Rango: IC `{python} C['rango_ic']`. Optuna: IC `{python} C['opt_ic']`.]{.nota}
+
+```{python}
+#| output: asis
+print(partes('Resultados'))
+```
+
+## {#coincidencias}
+
+<!-- Tramo 8 -->
+
+[Dos diseños, las mismas conclusiones]{.h2}
+
+```{python}
+#| output: asis
+print(tabla_coincidencias())
+```
+
+::: {.grid .g2 style="margin-top:44px"}
+[[]{.punto .bg-recetas} Recetas: qué suma **sola**]{.pill}
+[[]{.punto .bg-acum} Acumulativo: cuánto suma **junto**]{.pill}
+:::
+
+```{python}
+#| output: asis
+print(partes('Conclusiones'))
+```
+
+## {#sesgos-evidencia}
+
+<!-- Tramo 9, primer párrafo -->
+
+[¿Qué hizo la evidencia con nuestros sesgos?]{.h2}
+
+::: {.grid .g2}
+::: {.card .sesgo}
+[Perforado]{.sello .perforado}
+
+[Ezequiel y Tomás]{.quien}
+
+[Más meses → mucha más ganancia]{.creencia}
+
+[Los meses 1 y 2 ya dan entre el `{python} C['lags12_min']` y el `{python} C['lags12_max']` % de lo que aporta la historia.]{.evidencia}
+:::
+
+::: {.card .sesgo}
+[A medias]{.sello .medias}
+
+[Clara]{.quien}
+
+[Señales de abandono > lags crudos]{.creencia}
+
+[Las rachas, sin ganancia consistente. La caída frente al propio historial, sí.]{.evidencia}
+:::
+:::
+
+```{python}
+#| output: asis
+print(partes('Conclusiones'))
+```
+
+## {#cierre}
+
+<!-- Tramo 9, segundo párrafo -->
+
+[Qué nos llevamos y qué seguiríamos probando]{.h2}
+
+::: {.grid .g2}
+::: {.card .borde-acum}
+[Para la competencia 2]{.titulo}
+
+- Pocas fotos hacia atrás
+- El cliente comparado consigo mismo
+- Entrenar con los meses más recientes
+:::
+
+::: {.card .borde-regla}
+[Seguiríamos probando]{.titulo}
+
+- Las recetas con señal, como branches del `main`, juzgadas en junio–agosto
+- Lags sin deltas
+- Sacar un bloque por vez del `main`
+:::
+:::
+
+::: {.repos}
+github.com/ezequielabregu/DMEyF-2026-experi-colab-feature_historico · github.com/ClariRZ/ExperimentoVH
+:::
+
+```{python}
+#| output: asis
+print(partes('Conclusiones'))
+```

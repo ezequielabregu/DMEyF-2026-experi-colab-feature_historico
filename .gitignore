@@ -6,6 +6,7 @@ exp/
 *.parquet
 # Excepción: las tablas chicas de resultados sí se versionan
 !resultados/**/*.csv
+!video/datos/**/*.csv
 
 # Secretos y configuración personal
 estudiante_secretos.sh
