@@ -1,20 +1,20 @@
 # Video del grupo feature_historico
 
-Video de Experimentos Colaborativos (DMEyF 2026). Presenta los dos pipelines del grupo:
-- **el de recetas:** 39 recetas de historia, cada una sola contra el mismo baseline;
-- **el acumulativo:** el pipeline del `main`.
+Video de Experimentos Colaborativos (DMEyF 2026). Presenta las dos familias de experimentos del grupo:
+- **familia 1, experimentos independientes:** 39 experimentos, cada uno agrega un tipo de variable histórica al mismo baseline;
+- **familia 2, experimentos acumulativos:** el pipeline del `main`.
 
 | Archivo | Qué es |
 |---|---|
-| `guion.md` | El guion: 9 tramos, unos 8 minutos, con lo que se ve y lo que se dice |
+| `guion.md` | El guion: 9 tramos y 23 slides, con lo que se ve y lo que se dice |
 | `slides/video_experimentos.qmd` | Las slides (Quarto revealjs, 1920×1080) |
-| `slides/video_experimentos.html` | Las slides ya renderizadas: se abren en el navegador. El gráfico de las recetas carga plotly desde internet |
+| `slides/video_experimentos.html` | Las slides ya renderizadas: se abren en el navegador. Los gráficos interactivos cargan plotly desde internet |
 | `slides/figuras.py` | Cifras y figuras: ningún número de las slides está tipeado a mano |
-| `slides/tema.scss` | Estilo: azul = recetas, naranja = acumulativo, violeta = regla y branches |
+| `slides/tema.scss` | Estilo: azul = familia 1, naranja = familia 2, violeta = regla y branches |
 | `datos/` | Las tablas chicas que leen las figuras |
 | `preparar_datos.py` | Arma `datos/`, y dice de dónde sale cada tabla |
 
-**Avanzar las slides:** barra espaciadora o flecha derecha. En la dispersión de las 39 recetas, pasar el mouse por un punto muestra la receta y sus semillas a favor.
+**Avanzar las slides:** barra espaciadora o flecha derecha. Son interactivos (pasar el mouse): la dispersión de los 39 experimentos, la profundidad de la historia, el valor de la historia por semilla, lo que no sumó y las dos curvas de ganancia.
 
 ## Renderizar
 
@@ -28,10 +28,10 @@ QUARTO_PYTHON=<ruta al python del entorno> quarto render video_experimentos.qmd 
 
 | Tabla | Origen |
 |---|---|
-| `v10_resultados.csv` | `ClariRZ/ExperimentoVH`, `v10/cierre/resultados.csv` (pipeline de recetas) |
-| `paq_p3_comparacion.csv` | `resultados/pipeline/main_comparacion.csv` en `b09397e`: el `main` antes del merge de Optuna |
+| `v10_resultados.csv` | `ClariRZ/ExperimentoVH`, `v10/cierre/resultados.csv` (familia 1) |
+| `paq_p3_comparacion.csv`, `paq_p3_ganancias.csv`, `ac_ganancias.csv` | `resultados/pipeline/` en `b09397e`: el `main` antes del merge de Optuna, y el baseline |
 | `rango_comparacion.csv` | branch `rango` |
 | `optuna_comparacion.csv` | branch `feat/optuna-paq-p3`, `resultados/optuna/evaluacion_final_comparacion.csv` |
-| `exploratorio/*.csv` | branch `ezequiel/etapa-1`, notebooks exploratorios `04` a `23` |
-| `bandas_ensemble.csv` | calculada de las predicciones guardadas del pipeline (`exp/pipeline/`, no versionado) |
+| `exploratorio/*.csv` | branch `ezequiel/etapa-1`, notebooks `04` (prueba pre-registrada, dosis-respuesta) a `23` |
+| `bandas_ensemble.csv`, `curvas_ganancia.csv` | calculadas de las predicciones guardadas del pipeline (`exp/pipeline/`, no versionado): banda y curva de ganancia del ensamble |
 | `cifras_del_informe.csv` | los dos porcentajes del notebook `12` (69 % y 90 %), tomados del informe del grupo |

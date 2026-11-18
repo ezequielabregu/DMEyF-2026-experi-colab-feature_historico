@@ -206,7 +206,7 @@ $presentation-h2-font-size: 58px;
 // ---- Resultados: chips de destacadas
 .chip {
   display: block; background: $superficie; border: 1px solid $gris; border-left: 8px solid $recetas;
-  border-radius: 14px; padding: 16px 22px; margin-bottom: 16px;
+  border-radius: 14px; padding: 12px 22px; margin-bottom: 12px;
   .n { font-size: 27px; color: $tinta; font-weight: 700; }
   .v { font-size: 24px; color: $tinta-2; font-variant-numeric: tabular-nums; }
 }
@@ -250,3 +250,5 @@ $presentation-h2-font-size: 58px;
 // ---- Pandoc envuelve el contenido de un div en <p>: que no rompa las grillas y las filas
 .fila > p, .lim > p, .formula > p, .suma > p, .dos > p, .leyenda-cal > p, .flujo .paso > p { display: contents; }
 .lim > p > span:nth-child(1) { grid-row: span 2; }
+
+.flujo .paso .n, .flujo .paso .t, .flujo .paso .d { display: block; }

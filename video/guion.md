@@ -1,195 +1,253 @@
 # Guion del video — Experimentos Colaborativos (`feature_historico`)
 
-**Versión 1 (2026-11-18).** Un solo guion, sin voces asignadas. Las slides están en `slides/video_experimentos.qmd`, una o más por tramo. Duración objetivo: unos 8 minutos.
+**Versión 2.1 (2026-11-18).** Un solo guion, sin voces asignadas. Unas 1.530 palabras: **cerca de 11 minutos, por encima del límite de 10.** El usuario decide qué recortar (ver el final).
+
+**Cambios de la versión 2** (pedido del usuario):
+- Vocabulario de la cátedra, tomado de las transcripciones de clase y de la plantilla de slides:
+  - las dos líneas de trabajo son **familias de experimentos**;
+  - cada prueba es un **experimento**;
+  - se dice "baseline" (no "B0") y "ventana de 4 meses" (no "W4");
+  - se dice "walk-forward" y "ensamble";
+  - se dice "optimización bayesiana".
+- Se suman las figuras técnicas del informe:
+  - la curva de ganancia y la banda;
+  - cómo se plancha la ganancia con más meses (la prueba pre-registrada y la profundidad de la primera familia);
+  - la ganancia por semilla;
+  - la curva de ganancia de la estrategia final contra el baseline.
 
 **Cómo leerlo.** Cada tramo tiene:
-- **Pantalla:** qué se ve. Es la base de los slides; los recursos visuales se diseñan en el `.qmd`.
+- **Pantalla:** qué se ve.
 - **Texto:** lo que se dice, tal cual.
 - **Cifras:** todas salen de `datos/` a través de `slides/figuras.py`.
 
-Todo lo que aparece en pantalla se dice en el texto.
+Todo lo que aparece en pantalla se dice. Las cifras las genera `slides/figuras.py` a partir de los CSV de `datos/`.
 
 ---
 
 ## Tramo 1 — Pregunta, hipótesis y sesgos (~0:50)
 
+### 1a. La pregunta
+
 **Pantalla:**
-- Título: "¿Qué historia del cliente hace ganar más dinero?"
-- Recuadro del baseline: **mes actual + lags 1 y 2 + deltas 1 y 2** · LightGBM · solo 2019.
-- Hipótesis: "Agregar más historia de cada cliente gana más que el baseline".
-- Dos tarjetas de sesgo:
-  - "Ezequiel y Tomás: más meses → mucha más ganancia";
-  - "Clara: las señales de abandono superan ampliamente a los lags crudos".
+- "mes actual + lags 1 y 2 + deltas 1 y 2 + más historia";
+- tarjetas: baseline de la consigna, hipótesis, datos de 2019.
 
 **Texto:**
-> Nuestro tema es feature engineering histórico. La pregunta es simple: si a un LightGBM que ya conoce el mes actual y los dos meses anteriores, es decir, el baseline de la consigna, con lags y deltas de 1 y 2 meses, le agregamos más historia de cada cliente, ¿gana más dinero? Trabajamos solo con meses de 2019, como pide la consigna.
->
-> Arrancamos con dos sesgos. El de Ezequiel y Tomás: que sumar más meses de historia iba a dar un margen de ganancia mucho mayor. El de Clara: que las señales de abandono, como las rachas de inactividad o la caída frente al propio historial del cliente, iban a superar ampliamente a los lags crudos. Al final vemos qué hizo la evidencia con cada uno.
+> Nuestro experimento es de feature engineering histórico. La pregunta: si a un LightGBM que ya tiene el baseline de la consigna, es decir, las variables del mes más lags y deltas de 1 y 2 meses, le agregamos más variables históricas de cada cliente, ¿gana más dinero? Usamos solo meses de 2019.
 
-*(~120 palabras)*
+### 1b. Los sesgos
+
+**Pantalla:** las dos tarjetas de sesgo.
+
+**Texto:**
+> Arrancamos con dos sesgos. Ezequiel y Tomás creían que sumar más meses de historia iba a dar mucha más ganancia. Clara creía que las señales de abandono, como las rachas de inactividad o la caída frente al propio historial del cliente, iban a superar ampliamente a los lags. Al final vemos qué hizo la evidencia con cada uno.
 
 ---
 
-## Tramo 2 — Diseño: la vara común (~0:45)
+## Tramo 2 — Diseño: el marco común (~1:20)
 
-**Pantalla:** flowchart horizontal de cuatro pasos:
-1. **Banco temporal:** "entrenar hasta t − 2 → evaluar t";
-2. **Ganancia:** "+1.072.500 por `BAJA+2` contactado · −27.500 por otro contacto";
-3. **Banda:** "promedio entre 3.000 y 6.000 envíos";
-4. **Semillas:** "5 semillas → ensemble".
+### 2a. Cuatro reglas comunes
 
-Debajo, un mini calendario de 2019 que ilustra t − 2 para octubre.
+**Pantalla:**
+- los cuatro pasos: walk-forward, ganancia, banda de envíos y semillas;
+- el calendario de octubre.
 
 **Texto:**
-> Armamos dos pipelines que comparten la misma vara. Primero, el banco temporal: para evaluar un mes, el modelo entrena solo con meses que terminan dos meses antes, porque la clase de un mes se conoce dos meses después. Para octubre, por ejemplo, el último mes de entrenamiento es agosto. Así se trabajaría en producción.
->
-> Segundo, la ganancia de la consigna: más 1.072.500 por cada `BAJA+2` contactado y menos 27.500 por cualquier otro contacto. No la medimos en un solo punto de corte, sino como el promedio entre 3.000 y 6.000 envíos. Así no elegimos después el corte que más nos favorece. Tercero, cada configuración se entrena con cinco semillas, y promediamos sus predicciones en un ensemble.
+> Hicimos dos familias de experimentos, con el mismo marco de evaluación. Uno: walk-forward. Para evaluar un mes, el modelo entrena solo con meses que terminan dos meses antes, porque la clase se conoce dos meses después: para octubre, el último mes de entrenamiento es agosto. Dos: la ganancia de la consigna, más 1.072.500 por cada `BAJA+2` con estímulo y menos 27.500 por cualquier otro envío. Tres: la banda de envíos, que vemos en el gráfico siguiente. Cuatro: cinco semillas por configuración, y un ensamble que promedia sus probabilidades. El ensamble le gana a la media de las semillas en los 20 casos que medimos, por 1,8 millones.
 
-*(~130 palabras)*
+### 2b. La curva de ganancia y la banda
+
+**Pantalla:** curva de ganancia del baseline en octubre, interactiva, con la banda de 3.000 a 6.000 envíos sombreada y el máximo marcado.
+
+**Texto:**
+> Esta es la curva de ganancia del baseline en octubre. Ordenamos a los clientes por probabilidad y acumulamos la ganancia a medida que agregamos envíos. Sube rápido, se aplana cerca del máximo, de 293,4 millones, y después cae, porque cada envío extra cuesta más de lo que recupera. Como el máximo exacto depende del azar, comparamos el promedio de la curva entre 3.000 y 6.000 envíos. Así no elegimos el punto de corte que más nos favorece.
+
 
 ---
 
-## Tramo 3 — Diseño: pipeline de recetas (~1:00)
+## Tramo 3 — Familia 1: experimentos independientes (~1:00)
+
+### 3a. Un experimento por tipo de variable
 
 **Pantalla:**
-- Diagrama: B0 en el centro, con 39 flechas, cada una "B0 + 1 receta", y cada flecha con su propio ícono de Optuna.
-- Grilla de las recetas (filas) por profundidad W3 · W4 · W6 (columnas): promedio, mínimo, máximo, rango, tendencia, cambio relativo (al promedio, al mes anterior, al primer mes), lags 3–5, deltas 3–5, rankings, rachas y recencia, apagado y encendido, disponibilidad.
-- Línea de tiempo:
-  - "junio → julio: elegir hiperparámetros (AUC)";
-  - "junio–julio → septiembre";
-  - "junio–agosto → octubre".
-- Contador: **39 recetas · 960 entrenamientos**.
+- "baseline + un tipo de variable → comparar contra el baseline";
+- grilla de tipos de variable por ventana de 3, 4 y 6 meses.
 
 **Texto:**
-> El primer pipeline responde: ¿qué tipo de historia suma sola? Al baseline lo llamamos B0, y le agregamos una sola receta por vez: promedio, mínimo, máximo, rango, tendencia, cambios relativos, más lags, más deltas, rankings, rachas. Las recetas de ventana se prueban con 3, 4 y 6 observaciones, contando el mes actual: W4, por ejemplo, es el mes y los tres anteriores.
->
-> Son 39 recetas. Cada una tuvo su propia búsqueda de hiperparámetros con Optuna: entrenando con junio y eligiendo por AUC en julio. Después se evaluó en septiembre y en octubre, reentrenando para cada mes. Las recetas no se acumulan: cada una se compara sola contra el mismo B0, con el mismo procedimiento. En total, 960 entrenamientos.
+> La primera familia responde: ¿qué tipo de variable histórica suma sola? A partir del baseline, cada experimento agrega un solo tipo de variable: promedio, mínimo, máximo, rango, tendencia, cambios relativos, más lags, más deltas, rankings o rachas. Los que usan una ventana se prueban con 3, 4 y 6 meses, contando el mes actual.
 
-*(~125 palabras)*
+### 3b. Mismo procedimiento para todos
+
+**Pantalla:**
+- calendario: junio entrena y julio valida; septiembre y octubre evalúan;
+- contadores: 39 experimentos, optimización bayesiana, 5 semillas, 960 entrenamientos;
+- nota de diseño: hasta 1.500 árboles con early stopping de 100 rondas; baseline de 634 columnas después de depurar.
+
+**Texto:**
+> Son 39 experimentos. Cada uno tuvo su propia optimización bayesiana de hiperparámetros con Optuna: entrena con junio y elige por AUC en julio. Después se evalúa en septiembre y en octubre, reentrenando para cada mes. La cantidad de árboles sale de la validación, con early stopping. Los experimentos no se acumulan: cada uno se compara solo contra el mismo baseline. En total, 960 entrenamientos.
+
 
 ---
 
-## Tramo 4 — Diseño: pipeline acumulativo (~1:10)
+## Tramo 4 — Familia 2: experimentos acumulativos (~1:10)
 
-**Pantalla:**
-- Escalera de izquierda a derecha, un escalón por pieza:
-  - baseline;
-  - \+ historia curada (el cliente contra su propio pasado);
-  - \+ cuatro medidas más de historia;
-  - `BAJA+2` con peso triple;
-  - \+ tarjetas Visa y Master combinadas;
-  - \+ cambios relativos;
-  - estrategia final.
-- Calendario de 2019: una fila por mes evaluado (junio a octubre), con el entrenamiento desde marzo hasta t − 2.
-- Diagrama de git: el `main` como línea principal; dos branches salen y vuelven solo si cumplen la regla: **d > 0 y al menos 3 de 5 semillas a favor**.
+### 4a. La escalera
+
+**Pantalla:** la escalera, con un escalón por pieza que aparece de a uno.
 
 **Texto:**
-> El segundo pipeline responde otra pregunta: ¿cuánto dinero se gana combinando lo que suma? Partimos del mismo baseline y sumamos de a una pieza: cada idea se probó sobre lo que ya teníamos, y quedó solo si ganaba más. En este orden entraron: la historia curada, que compara a cada cliente con su propio pasado; cuatro medidas más de historia; la clase `BAJA+2` con peso triple; las tarjetas Visa y Master combinadas; y los cambios relativos. Lo evaluamos en cinco meses, de junio a octubre: para cada mes, el modelo entrena con todos los meses desde marzo hasta dos antes.
->
-> En el camino, el método cambió: probamos ventanas, formas de validar y reglas de decisión distintas. Por eso, al final, congelamos la estrategia en un pipeline único, en el `main` del repositorio. Desde ahí, cada idea nueva se prueba en un branch, con un solo cambio, y entra al `main` solo si cumple la regla de merge: diferencia positiva y al menos tres de cinco semillas a favor.
+> La segunda familia responde otra pregunta: ¿cuánto dinero se gana combinando lo que suma? Partimos del mismo baseline y sumamos de a una pieza: cada una quedó solo si ganaba más. En este orden entraron:
+> - la historia curada, que son cuatro variables que comparan a cada cliente con su propio pasado, en las 30 variables más importantes;
+> - cuatro medidas más de historia;
+> - `BAJA+2` con peso triple;
+> - las tarjetas Visa y Master combinadas;
+> - y los cambios relativos.
 
-*(~165 palabras)*
+### 4b. Cinco meses evaluados
+
+**Pantalla:** calendario de los cinco meses evaluados, con la ventana que crece.
+
+**Texto:**
+> La evaluamos en cinco meses, de junio a octubre: para cada mes, el modelo entrena con todos los meses desde marzo hasta dos antes.
+
+### 4c. El pipeline único
+
+**Pantalla:** diagrama del `main` con dos branches; la regla de merge.
+
+**Texto:**
+> En el camino cambiamos el método varias veces: ventanas, validación y criterios de decisión. Por eso congelamos la estrategia en un pipeline único, en el `main` del repositorio. Cada idea nueva se prueba en un branch, con un solo cambio, y entra al `main` solo si la diferencia de ganancia es positiva y al menos tres de cinco semillas están a favor.
+
 
 ---
 
 ## Tramo 5 — Limitaciones (~0:40)
 
-**Pantalla:** cuatro íconos con una línea cada uno:
-1. "2019 ya mirado → exploratorio";
-2. "Muchas comparaciones → maldición del ganador", con barras: +5,25 al elegir · +2,14 con semillas nuevas · −0,92 en meses nuevos;
-3. "Búsqueda de hiperparámetros acotada: 10 pruebas por receta";
-4. "Pocos meses evaluados · variables rotas como faltantes".
+**Pantalla:**
+- cuatro limitaciones numeradas;
+- barras de la maldición del ganador: +5,25 al elegirla · +2,14 con semillas nuevas · −0,92 en meses nuevos.
 
 **Texto:**
-> Cuatro limitaciones. Uno: los meses de 2019 ya los habíamos mirado, así que todo es exploratorio. Dos: probamos muchas configuraciones, y la mejor de muchas sale favorecida por azar. Es la maldición del ganador, y la medimos: la mejor de sesenta combinaciones de hiperparámetros ganaba 5,25 millones por mes al elegirla, 2,14 con semillas nuevas en los mismos meses, y perdía 0,92 en meses nuevos. Tres: la búsqueda de hiperparámetros del pipeline de recetas fue acotada, con diez pruebas por receta. Cuatro: pocos meses evaluados, y en 2019 hay variables rotas en algunos meses, que tratamos como faltantes.
+> Cuatro limitaciones. Uno: los meses de 2019 ya los habíamos mirado, así que todo es exploratorio. Dos: hicimos muchas comparaciones, y la mejor de muchas sale favorecida por azar. Es la maldición del ganador, y la medimos: la mejor de sesenta combinaciones de hiperparámetros ganaba 5,25 millones al elegirla, 2,14 con semillas nuevas en los mismos meses, y perdía 0,92 en meses nuevos. Tres: en la primera familia, la búsqueda tuvo diez pruebas por experimento. Cuatro: pocos meses evaluados. El ruido de los clientes, con intervalos de unos ±10 millones, es el doble de la ventaja típica, y más semillas no lo achican. Además hay variables rotas en algunos meses de 2019, que tratamos como faltantes.
 
-*(~95 palabras)*
 
 ---
 
-## Tramo 6 — Resultados: recetas (~1:15)
+## Tramo 6 — Resultados de la familia 1 (~1:15)
 
-**Pantalla:**
-- **Gráfico interactivo:** cada punto es una receta; eje x = ganancia sobre B0 en septiembre; eje y = en octubre (millones por mes). Los cuatro cuadrantes muestran sus conteos: **19** arriba a la derecha, **5** abajo a la izquierda, **15** mixtas. Al pasar el mouse se ven la receta y sus semillas a favor.
-- Resaltadas:
-  - tendencia W4: +2,2 / +4,6, 5/5 y 5/5;
-  - máximo W6: +2,4 / +4,4;
-  - rango W6: +3,0 / +4,2.
-- Los lags y deltas 3–5, marcados en gris: ninguno en el cuadrante superior derecho.
-- Nota al pie: "Intervalos sin corregir por comparaciones múltiples".
+### 6a. Septiembre contra octubre
+
+**Pantalla:** dispersión interactiva de los 39 experimentos, con las destacadas al costado. Relativo al promedio de 6 meses e historia de rankings anotados como "un solo mes muy bueno".
 
 **Texto:**
-> Resultados del pipeline de recetas. En el gráfico, cada punto es una receta: en el eje horizontal, cuánto gana sobre B0 en septiembre; en el vertical, cuánto gana en octubre. 19 recetas quedan arriba a la derecha: ganan en los dos meses. 5 quedan abajo a la izquierda: pierden en los dos. Las otras 15 ganan en un mes y pierden en el otro. Si ninguna receta sirviera, esperaríamos unas diez de cada lado.
+> Resultados de la primera familia. Cada punto es un experimento: en el eje horizontal, cuánto gana sobre el baseline en septiembre; en el vertical, en octubre. 19 ganan en los dos meses y 5 pierden en los dos; las otras 15 ganan en un solo mes. Si ningún experimento sirviera, esperaríamos unos diez de cada lado. Los más consistentes:
+> - la tendencia de 4 meses, con +2,2 y +4,6 millones y las cinco semillas a favor en los dos meses;
+> - el máximo y el rango de 6 meses, de +2,4 a +4,4.
 >
-> La más consistente es la tendencia de cuatro observaciones: +2,2 millones en septiembre y +4,6 en octubre, con las cinco semillas a favor en los dos meses. Le siguen el máximo y el rango de seis observaciones, de +2,4 a +4,4. Y un dato clave: los lags y deltas de 3, 4 o 5 meses atrás, en gris, no ganan en los dos meses en ningún caso. Una aclaración: estos resultados todavía no están corregidos por comparaciones múltiples.
+> Ojo con los que ganan un solo mes: el relativo al promedio de 6 meses y la historia de rankings tienen un mes muy bueno y otro flojo. Un buen mes no demuestra persistencia. Y todavía no están corregidos por comparaciones múltiples.
 
-*(~155 palabras)*
+### 6b. ¿Mirar más atrás suma más?
+
+**Pantalla:**
+- ganancia sobre el baseline según los meses de historia, interactiva. Hay una línea por tipo de variable, con tendencia, máximo y rango resaltados; los lags y deltas de 3 a 5 meses van en punteado;
+- tarjetas: "Resumida, la historia larga suma algo" (máximo +2,1 → +3,4; rango +2,3 → +3,6; tendencia en 4 meses) y "Lags y deltas 3–5: alrededor de cero".
+
+**Texto:**
+> ¿Mirar más atrás suma más? Depende de cómo. Cada línea es un tipo de variable, y el eje horizontal es cuántos meses mira. Resumida, la historia larga suma algo: de 3 a 6 meses, el máximo pasa de +2,1 a +3,4 millones y el rango, de +2,3 a +3,6. La tendencia rinde más en 4 meses. Pero los lags y deltas de 3, 4 o 5 meses atrás, en punteado, quedan alrededor de cero: ninguno gana en los dos meses.
+
 
 ---
 
-## Tramo 7 — Resultados: pipeline acumulativo (~1:15)
+## Tramo 7 — Resultados de la familia 2 (~3:00)
 
-**Pantalla:**
-- Barras por mes, de junio a octubre: estrategia final contra baseline, con la diferencia arriba de cada par (12,3 · 4,0 · 7,8 · 9,7 · 11,2).
-- Número grande: **+9,0 M por mes** · IC 5,2 a 12,8 · 5 de 5 semillas. Al lado: **+12,6** contra la ventana de la consigna.
-- Recuadro "Lo más firme":
-  - historia curada +4,1;
-  - entrenar con meses recientes: la ventana de la consigna pierde −5,8.
-- Mini diagrama de la interacción: "tarjetas 0,6 + relativos 0,6 → juntos 2,2".
-- Tabla de branches:
-  - `rango` de 3 meses: −0,23 · NO PASA;
-  - Optuna sobre el `main`: +0,57 · IC −2,6 a +3,7 · 6 de 10.
+### 7a0. ¿Cuánto vale la historia?
+
+**Pantalla:** ganancia por semilla en septiembre y octubre, sin lags ni deltas, con lags y deltas 1–2 y con historia curada, interactiva. Debajo: +20,1 / +19,9 M (cerca de 8 %), −0,4 / +5,4 M, y 69–90 %.
 
 **Texto:**
-> Resultados del pipeline acumulativo. Contra el baseline con el mismo calendario, la estrategia final gana 9 millones por mes más, con las cinco semillas a favor y un intervalo de 5,2 a 12,8. Gana en los cinco meses, de 4 a 12 millones. Contra el baseline con la ventana de la consigna, la diferencia es de 12,6.
->
+> Primero: ¿cuánto vale tener historia? Sin lags ni deltas, el modelo gana unos 20 millones por mes menos, cerca de 8 %. Es el efecto más grande de todo el experimento. Cada punto es una semilla. Sumar la historia curada agrega mucho menos: −0,4 en septiembre y +5,4 en octubre. Los meses 1 y 2 ya dan entre el 69 y el 90 % de lo que aporta la historia.
+
+### 7a. La prueba pre-registrada
+
+**Pantalla:** ganancia media según los meses de historia (2, 3 y 4) para lags, tendencias y lags más tendencias, con IC 95 %, en septiembre y octubre.
+
+**Texto:**
+> La segunda familia empezó con una prueba pre-registrada: lags y tendencias de 3 y 4 meses contra el baseline, con 10 semillas, test de Wilcoxon y corrección de Holm. Pasar de 2 a 3 meses sumó de 3,5 a 5,4 millones en octubre; pasar de 3 a 4, de −0,2 a +1,6. La curva se plancha. Ninguna variante pasó la regla con la corrección de Holm.
+
+### 7b. La estrategia final, por semilla
+
+**Pantalla:**
+- número grande: +9,0 M por mes, IC 5,2 a 12,8, 5 de 5 semillas, y +12,6 contra la ventana de la consigna;
+- puntos por semilla y mes, con la media de cada mes.
+
+**Texto:**
+> Acumulando, la estrategia final gana 9 millones por mes más que el baseline con el mismo calendario, con un intervalo de 5,2 a 12,8. En el gráfico, cada punto es una semilla: 24 de los 25 pares de mes y semilla quedan a favor, y gana en los cinco meses, de 4 a 12 millones. Contra el baseline con la ventana de la consigna, la diferencia es de 12,6.
+
+### 7c. Dónde está la mejora en la curva
+
+**Pantalla:** curva de ganancia de octubre, interactiva: baseline contra estrategia final, con la banda sombreada.
+
+**Texto:**
+> En la curva de ganancia de octubre se ve dónde está la mejora: la estrategia final levanta toda la zona entre 3.000 y 6.000 envíos, y su máximo pasa de 293,4 a 305,2 millones.
+
+### 7d. ¿De dónde sale?
+
+**Pantalla:** historia curada +4,1 · ventana de la consigna −5,8 · interacción 0,6 + 0,6 → 2,2.
+
+**Texto:**
 > ¿De dónde sale? Lo más firme: la historia curada, que sumó 4,1 millones, y entrenar con los meses recientes, porque la ventana vieja de la consigna perdía 5,8. Y una interacción que solo se ve acumulando: las tarjetas combinadas sumaban 0,6 solas, los cambios relativos 0,6 solos, y juntos, 2,2.
->
-> Sobre el `main` ya corrimos dos branches. El rango de tres meses dio −0,23 y no pasa la regla. Reoptimizar los hiperparámetros con Optuna dio +0,57, con seis de diez semillas a favor: pasa la regla y ya entró al `main`, aunque con un intervalo que va de −2,6 a +3,7.
 
-*(~165 palabras)*
+### 7e. Los branches
 
----
-
-## Tramo 8 — Coincidencias y diferencias (~0:45)
-
-**Pantalla:** tabla de dos columnas (recetas | acumulativo), con ✓ donde coinciden y ≠ donde difieren:
-- ✓ la historia suma sobre lags y deltas 1–2;
-- ✓ más meses crudos casi no suman;
-- ✓ la tendencia de unos 4 meses suma (W4: +2,2 / +4,6 · 5 observaciones: +4,2 / +3,6);
-- ✓ rinde comparar al cliente con su propio pasado;
-- ≠ el rango: suma sobre B0, NO PASA sobre el `main`.
-
-Debajo, dos frases: "Recetas: qué suma **sola**" · "Acumulativo: cuánto suma **junto**".
+**Pantalla:** diagrama de git con el rango (NO PASA) y Optuna (entró al `main`).
 
 **Texto:**
-> Los dos pipelines coinciden en lo importante. La historia suma sobre los lags y deltas de 1 y 2 meses. Mirar más meses crudos casi no suma. La tendencia de unos cuatro meses aparece en los dos: en nuestra prueba pre-registrada, con cinco observaciones, sumaba 4,2 y 3,6 millones. Y lo que rinde es comparar al cliente con su propio pasado.
->
-> Difieren en el rango: sobre B0 suma, y sobre el `main` no pasa, porque el `main` ya tiene otras comparaciones contra el propio pasado. Por eso los diseños se complementan: el de recetas dice qué suma sola, con un procedimiento parejo; el acumulativo, cuánto suma junto.
+> Sobre el `main` ya corrimos dos branches. El rango de 3 meses dio −0,23 y no pasa. Reoptimizar los hiperparámetros con Optuna dio +0,57, con seis de diez semillas a favor: pasa y ya entró al `main`, aunque con un intervalo de −2,6 a +3,7.
 
-*(~110 palabras)*
 
 ---
 
-## Tramo 9 — Conclusiones y qué seguiríamos probando (~0:50)
+### 7f. Lo que no sumó
+
+**Pantalla:** forest plot interactivo: diferencia contra su control, con IC 95 %, y el veredicto registrado de cada prueba (segundas diferencias, racha de meses en cero, selección con canaritos, segundo paquete, rango).
+
+**Texto:**
+> Y los resultados negativos también se reportan. Las segundas diferencias no mostraron señal. La racha de meses en cero falló en las tres condiciones. La selección de variables con canaritos dio empate, y el segundo paquete, de 960 columnas más, restó. En todos, la diferencia es chica o negativa, y el intervalo incluye el cero.
+
+---
+
+## Tramo 8 — Coincidencias y diferencias (~0:40)
+
+**Pantalla:** tabla con ✓ y ≠ (Familia 1 · independientes | Familia 2 · acumulativos), y dos píldoras: "qué suma **solo**" · "cuánto suma **junto**".
+
+**Texto:**
+> Las dos familias coinciden en lo importante. Las variables históricas suman sobre los lags y deltas de 1 y 2 meses. Agregar lags más lejanos casi no suma. La tendencia de unos 4 meses aparece en las dos. Y rinde comparar al cliente con su propio pasado. Difieren en el rango: sobre el baseline suma, y sobre el `main` no pasa, porque el `main` ya tiene otras comparaciones contra el propio pasado. Se complementan: una dice qué suma solo; la otra, cuánto suma junto.
+
+---
+
+## Tramo 9 — Conclusiones y qué seguiríamos probando (~0:55)
+
+### 9a. Los sesgos contra la evidencia
+
+**Pantalla:** las tarjetas de sesgo con sello ("Perforado", "A medias").
+
+**Texto:**
+> ¿Qué hizo la evidencia con nuestros sesgos? Más meses no dieron mucho más: los dos primeros meses ya dan entre el 69 y el 90 % de lo que aporta la historia. El de Clara quedó a medias: las rachas no mostraron una ganancia consistente, pero la caída frente al propio historial sí.
+
+### 9b. Qué nos llevamos
 
 **Pantalla:**
-- Las dos tarjetas de sesgo del tramo 1, con su sello:
-  - "Más meses → mucha más ganancia": **perforado** (los meses 1 y 2 dan del 69 % al 90 % del valor de la historia);
-  - "Señales de abandono > lags crudos": **a medias** (las rachas, sin ganancia consistente; la caída frente al propio historial, sí).
-- Recuadro "Para la competencia 2": pocas fotos hacia atrás · el cliente contra sí mismo · meses recientes.
-- Lista "Seguiríamos probando":
-  - las recetas con señal como branches del `main`, juzgadas en junio–agosto;
-  - lags sin deltas;
-  - sacar un bloque por vez del `main`.
+- "Para la competencia 2";
+- "Seguiríamos probando";
+- los dos repositorios.
 
 **Texto:**
-> ¿Qué hizo la evidencia con nuestros sesgos? Más meses no dieron mucho más: los dos primeros meses ya dan entre el 69 y el 90 % de lo que aporta la historia. El sesgo de Clara quedó a medias: las rachas de inactividad no mostraron una ganancia consistente, pero la caída frente al propio historial sí.
->
-> Para la segunda competencia nos llevamos esto: pocas fotos hacia atrás, el cliente comparado consigo mismo, y entrenar con los meses más recientes. Y seguiríamos probando: las recetas que dieron señal en el pipeline de recetas, como branches del `main`, juzgadas en junio a agosto, que son los meses que no se usaron para elegirlas; los lags sin deltas; y sacar un bloque por vez del `main`, para medir cuánto aporta cada uno. El código de los dos pipelines está en los repositorios que aparecen en pantalla.
-
-*(~145 palabras)*
+> Para la segunda competencia nos llevamos esto: pocos lags crudos y la historia larga resumida, con máximo, rango o tendencia; el cliente comparado consigo mismo; y entrenar con los meses más recientes. Y seguiríamos probando: los experimentos con señal de la primera familia, como branches del `main`, juzgados en junio a agosto, que no se usaron para elegirlos; los lags sin deltas; y sacar un bloque por vez del `main`. El código de las dos familias está en los repositorios que aparecen en pantalla.
 
 ---
 
-**Total aproximado:** 1.195 palabras, entre 8 y 9 minutos a un ritmo pausado. Si hace falta recortar, conviene empezar por el segundo párrafo del tramo 4 o por la interacción del tramo 7.
+**Total aproximado:** 1.530 palabras, cerca de 11 minutos a un ritmo pausado. **Hay que recortar alrededor de un minuto.** Candidatos, de menor a mayor costo:
+1. 7c, la curva de la estrategia final (~15 s); queda para decidir más adelante;
+2. la interacción de 7d (~15 s);
+3. la frase del ensamble en 2a y la nota de early stopping en 3b (~10 s);
+4. 4b, el calendario de la familia 2 (~10 s), porque el calendario del marco común ya explica el walk-forward;
+5. acortar 6b y 8, que repiten la idea de los lags lejanos (~20 s).

@@ -75,7 +75,7 @@ def nombre_receta(r):
     if r.startswith(('lag', 'delta')):
         return r.replace('lag', 'Lag ').replace('delta', 'Delta ')
     base, w = r.rsplit('_W', 1)
-    return f'{NOMBRES[base]} W{w}'
+    return f'{NOMBRES[base]}, {w} meses'
 
 
 def _v10():
@@ -194,7 +194,7 @@ def _texto(fig, x, y, texto, size=24, color=TINTA_2, **kw):
 # ---------------------------------------------------------------- figuras
 
 def fig_recetas():
-    """Las 39 recetas: ganancia sobre B0 en septiembre (x) y en octubre (y). Interactiva."""
+    """Los 39 experimentos: ganancia sobre el baseline en septiembre (x) y en octubre (y). Interactiva."""
     v = V10.copy()
     lim = max(v[['sep', 'oct']].abs().max()) * 1.18
     fig = go.Figure()
@@ -219,6 +219,11 @@ def fig_recetas():
         x = _rec(r)
         fig.add_annotation(x=x.sep, y=x.oct, text=x.nombre, showarrow=True, arrowhead=0, arrowwidth=2,
                            arrowcolor=TINTA_MUTED, ax=ax, ay=ay, font=dict(size=24, color=TINTA))
+    for r, ax, ay in [('rank_historia', -24, 70), ('rel_mean_W6', -10, 70)]:
+        x = _rec(r)
+        fig.add_annotation(x=x.sep, y=x.oct, text=f'{x.nombre}<br><span style="font-size:18px">un solo mes muy bueno</span>',
+                           showarrow=True, arrowhead=0, arrowwidth=2, arrowcolor=GRIS_CLARO, ax=ax, ay=ay,
+                           font=dict(size=20, color=TINTA_2), align='right', xanchor='right', yanchor='top')
     m = lim * 0.94
     _texto(fig, m, m, f"<b>{C['n_ambos_mas']}</b> ganan en los dos meses", 26, TINTA, xanchor='right', yanchor='top')
     _texto(fig, -m, -m, f"<b>{C['n_ambos_menos']}</b> pierden en los dos", 26, TINTA, xanchor='left', yanchor='bottom')
@@ -226,9 +231,9 @@ def fig_recetas():
     _texto(fig, m, -m, f"{C['n_abajo_der']} solo en septiembre", 22, TINTA_MUTED, xanchor='right', yanchor='bottom')
     eje = dict(range=[-lim, lim], showgrid=False, zeroline=False, ticksuffix=' M', tickfont=dict(size=20),
                color=TINTA_MUTED, dtick=2)
-    fig.update_xaxes(**eje, title=dict(text='Ganancia sobre B0 en septiembre', font=dict(size=22, color=TINTA_2)))
-    fig.update_yaxes(**eje, title=dict(text='Ganancia sobre B0 en octubre', font=dict(size=22, color=TINTA_2)))
-    _base(fig, 1000, 820, hoverlabel=dict(bgcolor=SUPERFICIE, bordercolor=GRIS_CLARO,
+    fig.update_xaxes(**eje, title=dict(text='Ganancia sobre el baseline en septiembre', font=dict(size=22, color=TINTA_2)))
+    fig.update_yaxes(**eje, title=dict(text='Ganancia sobre el baseline en octubre', font=dict(size=22, color=TINTA_2)))
+    _base(fig, 1000, 780, hoverlabel=dict(bgcolor=SUPERFICIE, bordercolor=GRIS_CLARO,
                                           font=dict(family=FUENTE, size=22, color=TINTA)))
     return fig
 
@@ -355,18 +360,275 @@ C['pf_min'], C['pf_max'] = f(_pf.min(), 1, True), f(_pf.max(), 1, True)
 
 def tabla_coincidencias():
     filas = [
-        ('✓', 'c-bien', 'La historia suma sobre lags y deltas 1–2',
-         f"{C['n_ambos_mas']} de {C['n_recetas']} recetas en los dos meses", f"{C['paq_d']} M por mes"),
-        ('✓', 'c-bien', 'Más meses crudos casi no suman',
-         f"lags y deltas 3–5: {C['n_crudos_ambos']} de 6 en los dos meses",
-         f"3 o 4 meses: de {C['pf_min']} a {C['pf_max']} M en octubre, sin pasar la regla"),
+        ('✓', 'c-bien', 'Las variables históricas suman sobre lags y deltas 1–2',
+         f"{C['n_ambos_mas']} de {C['n_recetas']} experimentos ganan en los dos meses", f"{C['paq_d']} M por mes"),
+        ('✓', 'c-bien', 'Lags más lejanos casi no suman',
+         f"lags y deltas 3–5: {C['n_crudos_ambos']} de 6 ganan en los dos meses",
+         f"de 3 a 4 meses de historia: {C['dosis_34']} M en octubre"),
         ('✓', 'c-bien', 'La tendencia de unos 4 meses suma',
-         f"W4: {C['slope_W4_sep']} / {C['slope_W4_oct']}", f"5 observaciones: {C['t4_sep']} / {C['t4_oct']}"),
+         f"4 meses: {C['slope_W4_sep']} / {C['slope_W4_oct']}", f"5 meses: {C['t4_sep']} / {C['t4_oct']}"),
         ('✓', 'c-bien', 'Rinde comparar al cliente con su propio pasado',
          'máximo, rango, relativo al promedio', f"historia curada {C['ach']}"),
-        ('≠', 'c-mal', 'El rango', 'W6 suma sobre B0', f"3 meses: {C['rango_veredicto']} sobre el main"),
+        ('≠', 'c-mal', 'El rango', '6 meses: suma sobre el baseline', f"3 meses: {C['rango_veredicto']} sobre el main"),
     ]
     cuerpo = ''.join(f'<tr><td class="marca {c}">{m}</td><td class="tema">{t}</td><td>{r}</td><td>{a}</td></tr>'
                      for m, c, t, r, a in filas)
-    return ('<table class="coinc"><thead><tr><th></th><th>Tema</th><th><span class="c-recetas">Recetas</span></th>'
-            f'<th><span class="c-acum">Acumulativo</span></th></tr></thead><tbody>{cuerpo}</tbody></table>')
+    return ('<table class="coinc"><thead><tr><th></th><th>Tema</th>'
+            '<th><span class="c-recetas">Familia 1 · independientes</span></th>'
+            f'<th><span class="c-acum">Familia 2 · acumulativos</span></th></tr></thead><tbody>{cuerpo}</tbody></table>')
+
+
+# ---------------------------------------------------------------- figuras técnicas del informe
+
+TRES = ['#199e70', '#c98500', '#d55181']   # tres series sin significado de familia (validadas, modo oscuro)
+_curvas = _csv('curvas_ganancia.csv')
+_dosis = _ex.get('04_dosis') if '04_dosis' in _ex else _csv('exploratorio/04_dosis.csv')
+_gan = pd.concat([_csv('paq_p3_ganancias.csv').assign(corrida='PAQ_P3'), _csv('ac_ganancias.csv')])
+
+ETIQUETA = {'AC': 'Baseline', 'A_CONSIGNA': 'Baseline, ventana de la consigna', 'PAQ_P3': 'Estrategia final'}
+COLOR_CFG = {'AC': GRIS_CLARO, 'A_CONSIGNA': TINTA_MUTED, 'PAQ_P3': ACUMULATIVO}
+
+
+def fig_curva(mes=201910, configs=('AC',), ancho=1500, alto=640):
+    """Curva de ganancia del ensamble según la cantidad de envíos, con la banda de 3.000 a 6.000 sombreada.
+    Interactiva: el cursor muestra la ganancia de cada configuración en ese punto de corte."""
+    fig = go.Figure()
+    fig.add_vrect(x0=3000, x1=6000, fillcolor=TINTA, opacity=0.06, line_width=0, layer='below')
+    for cfg in configs:
+        c = _curvas[(_curvas.config == cfg) & (_curvas.foto_mes == mes)]
+        fig.add_trace(go.Scatter(x=c.envios, y=c.ganancia_M, mode='lines', name=ETIQUETA[cfg],
+                                 line=dict(color=COLOR_CFG[cfg], width=4 if cfg == 'PAQ_P3' else 3),
+                                 hovertemplate=f'{ETIQUETA[cfg]}: %{{y:.1f}} M<extra></extra>'))
+        i = c.ganancia_M.idxmax()
+        ax, ay = (60, -46) if cfg == 'PAQ_P3' else (90, 70)
+        fig.add_annotation(x=c.envios[i], y=c.ganancia_M[i], text=f'{ETIQUETA[cfg]}: máx. {f(c.ganancia_M[i])} M',
+                           showarrow=True, arrowhead=0, ax=ax, ay=ay, arrowcolor=TINTA_MUTED,
+                           font=dict(size=22, color=TINTA), xanchor='left')
+    ymax = _curvas[_curvas.foto_mes == mes].ganancia_M.max()
+    _texto(fig, 4500, ymax * 0.08, 'banda: promedio entre<br>3.000 y 6.000 envíos', 21, TINTA_2)
+    fig.update_xaxes(title=dict(text='Cantidad de envíos (ordenados por probabilidad)', font=dict(size=22)),
+                     showgrid=False, tickfont=dict(size=20), color=TINTA_MUTED, range=[0, 15000],
+                     tickformat=',d', separatethousands=True, zeroline=False, showspikes=True, spikecolor=GRIS_CLARO,
+                     spikethickness=1, spikedash='dot', spikemode='across')
+    fig.update_yaxes(title=dict(text=f'Ganancia en {MESES[mes]} (M)', font=dict(size=22)), showgrid=True,
+                     gridcolor=GRIS, zeroline=False, tickfont=dict(size=20), color=TINTA_MUTED, range=[0, ymax * 1.12])
+    _base(fig, ancho, alto, hovermode='x unified', separators=',.',
+          hoverlabel=dict(bgcolor=SUPERFICIE, bordercolor=GRIS_CLARO, font=dict(family=FUENTE, size=20, color=TINTA)),
+          margin=dict(l=20, r=30, t=30, b=20))
+    return fig
+
+
+def fig_dosis():
+    """Prueba pre-registrada (04): ganancia media por semilla según los meses de historia (h), con IC 95 %."""
+    from plotly.subplots import make_subplots
+    fam = {'L': 'Lags', 'T': 'Tendencias', 'LT': 'Lags + tendencias'}
+    fig = make_subplots(rows=1, cols=2, subplot_titles=['Septiembre', 'Octubre'], horizontal_spacing=0.09)
+    fig.update_annotations(font=dict(size=24, color=TINTA))   # títulos de los paneles (antes de las etiquetas)
+    for j, mes in enumerate((201909, 201910), start=1):
+        for k, (cod, nombre) in enumerate(fam.items()):
+            d = _dosis[(_dosis.familia == cod) & (_dosis.foto_mes == mes)].sort_values('h')
+            x = d.h + (k - 1) * 0.07
+            fig.add_trace(go.Scatter(
+                x=x, y=d.ganancia_media_M, mode='lines+markers', line=dict(color=TRES[k], width=3),
+                marker=dict(size=13, color=TRES[k], line=dict(color=FONDO, width=2)),
+                error_y=dict(type='data', symmetric=False, array=d.ic95_sup_M - d.ganancia_media_M,
+                             arrayminus=d.ganancia_media_M - d.ic95_inf_M, color=TRES[k], thickness=2, width=6),
+                hovertemplate=f'{nombre}, h = %{{customdata}}: %{{y:.1f}} M<extra></extra>', customdata=d.h),
+                row=1, col=j)
+            if j == 2:
+                ult = d.iloc[-1]
+                fig.add_annotation(x=4.2, y=ult.ganancia_media_M, text=nombre, showarrow=False,
+                                   yshift={'L': -16, 'T': 0, 'LT': 16}[cod],
+                                   xanchor='left', font=dict(size=21, color=TRES[k]), row=1, col=j)
+    fig.update_xaxes(tickvals=[2, 3, 4], ticktext=['2 (baseline)', '3', '4'], range=[1.75, 4.25 + 0.0],
+                     showgrid=False, tickfont=dict(size=20), color=TINTA_MUTED,
+                     title=dict(text='Meses de historia (h)', font=dict(size=20)))
+    fig.update_xaxes(range=[1.75, 5.1], row=1, col=2)
+    fig.update_yaxes(showgrid=True, gridcolor=GRIS, zeroline=False, tickfont=dict(size=20), color=TINTA_MUTED,
+                     ticksuffix=' M')
+    return _base(fig, 1500, 560, separators=',.', margin=dict(l=20, r=20, t=50, b=20))
+
+
+def fig_profundidad():
+    """Experimentos independientes: ganancia sobre el baseline (promedio de septiembre y octubre)
+    según la profundidad de la ventana, por tipo de variable. Más lags y deltas, en línea punteada."""
+    v = V10.assign(prom=(V10.sep + V10.oct) / 2)
+    fig = go.Figure()
+    fig.add_hline(y=0, line=dict(color=GRIS_CLARO, width=2))
+    destacados = {'slope': 'Tendencia', 'max': 'Máximo', 'range': 'Rango'}
+    for base, nombre in NOMBRES.items():
+        d = v[v.recipe.str.match(rf'^{base}_W\d$')]
+        d = d.assign(w=d.recipe.str[-1].astype(int)).sort_values('w')
+        color = RECETAS if base in destacados else GRIS_CLARO
+        fig.add_trace(go.Scatter(x=d.w, y=d.prom, mode='lines+markers', line=dict(color=color, width=3 if base in destacados else 2),
+                                 marker=dict(size=11, color=color), hovertemplate=f'{nombre}, %{{x}} meses: %{{y:+.2f}} M<extra></extra>'))
+        if base in destacados:
+            ult = d.iloc[-1]
+            fig.add_annotation(x=6.1, y=ult.prom, text=nombre, showarrow=False, xanchor='left',
+                               font=dict(size=21, color=TINTA))
+    for pref, nombre in (('lag', 'Más lags'), ('delta', 'Más deltas')):
+        d = v[v.recipe.str.match(rf'^{pref}\d$')]
+        d = d.assign(k=d.recipe.str[-1].astype(int)).sort_values('k')
+        fig.add_trace(go.Scatter(x=d.k, y=d.prom, mode='lines+markers', line=dict(color=TINTA_2, width=3, dash='dot'),
+                                 marker=dict(size=11, color=FONDO, line=dict(color=TINTA_2, width=2.5)),
+                                 hovertemplate=f'{nombre} (%{{x}} meses atrás): %{{y:+.2f}} M<extra></extra>'))
+        fig.add_annotation(x=d.k.iloc[-1] + 0.1, y=d.prom.iloc[-1], text=nombre, showarrow=False, xanchor='left',
+                           font=dict(size=19, color=TINTA_2))
+    fig.update_xaxes(tickvals=[3, 4, 5, 6], ticktext=['3', '4', '5', '6'], range=[2.7, 7.0], showgrid=False,
+                     tickfont=dict(size=20), color=TINTA_MUTED,
+                     title=dict(text='Meses de historia (ventana, o lag/delta más lejano)', font=dict(size=20)))
+    fig.update_yaxes(showgrid=False, zeroline=False, tickfont=dict(size=20), color=TINTA_MUTED, ticksuffix=' M',
+                     title=dict(text='Ganancia sobre el baseline (promedio sep–oct)', font=dict(size=20)))
+    return _base(fig, 1100, 640, separators=',.',
+                 hoverlabel=dict(bgcolor=SUPERFICIE, bordercolor=GRIS_CLARO, font=dict(family=FUENTE, size=20, color=TINTA)))
+
+
+def fig_semillas():
+    """Estrategia final − baseline, por semilla y por mes (ganancia promedio entre 3.000 y 6.000 envíos)."""
+    p = _gan.pivot_table(index=['foto_mes', 'semilla'], columns='corrida', values='ganancia_banda_M').reset_index()
+    p = p.assign(d=p['PAQ_P3'] - p['AC'])
+    fig = go.Figure()
+    fig.add_hline(y=0, line=dict(color=GRIS_CLARO, width=2))
+    meses = list(MESES)
+    for i, mes in enumerate(meses):
+        d = p[p.foto_mes == mes]
+        fig.add_trace(go.Scatter(x=[i + (j - 2) * 0.07 for j in range(len(d))], y=d.d, mode='markers',
+                                 marker=dict(size=16, color=ACUMULATIVO, line=dict(color=FONDO, width=2)),
+                                 hovertemplate=f'{MESES[mes]}: %{{y:+.2f}} M<extra></extra>'))
+        fig.add_shape(type='line', x0=i - 0.25, x1=i + 0.25, y0=d.d.mean(), y1=d.d.mean(), line=dict(color=TINTA, width=3))
+        _texto(fig, i, d.d.max(), f(d.d.mean(), 1, True), 26, TINTA, yshift=30)
+    fig.update_xaxes(tickvals=list(range(len(meses))), ticktext=[MESES[m].capitalize() for m in meses],
+                     showgrid=False, zeroline=False, tickfont=dict(size=22, color=TINTA_2), range=[-0.6, len(meses) - 0.4])
+    fig.update_yaxes(showgrid=True, gridcolor=GRIS, zeroline=False, tickfont=dict(size=20), color=TINTA_MUTED,
+                     ticksuffix=' M', rangemode='tozero')
+    return _base(fig, 980, 520, separators=',.', margin=dict(l=20, r=20, t=20, b=20))
+
+
+_ps = _gan.pivot_table(index=['foto_mes', 'semilla'], columns='corrida', values='ganancia_banda_M')
+C['semillas_positivas'] = int(((_ps['PAQ_P3'] - _ps['AC']) > 0).sum())
+C['semillas_total'] = len(_ps)
+_d2 = _dosis.set_index(['familia', 'h', 'foto_mes'])['ganancia_media_M']
+C['dosis_23'] = f"{f(min(_d2[(c, 3, 201910)] - _d2[(c, 2, 201910)] for c in ('L', 'T', 'LT')), 1, True)} a " \
+                f"{f(max(_d2[(c, 3, 201910)] - _d2[(c, 2, 201910)] for c in ('L', 'T', 'LT')), 1, True)}"
+C['dosis_34'] = f"{f(min(_d2[(c, 4, 201910)] - _d2[(c, 3, 201910)] for c in ('L', 'T', 'LT')), 1, True)} a " \
+                f"{f(max(_d2[(c, 4, 201910)] - _d2[(c, 3, 201910)] for c in ('L', 'T', 'LT')), 1, True)}"
+_cv = _curvas.set_index(['config', 'foto_mes', 'envios'])['ganancia_M']
+C['curva_ac_max'] = f(_curvas[(_curvas.config == 'AC') & (_curvas.foto_mes == 201910)].ganancia_M.max())
+C['curva_paq_max'] = f(_curvas[(_curvas.config == 'PAQ_P3') & (_curvas.foto_mes == 201910)].ganancia_M.max())
+
+
+_pv = V10.assign(prom=(V10.sep + V10.oct) / 2).set_index('recipe')['prom']
+for _b in ('max', 'range', 'slope', 'mean'):
+    for _w in (3, 4, 6):
+        C[f'prof_{_b}_{_w}'] = f(_pv[f'{_b}_W{_w}'], 1, True)
+
+
+
+# ---------------------------------------------------------------- cuánto vale la historia y lo que no sumó
+
+_s12 = _ex.get('12_semillas') if '12_semillas' in _ex else _csv('exploratorio/12_semillas.csv')
+_d2c = _csv('exploratorio/05_d2_comparacion.csv')
+_c06 = _csv('exploratorio/06_comparacion.csv')
+_c24 = _csv('exploratorio/24_comparacion.csv')
+_c22 = _ex['22_comparacion']
+
+VALOR = [('ACS', 'Sin lags ni deltas', TINTA_MUTED), ('AC', 'Lags y deltas 1–2 (baseline)', GRIS_CLARO),
+         ('ACH', '+ historia curada', ACUMULATIVO)]
+
+
+def fig_valor_historia():
+    """Notebook 12: ganancia (promedio entre 3.000 y 6.000 envíos) por semilla, sin historia, con lags y deltas 1–2
+    y con historia curada, en septiembre y octubre. Ventana de la consigna (201903–06). Interactiva."""
+    from plotly.subplots import make_subplots
+    fig = make_subplots(rows=1, cols=2, subplot_titles=['Septiembre', 'Octubre'], horizontal_spacing=0.08,
+                        shared_yaxes=True)
+    fig.update_annotations(font=dict(size=24, color=TINTA))
+    for j, mes in enumerate((201909, 201910), start=1):
+        medias = {}
+        for i, (cfg, nombre, color) in enumerate(VALOR):
+            d = _s12[(_s12.config == cfg) & (_s12.foto_mes == mes)]
+            medias[cfg] = d.ganancia_banda_M.mean()
+            fig.add_trace(go.Scatter(
+                x=d.ganancia_banda_M, y=[nombre] * len(d), mode='markers',
+                marker=dict(size=15, color=color, opacity=0.85, line=dict(color=FONDO, width=1.5)),
+                hovertemplate=f'{nombre}<br>semilla %{{customdata}}: %{{x:.1f}} M<extra></extra>',
+                customdata=d.semilla), row=1, col=j)
+            fig.add_trace(go.Scatter(x=[medias[cfg]], y=[nombre], mode='markers',
+                                     marker=dict(symbol='line-ns', size=34, line=dict(color=TINTA, width=4)),
+                                     hovertemplate=f'{nombre}: media %{{x:.1f}} M<extra></extra>'), row=1, col=j)
+        sube = medias['AC'] - medias['ACS']
+        fig.add_annotation(x=(medias['AC'] + medias['ACS']) / 2, y=VALOR[0][1], text=f'<b>{f(sube, 1, True)} M</b>',
+                           showarrow=False, yshift=40, font=dict(size=26, color=TINTA), row=1, col=j)
+        pass
+    fig.update_xaxes(showgrid=True, gridcolor=GRIS, zeroline=False, tickfont=dict(size=20), color=TINTA_MUTED,
+                     ticksuffix=' M')
+    fig.update_yaxes(showgrid=False, tickfont=dict(size=22, color=TINTA_2), categoryorder='array',
+                     categoryarray=[v[1] for v in VALOR][::-1])
+    return _base(fig, 1600, 450, separators=',.', margin=dict(l=20, r=30, t=50, b=20),
+                 hoverlabel=dict(bgcolor=SUPERFICIE, bordercolor=GRIS_CLARO, font=dict(family=FUENTE, size=20, color=TINTA)))
+
+
+_acs = _s12.groupby(['config', 'foto_mes']).ganancia_banda_M.mean()
+C['valor_sep'] = f(_acs[('AC', 201909)] - _acs[('ACS', 201909)], 1, True)
+C['valor_oct'] = f(_acs[('AC', 201910)] - _acs[('ACS', 201910)], 1, True)
+C['valor_pct'] = f(100 * (_acs[('AC', 201910)] - _acs[('ACS', 201910)]) / _acs[('ACS', 201910)], 0)
+C['curada_sep'] = f(_acs[('ACH', 201909)] - _acs[('AC', 201909)], 1, True)
+C['curada_oct'] = f(_acs[('ACH', 201910)] - _acs[('AC', 201910)], 1, True)
+
+
+def _fila_df(df, **cond):
+    t = df
+    for k, val in cond.items():
+        t = t[t[k] == val]
+    assert len(t) == 1, cond
+    return t.iloc[0]
+
+
+def _no_sumo():
+    d2s = _fila_df(_d2c, config='D2', contra='A', foto_mes=201909)
+    d2o = _fila_df(_d2c, config='D2', contra='A', foto_mes=201910)
+    zs = _fila_df(_c06, medida='semillas', config='AC_Z', foto_mes=201909)
+    zo = _fila_df(_c06, medida='semillas', config='AC_Z', foto_mes=201910)
+    can = _fila_df(_c22, config='PAQ_C_P3', contra='PAQ_P3')
+    paq2 = _fila_df(_c24, config='PAQ2_P3', meses='201906-10')
+    return [  # (nombre, detalle, d, inf, sup, veredicto, contra)
+        ('Segundas diferencias', 'septiembre', d2s.d_media_M, d2s.ic95_inf_M, d2s.ic95_sup_M, 'Sin señal', 'baseline, prueba fijada'),
+        ('Segundas diferencias', 'octubre', d2o.d_media_M, d2o.ic95_inf_M, d2o.ic95_sup_M, 'Sin señal', 'baseline, prueba fijada'),
+        ('Racha de meses en cero', 'septiembre', zs.d_M, zs.ic95_inf_M, zs.ic95_sup_M, 'Falla en las tres condiciones', 'baseline, ventana de la consigna'),
+        ('Racha de meses en cero', 'octubre', zo.d_M, zo.ic95_inf_M, zo.ic95_sup_M, 'Falla en las tres condiciones', 'baseline, ventana de la consigna'),
+        ('Selección con canaritos', 'junio–octubre', can.d_M, can.ic95_inf_M, can.ic95_sup_M, 'Empate', 'estrategia final'),
+        ('Segundo paquete (960 columnas)', 'junio–octubre', paq2.d_M, paq2.ic95_inf_M, paq2.ic95_sup_M, 'Resta', 'estrategia final'),
+        ('Rango de 3 meses (branch)', 'junio–octubre', _rango['d_M'], _rango['ic95_inf_M'], _rango['ic95_sup_M'],
+         _rango['veredicto'], 'main'),
+    ]
+
+
+def fig_no_sumo():
+    """Forest plot de lo que no sumó: diferencia de ganancia por semilla e IC 95 % contra su control. Interactiva."""
+    filas = _no_sumo()
+    etiquetas = [f'{n} · {det}' for n, det, *_ in filas]
+    fig = go.Figure()
+    fig.add_vline(x=0, line=dict(color=TINTA_2, width=2))
+    for (n, det, d, lo, hi, ver, contra), et in zip(filas, etiquetas):
+        fig.add_trace(go.Scatter(
+            x=[d], y=[et], mode='markers', marker=dict(size=18, color=MAL if hi < 0 or d < 0 else TINTA_MUTED,
+                                                       line=dict(color=FONDO, width=2)),
+            error_x=dict(type='data', symmetric=False, array=[hi - d], arrayminus=[d - lo], color=GRIS_CLARO,
+                         thickness=3, width=8),
+            hovertemplate=f'<b>{n}</b> ({det})<br>contra: {contra}<br>diferencia: %{{x:+.2f}} M'
+                          f'<br>IC 95 %: {f(lo, 2)} a {f(hi, 2)} M<extra></extra>'))
+        fig.add_annotation(x=1, xref='paper', y=et, text=f'<b>{ver}</b>', showarrow=False, xanchor='left',
+                           xshift=14, font=dict(size=22, color=TINTA_2))
+    fig.update_xaxes(showgrid=True, gridcolor=GRIS, zeroline=False, tickfont=dict(size=20), color=TINTA_MUTED,
+                     ticksuffix=' M', title=dict(text='Diferencia de ganancia contra su control, IC 95 %', font=dict(size=20)))
+    fig.update_yaxes(showgrid=False, tickfont=dict(size=22, color=TINTA_2), autorange='reversed')
+    return _base(fig, 1560, 600, separators=',.', margin=dict(l=20, r=360, t=10, b=20),
+                 hoverlabel=dict(bgcolor=SUPERFICIE, bordercolor=GRIS_CLARO, font=dict(family=FUENTE, size=20, color=TINTA)))
+
+
+C['ic_clientes'] = f(float(_inf['ic_clientes_M']), 0)
+C['ens_casos'] = int(_inf['ensamble_casos'])
+C['ens_mejora'] = f(float(_inf['ensamble_mejora_M']), 1, True)
+_rm, _rh = _rec('rel_mean_W6'), _rec('rank_historia')
+C['relmed6_sep'], C['relmed6_oct'] = f(_rm.sep, 1, True), f(_rm.oct, 1, True)
+C['rankh_sep'], C['rankh_oct'] = f(_rh.sep, 1, True), f(_rh.oct, 1, True)

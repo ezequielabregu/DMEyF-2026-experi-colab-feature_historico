@@ -1,3 +1,6 @@
 cifra,valor,fuente
-lags12_pct_min,69,informe_experimento.md:784 (notebook 12; laboratorio del grupo)
-lags12_pct_max,90,informe_experimento.md:784 (notebook 12; laboratorio del grupo)
+lags12_pct_min,69,"informe_experimento.md:784 (notebook 12; laboratorio del grupo)"
+lags12_pct_max,90,"informe_experimento.md:784 (notebook 12; laboratorio del grupo)"
+ic_clientes_M,10,"informe_experimento.md:432 (notebook 05: IC 95 % por clientes de unos ±10 M)"
+ensamble_casos,20,"informe_experimento.md:435 (notebook 05: el ensamble gana en la banda en los 20 casos)"
+ensamble_mejora_M,1.8,"informe_experimento.md:435 (notebook 05: +1.8 M de media sobre la media de las semillas)"
