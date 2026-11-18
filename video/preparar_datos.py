@@ -8,6 +8,7 @@ Se corre una vez desde video/ (con el venv del proyecto): python preparar_datos.
 No entrena nada ni cambia ningún resultado.
 """
 from pathlib import Path
+import json
 import subprocess
 import sys
 
@@ -95,9 +96,35 @@ def curvas_ganancia(P, fi, es_b2, carpetas, hasta=15_000, paso=10):
     print(f'{"curvas_ganancia.csv":38s} <- exp/pipeline/*/pred (ensamble de 5 semillas, cada {paso} envíos)')
 
 
+
+def importancia_paq_p3():
+    """Importancia (gain) de las columnas de PAQ_P3: media de los 25 modelos del notebook 22 (5 meses x 5 semillas),
+    como parte del gain total. Los nombres salen de los bloques del pipeline, en el orden de BLOQUES_PAQ_P3
+    (el pipeline reproduce al 22 bit a bit, así que el orden de columnas es el mismo)."""
+    sys.path.insert(0, str(REPO / 'pipeline'))
+    import parametros as P
+    carpeta = REPO / 'exp' / '22' / 'imp' / 'PAQ_P3'
+    if not carpeta.exists():
+        print('importancia_paq_p3.csv: no está exp/22/imp; queda el CSV versionado')
+        return
+    nombres, bloque = [], []
+    for b in P.BLOQUES_PAQ_P3:
+        cols = json.loads((REPO / 'exp' / 'pipeline' / 'bloques' / f'{b}.json').read_text())
+        nombres += cols
+        bloque += [b] * len(cols)
+    archivos = sorted(carpeta.glob('*/*.npy'))
+    G = np.stack([np.load(a) for a in archivos])
+    assert G.shape[1] == len(nombres), (G.shape, len(nombres))
+    parte = (G / G.sum(axis=1, keepdims=True)).mean(axis=0)
+    pd.DataFrame({'variable': nombres, 'bloque': bloque, 'parte_gain': parte.round(6)}) \
+        .sort_values('parte_gain', ascending=False).to_csv(DATOS / 'importancia_paq_p3.csv', index=False)
+    print(f'{"importancia_paq_p3.csv":38s} <- exp/22/imp/PAQ_P3 ({len(archivos)} modelos)')
+
+
 if __name__ == '__main__':
     DATOS.mkdir(exist_ok=True)
     copiar_de_git()
     if len(sys.argv) > 1:
         copiar_v10(sys.argv[1])
     bandas_ensemble()
+    importancia_paq_p3()

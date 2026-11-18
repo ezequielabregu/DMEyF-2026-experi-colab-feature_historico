@@ -11,7 +11,7 @@ format:
     center: false
     controls: false
     progress: true
-    slide-number: false
+    slide-number: c
     menu: false
     hash: true
     transition: fade
@@ -35,7 +35,7 @@ Ningún número está tipeado: todo sale de figuras.py, que lee ../datos/*.csv.
 ```{python}
 #| include: false
 from figuras import (C, mostrar, fig_recetas, fig_maldicion, fig_curva, fig_dosis, fig_profundidad, fig_semillas,
-                     fig_valor_historia, fig_no_sumo,
+                     fig_valor_historia, fig_no_sumo, fig_ejemplo, fig_importancia, fig_interaccion,
                      calendario, svg_git, partes, tabla_coincidencias, RECETAS, ACUMULATIVO, GRIS_CLARO)
 ```
 
@@ -52,7 +52,7 @@ from figuras import (C, mostrar, fig_recetas, fig_maldicion, fig_curva, fig_dosi
 
 ## {#pregunta}
 
-<!-- Tramo 1a -->
+<!-- Slide 2 · Tramo 1a -->
 
 ::: {.kicker}
 Hipótesis
@@ -72,7 +72,7 @@ Hipótesis
 :::
 
 ::: {.card}
-[Hipótesis]{.titulo}
+[Hipótesis general]{.titulo}
 
 [Agregar variables históricas de cada cliente gana más dinero que el baseline.]{.sub}
 :::
@@ -91,29 +91,29 @@ print(partes('Hipótesis'))
 
 ## {#sesgos}
 
-<!-- Tramo 1b -->
+<!-- Slide 3 · Tramo 1b -->
 
 ::: {.kicker}
 Hipótesis · sesgos
 :::
 
-[Arrancamos con dos sesgos]{.h2}
+[Dos hipótesis, cada una con su sesgo]{.h2}
 
 ::: {.grid .g2}
-::: {.card .sesgo .fragment}
-[Ezequiel y Tomás]{.quien}
-
-[Sumar más meses de historia iba a dar **mucha más** ganancia.]{.creencia}
-:::
-
-::: {.card .sesgo .fragment}
-[Clara]{.quien}
+::: {.card .sesgo .borde-recetas .fragment}
+[Hipótesis 1 · familia 1]{.quien .c-recetas}
 
 [Las señales de abandono (rachas de inactividad, caída frente al propio historial) iban a **superar ampliamente** a los lags.]{.creencia}
 :::
+
+::: {.card .sesgo .borde-acum .fragment}
+[Hipótesis 2 · familia 2]{.quien .c-acum}
+
+[Sumar más meses de historia iba a dar **mucha más** ganancia.]{.creencia}
+:::
 :::
 
-[Al final vemos qué hizo la evidencia con cada uno.]{.nota}
+[Al final vemos qué hizo la evidencia con cada una.]{.nota}
 
 ```{python}
 #| output: asis
@@ -122,7 +122,7 @@ print(partes('Hipótesis'))
 
 ## {#marco}
 
-<!-- Tramo 2a -->
+<!-- Slide 4 · Tramo 2a -->
 
 ::: {.kicker}
 Diseño · marco común a las dos familias
@@ -160,7 +160,7 @@ Diseño · marco común a las dos familias
 
 [5 semillas]{.t}
 
-[Por configuración; el ensamble promedia sus probabilidades y le gana a la media de las semillas en `{python} C['ens_casos']` de `{python} C['ens_casos']` casos (`{python} C['ens_mejora']` M).]{.d}
+[El ensamble promedia sus probabilidades antes de ordenar. En una prueba con 10 configuraciones y 2 meses, ganó más que cada semilla por separado en `{python} C['ens_casos']` de `{python} C['ens_casos']` casos (`{python} C['ens_mejora']` M).]{.d}
 :::
 :::
 
@@ -180,7 +180,7 @@ print(partes('Diseño'))
 
 ## {#curva}
 
-<!-- Tramo 2b. Gráfico interactivo: el cursor muestra la ganancia en cada punto de corte. -->
+<!-- Slide 5 · Tramo 2b. Gráfico interactivo: el cursor muestra la ganancia en cada punto de corte. -->
 
 ::: {.kicker}
 Diseño · por qué la banda
@@ -201,7 +201,7 @@ print(partes('Diseño'))
 
 ## {#familia1}
 
-<!-- Tramo 3a -->
+<!-- Slide 6 · Tramo 3a -->
 
 ::: {.kicker .c-recetas}
 []{.punto .bg-recetas} Diseño · familia 1 · experimentos independientes
@@ -209,7 +209,7 @@ print(partes('Diseño'))
 
 [¿Qué tipo de variable histórica suma **sola**?]{.h2}
 
-::: {.formula style="margin-bottom:34px"}
+::: {.formula style="margin-bottom:20px"}
 [baseline]{.bloque} [+]{.op} [**un** tipo de variable]{.bloque .nuevo} [→]{.op} [comparar contra el baseline]{.bloque}
 :::
 
@@ -219,28 +219,28 @@ print(partes('Diseño'))
 [Tipo de variable]{} [3 m]{.txt} [4 m]{.txt} [6 m]{.txt}
 :::
 ::: {.fila}
-[Promedio]{} []{.dot} []{.dot} []{.dot}
+[Promedio [nivel medio de la ventana]{.def}]{} []{.dot} []{.dot} []{.dot}
 :::
 ::: {.fila}
-[Mínimo]{} []{.dot} []{.dot} []{.dot}
+[Mínimo [el menor valor de la ventana]{.def}]{} []{.dot} []{.dot} []{.dot}
 :::
 ::: {.fila}
-[Máximo]{} []{.dot} []{.dot} []{.dot}
+[Máximo [el mayor valor de la ventana]{.def}]{} []{.dot} []{.dot} []{.dot}
 :::
 ::: {.fila}
-[Rango]{} []{.dot} []{.dot} []{.dot}
+[Rango [máximo − mínimo]{.def}]{} []{.dot} []{.dot} []{.dot}
 :::
 ::: {.fila}
-[Tendencia]{} []{.dot} []{.dot} []{.dot}
+[Tendencia [pendiente de la recta ajustada: cuánto sube o baja por mes]{.def}]{} []{.dot} []{.dot} []{.dot}
 :::
 ::: {.fila}
-[Relativo al promedio]{} []{.dot} []{.dot} []{.dot}
+[Relativo al promedio [(mes − promedio) / |promedio|]{.def}]{} []{.dot} []{.dot} []{.dot}
 :::
 ::: {.fila}
-[Relativo al mes anterior]{} []{.dot} []{.dot} []{.dot}
+[Relativo al mes anterior [(mes − anterior) / |anterior|]{.def}]{} []{.dot} []{.dot} []{.dot}
 :::
 ::: {.fila}
-[Relativo al primer mes]{} []{.dot} []{.dot} []{.dot}
+[Relativo al primer mes [(mes − primero de la ventana) / |primero|]{.def}]{} []{.dot} []{.dot} []{.dot}
 :::
 :::
 
@@ -249,27 +249,48 @@ print(partes('Diseño'))
 [Tipo de variable]{} [variantes]{.txt} []{.txt} []{.txt}
 :::
 ::: {.fila}
-[Más lags]{} [3]{.txt} [4]{.txt} [5]{.txt}
+[Más lags [el valor de 3, 4 o 5 meses atrás]{.def}]{} [3]{.txt} [4]{.txt} [5]{.txt}
 :::
 ::: {.fila}
-[Más deltas]{} [3]{.txt} [4]{.txt} [5]{.txt}
+[Más deltas [el mes − el valor de 3, 4 o 5 meses atrás]{.def}]{} [3]{.txt} [4]{.txt} [5]{.txt}
 :::
 ::: {.fila}
-[Rankings]{} [mes]{.txt} [historia]{.txt} [·]{.vacio}
+[Rankings [posición del cliente dentro del mes, y su historia]{.def}]{} [mes]{.txt} [historia]{.txt} [·]{.vacio}
 :::
 ::: {.fila}
-[Rachas y recencia]{} [ceros]{.txt} [no ceros]{.txt} [recencia]{.txt}
+[Rachas y recencia [meses seguidos en cero o con movimiento; meses desde el último movimiento]{.def}]{} [ceros]{.txt} [no ceros]{.txt} [recencia]{.txt}
 :::
 ::: {.fila}
-[Apagado y encendido]{} [apaga]{.txt} [prende]{.txt} [caídas]{.txt}
+[Apagado y encendido [pasa de positivo a cero o de cero a positivo; caídas seguidas]{.def}]{} [apaga]{.txt} [prende]{.txt} [caídas]{.txt}
 :::
 ::: {.fila}
-[Disponibilidad]{} [1–2]{.txt} [·]{.vacio} [·]{.vacio}
+[Disponibilidad [si el cliente existía 1 y 2 meses atrás]{.def}]{} [1–2]{.txt} [·]{.vacio} [·]{.vacio}
 :::
 :::
 :::
 
-[Las ventanas de 3, 4 y 6 meses cuentan el mes actual: **4 meses = el mes y los tres anteriores**.]{.nota}
+[Sobre los 129 montos y conteos del baseline · las ventanas cuentan el mes actual (**4 meses = el mes y los 3 anteriores**) · 8 × 3 + 15 = 39 experimentos.]{.nota style="margin-top:8px"}
+
+```{python}
+#| output: asis
+print(partes('Diseño'))
+```
+
+## {#ejemplo}
+
+<!-- Slide 7 · Tramo 3b. Interactivo: los botones cambian la ventana (3, 4 o 6 meses). -->
+
+::: {.kicker .c-recetas}
+[]{.punto .bg-recetas} Diseño · familia 1 · cómo se calcula cada variable
+:::
+
+[Un ejemplo: el saldo de un cliente que viene cayendo]{.h2}
+
+```{python}
+mostrar(fig_ejemplo(), interactiva=True)
+```
+
+[Ejemplo ilustrativo (serie inventada). Más lags y deltas, con 3 meses: lag 3 = `{python} C['ej_lag3']` (el valor de t − 3); delta 3 = 70 − 120 = `{python} C['ej_delta3']`. Cada variable se calcula así para cada cliente, cada mes y cada uno de los 129 montos y conteos.]{.nota}
 
 ```{python}
 #| output: asis
@@ -278,7 +299,7 @@ print(partes('Diseño'))
 
 ## {#familia1-calendario}
 
-<!-- Tramo 3b -->
+<!-- Slide 8 · Tramo 3c -->
 
 ::: {.kicker .c-recetas}
 []{.punto .bg-recetas} Diseño · familia 1 · experimentos independientes
@@ -334,7 +355,7 @@ print(partes('Diseño'))
 
 ## {#escalera}
 
-<!-- Tramo 4a -->
+<!-- Slide 9 · Tramo 4a -->
 
 ::: {.kicker .c-acum}
 []{.punto .bg-acum} Diseño · familia 2 · experimentos acumulativos
@@ -346,22 +367,22 @@ print(partes('Diseño'))
 ::: {.esc .base style="height:24%"}
 [0]{.k} Baseline
 :::
-::: {.esc .fragment style="height:38%"}
-[1]{.k} \+ historia curada: el cliente contra su propio pasado
+::: {.esc .fragment style="height:46%"}
+[1]{.k} \+ historia curada [el mes contra su promedio de 3 meses, su máximo de 4 y su desvío, en las 30 variables más importantes]{.d}
 :::
-::: {.esc .fragment style="height:50%"}
-[2]{.k} \+ cuatro medidas más de historia
+::: {.esc .fragment style="height:56%"}
+[2]{.k} \+ cuatro medidas más [cuánto varía, si viene cayendo, contra toda su historia y contra el resto del mes]{.d}
 :::
-::: {.esc .fragment style="height:62%"}
-[3]{.k} `BAJA+2` con peso triple
+::: {.esc .fragment style="height:66%"}
+[3]{.k} `BAJA+2` con peso triple [prioriza a los que se van dentro de dos meses]{.d}
 :::
-::: {.esc .fragment style="height:74%"}
-[4]{.k} \+ tarjetas Visa y Master combinadas
+::: {.esc .fragment style="height:76%"}
+[4]{.k} \+ Visa y Master combinadas [saldos, consumos y límites sumados; saldo sobre límite]{.d}
 :::
-::: {.esc .fragment style="height:86%"}
-[5]{.k} \+ cambios relativos
+::: {.esc .fragment style="height:83%"}
+[5]{.k} \+ cambios relativos [(a − b) / (|a| + |b|) contra 1 y 2 meses: entre −1 y 1]{.d}
 :::
-::: {.esc .final .fragment style="height:100%"}
+::: {.esc .final .fragment style="height:92%"}
 [=]{.k} **Estrategia final**
 :::
 :::
@@ -373,9 +394,30 @@ print(partes('Diseño'))
 print(partes('Diseño'))
 ```
 
+## {#importancia}
+
+<!-- Slide 10 · Tramo 4b. Interactivo: el mouse muestra el nombre de la columna y su bloque. -->
+
+::: {.kicker .c-acum}
+[]{.punto .bg-acum} Diseño · familia 2 · qué usa la estrategia final
+:::
+
+[La mitad de lo que usa el modelo final es historia nueva]{.h2}
+
+```{python}
+mostrar(fig_importancia(), interactiva=True)
+```
+
+[Importancia = parte del gain de LightGBM (cuánto baja la pérdida cada vez que un árbol corta por esa columna), promedio de 25 modelos: 5 meses × 5 semillas. En gris, columnas del baseline (`{python} C['imp_ac']` %); en naranja, las nuevas (`{python} C['imp_nuevas']` %).]{.nota}
+
+```{python}
+#| output: asis
+print(partes('Diseño'))
+```
+
 ## {#acum-calendario}
 
-<!-- Tramo 4b -->
+<!-- Slide 11 · Tramo 4c -->
 
 ::: {.kicker .c-acum}
 []{.punto .bg-acum} Diseño · familia 2 · experimentos acumulativos
@@ -391,10 +433,11 @@ print(calendario([
     ('Evaluar agosto', 'hheeeegt..'),
     ('Evaluar septiembre', 'hheeeeegt.'),
     ('Evaluar octubre', 'hheeeeeegt'),
+    ('Octubre, ventana fija', 'hhffff...t'),
 ], ACUMULATIVO))
 ```
 
-[Para cada mes, el modelo entrena con todos los meses desde marzo hasta dos antes. Enero y febrero solo aportan historia.]{.nota}
+[Para cada mes, el modelo entrena con todos los meses desde marzo hasta dos antes; enero y febrero solo aportan historia. En gris, la ventana fija de la consigna (marzo a junio), aplicada a octubre: gana **`{python} C['ventana_abs']` M por mes menos** que la ventana que crece. Lo que importa es que los meses de entrenamiento sean recientes.]{.nota style="margin-top:18px"}
 
 ```{python}
 #| output: asis
@@ -403,7 +446,7 @@ print(partes('Diseño'))
 
 ## {#branches}
 
-<!-- Tramo 4c -->
+<!-- Slide 12 · Tramo 4d -->
 
 ::: {.kicker .c-regla}
 []{.punto .bg-regla} Diseño · pipeline único en el main
@@ -429,7 +472,7 @@ print(partes('Diseño'))
 
 ## {#limitaciones}
 
-<!-- Tramo 5 -->
+<!-- Slide 13 · Tramo 5 -->
 
 ::: {.kicker}
 Limitaciones
@@ -480,7 +523,7 @@ print(partes('Limitaciones'))
 
 ## {#resultados-f1}
 
-<!-- Tramo 6a. Gráfico interactivo: pasar el mouse por un punto muestra el experimento y sus semillas a favor. -->
+<!-- Slide 14 · Tramo 6a. Gráfico interactivo: pasar el mouse por un punto muestra el experimento y sus semillas a favor. -->
 
 [Familia 1: `{python} C['n_ambos_mas']` de `{python} C['n_recetas']` experimentos ganan en los dos meses]{.h2}
 
@@ -527,7 +570,7 @@ print(partes('Resultados'))
 
 ## {#profundidad}
 
-<!-- Tramo 6b. Interactivo: el mouse muestra cada tipo de variable y su ganancia. -->
+<!-- Slide 15 · Tramo 6b. Interactivo: el mouse muestra cada tipo de variable y su ganancia. -->
 
 ::: {.kicker .c-recetas}
 []{.punto .bg-recetas} Resultados · familia 1
@@ -564,7 +607,7 @@ print(partes('Resultados'))
 
 ## {#valor-historia}
 
-<!-- Tramo 7a. Interactivo: cada punto es una semilla; el mouse muestra su ganancia. -->
+<!-- Slide 16 · Tramo 7a. Interactivo: cada punto es una semilla; el mouse muestra su ganancia. -->
 
 ::: {.kicker .c-acum}
 []{.punto .bg-acum} Resultados · familia 2 · cuánto vale la historia
@@ -596,7 +639,7 @@ mostrar(fig_valor_historia(), interactiva=True)
 :::
 :::
 
-[Ventana de la consigna (201903–06), 10 semillas, ganancia promedio entre 3.000 y 6.000 envíos.]{.nota}
+[Ventana de la consigna (201903–06), 10 semillas. 69–90 %: parte de lo que aporta la historia (de no tener historia al modelo con más historia de esa etapa) que ya dan los lags y deltas 1–2.]{.nota}
 
 ```{python}
 #| output: asis
@@ -605,10 +648,10 @@ print(partes('Resultados'))
 
 ## {#dosis}
 
-<!-- Tramo 7b -->
+<!-- Slide 17 · Tramo 7b -->
 
 ::: {.kicker .c-acum}
-[]{.punto .bg-acum} Resultados · familia 2 · prueba pre-registrada
+[]{.punto .bg-acum} Resultados · familia 2 · más meses de lags y tendencias
 :::
 
 [De 2 a 3 meses suma; de 3 a 4, se plancha]{.h2}
@@ -617,7 +660,7 @@ print(partes('Resultados'))
 mostrar(fig_dosis())
 ```
 
-::: {.grid .g3 style="margin-top:20px"}
+::: {.grid .g2 style="margin-top:20px"}
 ::: {.stat}
 [`{python} C['dosis_23']`]{.num style="font-size:60px"}
 
@@ -629,12 +672,6 @@ mostrar(fig_dosis())
 
 [M en octubre, de 3 a 4 meses]{.lab}
 :::
-
-::: {.stat}
-[0 de 6]{.num style="font-size:60px"}
-
-[variantes pasan la regla (Wilcoxon, Holm, 10 semillas)]{.lab}
-:::
 :::
 
 ```{python}
@@ -644,7 +681,7 @@ print(partes('Resultados'))
 
 ## {#resultados-acum}
 
-<!-- Tramo 7b -->
+<!-- Slide 18 · Tramo 7c -->
 
 ::: {.kicker .c-acum}
 []{.punto .bg-acum} Resultados · familia 2 · estrategia final
@@ -659,12 +696,6 @@ print(partes('Resultados'))
 [millones por mes contra el baseline con el mismo calendario]{.hero-lab}
 
 [IC 95 %: `{python} C['paq_ic']` · `{python} C['paq_sem']` semillas a favor]{.nota}
-
-::: {.card style="margin-top:40px"}
-[`{python} C['paq_consigna']`]{.titulo style="font-size:54px"}
-
-[contra el baseline con la ventana de la consigna]{.sub}
-:::
 :::
 
 ::: {}
@@ -683,7 +714,7 @@ print(partes('Resultados'))
 
 ## {#curva-final}
 
-<!-- Tramo 7c. Interactivo: el cursor compara las dos curvas en cada punto de corte. -->
+<!-- Slide 19 · Tramo 7d. Interactivo: el cursor compara las dos curvas en cada punto de corte. -->
 
 ::: {.kicker .c-acum}
 []{.punto .bg-acum} Resultados · familia 2 · estrategia final
@@ -704,57 +735,39 @@ print(partes('Resultados'))
 
 ## {#de-donde}
 
-<!-- Tramo 7d -->
+<!-- Slide 20 · Tramo 7e. Interactivo: el mouse muestra cada barra y la parte de la interacción. -->
 
 ::: {.kicker .c-acum}
 []{.punto .bg-acum} Resultados · familia 2
 :::
 
-[¿De dónde sale?]{.h2}
+[¿De dónde sale? La historia curada y una interacción]{.h2}
 
-::: {.grid .g2}
+::: {.grid .g-5-7 style="gap:48px"}
+::: {}
 ::: {.card .borde-acum}
 [`{python} C['ach']` M]{.titulo style="font-size:64px"}
 
-[**Historia curada**: comparar a cada cliente con su propio pasado.]{.sub}
+[**Historia curada**: comparar a cada cliente con su propio pasado. Es la pieza que más sumó sola.]{.sub}
 :::
 
-::: {.card .borde-acum}
-[`{python} C['ventana']` M]{.titulo style="font-size:64px"}
+::: {.card .borde-regla style="margin-top:24px"}
+[`{python} C['opt_d']` M]{.titulo style="font-size:48px"}
 
-[**Ventana vieja de la consigna** contra entrenar con los meses recientes.]{.sub}
+[**Optuna sobre la estrategia final**: `{python} C['opt_sem']` semillas a favor (IC `{python} C['opt_ic']`). Eligió con junio–agosto y se evaluó en septiembre–octubre: pasó la regla y entró al `main`.]{.sub}
 :::
 :::
 
-::: {style="margin-top:56px"}
+::: {}
 [Una interacción que solo se ve acumulando]{.kicker}
 
-::: {.suma}
-[[`{python} C['mv']`]{.v} tarjetas combinadas, solas]{.b} [+]{.op} [[`{python} C['rel']`]{.v} cambios relativos, solos]{.b} [→]{.op} [[`{python} C['juntos']`]{.v} juntos]{.b .total}
-:::
-:::
-
 ```{python}
-#| output: asis
-print(partes('Resultados'))
+mostrar(fig_interaccion(), interactiva=True)
 ```
 
-## {#branches-resultados}
-
-<!-- Tramo 7e -->
-
-::: {.kicker .c-regla}
-[]{.punto .bg-regla} Resultados · branches
+[Probadas de a una sobre la misma estrategia, cada pieza sumaba poco; juntas, casi el doble de lo esperado. El modelo cruza **cómo está** el cliente con sus tarjetas con **cuánto cambió** cada monto.]{.nota style="margin-top:4px"}
 :::
-
-[Sobre el `main`, dos branches]{.h2}
-
-```{python}
-#| output: asis
-print(svg_git(resultados=True))
-```
-
-[Rango: IC `{python} C['rango_ic']`. Optuna: IC `{python} C['opt_ic']`.]{.nota}
+:::
 
 ```{python}
 #| output: asis
@@ -763,7 +776,7 @@ print(partes('Resultados'))
 
 ## {#no-sumo}
 
-<!-- Tramo 7f. Interactivo: el mouse muestra el control, la diferencia y el IC de cada prueba. -->
+<!-- Slide 21 · Tramo 7f. Interactivo: el mouse muestra el control, la diferencia y el IC de cada prueba. -->
 
 ::: {.kicker}
 Resultados · los negativos también se reportan
@@ -775,7 +788,12 @@ Resultados · los negativos también se reportan
 mostrar(fig_no_sumo(), interactiva=True)
 ```
 
-[Diferencia de ganancia por semilla contra su control, con IC 95 %. Veredictos tal como quedaron registrados.]{.nota}
+::: {.defs}
+[**Segundas diferencias:** el mes − 2 × el mes anterior + el de dos meses antes (la aceleración).]{}
+[**Racha de meses en cero:** tenía que ganar en sep y oct en media por semilla, banda por semilla y banda del ensamble.]{}
+[**Canaritos:** selección de variables con variables aleatorias como referencia.]{}
+[**Segundo paquete:** puntaje de meses anteriores, hojas de Random Forest, rankings, cruces de tarjetas y sueldo sin aguinaldo.]{}
+:::
 
 ```{python}
 #| output: asis
@@ -784,7 +802,7 @@ print(partes('Resultados'))
 
 ## {#coincidencias}
 
-<!-- Tramo 8 -->
+<!-- Slide 22 · Tramo 8 -->
 
 [Dos familias, las mismas conclusiones]{.h2}
 
@@ -805,29 +823,29 @@ print(partes('Conclusiones'))
 
 ## {#sesgos-evidencia}
 
-<!-- Tramo 9a -->
+<!-- Slide 23 · Tramo 9a -->
 
-[¿Qué hizo la evidencia con nuestros sesgos?]{.h2}
+[¿Qué hizo la evidencia con nuestras hipótesis?]{.h2}
 
 ::: {.grid .g2}
-::: {.card .sesgo}
-[Perforado]{.sello .perforado}
-
-[Ezequiel y Tomás]{.quien}
-
-[Más meses → mucha más ganancia]{.creencia}
-
-[Los meses 1 y 2 ya dan entre el `{python} C['lags12_min']` y el `{python} C['lags12_max']` % de lo que aporta la historia.]{.evidencia}
-:::
-
-::: {.card .sesgo}
+::: {.card .sesgo .borde-recetas}
 [A medias]{.sello .medias}
 
-[Clara]{.quien}
+[Hipótesis 1 · familia 1]{.quien .c-recetas}
 
 [Señales de abandono > lags]{.creencia}
 
 [Las rachas, sin ganancia consistente. La caída frente al propio historial, sí.]{.evidencia}
+:::
+
+::: {.card .sesgo .borde-acum}
+[Perforado]{.sello .perforado}
+
+[Hipótesis 2 · familia 2]{.quien .c-acum}
+
+[Más meses → mucha más ganancia]{.creencia}
+
+[Los meses 1 y 2 ya dan entre el `{python} C['lags12_min']` y el `{python} C['lags12_max']` % de lo que aporta la historia.]{.evidencia}
 :::
 :::
 
@@ -838,7 +856,7 @@ print(partes('Conclusiones'))
 
 ## {#cierre}
 
-<!-- Tramo 9b -->
+<!-- Slide 24 · Tramo 9b -->
 
 [Qué nos llevamos y qué seguiríamos probando]{.h2}
 

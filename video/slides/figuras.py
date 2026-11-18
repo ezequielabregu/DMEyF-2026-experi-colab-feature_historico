@@ -273,7 +273,7 @@ def fig_maldicion():
 
 MESES_CORTOS = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct']
 ESTADOS = {'h': ('hist', ''), 'e': ('train', 'entrena'), 'v': ('valid', 'valida'), 'g': ('gap', ''),
-           't': ('eval', 'evalúa'), '.': ('nada', '')}
+           't': ('eval', 'evalúa'), '.': ('nada', ''), 'f': ('fija', 'entrena')}
 
 
 def calendario(filas, color, etiquetas=True):
@@ -446,7 +446,7 @@ def fig_dosis():
     fig.update_xaxes(range=[1.75, 5.1], row=1, col=2)
     fig.update_yaxes(showgrid=True, gridcolor=GRIS, zeroline=False, tickfont=dict(size=20), color=TINTA_MUTED,
                      ticksuffix=' M')
-    return _base(fig, 1500, 560, separators=',.', margin=dict(l=20, r=20, t=50, b=20))
+    return _base(fig, 1500, 500, separators=',.', margin=dict(l=20, r=20, t=50, b=20))
 
 
 def fig_profundidad():
@@ -564,7 +564,7 @@ def fig_valor_historia():
                      ticksuffix=' M')
     fig.update_yaxes(showgrid=False, tickfont=dict(size=22, color=TINTA_2), categoryorder='array',
                      categoryarray=[v[1] for v in VALOR][::-1])
-    return _base(fig, 1600, 450, separators=',.', margin=dict(l=20, r=30, t=50, b=20),
+    return _base(fig, 1600, 420, separators=',.', margin=dict(l=20, r=30, t=50, b=20),
                  hoverlabel=dict(bgcolor=SUPERFICIE, bordercolor=GRIS_CLARO, font=dict(family=FUENTE, size=20, color=TINTA)))
 
 
@@ -622,7 +622,7 @@ def fig_no_sumo():
     fig.update_xaxes(showgrid=True, gridcolor=GRIS, zeroline=False, tickfont=dict(size=20), color=TINTA_MUTED,
                      ticksuffix=' M', title=dict(text='Diferencia de ganancia contra su control, IC 95 %', font=dict(size=20)))
     fig.update_yaxes(showgrid=False, tickfont=dict(size=22, color=TINTA_2), autorange='reversed')
-    return _base(fig, 1560, 600, separators=',.', margin=dict(l=20, r=360, t=10, b=20),
+    return _base(fig, 1560, 540, separators=',.', margin=dict(l=20, r=360, t=10, b=20),
                  hoverlabel=dict(bgcolor=SUPERFICIE, bordercolor=GRIS_CLARO, font=dict(family=FUENTE, size=20, color=TINTA)))
 
 
@@ -632,3 +632,172 @@ C['ens_mejora'] = f(float(_inf['ensamble_mejora_M']), 1, True)
 _rm, _rh = _rec('rel_mean_W6'), _rec('rank_historia')
 C['relmed6_sep'], C['relmed6_oct'] = f(_rm.sep, 1, True), f(_rm.oct, 1, True)
 C['rankh_sep'], C['rankh_oct'] = f(_rh.sep, 1, True), f(_rh.oct, 1, True)
+
+
+# ---------------------------------------------------------------- ejemplo ilustrativo de los experimentos de ventana
+# Serie inventada (no es un resultado): el saldo de un cliente en los últimos 6 meses, para mostrar cómo se calcula
+# cada tipo de variable de la familia 1. Se rotula como "ejemplo ilustrativo".
+EJ_MESES = ['t − 5', 't − 4', 't − 3', 't − 2', 't − 1', 't (mes actual)']
+EJ_SALDO = [130, 150, 120, 110, 95, 70]
+
+
+def _ej_calculos(w):
+    import numpy as np
+    v = np.array(EJ_SALDO[-w:], dtype=float)
+    x = np.arange(w)
+    pend, ord_ = np.polyfit(x, v, 1)
+    prom = v.mean()
+    return dict(v=v, x=x, prom=prom, mn=v.min(), mx=v.max(), rango=v.max() - v.min(), pend=pend, ord=ord_,
+                rel_prom=(v[-1] - prom) / abs(prom), rel_ant=(v[-1] - v[-2]) / abs(v[-2]), rel_pri=(v[-1] - v[0]) / abs(v[0]))
+
+
+def fig_ejemplo():
+    """Ejemplo interactivo: botones para cambiar la ventana (3, 4 o 6 meses) y ver cada cálculo."""
+    n = len(EJ_SALDO)
+    fig = go.Figure()
+    fig.add_trace(go.Scatter(x=EJ_MESES, y=EJ_SALDO, mode='lines+markers+text', line=dict(color=GRIS_CLARO, width=3),
+                             marker=dict(size=14, color=TINTA_2), text=[str(s) for s in EJ_SALDO],
+                             textposition='top center', textfont=dict(size=20, color=TINTA_2),
+                             hovertemplate='%{x}: %{y}<extra></extra>', name='saldo'))
+    estados = {}
+    for w in (3, 4, 6):
+        c = _ej_calculos(w)
+        xs = EJ_MESES[n - w:]
+        k0 = len(fig.data)
+        fig.add_trace(go.Scatter(x=xs, y=[c['prom']] * w, mode='lines', line=dict(color=TRES[1], width=3, dash='dash'),
+                                 hovertemplate=f'promedio: {f(c["prom"], 1)}<extra></extra>', visible=(w == 4)))
+        fig.add_trace(go.Scatter(x=xs, y=c['ord'] + c['pend'] * c['x'], mode='lines', line=dict(color=RECETAS, width=4),
+                                 hovertemplate=f'tendencia: {f(c["pend"], 1, True)} por mes<extra></extra>', visible=(w == 4)))
+        imn, imx = int(c['v'].argmin()), int(c['v'].argmax())
+        fig.add_trace(go.Scatter(x=[xs[imn], xs[imx]], y=[c['mn'], c['mx']], mode='markers',
+                                 marker=dict(size=24, color='rgba(0,0,0,0)', line=dict(color=TINTA, width=3)),
+                                 hovertemplate='%{x}: %{y}<extra></extra>', visible=(w == 4)))
+        estados[w] = (k0, c, xs)
+    ntr = len(fig.data)
+
+    def capa(w):
+        k0, c, xs = estados[w]
+        vis = [True] + [False] * (ntr - 1)
+        for k in range(k0, k0 + 3):
+            vis[k] = True
+        shapes = [dict(type='rect', xref='x', yref='paper', x0=n - w - 0.5, x1=n - 0.5, y0=0, y1=1,
+                       fillcolor=RECETAS, opacity=0.08, line_width=0, layer='below')]
+        texto = (f'<b>Ventana de {w} meses</b><br><br>'
+                 f'<span style="color:{TRES[1]}">- - promedio</span>: <b>{f(c["prom"], 1)}</b><br>'
+                 f'<span style="color:{TINTA}">○ mínimo</span>: <b>{f(c["mn"], 0)}</b> · <span style="color:{TINTA}">○ máximo</span>: <b>{f(c["mx"], 0)}</b><br>'
+                 f'rango (máx − mín): <b>{f(c["rango"], 0)}</b><br>'
+                 f'<span style="color:{RECETAS}">— tendencia</span> (pendiente): <b>{f(c["pend"], 1, True)} por mes</b><br><br>'
+                 f'relativo al promedio: <b>{f(100 * c["rel_prom"], 0, True)} %</b><br>'
+                 f'relativo al mes anterior: <b>{f(100 * c["rel_ant"], 0, True)} %</b><br>'
+                 f'relativo al primer mes: <b>{f(100 * c["rel_pri"], 0, True)} %</b>')
+        ann = [dict(xref='paper', yref='paper', x=1.02, y=0.98, xanchor='left', yanchor='top', align='left',
+                    showarrow=False, text=texto, font=dict(family=FUENTE, size=22, color=TINTA_2))]
+        return vis, shapes, ann
+
+    botones = []
+    for w in (3, 4, 6):
+        vis, shapes, ann = capa(w)
+        botones.append(dict(label=f'{w} meses', method='update', args=[{'visible': vis}, {'shapes': shapes, 'annotations': ann}]))
+    vis, shapes, ann = capa(4)
+    fig.update_layout(shapes=shapes, annotations=ann,
+                      updatemenus=[dict(type='buttons', direction='right', active=1, x=0, y=1.16, xanchor='left',
+                                        buttons=botones, bgcolor=TINTA_MUTED, bordercolor=GRIS_CLARO,
+                                        font=dict(family=FUENTE, size=22, color=FONDO), pad=dict(r=14, t=6, b=6, l=14))])
+    fig.update_xaxes(showgrid=False, tickfont=dict(size=20, color=TINTA_2))
+    fig.update_yaxes(showgrid=True, gridcolor=GRIS, zeroline=False, tickfont=dict(size=18), color=TINTA_MUTED,
+                     range=[40, 175], title=dict(text='saldo (ejemplo, en miles)', font=dict(size=20)))
+    return _base(fig, 1700, 560, separators=',.', margin=dict(l=20, r=520, t=80, b=20),
+                 hoverlabel=dict(bgcolor=SUPERFICIE, bordercolor=GRIS_CLARO, font=dict(family=FUENTE, size=20, color=TINTA)))
+
+
+_e4 = _ej_calculos(4)
+C.update({'ej_prom4': f(_e4['prom'], 1), 'ej_mn4': f(_e4['mn'], 0), 'ej_mx4': f(_e4['mx'], 0), 'ej_rango4': f(_e4['rango'], 0),
+          'ej_pend4': f(_e4['pend'], 1, True), 'ej_relprom4': f(100 * _e4['rel_prom'], 0, True),
+          'ej_relant4': f(100 * _e4['rel_ant'], 0, True), 'ej_relpri4': f(100 * _e4['rel_pri'], 0, True),
+          'ej_lag3': f(EJ_SALDO[-4], 0), 'ej_delta3': f(EJ_SALDO[-1] - EJ_SALDO[-4], 0, True)})
+
+
+# ---------------------------------------------------------------- qué variables usa la estrategia final
+_imp = _csv('importancia_paq_p3.csv')
+BLOQUE_NOMBRE = {'AC': 'Baseline: el mes, lags y deltas 1–2', 'MVH': 'Visa y Master combinadas', 'CURADA': 'Historia curada',
+                 'ACH_T': 'Contra toda su historia', 'R': 'Cambios relativos', 'ACH_V': 'Inestabilidad (desvío)',
+                 'ACH_Q': 'Quiebre (caídas)', 'ACH_Z': 'Contra el resto del mes'}
+# Descripción de las variables más importantes (diccionario de datos de la cátedra y funciones.py del pipeline)
+DESCRIPCION = {
+    'mcaja_ahorro': 'Saldo de la caja de ahorro',
+    'ctrx_quarter': 'Movimientos en cuentas, últimos 90 días',
+    'mcaja_ahorro_lag1': 'Saldo de la caja de ahorro, mes anterior',
+    'mv_mpagospesos': 'Pagos en pesos, Visa + Master',
+    'mtarjeta_visa_consumo': 'Consumo con Visa',
+    'cdescubierto_preacordado': 'Tiene descubierto acordado',
+    'ctrx_quarter_relmediaT': 'Movimientos contra su media de toda la historia',
+    'Visa_Finiciomora': 'Días al inicio de la mora de Visa',
+    'mv_Finiciomora': 'Días al inicio de la mora, la más cercana de las dos',
+    'cdescubierto_preacordado_delta2': 'Descubierto acordado, cambio en 2 meses',
+    'mv_status05_delta2': 'Estado de las tarjetas (abierta → cerrada), cambio en 2 meses',
+    'ctarjeta_visa_transacciones': 'Transacciones con Visa',
+}
+
+
+def fig_importancia():
+    """Parte del gain de LightGBM por bloque (izquierda) y las 12 columnas que más pesan (derecha). Interactiva."""
+    from plotly.subplots import make_subplots
+    pb = _imp.groupby('bloque').parte_gain.sum().sort_values()
+    top = _imp.head(len(DESCRIPCION)).iloc[::-1]
+    color = lambda b: GRIS_CLARO if b == 'AC' else ACUMULATIVO
+    fig = make_subplots(rows=1, cols=2, column_widths=[0.42, 0.58], horizontal_spacing=0.26,
+                        subplot_titles=['Por bloque de variables', 'Las 12 columnas que más pesan'])
+    fig.update_annotations(font=dict(size=24, color=TINTA))
+    fig.add_trace(go.Bar(x=pb.values * 100, y=[BLOQUE_NOMBRE[b] for b in pb.index], orientation='h',
+                         marker_color=[color(b) for b in pb.index], marker_line_width=0,
+                         text=[f(v * 100, 1) + ' %' for v in pb.values], textposition='outside', cliponaxis=False,
+                         textfont=dict(size=20, color=TINTA), hovertemplate='%{y}: %{x:.1f} % del gain<extra></extra>'),
+                  row=1, col=1)
+    fig.add_trace(go.Bar(x=top.parte_gain * 100, y=[DESCRIPCION[v] for v in top.variable], orientation='h',
+                         marker_color=[color(b) for b in top.bloque], marker_line_width=0,
+                         text=[f(v * 100, 1) + ' %' for v in top.parte_gain], textposition='outside', cliponaxis=False,
+                         textfont=dict(size=18, color=TINTA_2), customdata=list(zip(top.variable, [BLOQUE_NOMBRE[b] for b in top.bloque])),
+                         hovertemplate='%{y}<br><b>%{customdata[0]}</b> · %{customdata[1]}<br>%{x:.2f} % del gain<extra></extra>'),
+                  row=1, col=2)
+    fig.update_xaxes(visible=False)
+    fig.update_yaxes(tickfont=dict(size=19, color=TINTA_2), showgrid=False, ticksuffix='   ')
+    return _base(fig, 1700, 600, bargap=0.28, margin=dict(l=20, r=60, t=50, b=10), separators=',.',
+                 hoverlabel=dict(bgcolor=SUPERFICIE, bordercolor=GRIS_CLARO, font=dict(family=FUENTE, size=20, color=TINTA)))
+
+
+_pb = _imp.groupby('bloque').parte_gain.sum()
+C.update({f'imp_{b.lower()}': f(100 * _pb[b], 1) for b in _pb.index})
+C['imp_ac'] = f(100 * _pb['AC'], 0)
+C['imp_nuevas'] = f(100 * (1 - _pb['AC']), 0)
+
+
+# ---------------------------------------------------------------- la interacción de Visa y Master con los cambios relativos
+_ia_mv, _ia_rel, _ia_jun = float(_mv['d_M']), float(_rel['d_M']), float(_juntos['d_M'])
+_ia_suma = _ia_mv + _ia_rel
+C.update({'ia_suma': f(_ia_suma, 1, True), 'ia_extra': f(_ia_jun - _ia_suma, 1, True)})
+
+
+def fig_interaccion():
+    """Cada pieza sola, lo que darían si sus efectos se sumaran, y lo que dieron juntas (todas contra la misma
+    estrategia previa). La diferencia es la interacción. Interactiva."""
+    x = ['Visa y Master<br>combinadas, solas', 'Cambios relativos,<br>solos', 'Si sus efectos<br>se sumaran', 'Las dos juntas']
+    fig = go.Figure()
+    fig.add_trace(go.Bar(x=x[:2], y=[_ia_mv, _ia_rel], marker_color=GRIS_CLARO, marker_line_width=0, width=0.55,
+                         text=[f(_ia_mv, 1, True), f(_ia_rel, 1, True)], textposition='outside', cliponaxis=False,
+                         textfont=dict(size=26, color=TINTA), hovertemplate='%{x}: %{y:+.2f} M<extra></extra>'))
+    fig.add_trace(go.Bar(x=[x[2]], y=[_ia_suma], marker=dict(color='rgba(0,0,0,0)', line=dict(color=TINTA_2, width=3)),
+                         width=0.55, text=[f(_ia_suma, 1, True)], textposition='outside', cliponaxis=False,
+                         textfont=dict(size=26, color=TINTA_2), hovertemplate='0,6 + 0,6 = %{y:+.2f} M<extra></extra>'))
+    fig.add_trace(go.Bar(x=[x[3]], y=[_ia_suma], marker_color=GRIS_CLARO, marker_line_width=0, width=0.55,
+                         hovertemplate='lo esperado: %{y:+.2f} M<extra></extra>'))
+    fig.add_trace(go.Bar(x=[x[3]], y=[_ia_jun - _ia_suma], marker_color=ACUMULATIVO, marker_line_width=0, width=0.55,
+                         text=[f'{f(_ia_jun, 1, True)}'], textposition='outside', cliponaxis=False,
+                         textfont=dict(size=30, color=TINTA), hovertemplate='interacción: %{y:+.2f} M<extra></extra>'))
+    fig.add_annotation(x=x[3], y=_ia_suma + (_ia_jun - _ia_suma) / 2, text=f'<b>{C["ia_extra"]}</b><br>solo juntas',
+                       showarrow=False, xshift=150, font=dict(size=22, color=ACUMULATIVO), align='left')
+    fig.update_yaxes(visible=False, range=[0, _ia_jun * 1.25])
+    fig.update_xaxes(showgrid=False, tickfont=dict(size=21, color=TINTA_2), showline=True, linecolor=GRIS_CLARO)
+    return _base(fig, 1060, 440, barmode='stack', separators=',.', margin=dict(l=10, r=150, t=20, b=10),
+                 hoverlabel=dict(bgcolor=SUPERFICIE, bordercolor=GRIS_CLARO, font=dict(family=FUENTE, size=20, color=TINTA)))
+
+C['ventana_abs'] = f(abs(float(_ventana['d_M'])), 1)

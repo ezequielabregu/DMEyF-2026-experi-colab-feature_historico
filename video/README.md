@@ -6,7 +6,7 @@ Video de Experimentos Colaborativos (DMEyF 2026). Presenta las dos familias de e
 
 | Archivo | Qué es |
 |---|---|
-| `guion.md` | El guion: 9 tramos y 23 slides, con lo que se ve y lo que se dice |
+| `guion.md` | El guion: 9 tramos y 24 slides, con lo que se ve y lo que se dice |
 | `slides/video_experimentos.qmd` | Las slides (Quarto revealjs, 1920×1080) |
 | `slides/video_experimentos.html` | Las slides ya renderizadas: se abren en el navegador. Los gráficos interactivos cargan plotly desde internet |
 | `slides/figuras.py` | Cifras y figuras: ningún número de las slides está tipeado a mano |
@@ -34,4 +34,5 @@ QUARTO_PYTHON=<ruta al python del entorno> quarto render video_experimentos.qmd 
 | `optuna_comparacion.csv` | branch `feat/optuna-paq-p3`, `resultados/optuna/evaluacion_final_comparacion.csv` |
 | `exploratorio/*.csv` | branch `ezequiel/etapa-1`, notebooks `04` (prueba pre-registrada, dosis-respuesta) a `23` |
 | `bandas_ensemble.csv`, `curvas_ganancia.csv` | calculadas de las predicciones guardadas del pipeline (`exp/pipeline/`, no versionado): banda y curva de ganancia del ensamble |
+| `importancia_paq_p3.csv` | importancia (gain) de las 1.653 columnas de la estrategia final, promedio de los 25 modelos del notebook `22` (`exp/22/imp/`, no versionado) |
 | `cifras_del_informe.csv` | los dos porcentajes del notebook `12` (69 % y 90 %), tomados del informe del grupo |
