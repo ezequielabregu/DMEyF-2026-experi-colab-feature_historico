@@ -258,10 +258,10 @@ Todo lo que aparece en pantalla se dice. Las cifras las genera `slides/figuras.p
 
 ### Slide 23 · 9a. Las hipótesis contra la evidencia
 
-**Pantalla:** las dos tarjetas con sello: hipótesis 1, "A medias"; hipótesis 2, "Perforado".
+**Pantalla:** las dos tarjetas, cada una con el sello "No se sostuvo".
 
 **Texto:**
-> ¿Qué hizo la evidencia con nuestras hipótesis? La hipótesis 1 quedó a medias: las rachas no mostraron una ganancia consistente, pero la caída frente al propio historial sí. La hipótesis 2 quedó perforada: más meses no dieron mucho más, porque los dos primeros meses ya dan entre el 69 y el 90 % de lo que aporta la historia.
+> ¿Qué hizo la evidencia con nuestras hipótesis? Ninguna de las dos se sostuvo. La hipótesis 1: acumular meses sin actividad no dio una ganancia consistente. La hipótesis 2: más meses no dieron mucha más ganancia, porque los dos primeros meses ya dan entre el 69 y el 90 % de lo que aporta la historia.
 
 ### Slide 24 · 9b. Qué nos llevamos
 

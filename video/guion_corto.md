@@ -1,6 +1,6 @@
 # Guion corto del video — Experimentos Colaborativos (`feature_historico`)
 
-**Versión corta (2026-11-18)** de `guion.md`. Mismas 24 slides, mismo orden y mismas cifras. **1.381 palabras habladas, unos 9,6 minutos** al ritmo de 2,4 palabras por segundo; el guion completo tiene unas 2.250. Un solo guion, sin voces asignadas.
+**Versión corta (2026-11-18)** de `guion.md`. Mismas 24 slides, mismo orden y mismas cifras. **1.391 palabras habladas, unos 9,7 minutos** al ritmo de 2,4 palabras por segundo; el guion completo tiene unas 2.250. Un solo guion, sin voces asignadas.
 
 **Cómo se recortó:**
 1. **Estilo ASD-STE100, adaptado al castellano:**
@@ -146,9 +146,9 @@ Sin texto. Se ve mientras arranca el video.
 
 ## Tramo 9 — Conclusiones
 
-### Slide 23 · 9a. Las hipótesis contra la evidencia (45)
+### Slide 23 · 9a. Las hipótesis contra la evidencia (40)
 
-> ¿Qué hizo la evidencia con las hipótesis? La hipótesis 1 quedó a medias: las rachas no suman de forma consistente, pero la caída frente al propio historial sí. La hipótesis 2 quedó perforada: más meses no dieron mucha más ganancia. La tarjeta muestra por qué.
+> ¿Qué hizo la evidencia con las hipótesis? Ninguna de las dos se sostuvo. La hipótesis 1: acumular meses sin actividad no dio una ganancia consistente. La hipótesis 2: más meses no dieron mucha más ganancia. La tarjeta muestra por qué.
 
 ### Slide 24 · 9b. Qué nos llevamos (67)
 

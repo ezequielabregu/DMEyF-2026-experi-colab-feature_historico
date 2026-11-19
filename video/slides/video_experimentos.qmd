@@ -829,13 +829,13 @@ print(partes('Conclusiones'))
 
 ::: {.grid .g2}
 ::: {.card .sesgo .borde-recetas}
-[A medias]{.sello .medias}
+[No se sostuvo]{.sello .perforado}
 
 [Hipótesis 1 · familia 1]{.quien .c-recetas}
 
-[Señales de abandono > lags]{.creencia}
+[Varios meses sin actividad → mucha más ganancia]{.creencia}
 
-[Las rachas, sin ganancia consistente. La caída frente al propio historial, sí.]{.evidencia}
+[Las rachas de meses sin actividad no dieron una ganancia consistente.]{.evidencia}
 :::
 
 ::: {.card .sesgo .borde-acum}
