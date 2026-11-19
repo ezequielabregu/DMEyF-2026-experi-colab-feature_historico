@@ -34,9 +34,9 @@ Sin texto. Se ve mientras arranca el video.
 
 > Nuestro experimento es de feature engineering histórico. El baseline de la consigna es un LightGBM. Usa las variables del mes y sus lags y deltas de 1 y 2 meses. La pregunta: ¿más historia de cada cliente gana más dinero? Usamos solo meses de 2019.
 
-### Slide 3 · 1b. Las dos hipótesis y sus sesgos (43)
+### Slide 3 · 1b. Las dos hipótesis y sus sesgos (58)
 
-> Arrancamos con dos hipótesis, cada una con su sesgo. Hipótesis 1, de la primera familia: las señales de abandono, como las rachas de inactividad, superan ampliamente a los lags. Hipótesis 2, de la segunda familia: más meses de historia dan mucha más ganancia.
+> Arrancamos con dos hipótesis, cada una con su sesgo. Nuestra primera hipótesis era que las señales de abandono, como acumular varios meses sin actividad, aportarían mucha más ganancia que usar solamente lags y deltas. Nuestra segunda hipótesis era que agregar más meses de historia daría mucha más ganancia. Al final vamos a ver qué pasó con cada una.
 
 ---
 

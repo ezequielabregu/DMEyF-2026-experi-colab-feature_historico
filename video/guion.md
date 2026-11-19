@@ -50,7 +50,7 @@ Todo lo que aparece en pantalla se dice. Las cifras las genera `slides/figuras.p
 **Pantalla:** dos tarjetas: hipótesis 1 · familia 1 (azul) e hipótesis 2 · familia 2 (naranja).
 
 **Texto:**
-> Arrancamos con dos hipótesis, cada una con su sesgo. La hipótesis 1, la de la primera familia: las señales de abandono, como las rachas de inactividad o la caída frente al propio historial del cliente, iban a superar ampliamente a los lags. La hipótesis 2, la de la segunda familia: sumar más meses de historia iba a dar mucha más ganancia. Al final vemos qué hizo la evidencia con cada una.
+> Arrancamos con dos hipótesis, cada una con su sesgo. Nuestra primera hipótesis era que las señales de abandono, como acumular varios meses sin actividad, aportarían mucha más ganancia que usar solamente lags y deltas. Nuestra segunda hipótesis era que agregar más meses de historia daría mucha más ganancia. Al final vamos a ver qué pasó con cada una.
 
 ---
 

@@ -48,7 +48,7 @@ from figuras import (C, mostrar, fig_recetas, fig_maldicion, fig_curva, fig_dosi
 [[]{.punto .bg-acum} Familia 2 · experimentos acumulativos]{.pill}
 :::
 
-[Tomás Henseler · Clara M. Rodríguez · Ezequiel Abregú — tutor: Alejandro Bolaños · DMEyF 2026 · grupo feature_historico]{.autores}
+[Ezequiel Abregu - Tomás Henseler - Clara M. Rodriguez — tutor: Alejandro Bolaños · DMEyF 2026 · grupo feature_historico]{.autores}
 
 ## {#pregunta}
 
@@ -103,7 +103,7 @@ Hipótesis · sesgos
 ::: {.card .sesgo .borde-recetas .fragment}
 [Hipótesis 1 · familia 1]{.quien .c-recetas}
 
-[Las señales de abandono (rachas de inactividad, caída frente al propio historial) iban a **superar ampliamente** a los lags.]{.creencia}
+[Las señales de abandono, como acumular varios meses sin actividad, aportarían **mucha más ganancia** que usar solamente lags y deltas.]{.creencia}
 :::
 
 ::: {.card .sesgo .borde-acum .fragment}
@@ -839,7 +839,7 @@ print(partes('Conclusiones'))
 :::
 
 ::: {.card .sesgo .borde-acum}
-[Perforado]{.sello .perforado}
+[No se sostuvo]{.sello .perforado}
 
 [Hipótesis 2 · familia 2]{.quien .c-acum}
 
